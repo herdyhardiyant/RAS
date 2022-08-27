@@ -1,5 +1,34 @@
 workflows:
-  hello-world:
-    name: Hello world workflow
+  unity-windows-workflow:
+    name: Unity Windows Workflow
+    max_build_duration: 120
+    instance_type: windows_x2
+    environment:
+      groups:
+        - unity
+      vars:
+        BUILD_SCRIPT: BuildWindows
+    triggering:
+      events:
+        - push
+        - tag
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
     scripts:
-        - echo "Hello World!"
+      - name: Activate & Build Unity Using a Command Prompt
+        script: |
+          cmd.exe /c "$env:UNITY_HOME\\Unity.exe" -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics -serial $env:UNITY_SERIAL -username $env:UNITY_EMAIL -password $env:UNITY_PASSWORD
+      - name: Export Unity
+        script: |
+          cd windows
+          7z a -r release.zip ./*
+    artifacts:
+      - windows/*.zip
+    publishing:
+      scripts:
+        - name: Deactivate Unity License using a Command Prompt
+          script: |
+            cmd.exe /c "$env:UNITY_HOME\\Unity.exe" -batchmode -quit -returnlicense -nographics
