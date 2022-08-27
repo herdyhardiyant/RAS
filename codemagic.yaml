@@ -1,0 +1,5 @@
+workflows:
+  first-workflow:
+    name: RAS first workflow
+    scripts:
+        - echo "RAS first workflow"
