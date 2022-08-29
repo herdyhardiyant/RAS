@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +12,6 @@ namespace Characters.Player.Scripts
         
         private float _playerSpeed = 2.0f;
         private float _gravityValue = -9.81f;
-
-        private float _rotationFactor = 1.0f;
         
         // Start is called before the first frame update
         void Start()
@@ -44,26 +41,14 @@ namespace Characters.Player.Scripts
         }
         private void RotatePlayerOnMove(Vector3 moveDirection)
         {
-            if (Math.Abs(moveDirection.magnitude) < 0.01)
-                return;
-            
-            var positionToLookAt = new Vector3(
-                moveDirection.x,
-                0,
-                moveDirection.z
-            );
-
-            var currentRotation = transform.rotation;
-            var targetRotation = Quaternion.LookRotation(positionToLookAt);
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _rotationFactor);
-      
+            if (moveDirection != Vector3.zero)
+                transform.forward = moveDirection;
         }
         private void MovePlayer(Vector3 moveDirection)
         {
             var move = moveDirection * _playerSpeed;
             _characterController.Move(move * Time.deltaTime);
         }
-        
         private Vector3 GetInputMoveDirection()
         {
             var moveDirection = Vector3.zero;
