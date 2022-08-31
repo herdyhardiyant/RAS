@@ -1,3 +1,4 @@
+using System;
 using Environment.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -49,7 +50,7 @@ namespace Characters.Player.Scripts
             CloseInteractVisual();
             _isPlayerInInteractRange = false;
         }
-        
+
         private void InteractInput()
         {
             if (_keyboard == null)
