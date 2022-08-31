@@ -10,9 +10,9 @@ namespace Characters.Player.Scripts
         private Keyboard _keyboard;
         private Vector3 _playerVerticalVelocity;
         
-        private float _playerSpeed = 2.0f;
-        private float _gravityValue = -9.81f;
-        
+        public float _walkSpeed = 1.0f;
+        private const float _gravityValue = -9.81f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -46,7 +46,7 @@ namespace Characters.Player.Scripts
         }
         private void MovePlayer(Vector3 moveDirection)
         {
-            var move = moveDirection * _playerSpeed;
+            var move = moveDirection * _walkSpeed;
             _characterController.Move(move * Time.deltaTime);
         }
         private Vector3 GetInputMoveDirection()

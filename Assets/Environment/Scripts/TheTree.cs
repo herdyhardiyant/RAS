@@ -14,7 +14,10 @@ namespace Environment.Scripts
         {
             print("The Great Tree");
         }
-        
+        public string GetInteractionText()
+        {
+            return $"This tree is protecting me.";
+        }
         // Update is called once per frame
         void Update()
         {

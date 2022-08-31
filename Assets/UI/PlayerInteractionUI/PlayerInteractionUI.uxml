@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="main-container" style="flex-grow: 1; align-items: center; justify-content: flex-end; padding-bottom: 50px;">
+        <ui:Label text="Press F to Interact" display-tooltip-when-elided="true" name="interaction-label" style="position: relative; bottom: auto; right: auto; width: auto; height: auto; font-size: 24px; justify-content: flex-start; align-items: auto;" />
+    </ui:VisualElement>
+</ui:UXML>
