@@ -10,9 +10,13 @@ namespace Characters.Player.Scripts
         private Keyboard _keyboard;
         private Vector3 _playerVerticalVelocity;
         
-        private float _playerSpeed = 2.0f;
-        private float _gravityValue = -9.81f;
+        [SerializeField]
+        private float walkSpeed = 2.0f;
+
+        [SerializeField] private float runSpeed = 4.0f;
         
+        private const float _gravityValue = -9.81f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,7 +30,7 @@ namespace Characters.Player.Scripts
 
             UpdatePlayerGravity();
             var moveDirection = GetInputMoveDirection();
-            RotatePlayerOnMove(moveDirection);
+            RotatePlayerToMoveDirection(moveDirection);
             MovePlayer(moveDirection);
         }
         private void UpdatePlayerGravity()
@@ -39,16 +43,21 @@ namespace Characters.Player.Scripts
             _playerVerticalVelocity.y += _gravityValue * Time.deltaTime;
             _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
         }
-        private void RotatePlayerOnMove(Vector3 moveDirection)
+        
+        private void RotatePlayerToMoveDirection(Vector3 moveDirection)
         {
             if (moveDirection != Vector3.zero)
                 transform.forward = moveDirection;
         }
+        
         private void MovePlayer(Vector3 moveDirection)
         {
-            var move = moveDirection * _playerSpeed;
+            var move = moveDirection;
+            bool isPlayerRunning = _keyboard.shiftKey.isPressed;
+            move *= isPlayerRunning ? runSpeed : walkSpeed;
             _characterController.Move(move * Time.deltaTime);
         }
+        
         private Vector3 GetInputMoveDirection()
         {
             var moveDirection = Vector3.zero;
