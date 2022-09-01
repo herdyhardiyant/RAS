@@ -416,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451638330242999395, guid: d814a40e329106445ae2808f5a33b3de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7478728
+      value: -2.49
       objectReference: {fileID: 0}
     - target: {fileID: 3451638330242999395, guid: d814a40e329106445ae2808f5a33b3de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451638330242999395, guid: d814a40e329106445ae2808f5a33b3de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2130687
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 3451638330242999395, guid: d814a40e329106445ae2808f5a33b3de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -536,6 +536,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 266151086298985024, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492044225394276573, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: runSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492044225394276573, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: walkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492044225394276573, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: _walkSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2335178638860901766, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554427920159086037, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6369562486553081160, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
@@ -699,7 +719,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3569938, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

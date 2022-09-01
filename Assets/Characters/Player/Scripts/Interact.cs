@@ -1,4 +1,4 @@
-using System;
+
 using Environment.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -53,10 +53,8 @@ namespace Characters.Player.Scripts
 
         private void InteractInput()
         {
-            if (_keyboard == null)
-                return;
-            
-            if (_keyboard.fKey.wasPressedThisFrame)
+            var isInteractButtonWasPressed = _keyboard.fKey.wasPressedThisFrame;
+            if (isInteractButtonWasPressed)
             {
                 ShowInteractionText();
             }

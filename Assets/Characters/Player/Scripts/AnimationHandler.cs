@@ -13,21 +13,21 @@ namespace Characters.Player.Scripts
         {
             _animator = GetComponent<Animator>();
             _characterController = GetComponent<CharacterController>();
+            _animator.applyRootMotion = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!_characterController)
-                return;
-            
-            if (!_animator)
-                return;
-
             var characterVelocity = _characterController.velocity.magnitude;
+            
             var isWalking = characterVelocity > 0.1;
-            //TODO fix string based property lookup
+            var isRunning = characterVelocity > 3;
+            
+            // See the parameters at ./Characters/Player/Animations/Player_AC
             _animator.SetBool("isWalking", isWalking);
+            _animator.SetBool("isRunning", isRunning);
+
         }
     }
 }
