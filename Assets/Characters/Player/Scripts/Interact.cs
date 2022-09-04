@@ -1,27 +1,27 @@
-
 using Environment.Scripts;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using PlayerInput = Settings.PlayerInput;
 
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Interact : MonoBehaviour
     {
+
+
         private VisualElement _interactionVisual;
-        private BoxCollider _interactTrigger;
         private Label _interactLabel;
-        private Keyboard _keyboard;
-        private const string _interactLabelDefaultText = "Press F to Interact";
-        
+        private const string _interactLabelDefaultText = "Press E to Interact";
         private string _objectInteractionText;
         private bool _isPlayerInInteractRange;
+        private PlayerInput _playerInput;
+
         // Start is called before the first frame update
         void Start()
         {
             SetupInteractionVisual();
-            _keyboard = Keyboard.current;
+            _playerInput = gameObject.AddComponent<PlayerInput>();
         }  
         
         void Update()
@@ -53,8 +53,7 @@ namespace Characters.Player.Scripts
 
         private void InteractInput()
         {
-            var isInteractButtonWasPressed = _keyboard.fKey.wasPressedThisFrame;
-            if (isInteractButtonWasPressed)
+            if (_playerInput.IsInteractPressed)
             {
                 ShowInteractionText();
             }

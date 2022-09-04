@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Components/Navigation/Navigation.uss?fileID=7433441132597879392&amp;guid=b6d47623f1addb143bfb0a262f564c84&amp;type=3#Navigation" />
+    <ui:VisualElement name="navigation" style="flex-direction: row; justify-content: center; background-color: rgba(0, 0, 0, 0); color: rgba(255, 255, 255, 255);">
+        <ui:Button text="Crafting" display-tooltip-when-elided="true" name="crafting-tab" class="navigation-button" />
+        <ui:Button text="Status" display-tooltip-when-elided="true" name="status-tab" class="navigation-button" />
+        <ui:Button text="Inventory" display-tooltip-when-elided="true" name="inventory-tab" class="navigation-button current-tab" />
+        <ui:Button text="close" display-tooltip-when-elided="true" name="close" class="navigation-button" />
+    </ui:VisualElement>
+</ui:UXML>

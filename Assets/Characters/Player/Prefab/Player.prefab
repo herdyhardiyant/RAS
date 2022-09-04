@@ -2470,7 +2470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8cc8a5cce1f054ba9501fc3f80fcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 2
+  walkSpeed: 2
+  runSpeed: 4
 --- !u!114 &2390113305967508463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2621,7 +2622,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInteractionUI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5309040671362045201, guid: 8c7c7a413b1768c4c822c420bd35d02a, type: 3}
+    - {fileID: 5909034316901156719, guid: 8c7c7a413b1768c4c822c420bd35d02a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c7c7a413b1768c4c822c420bd35d02a, type: 3}
 --- !u!4 &6247869175233061521 stripped
 Transform:

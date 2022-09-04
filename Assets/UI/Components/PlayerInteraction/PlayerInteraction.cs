@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.PlayerInteractionUI
+namespace UI.PlayerInteraction
 {
     public class PlayerInteractionUI : MonoBehaviour
     {
