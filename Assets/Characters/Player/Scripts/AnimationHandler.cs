@@ -1,7 +1,14 @@
 using UnityEngine;
 
 namespace Characters.Player.Scripts
-{
+{            
+    // See the parameters at ./Characters/Player/Animations/Player_AC
+    public enum AnimationParameters
+    {
+        isWalking,
+        isRunning,
+    }
+    
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CharacterController))]
     public class AnimationHandler : MonoBehaviour
@@ -24,9 +31,8 @@ namespace Characters.Player.Scripts
             var isWalking = characterVelocity > 0.1;
             var isRunning = characterVelocity > 3;
             
-            // See the parameters at ./Characters/Player/Animations/Player_AC
-            _animator.SetBool("isWalking", isWalking);
-            _animator.SetBool("isRunning", isRunning);
+            _animator.SetBool(AnimationParameters.isWalking.ToString(), isWalking);
+            _animator.SetBool(AnimationParameters.isRunning.ToString(), isRunning);
 
         }
     }

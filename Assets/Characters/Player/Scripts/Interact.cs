@@ -1,35 +1,44 @@
 
 using Environment.Scripts;
+using UI.Gameplay;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+using PlayerInput = Settings.PlayerInput;
 
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Interact : MonoBehaviour
+    public class Interact : MonoBehaviour, IPlayerFeatureControllable
     {
-        private VisualElement _interactionVisual;
-        private BoxCollider _interactTrigger;
-        private Label _interactLabel;
-        private Keyboard _keyboard;
-        private const string _interactLabelDefaultText = "Press F to Interact";
+        [SerializeField] private GameObject _gameplayUI;
+        private IPlayerUIInteractable _playerUIInteractable;
         
-        private string _objectInteractionText;
         private bool _isPlayerInInteractRange;
-        // Start is called before the first frame update
-        void Start()
+        private PlayerInput _playerInput;
+        private bool _isInteractionEnable;
+        private string _objectInteractionText;
+
+        public void SetEnable(bool isEnable)
         {
-            SetupInteractionVisual();
-            _keyboard = Keyboard.current;
-        }  
+            _isInteractionEnable = isEnable;
+        }
+        public void ToggleEnable()
+        {
+            _isInteractionEnable = !_isInteractionEnable;
+        }
         
+        private void Start()
+        {
+            _isInteractionEnable = true;
+            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _playerUIInteractable = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
+        }
+
         void Update()
         {
 
-            if (_isPlayerInInteractRange)
+            if (CanPlayerInteract())
             {
-                InteractInput();
+                InteractionInputHandler();
             }
         
         }
@@ -40,52 +49,38 @@ namespace Characters.Player.Scripts
             if (interactedObject == null)
                 return;
             
-            OpenInteractionVisual();
+            OpenInteraction();
             _objectInteractionText = interactedObject.GetInteractionText();
-
+        
         }
         
         private void OnTriggerExit(Collider other)
         {
-            CloseInteractVisual();
-            _isPlayerInInteractRange = false;
+            CloseInteraction();
         }
 
-        private void InteractInput()
+        private void InteractionInputHandler()
         {
-            var isInteractButtonWasPressed = _keyboard.fKey.wasPressedThisFrame;
-            if (isInteractButtonWasPressed)
-            {
-                ShowInteractionText();
-            }
+            if (!_playerInput.IsInteractPressed)
+                return;
+            _playerUIInteractable.ShowInteractionText(_objectInteractionText);
         }
 
-        private void ShowInteractionText()
-        {
-            _interactLabel.text = _objectInteractionText;
-
-        }
-        
-        private void OpenInteractionVisual()
+        private void OpenInteraction()
         {
             _isPlayerInInteractRange = true;
-            _interactionVisual.visible = true;
         }
-        
-        private void SetupInteractionVisual()
+
+        private void CloseInteraction()
         {
-            _interactionVisual = GetComponentInChildren<UIDocument>().rootVisualElement;
-            _interactLabel = _interactionVisual.Q<Label>("interaction-label");
-            _interactionVisual.visible = false;
+            _isPlayerInInteractRange = false;
+            _playerUIInteractable.HideInteractionText();
         }
         
-        private void CloseInteractVisual()
+        private bool CanPlayerInteract()
         {
-            _interactLabel.text = _interactLabelDefaultText;
-            _interactionVisual.visible = false;
+            return _isPlayerInInteractRange && _isInteractionEnable;
         }
-        
-      
         
     }
 }
