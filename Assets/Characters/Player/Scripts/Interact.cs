@@ -7,7 +7,7 @@ using PlayerInput = Settings.PlayerInput;
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Interact : MonoBehaviour
+    public class Interact : MonoBehaviour, IPlayerControllable
     {
 
 
@@ -17,9 +17,18 @@ namespace Characters.Player.Scripts
         private string _objectInteractionText;
         private bool _isPlayerInInteractRange;
         private PlayerInput _playerInput;
+        
+        private bool _isInteractionEnable;
 
-        public bool isInteractionEnable { get; set; }
-
+        public void SetEnable(bool isEnable)
+        {
+            _isInteractionEnable = isEnable;
+        }
+        public void ToggleEnable()
+        {
+            _isInteractionEnable = !_isInteractionEnable;
+        }
+        
         private void Start()
         {
             // isInteractionEnable = true;
@@ -96,7 +105,7 @@ namespace Characters.Player.Scripts
         
         private bool CanPlayerInteract()
         {
-            return _isPlayerInInteractRange && isInteractionEnable;
+            return _isPlayerInInteractRange && _isInteractionEnable;
         }
         
     }
