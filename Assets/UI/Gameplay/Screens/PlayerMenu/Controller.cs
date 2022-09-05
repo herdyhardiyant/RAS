@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 namespace UI.Gameplay.Screens.PlayerMenu
 {
     [RequireComponent(typeof(UIDocument))]
-    public class Controller : MonoBehaviour, IScreenControllable
+    public class Controller : MonoBehaviour, IVisualControllable
     {
         private VisualElement _visualElement;
 

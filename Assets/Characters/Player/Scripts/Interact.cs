@@ -1,24 +1,21 @@
-using System;
+
 using Environment.Scripts;
+using UI.Gameplay;
 using UnityEngine;
-using UnityEngine.UIElements;
 using PlayerInput = Settings.PlayerInput;
 
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Interact : MonoBehaviour, IPlayerControllable
+    public class Interact : MonoBehaviour, IPlayerFeatureControllable
     {
-
-
-        private VisualElement _interactionVisual;
-        // private Label _interactLabel;
-        private const string _interactLabelDefaultText = "Press E to Interact";
-        private string _objectInteractionText;
+        [SerializeField] private GameObject _gameplayUI;
+        private IPlayerUIInteractable _playerUIInteractable;
+        
         private bool _isPlayerInInteractRange;
         private PlayerInput _playerInput;
-        
         private bool _isInteractionEnable;
+        private string _objectInteractionText;
 
         public void SetEnable(bool isEnable)
         {
@@ -31,76 +28,53 @@ namespace Characters.Player.Scripts
         
         private void Start()
         {
-            // isInteractionEnable = true;
-            // _playerInput = gameObject.AddComponent<PlayerInput>();
-
+            _isInteractionEnable = true;
+            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _playerUIInteractable = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
         }
 
         void Update()
         {
 
-            // if (CanPlayerInteract())
-            // {
-            //     InteractionInputHandler();
-            // }
+            if (CanPlayerInteract())
+            {
+                InteractionInputHandler();
+            }
         
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            // var interactedObject = other.GetComponent<IEnvironmentInteractable>();
-            // if (interactedObject == null)
-            //     return;
-            //
-            // OpenInteraction();
-            // _objectInteractionText = interactedObject.GetInteractionText();
+            var interactedObject = other.GetComponent<IEnvironmentInteractable>();
+            if (interactedObject == null)
+                return;
+            
+            OpenInteraction();
+            _objectInteractionText = interactedObject.GetInteractionText();
         
         }
         
         private void OnTriggerExit(Collider other)
         {
-            // CloseInteraction();
-            // _isPlayerInInteractRange = false;
+            CloseInteraction();
         }
 
         private void InteractionInputHandler()
         {
-            if (_playerInput.IsInteractPressed)
-            {
-                // ShowInteractionText();
-                
-                //TODO get gameplayUI GameObject
-                //TODO get Player UI Interaction Handler 
-                //TODO Send interact Text to Player UI Interaction Handler 
-                
-            }
-            
+            if (!_playerInput.IsInteractPressed)
+                return;
+            _playerUIInteractable.ShowInteractionText(_objectInteractionText);
         }
 
-        // private void ShowInteractionText()
-        // {
-        //     _interactLabel.text = _objectInteractionText;
-        //
-        // }
-        
         private void OpenInteraction()
         {
             _isPlayerInInteractRange = true;
-            // _interactionVisual.visible = true;
         }
-        
-        private void SetupInteractionVisual()
-        {
-            _interactionVisual = GetComponentInChildren<UIDocument>().rootVisualElement;
-            // _interactLabel = _interactionVisual.Q<Label>("interaction-label");
-            _interactionVisual.visible = false;
-        }
-        
+
         private void CloseInteraction()
         {
-            // _interactionVisual.visible = false;
-            // _interactLabel.text = _interactLabelDefaultText;
-
+            _isPlayerInInteractRange = false;
+            _playerUIInteractable.HideInteractionText();
         }
         
         private bool CanPlayerInteract()

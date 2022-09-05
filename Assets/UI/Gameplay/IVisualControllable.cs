@@ -1,6 +1,6 @@
 namespace UI.Gameplay
 {
-    public interface IScreenControllable
+    public interface IVisualControllable
     {
         void SetVisibility(bool isVisible);
 

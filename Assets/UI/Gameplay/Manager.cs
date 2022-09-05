@@ -13,25 +13,22 @@ namespace UI.Gameplay
     public class Manager : MonoBehaviour
     {
         [SerializeField] private GameObject _player;
-        [SerializeField] private GameObject _playerLevelUI;
+        [SerializeField] private GameObject _playerGameplayUI;
         [SerializeField] private GameObject _playerMenuUI;
-        
-        //TODO Toggle PauseMenuUI
-        //TODO Stop player movement and actions when PlayerMenuUI is active
-        
+
         private PlayerInput _playerInput;
-        private IPlayerControllable[] _playerFeatures;
+        private IPlayerFeatureControllable[] _playerFeatures;
         
-        private IScreenControllable _playerLevelUIController;
-        private IScreenControllable _playerMenuUIController;
+        private IVisualControllable _playerLevelUIController;
+        private IVisualControllable _playerMenuUIController;
 
         void Start()
         {
             _playerInput = gameObject.AddComponent<PlayerInput>();
-            _playerFeatures = _player.GetComponents<IPlayerControllable>();
+            _playerFeatures = _player.GetComponents<IPlayerFeatureControllable>();
             
-            _playerLevelUIController = _playerLevelUI.GetComponent<IScreenControllable>();
-            _playerMenuUIController = _playerMenuUI.GetComponent<IScreenControllable>();
+            _playerLevelUIController = _playerGameplayUI.GetComponent<IVisualControllable>();
+            _playerMenuUIController = _playerMenuUI.GetComponent<IVisualControllable>();
             _playerMenuUIController.SetVisibility(false);
             
         }
