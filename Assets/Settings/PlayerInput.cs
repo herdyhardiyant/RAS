@@ -7,11 +7,11 @@ namespace Settings
     {
         private Keyboard _keyboard;
         
-        void Start()
+        void Awake()
         {
             _keyboard = Keyboard.current;
         }
-        
+
         public bool IsLeftPressed => _keyboard.aKey.isPressed;
 
         public bool IsRightPressed => _keyboard.dKey.isPressed;

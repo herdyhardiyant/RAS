@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.PlayerInteraction
+namespace UI.Gameplay.Components.PlayerInteraction
 {
-    public class PlayerInteractionUI : MonoBehaviour
+    public class Controller : MonoBehaviour
     {
         private Label _interactLabel;
         // Start is called before the first frame update

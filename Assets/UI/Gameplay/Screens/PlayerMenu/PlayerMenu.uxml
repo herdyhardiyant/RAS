@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="Navigation" src="project://database/Assets/UI/Components/Navigation/Navigation.uxml?fileID=9197481963319205126&amp;guid=9f679ce4a49b3f54aab701eeb99b2afb&amp;type=3#Navigation" />
+    <ui:Template name="Navigation" src="project://database/Assets/UI/Gameplay/Components/Navigation/Navigation.uxml?fileID=9197481963319205126&amp;guid=9f679ce4a49b3f54aab701eeb99b2afb&amp;type=3#Navigation" />
     <ui:VisualElement name="main-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.75); color: rgb(255, 255, 255);">
-        <ui:Instance template="Navigation" name="Navigation" style="background-color: rgba(0, 0, 0, 0); visibility: visible; display: flex; overflow: hidden;" />
+        <ui:Instance template="Navigation" name="Navigation" />
         <ui:VisualElement name="view-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
     </ui:VisualElement>
 </ui:UXML>
