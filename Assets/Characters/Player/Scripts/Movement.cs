@@ -19,6 +19,16 @@ namespace Characters.Player.Scripts
 
         private bool _isMovementEnabled;
         
+       
+        // Start is called before the first frame update
+        void Start()
+        {
+            _characterController = GetComponent<CharacterController>();
+            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _isMovementEnabled = true;
+            UI.Gameplay.Manager.OnOpenInventory += ToggleEnable;
+        }
+        
         public void SetEnable(bool isEnable)
         {
             _isMovementEnabled = isEnable;
@@ -27,14 +37,6 @@ namespace Characters.Player.Scripts
         public void ToggleEnable()
         {
             _isMovementEnabled = !_isMovementEnabled;
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            _characterController = GetComponent<CharacterController>();
-            _playerInput = gameObject.AddComponent<PlayerInput>();
-            _isMovementEnabled = true;
         }
 
         // Update is called once per frame

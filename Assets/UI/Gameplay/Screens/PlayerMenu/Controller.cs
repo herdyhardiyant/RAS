@@ -1,3 +1,4 @@
+using System;
 using Settings;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +14,8 @@ namespace UI.Gameplay.Screens.PlayerMenu
         void Start()
         {
             _visualElement = GetComponent<UIDocument>().rootVisualElement;
+            SetVisibility(false);
+            Manager.OnOpenInventory += ToggleVisibility;
         }
 
         public void SetVisibility(bool isVisible)
@@ -24,6 +27,10 @@ namespace UI.Gameplay.Screens.PlayerMenu
         {
             _visualElement.visible = !_visualElement.visible;
         }
-        
+
+        private void OnDisable()
+        {
+            Manager.OnOpenInventory -= ToggleVisibility;
+        }
     }
 }

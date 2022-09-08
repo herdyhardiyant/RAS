@@ -1,4 +1,5 @@
 
+using System;
 using Environment.Scripts;
 using UI.Gameplay;
 using UnityEngine;
@@ -16,7 +17,14 @@ namespace Characters.Player.Scripts
         private PlayerInput _playerInput;
         private bool _isInteractionEnable;
         private string _objectInteractionText;
+        private void Start()
+        {
+            _isInteractionEnable = true;
+            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _playerUIInteractable = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
+            Manager.OnOpenInventory += ToggleEnable;
 
+        }
         public void SetEnable(bool isEnable)
         {
             _isInteractionEnable = isEnable;
@@ -26,12 +34,7 @@ namespace Characters.Player.Scripts
             _isInteractionEnable = !_isInteractionEnable;
         }
         
-        private void Start()
-        {
-            _isInteractionEnable = true;
-            _playerInput = gameObject.AddComponent<PlayerInput>();
-            _playerUIInteractable = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
-        }
+      
 
         void Update()
         {
@@ -81,6 +84,11 @@ namespace Characters.Player.Scripts
         {
             return _isPlayerInInteractRange && _isInteractionEnable;
         }
-        
+
+        private void OnDisable()
+        {
+            Manager.OnOpenInventory -= ToggleEnable;
+
+        }
     }
 }
