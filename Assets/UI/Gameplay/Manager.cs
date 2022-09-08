@@ -1,8 +1,6 @@
 using System;
-using Characters.Player.Scripts;
 using Settings;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace UI.Gameplay
 {

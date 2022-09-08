@@ -8,10 +8,10 @@ using PlayerInput = Settings.PlayerInput;
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Interact : MonoBehaviour, IPlayerFeatureControllable
+    public class Interact : MonoBehaviour
     {
         [SerializeField] private GameObject _gameplayUI;
-        private IPlayerUIInteractable _playerUIInteractable;
+        private IPlayerUIInteractable _playerInteractionUIControl;
         
         private bool _isPlayerInInteractRange;
         private PlayerInput _playerInput;
@@ -21,29 +21,27 @@ namespace Characters.Player.Scripts
         {
             _isInteractionEnable = true;
             _playerInput = gameObject.AddComponent<PlayerInput>();
-            _playerUIInteractable = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
+            
+            _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
             Manager.OnOpenInventory += ToggleEnable;
-
         }
+        
         public void SetEnable(bool isEnable)
         {
             _isInteractionEnable = isEnable;
         }
+        
         public void ToggleEnable()
         {
             _isInteractionEnable = !_isInteractionEnable;
         }
-        
-      
 
         void Update()
         {
-
             if (CanPlayerInteract())
             {
                 InteractionInputHandler();
             }
-        
         }
         
         private void OnTriggerEnter(Collider other)
@@ -66,7 +64,7 @@ namespace Characters.Player.Scripts
         {
             if (!_playerInput.IsInteractPressed)
                 return;
-            _playerUIInteractable.ShowInteractionText(_objectInteractionText);
+            _playerInteractionUIControl.ShowInteractionText(_objectInteractionText);
         }
 
         private void OpenInteraction()
@@ -77,7 +75,7 @@ namespace Characters.Player.Scripts
         private void CloseInteraction()
         {
             _isPlayerInInteractRange = false;
-            _playerUIInteractable.HideInteractionText();
+            _playerInteractionUIControl.HideInteractionText();
         }
         
         private bool CanPlayerInteract()

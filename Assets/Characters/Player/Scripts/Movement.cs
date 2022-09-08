@@ -4,7 +4,7 @@ using PlayerInput = Settings.PlayerInput;
 namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(CharacterController))]
-    public class Movement : MonoBehaviour, IPlayerFeatureControllable
+    public class Movement : MonoBehaviour
     {
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
