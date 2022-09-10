@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerGameplay
+namespace RAS.UI.Gameplay.Pages.PlayerGameplay
 {
     [RequireComponent(typeof(UIDocument))]
     public class Controller : MonoBehaviour, IPlayerUIInteractable

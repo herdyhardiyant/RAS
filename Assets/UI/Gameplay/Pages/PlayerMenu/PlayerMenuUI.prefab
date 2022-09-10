@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7479227006359135211}
   - component: {fileID: 1937562984196029884}
+  - component: {fileID: 7543986490259260872}
   m_Layer: 0
   m_Name: Status
   m_TagString: Untagged
@@ -48,6 +49,18 @@ MonoBehaviour:
   m_ParentUI: {fileID: 4316580628176650582}
   sourceAsset: {fileID: 9197481963319205126, guid: 3ae679833c584404cb3eae2065869b80, type: 3}
   m_SortingOrder: 2
+--- !u!114 &7543986490259260872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413265339910553075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b0720ca421ac04a9d00a368c10a635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2353752478728837632
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683955261942895287}
   - component: {fileID: 1238102193923075244}
+  - component: {fileID: 6000985171920994730}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -96,6 +110,18 @@ MonoBehaviour:
   m_ParentUI: {fileID: 4316580628176650582}
   sourceAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
   m_SortingOrder: 3
+--- !u!114 &6000985171920994730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353752478728837632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc2ee5db04e04e4db9b1fc44b5587d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5251485134412664386
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4427130102576701365}
   - component: {fileID: 4631365704017154253}
+  - component: {fileID: 2408530010925411031}
   m_Layer: 0
   m_Name: Crafting
   m_TagString: Untagged
@@ -209,6 +236,18 @@ MonoBehaviour:
   m_ParentUI: {fileID: 4316580628176650582}
   sourceAsset: {fileID: 9197481963319205126, guid: 491f84cb096e72b488b17d7c172e24ef, type: 3}
   m_SortingOrder: 2
+--- !u!114 &2408530010925411031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280014130910766700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73123430cb33981409594e3e5b0e63c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6926212569078096425
 PrefabInstance:
   m_ObjectHideFlags: 0

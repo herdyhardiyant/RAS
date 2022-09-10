@@ -1,21 +1,32 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
+namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 {
     [RequireComponent(typeof(UIDocument))]
     public class Navigation : MonoBehaviour
     {
+       
         private VisualElement _navigationVisualElement;
 
         private Button _craftingTab;
         private Button _inventoryTab;
         private Button _statusTab;
 
+        private static class TabNames
+        {
+            public const string crafting ="crafting-tab";
+            public const string inventory ="inventory-tab";
+            public const string status ="status-tab";
+        }
+
+        private const string _currentTabStyleClass = "current-tab";
+
         // Start is called before the first frame update
         void Start()
         {
             _navigationVisualElement = GetComponent<UIDocument>().rootVisualElement;
+        
             QueryTabs();
             SetupTabsEvent();
             Controller.OnMenuStateChange += MenuStateChangeHandler;
@@ -23,9 +34,9 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
         
         private void QueryTabs()
         {
-            _craftingTab = _navigationVisualElement.Q<Button>("crafting-tab");
-            _inventoryTab = _navigationVisualElement.Q<Button>("inventory-tab");
-            _statusTab = _navigationVisualElement.Q<Button>("status-tab");
+            _craftingTab = _navigationVisualElement.Q<Button>(TabNames.crafting);
+            _inventoryTab = _navigationVisualElement.Q<Button>(TabNames.inventory);
+            _statusTab = _navigationVisualElement.Q<Button>(TabNames.status);
         }
 
         private void SetupTabsEvent()
@@ -57,9 +68,9 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
         
         private void ClearCurrentTab()
         {
-            _craftingTab.RemoveFromClassList("current-tab");
-            _inventoryTab.RemoveFromClassList("current-tab");
-            _statusTab.RemoveFromClassList("current-tab");
+            _craftingTab.RemoveFromClassList(_currentTabStyleClass);
+            _inventoryTab.RemoveFromClassList(_currentTabStyleClass);
+            _statusTab.RemoveFromClassList(_currentTabStyleClass);
         }
 
         private void SetCurrentTabButtonActive()
@@ -68,13 +79,13 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
             switch (newState)
             {
                 case Controller.MenuState.Crafting:
-                    _craftingTab.AddToClassList("current-tab");
+                    _craftingTab.AddToClassList(_currentTabStyleClass);
                     break;
                 case Controller.MenuState.Inventory:
-                    _inventoryTab.AddToClassList("current-tab");
+                    _inventoryTab.AddToClassList(_currentTabStyleClass);
                     break;
                 case Controller.MenuState.Status:
-                    _statusTab.AddToClassList("current-tab");
+                    _statusTab.AddToClassList(_currentTabStyleClass);
                     break;
             }
         }

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace UI.Gameplay
+namespace RAS.UI.Gameplay
 {
     public interface IPlayerUIInteractable
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Characters.Player.Scripts
+namespace RAS.Characters.Player.Scripts
 {            
     // See the parameters at ./Characters/Player/Animations/Player_AC
     public enum AnimationParameters
@@ -21,6 +21,7 @@ namespace Characters.Player.Scripts
             _animator = GetComponent<Animator>();
             _characterController = GetComponent<CharacterController>();
             _animator.applyRootMotion = false;
+            
         }
 
         // Update is called once per frame

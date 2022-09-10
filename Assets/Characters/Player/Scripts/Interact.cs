@@ -1,11 +1,9 @@
-
-using System;
-using Environment.Scripts;
-using UI.Gameplay;
+using RAS.Environment.Scripts;
+using RAS.UI.Gameplay;
 using UnityEngine;
-using PlayerInput = Settings.PlayerInput;
+using PlayerInput = RAS.Settings.PlayerInput;
 
-namespace Characters.Player.Scripts
+namespace RAS.Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Interact : MonoBehaviour

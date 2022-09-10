@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Settings
+namespace RAS.Settings
 {
     public class PlayerInput : MonoBehaviour
     {

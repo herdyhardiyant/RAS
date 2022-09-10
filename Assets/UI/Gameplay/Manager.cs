@@ -1,8 +1,8 @@
 using System;
-using Settings;
+using RAS.Settings;
 using UnityEngine;
 
-namespace UI.Gameplay
+namespace RAS.UI.Gameplay
 {
     public class Manager : MonoBehaviour
     {

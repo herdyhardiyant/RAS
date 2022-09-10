@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu
+namespace RAS.UI.Gameplay.Pages.PlayerMenu
 {
     [RequireComponent(typeof(UIDocument))]
     public class Controller : MonoBehaviour
