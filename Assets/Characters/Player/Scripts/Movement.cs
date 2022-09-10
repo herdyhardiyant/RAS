@@ -26,7 +26,7 @@ namespace Characters.Player.Scripts
             _characterController = GetComponent<CharacterController>();
             _playerInput = gameObject.AddComponent<PlayerInput>();
             _isMovementEnabled = true;
-            UI.Gameplay.Manager.OnOpenInventory += ToggleEnable;
+            UI.Gameplay.Manager.OnInventoryButtonClick += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)

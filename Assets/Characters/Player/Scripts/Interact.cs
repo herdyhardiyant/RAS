@@ -23,7 +23,7 @@ namespace Characters.Player.Scripts
             _playerInput = gameObject.AddComponent<PlayerInput>();
             
             _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
-            Manager.OnOpenInventory += ToggleEnable;
+            Manager.OnInventoryButtonClick += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)
@@ -85,7 +85,7 @@ namespace Characters.Player.Scripts
 
         private void OnDisable()
         {
-            Manager.OnOpenInventory -= ToggleEnable;
+            Manager.OnInventoryButtonClick -= ToggleEnable;
 
         }
     }

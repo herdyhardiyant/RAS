@@ -6,7 +6,7 @@ namespace UI.Gameplay
 {
     public class Manager : MonoBehaviour
     {
-        public static event Action OnOpenInventory;
+        public static event Action OnInventoryButtonClick;
         
         private PlayerInput _playerInput;
         void Start()
@@ -18,7 +18,7 @@ namespace UI.Gameplay
         {
             if (_playerInput.IsInventoryPressed)
             {
-                OnOpenInventory?.Invoke();
+                OnInventoryButtonClick?.Invoke();
             }
         }
         

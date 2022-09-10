@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Label text="Inventory" display-tooltip-when-elided="true" enable-rich-text="true" style="-unity-font-style: bold; font-size: 18px; color: rgba(255, 255, 255, 255); -unity-text-align: upper-center;" />
+</ui:UXML>

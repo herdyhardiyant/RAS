@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,29 +7,63 @@ namespace UI.Gameplay.Pages.PlayerMenu
     [RequireComponent(typeof(UIDocument))]
     public class Controller : MonoBehaviour
     {
-        private VisualElement _visualElement;
+        private VisualElement _rootVisualElement;
+        
+        public enum MenuState
+        {
+            Crafting,
+            Status,
+            Inventory,
+        }
 
-        // Start is called before the first frame update
+        public static event Action OnMenuStateChange;
+        
+        private static MenuState _menuState;
+
+        public static void ChangeMenu(MenuState newState)
+        {
+            _menuState = newState;
+            OnMenuStateChange?.Invoke();
+        }
+
+        public static MenuState GetCurrentMenuState()
+        {
+            return _menuState;
+            
+        }
+        
         void Start()
         {
-            _visualElement = GetComponent<UIDocument>().rootVisualElement;
-            SetVisibility(false);
-            Manager.OnOpenInventory += ToggleVisibility;
+            _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+            CloseMenu();
+            Manager.OnInventoryButtonClick += InventoryClickHandler;
+        }
+        
+        private void InventoryClickHandler()
+        {
+            if (_rootVisualElement.visible)
+            {
+                CloseMenu();
+                return;
+            }
+            
+            OpenMenu();
+            ChangeMenu(MenuState.Inventory);
         }
 
-        public void SetVisibility(bool isVisible)
+        private void CloseMenu()
         {
-            _visualElement.visible = isVisible;
+            _rootVisualElement.visible = false;
         }
 
-        public void ToggleVisibility()
+        private void OpenMenu()
         {
-            _visualElement.visible = !_visualElement.visible;
+            _rootVisualElement.visible = true;
         }
 
         private void OnDisable()
         {
-            Manager.OnOpenInventory -= ToggleVisibility;
+            Manager.OnInventoryButtonClick -= InventoryClickHandler;
         }
     }
 }
