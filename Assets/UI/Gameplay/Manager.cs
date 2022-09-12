@@ -8,6 +8,7 @@ namespace RAS.UI.Gameplay
     {
         public static event Action OnInventoryButtonClick;
         
+        
         private PlayerInput _playerInput;
         void Start()
         {
@@ -16,6 +17,7 @@ namespace RAS.UI.Gameplay
         
         void Update()
         {
+           
             if (_playerInput.IsInventoryPressed)
             {
                 OnInventoryButtonClick?.Invoke();

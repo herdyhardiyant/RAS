@@ -243,10 +243,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3642659874100630685, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: _maxSlots
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4193896712723670396, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 792009038}
+    - target: {fileID: 5744048260186438791, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8675196402449615848, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_Name
       value: GameplayUI

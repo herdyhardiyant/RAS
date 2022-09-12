@@ -1,5 +1,4 @@
 using RAS.Environment.Scripts;
-using RAS.UI.Gameplay;
 using UnityEngine;
 using PlayerInput = RAS.Settings.PlayerInput;
 
@@ -9,7 +8,7 @@ namespace RAS.Characters.Player.Scripts
     public class Interact : MonoBehaviour
     {
         [SerializeField] private GameObject _gameplayUI;
-        private IPlayerUIInteractable _playerInteractionUIControl;
+        private UI.Gameplay.IPlayerUIInteractable _playerInteractionUIControl;
         
         private bool _isPlayerInInteractRange;
         private PlayerInput _playerInput;
@@ -20,8 +19,8 @@ namespace RAS.Characters.Player.Scripts
             _isInteractionEnable = true;
             _playerInput = gameObject.AddComponent<PlayerInput>();
             
-            _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
-            Manager.OnInventoryButtonClick += ToggleEnable;
+            _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<UI.Gameplay.IPlayerUIInteractable>();
+            UI.Gameplay.Manager.OnInventoryButtonClick += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)
@@ -83,7 +82,7 @@ namespace RAS.Characters.Player.Scripts
 
         private void OnDisable()
         {
-            Manager.OnInventoryButtonClick -= ToggleEnable;
+            UI.Gameplay.Manager.OnInventoryButtonClick -= ToggleEnable;
 
         }
     }

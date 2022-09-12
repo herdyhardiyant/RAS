@@ -24,7 +24,7 @@ namespace RAS.Settings
         
         public bool IsInventoryPressed => _keyboard.eKey.wasPressedThisFrame;
         
-        public bool IsPauseMenuPressed => _keyboard.escapeKey.wasPressedThisFrame;
+        public bool IsBackPressed => _keyboard.escapeKey.wasPressedThisFrame;
         
         public bool IsInteractPressed => _keyboard.fKey.wasPressedThisFrame;
         

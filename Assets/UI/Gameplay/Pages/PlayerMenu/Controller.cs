@@ -14,10 +14,10 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             Crafting,
             Status,
             Inventory,
+            Close
         }
 
         public static event Action OnMenuStateChange;
-        
         private static MenuState _menuState;
 
         public static void ChangeMenu(MenuState newState)
@@ -29,7 +29,6 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
         public static MenuState GetCurrentMenuState()
         {
             return _menuState;
-            
         }
         
         void Start()
@@ -38,22 +37,26 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             CloseMenu();
             Manager.OnInventoryButtonClick += InventoryClickHandler;
         }
-        
+
         private void InventoryClickHandler()
         {
+            
             if (_rootVisualElement.visible)
             {
                 CloseMenu();
-                return;
+            }
+            else
+            {
+                OpenMenu();
+                ChangeMenu(MenuState.Inventory);
             }
             
-            OpenMenu();
-            ChangeMenu(MenuState.Inventory);
         }
 
         private void CloseMenu()
         {
             _rootVisualElement.visible = false;
+            ChangeMenu(MenuState.Close);
         }
 
         private void OpenMenu()
