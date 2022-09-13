@@ -1,6 +1,28 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=d07233ab24c408e468172df32a6eb880&amp;type=3#Inventory" />
-    <ui:VisualElement name="inventory-container" style="flex-direction: row; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
-        <ui:VisualElement name="item-slots" style="width: 340px; flex-direction: row; flex-wrap: wrap; justify-content: space-between; background-color: rgba(56, 56, 56, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; padding-left: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;" />
+    <ui:VisualElement name="inventory-container" style="flex-direction: row; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; justify-content: center; align-items: center; height: auto; flex-grow: 0; position: absolute;">
+        <ui:VisualElement name="item-slots" style="width: 40%; flex-direction: row; flex-wrap: wrap; justify-content: space-between; background-color: rgba(56, 56, 56, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; padding-left: 12px; padding-right: 12px; padding-top: 12px; padding-bottom: 12px; flex-grow: initial; height: 380px; flex-basis: auto; align-items: stretch; min-width: 400px;">
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+            <ui:VisualElement name="slot" class="item-slot" />
+        </ui:VisualElement>
+        <ui:VisualElement name="character-model" style="background-image: url(&apos;project://database/Assets/Characters/Player/RenderTexture/Character.renderTexture?fileID=8400000&amp;guid=80448fd925bc5d44a8551b53925fcb99&amp;type=2#Character&apos;); width: 40%; height: 490px; flex-grow: 0; -unity-background-scale-mode: scale-and-crop;" />
     </ui:VisualElement>
 </ui:UXML>

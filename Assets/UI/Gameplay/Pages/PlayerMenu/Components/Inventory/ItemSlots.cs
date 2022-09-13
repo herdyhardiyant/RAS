@@ -19,11 +19,11 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Inventory
             _rootInventory = GetComponent<UIDocument>().rootVisualElement;
             _itemSlotsContainer = _rootInventory.Query<VisualElement>(ITEM_SLOTS_NAME);
 
-            List<VisualElement> slots = createItemSlots();
-
-            slots.ForEach(
-                slot => { _itemSlotsContainer.Add(slot); }
-            );
+            // List<VisualElement> slots = createItemSlots();
+            //
+            // slots.ForEach(
+            //     slot => { _itemSlotsContainer.Add(slot); }
+            // );
         }
         
         private List<VisualElement> createItemSlots()

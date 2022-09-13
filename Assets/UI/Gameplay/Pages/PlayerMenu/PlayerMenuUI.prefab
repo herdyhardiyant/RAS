@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_ParentUI
       value: 
       objectReference: {fileID: 4316580628176650582}
+    - target: {fileID: 6963631753608950892, guid: 49cc6542d098621429ed72cf46886b7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8714659764648987255, guid: 49cc6542d098621429ed72cf46886b7a, type: 3}
       propertyPath: m_RootOrder
       value: 1
