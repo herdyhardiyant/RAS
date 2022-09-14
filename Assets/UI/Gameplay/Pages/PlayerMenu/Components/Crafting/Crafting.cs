@@ -19,7 +19,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Crafting
         private void MenuStateChangeHandler()
         {
             var currentMenuState = Controller.GetCurrentMenuState();
-            _craftingVisualElement.visible = currentMenuState == Controller.MenuState.Crafting;
+            _craftingVisualElement.visible = currentMenuState == MenuRouting.MenuStates.Crafting;
         }
         
     }

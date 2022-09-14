@@ -19,7 +19,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Inventory
         private void MenuStateChangeHandler()
         {
             var currentMenuState = Controller.GetCurrentMenuState();
-            _inventoryRoot.visible = currentMenuState == Controller.MenuState.Inventory;
+            _inventoryRoot.visible = currentMenuState == MenuRouting.MenuStates.Inventory;
         }
     }
 }

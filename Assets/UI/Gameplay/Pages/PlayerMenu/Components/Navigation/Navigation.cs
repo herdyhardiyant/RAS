@@ -8,6 +8,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
     {
        
         private VisualElement _navigationVisualElement;
+        [SerializeField] private VisualTreeAsset _navigation;
 
         private Button _craftingTab;
         private Button _inventoryTab;
@@ -48,17 +49,17 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void CraftingTabClickHandler()
         {
-           Controller.ChangeMenu(Controller.MenuState.Crafting);
+           Controller.ChangeMenu(MenuRouting.MenuStates.Crafting);
         }
 
         private void StatusTabClickHandler()
         {
-            Controller.ChangeMenu(Controller.MenuState.Status);
+            Controller.ChangeMenu(MenuRouting.MenuStates.Status);
         }
 
         private void InventoryTabClickHandler()
         {
-            Controller.ChangeMenu(Controller.MenuState.Inventory);
+            Controller.ChangeMenu(MenuRouting.MenuStates.Inventory);
         }
         private void MenuStateChangeHandler()
         {
@@ -78,13 +79,13 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
             var newState = Controller.GetCurrentMenuState();
             switch (newState)
             {
-                case Controller.MenuState.Crafting:
+                case MenuRouting.MenuStates.Crafting:
                     _craftingTab.AddToClassList(_currentTabStyleClass);
                     break;
-                case Controller.MenuState.Inventory:
+                case MenuRouting.MenuStates.Inventory:
                     _inventoryTab.AddToClassList(_currentTabStyleClass);
                     break;
-                case Controller.MenuState.Status:
+                case MenuRouting.MenuStates.Status:
                     _statusTab.AddToClassList(_currentTabStyleClass);
                     break;
             }

@@ -8,29 +8,31 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
     public class Controller : MonoBehaviour
     {
         private VisualElement _rootVisualElement;
-        
-        public enum MenuState
-        {
-            Crafting,
-            Status,
-            Inventory,
-            Close
-        }
 
         public static event Action OnMenuStateChange;
-        private static MenuState _menuState;
+        private static MenuRouting.MenuStates _menuStates;
 
-        public static void ChangeMenu(MenuState newState)
+        public static void ChangeMenu(MenuRouting.MenuStates newStates)
         {
-            _menuState = newState;
+            _menuStates = newStates;
             OnMenuStateChange?.Invoke();
         }
 
-        public static MenuState GetCurrentMenuState()
+        public static MenuRouting.MenuStates CurrentMenuState
         {
-            return _menuState;
+            get => _menuStates;
+            set
+            {
+                _menuStates = value;
+                OnMenuStateChange?.Invoke();
+            }
         }
-        
+
+        public static MenuRouting.MenuStates GetCurrentMenuState()
+        {
+            return _menuStates;
+        }
+
         void Start()
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -40,7 +42,6 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
 
         private void InventoryClickHandler()
         {
-            
             if (_rootVisualElement.visible)
             {
                 CloseMenu();
@@ -48,15 +49,14 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             else
             {
                 OpenMenu();
-                ChangeMenu(MenuState.Inventory);
+                CurrentMenuState = MenuRouting.MenuStates.Inventory;
             }
-            
         }
 
         private void CloseMenu()
         {
             _rootVisualElement.visible = false;
-            ChangeMenu(MenuState.Close);
+            CurrentMenuState = MenuRouting.MenuStates.Close;
         }
 
         private void OpenMenu()
@@ -67,6 +67,10 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
         private void OnDisable()
         {
             Manager.OnInventoryButtonClick -= InventoryClickHandler;
+        }
+
+        public class MenuStates
+        {
         }
     }
 }

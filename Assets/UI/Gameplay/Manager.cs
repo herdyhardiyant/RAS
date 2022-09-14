@@ -13,6 +13,7 @@ namespace RAS.UI.Gameplay
         void Start()
         {
             _playerInput = gameObject.AddComponent<PlayerInput>();
+            gameObject.SetActive(true);
         }
         
         void Update()

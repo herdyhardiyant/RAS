@@ -18,7 +18,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.PlayerSurvivalStatus
         private void MenuStateChangeHandler()
         {
             var currentMenuState = Controller.GetCurrentMenuState();
-            _statusRoot.visible = currentMenuState == Controller.MenuState.Status;
+            _statusRoot.visible = currentMenuState == MenuRouting.MenuStates.Status;
         }
     }
 }

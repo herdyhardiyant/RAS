@@ -320,8 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb26feebf36297f4fbf051177970c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topDownViewVirtualCamera: {fileID: 0}
-  _mainCamera: {fileID: 0}
 --- !u!1001 &125792504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 999695965110309249, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 999695965110309249, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_SortingOrder
@@ -357,9 +355,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4349078820774733613, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5744048260186438791, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176508412149013313, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410818409823034067, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680201488926420448, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6680201488926420448, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_SortingOrder
@@ -368,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 8675196402449615848, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_Name
       value: GameplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675196402449615848, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8876191181794131720, guid: f55afb10c0a13c148ac8f1b07ad42229, type: 3}
       propertyPath: m_RootOrder
@@ -1648,7 +1666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2034708923
 Transform:
   m_ObjectHideFlags: 0
