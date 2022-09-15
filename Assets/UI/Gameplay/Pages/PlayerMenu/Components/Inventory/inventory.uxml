@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:Template name="item-slots" src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/ItemGrid/ItemSlots.uxml?fileID=9197481963319205126&amp;guid=89b3a5395baf9614ba24ce97992eec97&amp;type=3#ItemSlots" />
+    <ui:Template name="character-model" src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/CharacterModelVisual/character-model.uxml?fileID=9197481963319205126&amp;guid=a90633715e33512478fe10aea07adddc&amp;type=3#character-model" />
     <Style src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=d07233ab24c408e468172df32a6eb880&amp;type=3#Inventory" />
     <ui:VisualElement name="inventory-container" style="flex-direction: row; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; justify-content: center; align-items: center; height: auto; flex-grow: 1; position: relative; width: 100%; bottom: auto;">
         <ui:Instance template="item-slots" name="item-slots" />
-        <ui:VisualElement name="character-model" style="background-image: url(&apos;project://database/Assets/Characters/Player/RenderTexture/Character.renderTexture?fileID=8400000&amp;guid=80448fd925bc5d44a8551b53925fcb99&amp;type=2#Character&apos;); width: 40%; height: 300px; flex-grow: 0; -unity-background-scale-mode: scale-to-fit;" />
+        <ui:Instance template="character-model" name="character-model" style="width: auto;" />
     </ui:VisualElement>
 </ui:UXML>

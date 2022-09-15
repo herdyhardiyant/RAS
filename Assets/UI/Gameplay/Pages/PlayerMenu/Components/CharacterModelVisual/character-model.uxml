@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="character-model" style="background-image: url(&apos;project://database/Assets/Characters/Player/RenderTexture/Character.renderTexture?fileID=8400000&amp;guid=80448fd925bc5d44a8551b53925fcb99&amp;type=2#Character&apos;); width: 90%; height: 90%; flex-grow: 0; -unity-background-scale-mode: scale-to-fit; min-width: 300px; min-height: 300px;" />
+</ui:UXML>

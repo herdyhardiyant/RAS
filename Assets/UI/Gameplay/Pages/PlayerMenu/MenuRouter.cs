@@ -21,7 +21,6 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
         {
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
             MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
-
         }
 
         void Start()
@@ -62,15 +61,12 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             {
                 case MenuStateStorage.MenuStates.Crafting:
                     _rootMenuElement.Add(_craftingElement);
-                    print("Crafting");
                     break;
                 case MenuStateStorage.MenuStates.Inventory:
                     _rootMenuElement.Add(_inventoryElement);
-                    print("Inventory");
                     break;
                 case MenuStateStorage.MenuStates.Status:
                     _rootMenuElement.Add(_survivalStatusElement);
-                    print("Status");
                     break;
             }
         }
