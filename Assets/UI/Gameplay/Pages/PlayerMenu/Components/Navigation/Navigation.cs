@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,9 +7,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
     [RequireComponent(typeof(UIDocument))]
     public class Navigation : MonoBehaviour
     {
-       
-        private VisualElement _navigationVisualElement;
-        [SerializeField] private VisualTreeAsset _navigation;
+        private VisualElement _rootMenuElement;
 
         private Button _craftingTab;
         private Button _inventoryTab;
@@ -16,28 +15,39 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private static class TabNames
         {
-            public const string crafting ="crafting-tab";
-            public const string inventory ="inventory-tab";
-            public const string status ="status-tab";
+            public const string CRAFTING = "crafting-tab";
+            public const string INVENTORY = "inventory-tab";
+            public const string STATUS = "status-tab";
         }
 
-        private const string _currentTabStyleClass = "current-tab";
+        private const string CURRENT_TAB_STYLE_CLASS = "current-tab";
 
-        // Start is called before the first frame update
+        private void Awake()
+        {
+            _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
+
+        }
+
         void Start()
         {
-            _navigationVisualElement = GetComponent<UIDocument>().rootVisualElement;
-        
             QueryTabs();
+
             SetupTabsEvent();
-            Controller.OnMenuStateChange += MenuStateChangeHandler;
+            SetCurrentTabButtonActive();
+            MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
+
         }
-        
+
+        private void OnDisable()
+        {
+            MenuStateStorage.OnMenuStateChange -= MenuStateChangeHandler;
+        }
+
         private void QueryTabs()
         {
-            _craftingTab = _navigationVisualElement.Q<Button>(TabNames.crafting);
-            _inventoryTab = _navigationVisualElement.Q<Button>(TabNames.inventory);
-            _statusTab = _navigationVisualElement.Q<Button>(TabNames.status);
+            _craftingTab = _rootMenuElement.Q<Button>(TabNames.CRAFTING);
+            _inventoryTab = _rootMenuElement.Q<Button>(TabNames.INVENTORY);
+            _statusTab = _rootMenuElement.Q<Button>(TabNames.STATUS);
         }
 
         private void SetupTabsEvent()
@@ -49,47 +59,47 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void CraftingTabClickHandler()
         {
-           Controller.ChangeMenu(MenuRouting.MenuStates.Crafting);
+            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Crafting;
         }
 
         private void StatusTabClickHandler()
         {
-            Controller.ChangeMenu(MenuRouting.MenuStates.Status);
+            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Status;
         }
 
         private void InventoryTabClickHandler()
         {
-            Controller.ChangeMenu(MenuRouting.MenuStates.Inventory);
+            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Inventory;
         }
+
         private void MenuStateChangeHandler()
         {
             ClearCurrentTab();
             SetCurrentTabButtonActive();
         }
-        
+
         private void ClearCurrentTab()
         {
-            _craftingTab.RemoveFromClassList(_currentTabStyleClass);
-            _inventoryTab.RemoveFromClassList(_currentTabStyleClass);
-            _statusTab.RemoveFromClassList(_currentTabStyleClass);
+            _craftingTab.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
+            _inventoryTab.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
+            _statusTab.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
         }
 
         private void SetCurrentTabButtonActive()
         {
-            var newState = Controller.GetCurrentMenuState();
+            var newState = MenuStateStorage.CurrentMenuState;
             switch (newState)
             {
-                case MenuRouting.MenuStates.Crafting:
-                    _craftingTab.AddToClassList(_currentTabStyleClass);
+                case MenuStateStorage.MenuStates.Crafting:
+                    _craftingTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     break;
-                case MenuRouting.MenuStates.Inventory:
-                    _inventoryTab.AddToClassList(_currentTabStyleClass);
+                case MenuStateStorage.MenuStates.Inventory:
+                    _inventoryTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     break;
-                case MenuRouting.MenuStates.Status:
-                    _statusTab.AddToClassList(_currentTabStyleClass);
+                case MenuStateStorage.MenuStates.Status:
+                    _statusTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     break;
             }
         }
-      
     }
 }

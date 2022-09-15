@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,35 +8,12 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
     {
         private VisualElement _rootVisualElement;
 
-        public static event Action OnMenuStateChange;
-        private static MenuRouting.MenuStates _menuStates;
-
-        public static void ChangeMenu(MenuRouting.MenuStates newStates)
-        {
-            _menuStates = newStates;
-            OnMenuStateChange?.Invoke();
-        }
-
-        public static MenuRouting.MenuStates CurrentMenuState
-        {
-            get => _menuStates;
-            set
-            {
-                _menuStates = value;
-                OnMenuStateChange?.Invoke();
-            }
-        }
-
-        public static MenuRouting.MenuStates GetCurrentMenuState()
-        {
-            return _menuStates;
-        }
-
         void Start()
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
             CloseMenu();
             Manager.OnInventoryButtonClick += InventoryClickHandler;
+            SetRootBackgroundColor();
         }
 
         private void InventoryClickHandler()
@@ -49,14 +25,12 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             else
             {
                 OpenMenu();
-                CurrentMenuState = MenuRouting.MenuStates.Inventory;
             }
         }
 
         private void CloseMenu()
         {
             _rootVisualElement.visible = false;
-            CurrentMenuState = MenuRouting.MenuStates.Close;
         }
 
         private void OpenMenu()
@@ -64,13 +38,14 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
             _rootVisualElement.visible = true;
         }
 
+        private void SetRootBackgroundColor()
+        {
+            _rootVisualElement.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0.7f));
+        }
+
         private void OnDisable()
         {
             Manager.OnInventoryButtonClick -= InventoryClickHandler;
-        }
-
-        public class MenuStates
-        {
         }
     }
 }

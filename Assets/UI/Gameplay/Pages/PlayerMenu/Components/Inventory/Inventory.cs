@@ -11,15 +11,8 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Inventory
         void Start()
         {
             _inventoryRoot = GetComponent<UIDocument>().rootVisualElement;
-            _inventoryRoot.visible = false;
-            Controller.OnMenuStateChange += MenuStateChangeHandler;
 
         }
         
-        private void MenuStateChangeHandler()
-        {
-            var currentMenuState = Controller.GetCurrentMenuState();
-            _inventoryRoot.visible = currentMenuState == MenuRouting.MenuStates.Inventory;
-        }
     }
 }
