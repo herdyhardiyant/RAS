@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 521687347833175937}
   - component: {fileID: 4316580628176650582}
-  - component: {fileID: 3725291214029709718}
   - component: {fileID: -4369428383530860824}
+  - component: {fileID: 3725291214029709718}
   - component: {fileID: -4385199916202514108}
   m_Layer: 0
   m_Name: PlayerMenuUI
@@ -51,18 +51,6 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 8374c70f230fdf847a8825b62226dd12, type: 3}
   m_SortingOrder: 0
---- !u!114 &3725291214029709718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5251485134412664386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 845ec03a4a1976247bf98fdf2e0dcceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-4369428383530860824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +67,18 @@ MonoBehaviour:
   _crafting: {fileID: 9197481963319205126, guid: 491f84cb096e72b488b17d7c172e24ef, type: 3}
   _survivalStatus: {fileID: 9197481963319205126, guid: 3ae679833c584404cb3eae2065869b80, type: 3}
   _navigation: {fileID: 9197481963319205126, guid: 9f679ce4a49b3f54aab701eeb99b2afb, type: 3}
+--- !u!114 &3725291214029709718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251485134412664386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845ec03a4a1976247bf98fdf2e0dcceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4385199916202514108
 MonoBehaviour:
   m_ObjectHideFlags: 0

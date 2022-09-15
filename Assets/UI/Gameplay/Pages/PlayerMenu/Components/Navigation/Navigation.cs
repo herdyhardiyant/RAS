@@ -27,17 +27,14 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
         private void Awake()
         {
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
-
         }
 
         void Start()
         {
             QueryTabs();
-
             SetupTabsEvent();
             SetNewCurrentActiveTabButton();
             MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
-
         }
 
         private void OnDisable()

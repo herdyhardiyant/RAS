@@ -21,11 +21,11 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
         {
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
             MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
+            AddNavigationElementToRootElement();
         }
 
         void Start()
         {
-            AddNavigationElementToRootElement();
             MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Inventory;
             CloneTreesFromImportedVisualTreeAssets();
             ShowMenuFromCurrentMenuState();
