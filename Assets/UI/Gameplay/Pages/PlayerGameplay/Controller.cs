@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerGameplay
+namespace RAS.UI.Gameplay.Pages.PlayerGameplay
 {
     [RequireComponent(typeof(UIDocument))]
     public class Controller : MonoBehaviour, IPlayerUIInteractable
@@ -15,7 +15,7 @@ namespace UI.Gameplay.Pages.PlayerGameplay
             _visualElement = GetComponent<UIDocument>().rootVisualElement;
             _interactText = _visualElement.Q<Label>("interact-text");
             HideInteractionText();
-            Manager.OnOpenInventory += ToggleVisibility;
+            Manager.OnInventoryButtonClick += ToggleVisibility;
         }
 
         public void ShowInteractionText(string interactText)
@@ -41,7 +41,7 @@ namespace UI.Gameplay.Pages.PlayerGameplay
 
         private void OnDisable()
         {
-            Manager.OnOpenInventory -= ToggleVisibility;
+            Manager.OnInventoryButtonClick -= ToggleVisibility;
 
         }
     }

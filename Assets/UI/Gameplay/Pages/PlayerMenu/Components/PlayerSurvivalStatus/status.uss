@@ -1,0 +1,32 @@
+.status-item {
+    margin-bottom: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.status-bar {
+    width: 100px;
+    height: 15px;
+}
+
+.status-icon {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 25px;
+    height: 25px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.label-container {
+    overflow: hidden;
+    width: 140px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+}
+
+.status-percentage {
+    color: rgba(255, 255, 255, 255);
+}

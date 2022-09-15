@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Environment.Scripts
+namespace RAS.Environment.Scripts
 {
     
     public class Item : MonoBehaviour,IEnvironmentInteractable

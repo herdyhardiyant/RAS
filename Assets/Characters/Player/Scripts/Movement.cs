@@ -1,7 +1,8 @@
+using RAS.UI.Gameplay;
 using UnityEngine;
-using PlayerInput = Settings.PlayerInput;
+using PlayerInput = RAS.Settings.PlayerInput;
 
-namespace Characters.Player.Scripts
+namespace RAS.Characters.Player.Scripts
 {
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
@@ -26,7 +27,7 @@ namespace Characters.Player.Scripts
             _characterController = GetComponent<CharacterController>();
             _playerInput = gameObject.AddComponent<PlayerInput>();
             _isMovementEnabled = true;
-            UI.Gameplay.Manager.OnOpenInventory += ToggleEnable;
+            Manager.OnInventoryButtonClick += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)

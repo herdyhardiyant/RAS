@@ -1,34 +1,51 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu
+namespace RAS.UI.Gameplay.Pages.PlayerMenu
 {
     [RequireComponent(typeof(UIDocument))]
     public class Controller : MonoBehaviour
     {
-        private VisualElement _visualElement;
+        private VisualElement _rootVisualElement;
 
-        // Start is called before the first frame update
         void Start()
         {
-            _visualElement = GetComponent<UIDocument>().rootVisualElement;
-            SetVisibility(false);
-            Manager.OnOpenInventory += ToggleVisibility;
+            _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+            CloseMenu();
+            Manager.OnInventoryButtonClick += InventoryClickHandler;
+            SetRootBackgroundColor();
         }
 
-        public void SetVisibility(bool isVisible)
+        private void InventoryClickHandler()
         {
-            _visualElement.visible = isVisible;
+            if (_rootVisualElement.visible)
+            {
+                CloseMenu();
+            }
+            else
+            {
+                OpenMenu();
+            }
         }
 
-        public void ToggleVisibility()
+        private void CloseMenu()
         {
-            _visualElement.visible = !_visualElement.visible;
+            _rootVisualElement.visible = false;
+        }
+
+        private void OpenMenu()
+        {
+            _rootVisualElement.visible = true;
+        }
+
+        private void SetRootBackgroundColor()
+        {
+            _rootVisualElement.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0.7f));
         }
 
         private void OnDisable()
         {
-            Manager.OnOpenInventory -= ToggleVisibility;
+            Manager.OnInventoryButtonClick -= InventoryClickHandler;
         }
     }
 }

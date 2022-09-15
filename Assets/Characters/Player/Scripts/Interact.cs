@@ -1,17 +1,14 @@
-
-using System;
-using Environment.Scripts;
-using UI.Gameplay;
+using RAS.Environment.Scripts;
 using UnityEngine;
-using PlayerInput = Settings.PlayerInput;
+using PlayerInput = RAS.Settings.PlayerInput;
 
-namespace Characters.Player.Scripts
+namespace RAS.Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Interact : MonoBehaviour
     {
         [SerializeField] private GameObject _gameplayUI;
-        private IPlayerUIInteractable _playerInteractionUIControl;
+        private UI.Gameplay.IPlayerUIInteractable _playerInteractionUIControl;
         
         private bool _isPlayerInInteractRange;
         private PlayerInput _playerInput;
@@ -22,8 +19,8 @@ namespace Characters.Player.Scripts
             _isInteractionEnable = true;
             _playerInput = gameObject.AddComponent<PlayerInput>();
             
-            _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<IPlayerUIInteractable>();
-            Manager.OnOpenInventory += ToggleEnable;
+            _playerInteractionUIControl = _gameplayUI.GetComponentInChildren<UI.Gameplay.IPlayerUIInteractable>();
+            UI.Gameplay.Manager.OnInventoryButtonClick += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)
@@ -85,7 +82,7 @@ namespace Characters.Player.Scripts
 
         private void OnDisable()
         {
-            Manager.OnOpenInventory -= ToggleEnable;
+            UI.Gameplay.Manager.OnInventoryButtonClick -= ToggleEnable;
 
         }
     }

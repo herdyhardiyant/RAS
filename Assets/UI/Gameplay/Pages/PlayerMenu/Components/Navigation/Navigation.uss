@@ -1,0 +1,16 @@
+.navigation-button {
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    margin: 24px;
+    color: rgba(190, 190, 190, 255);
+}
+
+.current-tab {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+}

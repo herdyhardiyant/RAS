@@ -1,24 +1,27 @@
 using System;
-using Settings;
+using RAS.Settings;
 using UnityEngine;
 
-namespace UI.Gameplay
+namespace RAS.UI.Gameplay
 {
     public class Manager : MonoBehaviour
     {
-        public static event Action OnOpenInventory;
+        public static event Action OnInventoryButtonClick;
+        
         
         private PlayerInput _playerInput;
         void Start()
         {
             _playerInput = gameObject.AddComponent<PlayerInput>();
+            gameObject.SetActive(true);
         }
         
         void Update()
         {
+           
             if (_playerInput.IsInventoryPressed)
             {
-                OnOpenInventory?.Invoke();
+                OnInventoryButtonClick?.Invoke();
             }
         }
         
