@@ -1,3 +1,4 @@
+using RAS.CentralSystems;
 using RAS.UI.Gameplay;
 using UnityEngine;
 using PlayerInput = RAS.Settings.PlayerInput;
@@ -27,7 +28,7 @@ namespace RAS.Characters.Player.Scripts
             _characterController = GetComponent<CharacterController>();
             _playerInput = gameObject.AddComponent<PlayerInput>();
             _isMovementEnabled = true;
-            Manager.OnInventoryButtonClick += ToggleEnable;
+            GameplayUIManager.OnOpenInventory += ToggleEnable;
         }
         
         public void SetEnable(bool isEnable)

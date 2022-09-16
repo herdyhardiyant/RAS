@@ -1,3 +1,4 @@
+using RAS.CentralSystems;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,11 +13,11 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
             CloseMenu();
-            Manager.OnInventoryButtonClick += InventoryClickHandler;
+            GameplayUIManager.OnOpenInventory += OpenInventoryClickHandler;
             SetRootBackgroundColor();
         }
 
-        private void InventoryClickHandler()
+        private void OpenInventoryClickHandler()
         {
             if (_rootVisualElement.visible)
             {
@@ -45,7 +46,7 @@ namespace RAS.UI.Gameplay.Pages.PlayerMenu
 
         private void OnDisable()
         {
-            Manager.OnInventoryButtonClick -= InventoryClickHandler;
+            GameplayUIManager.OnOpenInventory -= OpenInventoryClickHandler;
         }
     }
 }

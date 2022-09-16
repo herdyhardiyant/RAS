@@ -2,11 +2,11 @@ using System;
 using RAS.Settings;
 using UnityEngine;
 
-namespace RAS.UI.Gameplay
+namespace RAS.CentralSystems
 {
-    public class Manager : MonoBehaviour
+    public class GameplayUIManager : MonoBehaviour
     {
-        public static event Action OnInventoryButtonClick;
+        public static event Action OnOpenInventory;
         
         
         private PlayerInput _playerInput;
@@ -21,7 +21,7 @@ namespace RAS.UI.Gameplay
            
             if (_playerInput.IsInventoryPressed)
             {
-                OnInventoryButtonClick?.Invoke();
+                OnOpenInventory?.Invoke();
             }
         }
         
