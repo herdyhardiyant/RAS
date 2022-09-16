@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.PlayerSurvivalStatus
+namespace UI.Gameplay.Pages.PlayerMenu.Components.PlayerSurvivalStatus
 {
     public class PlayerSurvivalStatus : MonoBehaviour
     {

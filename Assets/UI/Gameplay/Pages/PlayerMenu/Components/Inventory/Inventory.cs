@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Inventory
+namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
 {
     public class Inventory : MonoBehaviour
     {

@@ -1,9 +1,9 @@
-using RAS.CentralSystems;
-using RAS.Environment.Scripts;
+using CentralSystems;
 using UnityEngine;
-using PlayerInput = RAS.Settings.PlayerInput;
+using Environment.Scripts;
+using PlayerInput = Settings.PlayerInput;
 
-namespace RAS.Characters.Player.Scripts
+namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(BoxCollider))]
     public class Interact : MonoBehaviour
@@ -37,9 +37,13 @@ namespace RAS.Characters.Player.Scripts
             }
         }
         
+        
+        // TODO Receive object interaction text from Central System
+        // Environment Object should connect to the central system and send the interaction text
+        // On Player Trigger Enter
         private void OnTriggerEnter(Collider other)
         {
-            var interactedObject = other.GetComponent<IEnvironmentInteractable>();
+            var interactedObject = other.GetComponent<IInteractable>();
             if (interactedObject == null)
                 return;
             

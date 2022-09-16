@@ -1,6 +1,6 @@
 using System;
 
-namespace RAS.CentralSystems
+namespace CentralSystems
 {
     /// <summary>
     /// This class is used to sending data between player and UI gameplay

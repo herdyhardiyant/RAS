@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace RAS.Environment.Scripts
+namespace Environment.Scripts
 {
     
-    public class Item : MonoBehaviour,IEnvironmentInteractable
+    public class Item : MonoBehaviour,IInteractable
     {
         public string itemName = "Unrecognizable Object";
         // Start is called before the first frame update

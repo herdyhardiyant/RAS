@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace RAS.Environment.Scripts
+namespace Environment.Scripts
 {
-    public class TheTree : MonoBehaviour, IEnvironmentInteractable
+    public class TheTree : MonoBehaviour, IInteractable
     {
         // Start is called before the first frame update
         void Start()

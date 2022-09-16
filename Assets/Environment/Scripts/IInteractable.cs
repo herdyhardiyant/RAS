@@ -1,8 +1,8 @@
 
-namespace RAS.Environment.Scripts
+namespace Environment.Scripts
 {
     
-    public interface IEnvironmentInteractable
+    public interface IInteractable
     {
         
         /// <summary>

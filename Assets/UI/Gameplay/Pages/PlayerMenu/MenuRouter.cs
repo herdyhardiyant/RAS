@@ -1,9 +1,7 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu
+namespace UI.Gameplay.Pages.PlayerMenu
 {
     public class MenuRouter : MonoBehaviour
     {

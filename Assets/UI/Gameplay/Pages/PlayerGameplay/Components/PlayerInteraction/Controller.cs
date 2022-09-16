@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerGameplay.Components.PlayerInteraction
+namespace UI.Gameplay.Pages.PlayerGameplay.Components.PlayerInteraction
 {
     public class Controller : MonoBehaviour
     {

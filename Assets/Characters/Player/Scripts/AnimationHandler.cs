@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RAS.Characters.Player.Scripts
+namespace Characters.Player.Scripts
 {            
     // See the parameters at ./Characters/Player/Animations/Player_AC
     public enum AnimationParameters

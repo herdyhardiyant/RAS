@@ -1,9 +1,8 @@
-using RAS.CentralSystems;
-using RAS.UI.Gameplay;
+using CentralSystems;
 using UnityEngine;
-using PlayerInput = RAS.Settings.PlayerInput;
+using PlayerInput = Settings.PlayerInput;
 
-namespace RAS.Characters.Player.Scripts
+namespace Characters.Player.Scripts
 {
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
@@ -20,6 +19,7 @@ namespace RAS.Characters.Player.Scripts
         private PlayerInput _playerInput;
 
         private bool _isMovementEnabled;
+        private Vector3 _moveDirection;
         
        
         // Start is called before the first frame update
@@ -46,13 +46,13 @@ namespace RAS.Characters.Player.Scripts
         {
 
             UpdatePlayerGravity();
-            var moveDirection = GetInputMoveDirection();
             
             if(!_isMovementEnabled)
                 return;
             
-            RotatePlayerToMoveDirection(moveDirection);
-            MovePlayer(moveDirection);
+            _moveDirection = GetInputMoveDirection();
+            RotatePlayerToMoveDirection();
+            MovePlayer();
             
         }
         private void UpdatePlayerGravity()
@@ -66,16 +66,16 @@ namespace RAS.Characters.Player.Scripts
             _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
         }
         
-        private void RotatePlayerToMoveDirection(Vector3 moveDirection)
+        private void RotatePlayerToMoveDirection()
         {
-            if (moveDirection != Vector3.zero)
-                transform.forward = moveDirection;
+            if (_moveDirection != Vector3.zero)
+                transform.forward = _moveDirection;
         }
         
-        private void MovePlayer(Vector3 moveDirection)
+        private void MovePlayer()
         {
 
-            var move = moveDirection;
+            var move = _moveDirection;
             move *= _playerInput.IsRunPressed ? runSpeed : walkSpeed;
             _characterController.Move(move * Time.deltaTime);
         }

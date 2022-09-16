@@ -1,11 +1,11 @@
-using RAS.CentralSystems;
+using CentralSystems;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerGameplay
+namespace UI.Gameplay.Pages.PlayerGameplay
 {
     [RequireComponent(typeof(UIDocument))]
-    public class Controller : MonoBehaviour, IPlayerUIInteractable
+    public class Controller : MonoBehaviour
     {
         private VisualElement _visualElement;
         private Label _interactText;
@@ -16,36 +16,43 @@ namespace RAS.UI.Gameplay.Pages.PlayerGameplay
             _visualElement = GetComponent<UIDocument>().rootVisualElement;
             _interactText = _visualElement.Q<Label>("interact-text");
             HideInteractionText();
-            GameplayUIManager.OnOpenInventory += ToggleVisibility;
-            PlayerInteractionUIConnector.OnPlayerSendInteractionText += ShowInteractionText;
-            PlayerInteractionUIConnector.OnPlayerStopInteraction += HideInteractionText;
+            ConnectDependenciesEvent();
         }
-
-        public void ShowInteractionText(string interactText)
+        
+        private void ShowInteractionText(string interactText)
         {
             _interactText.visible = true;
             _interactText.text = interactText;
         }
         
-        public void HideInteractionText()
+        private void HideInteractionText()
         {
             _interactText.visible = false;
         }
         
-        public void SetVisibility(bool isVisible)
-        {
-            _visualElement.visible = isVisible;
-        }
-        
-        public void ToggleVisibility()
+        private void ToggleVisibility()
         {
             _visualElement.visible = !_visualElement.visible;
         }
 
         private void OnDisable()
         {
-            GameplayUIManager.OnOpenInventory -= ToggleVisibility;
+            DisconnectDependenciesEvent();
 
+        }
+        
+        private void ConnectDependenciesEvent()
+        {
+            GameplayUIManager.OnOpenInventory += ToggleVisibility;
+            PlayerInteractionUIConnector.OnPlayerSendInteractionText += ShowInteractionText;
+            PlayerInteractionUIConnector.OnPlayerStopInteraction += HideInteractionText;
+        }
+        
+        private void DisconnectDependenciesEvent()
+        {
+            GameplayUIManager.OnOpenInventory -= ToggleVisibility;
+            PlayerInteractionUIConnector.OnPlayerSendInteractionText -= ShowInteractionText;
+            PlayerInteractionUIConnector.OnPlayerStopInteraction -= HideInteractionText;
         }
     }
 }

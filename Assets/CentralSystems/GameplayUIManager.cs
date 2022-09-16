@@ -1,8 +1,8 @@
 using System;
-using RAS.Settings;
+using Settings;
 using UnityEngine;
 
-namespace RAS.CentralSystems
+namespace CentralSystems
 {
     public class GameplayUIManager : MonoBehaviour
     {

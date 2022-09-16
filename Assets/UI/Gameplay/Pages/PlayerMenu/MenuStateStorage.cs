@@ -1,6 +1,6 @@
 using System;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu
+namespace UI.Gameplay.Pages.PlayerMenu
 {
     public static class MenuStateStorage
     {

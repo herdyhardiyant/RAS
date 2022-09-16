@@ -1,0 +1,16 @@
+{
+    "name": "CentralSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8b356635b7535c74295b26cbe0b2a9ec"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

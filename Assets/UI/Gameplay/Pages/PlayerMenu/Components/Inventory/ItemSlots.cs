@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Inventory
+namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
 {
     [RequireComponent(typeof(UIDocument))]
     public class ItemSlots : MonoBehaviour

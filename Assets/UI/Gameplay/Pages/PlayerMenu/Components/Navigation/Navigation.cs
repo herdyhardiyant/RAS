@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace RAS.UI.Gameplay.Pages.PlayerMenu.Components.Navigation
+namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 {
     [RequireComponent(typeof(UIDocument))]
     public class Navigation : MonoBehaviour
