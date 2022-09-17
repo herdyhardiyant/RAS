@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class TheTree : MonoBehaviour, IInteractable
+    public class TheTree : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

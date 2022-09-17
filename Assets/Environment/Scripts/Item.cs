@@ -1,20 +1,25 @@
+using System;
+using CentralSystems;
+using Environment.Interfaces;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 namespace Environment.Scripts
 {
     
-    public class Item : MonoBehaviour,IInteractable
+    public class Item : MonoBehaviour, IInteractable
     {
         public string itemName = "Unrecognizable Object";
-        // Start is called before the first frame update
-        void Start()
+
+        private void Start()
         {
-        
+           
         }
-        
+
         public void Interact()
         {
-            print($"Interact with {itemName}");
+            Debug.Log($"This is a {itemName}");
         }
 
         public string GetInteractionText()
@@ -22,10 +27,5 @@ namespace Environment.Scripts
             return $"This is a {itemName}";
         }
         
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

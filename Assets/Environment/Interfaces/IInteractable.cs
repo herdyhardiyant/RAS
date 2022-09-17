@@ -1,5 +1,5 @@
 
-namespace Environment.Scripts
+namespace Environment.Interfaces
 {
     
     public interface IInteractable

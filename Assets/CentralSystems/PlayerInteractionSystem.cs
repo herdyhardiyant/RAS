@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class PlayerInteractionSystem : MonoBehaviour
+namespace CentralSystems
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Unified communication between player and other GameObject
+    /// </summary>
+    public static class PlayerInteractionSystem
     {
+        /// <summary>
+        /// (string interactionText) {}
+        /// </summary>
+        public static event Action OnPlayerStopInteraction;
         
-    }
+        /// <summary>
+        /// (string interactionText) {}
+        /// </summary>
+        public static event Action<string> OnPlayerInteract;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public static void PlayerStartInteract(string interactionText)
+        {
+           
+            OnPlayerInteract?.Invoke(interactionText);
+            
+        }
+
+        public static void PlayerStopInteraction()
+        {
+            OnPlayerStopInteraction?.Invoke();
+        }
     }
 }
