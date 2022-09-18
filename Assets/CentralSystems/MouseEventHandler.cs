@@ -22,6 +22,8 @@ namespace CentralSystems
 
         private Camera _mainCamera;
         private Mouse _mouse;
+        
+        private const string INTERACTABLE_TAG = "Interactable";
 
         void Awake()
         {
@@ -36,45 +38,73 @@ namespace CentralSystems
 
         private void Update()
         {
+            if (IsMouseHoveringInteractableObject())
+            {
+                OnMouseHoverInteractable?.Invoke();
+                MouseClickHoveredObjectHandler();
+            }
+            else
+            {
+                OnMouseExitHover?.Invoke();
+            }
+
+        }
+
+        private void FixedUpdate()
+        {
+            MouseRaycast();
+        }
+
+        private bool IsMouseHoveringInteractableObject()
+        {
             if (!_isHovering)
-            {
-                OnMouseExitHover?.Invoke();
-                return;
-            }
-            
+                return false;
+
             if (!_hoveredObject)
-                return;
+                return false;
 
-            if (!_hoveredObject.CompareTag("Interactable"))
-            {
-                OnMouseExitHover?.Invoke();
-                return;
-            }
+            if (!_hoveredObject.CompareTag(INTERACTABLE_TAG))
+                return false;
 
-            OnMouseHoverInteractable?.Invoke();
-            
+            return true;
+        }
+
+        private void MouseClickHoveredObjectHandler()
+        {
             if (_mouse.leftButton.wasPressedThisFrame)
             {
                 _hoveredObject.TryGetComponent<IInteractable>(out var interactableObject);
                 _interactionText = interactableObject.GetInteractionText();
                 OnMouseClickObject?.Invoke();
             }
-            
         }
-
-        private void FixedUpdate()
+        
+        private void MouseRaycast()
         {
             var ray = _mainCamera.ScreenPointToRay(_mouse.position.ReadValue());
             if (Physics.Raycast(ray, out var hit))
             {
-                _hoveredObject = hit.collider.gameObject;
-                _isHovering = true;
+                RaycastHitHandler(hit);
             }
             else
             {
-                _isHovering = false;
+                RaycastNotHitHandler();
             }
         }
+
+        private void RaycastHitHandler(RaycastHit hit)
+        {
+            _hoveredObject = hit.collider.gameObject;
+            _isHovering = true;
+        }
+
+        private void RaycastNotHitHandler()
+        {
+            _isHovering = false;
+
+        }
+        
+        
         
         
         
