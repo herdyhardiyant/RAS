@@ -1,6 +1,7 @@
 using System;
 using CentralSystems;
 using Environment.Interfaces;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,13 +9,13 @@ using UnityEngine.EventSystems;
 namespace Environment.Scripts
 {
     
-    public class Item : MonoBehaviour, IInteractable
+    public class EnvironmentObject : MonoBehaviour, IInteractable
     {
         public string itemName = "Unrecognizable Object";
-
-        private void Start()
+        
+        private void Awake()
         {
-           
+            tag = "Interactable";
         }
 
         public void Interact()

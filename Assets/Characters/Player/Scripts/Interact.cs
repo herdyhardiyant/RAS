@@ -44,12 +44,8 @@ namespace Characters.Player.Scripts
             }
         }
         
-        
-        // TODO Receive object interaction text from Central System
-        // TODO Remove Environment Dependency, instead use Central System
         // TODO Change Player Interaction Trigger with Mouse Click
         // TODO Mouse click on Interactable Object and Check the distance between player and object
-        // TODO When mouse hover interactable object, change cursor to Eye Icon
         // TODO Create Storable Object
         // TODO Storable object on mouse hover, change cursor to Hand Icon
 

@@ -1,10 +1,11 @@
+using CentralSystems;
 using UnityEngine;
 
-namespace CentralSystems
+namespace UI.Mouse
 {
     public class MouseCursorManipulator : MonoBehaviour
     {
-        [SerializeField] private Texture2D _hoverInteractableCursorTexture;
+        [SerializeField] private Texture2D _hoverInteractableItemCursorTexture;
         [SerializeField] private Texture2D _hoverPickupItemCursorTexture;
         [SerializeField] private Texture2D _defaultHoverTexture;
         
@@ -22,7 +23,7 @@ namespace CentralSystems
         
         private void CursorHoverInteractableHandler()
         {
-            Cursor.SetCursor(_hoverInteractableCursorTexture, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(_hoverInteractableItemCursorTexture, Vector2.zero, CursorMode.Auto);
         }
 
         private void ExitHoverHandler()
@@ -35,13 +36,5 @@ namespace CentralSystems
             Cursor.SetCursor(_hoverPickupItemCursorTexture, Vector2.zero, CursorMode.Auto);
         }
         
-        // Start is called before the first frame update
-       
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }
