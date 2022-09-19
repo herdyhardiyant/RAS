@@ -46,8 +46,6 @@ namespace Characters.Player.Scripts
         
         // TODO Change Player Interaction Trigger with Mouse Click
         // TODO Mouse click on Interactable Object and Check the distance between player and object
-        // TODO Create Storable Object
-        // TODO Storable object on mouse hover, change cursor to Hand Icon
 
         private void OnTriggerEnter(Collider collidedObject)
         {

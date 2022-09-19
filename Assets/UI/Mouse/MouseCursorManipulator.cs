@@ -16,9 +16,9 @@ namespace UI.Mouse
         
         private void SubscribeMouseHoverEvents()
         {
-            MouseEventHandler.OnMouseHoverInteractable += CursorHoverInteractableHandler;
-            MouseEventHandler.OnMouseExitHover += ExitHoverHandler;
-            MouseEventHandler.OnMouseHoverPickupItem += CursorHoverPickupItemHandler;
+            MouseHoverEventHandler.OnMouseHoverInteractable += CursorHoverInteractableHandler;
+            MouseHoverEventHandler.OnMouseExitHover += ExitHoverHandler;
+            MouseHoverEventHandler.OnMouseHoverPickupItem += CursorHoverPickupItemHandler;
         }
         
         private void CursorHoverInteractableHandler()
