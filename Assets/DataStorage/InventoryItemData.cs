@@ -1,8 +1,8 @@
 namespace DataStorage
 {
-    public class InventoryDataStructure
+    public class InventoryItemData
     {
-       InventoryDataStructure()
+       InventoryItemData()
        {
            // Initialize the inventory data structure
        }

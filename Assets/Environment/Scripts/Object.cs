@@ -4,19 +4,22 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
+    /// <summary>
+    /// World object that can be interacted with
+    /// </summary>
     public class Object : MonoBehaviour, IInteractable
     {
         public string itemName = "Unrecognizable Object";
         private const string TAG_NAME = "Interactable";
         private void Awake()
         {
-            if(gameObject.CompareTag("Untagged"))
-                tag = TAG_NAME;
+            tag = TAG_NAME;
         }
 
         public void Interact()
         {
-            Debug.Log($"This is a {itemName}");
+            print("Interact Object");
+
         }
 
         public string GetInteractionText()

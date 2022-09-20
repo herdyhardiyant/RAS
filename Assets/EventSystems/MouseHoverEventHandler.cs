@@ -11,7 +11,7 @@ namespace EventSystems
         /// (hoveredInteractableObject) {}
         /// </summary>
         public static event Action<IInteractable> OnMouseHoverInteractable;
-        public static event Action OnMouseHoverPickupItem;
+        public static event Action<IInteractable> OnMouseHoverPickupItem;
         public static event Action OnMouseHoverNothing;
         
         private const string INTERACTABLE_TAG = "Interactable";
@@ -48,7 +48,7 @@ namespace EventSystems
             }
             else if (_hoveredObject.CompareTag(PICKUPABLE_TAG))
             {
-                OnMouseHoverPickupItem?.Invoke();
+                PickupItemHoverHandler();
             }
             else
             {
@@ -61,11 +61,17 @@ namespace EventSystems
             MouseRaycast();
         }
 
+        private void PickupItemHoverHandler()
+        {
+            _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
+            OnMouseHoverPickupItem?.Invoke(hoveredObject);
+        }
+
         private void InteractableObjectHoverHandler()
         {
-            _hoveredObject.TryGetComponent<IInteractable>(out var hoveredInteractableObject);
-            if(hoveredInteractableObject == null) return;
-            OnMouseHoverInteractable?.Invoke(hoveredInteractableObject);
+            _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
+            if(hoveredObject == null) return;
+            OnMouseHoverInteractable?.Invoke(hoveredObject);
         }
 
         private void MouseRaycast()

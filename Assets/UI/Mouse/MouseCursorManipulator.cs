@@ -32,7 +32,7 @@ namespace UI.Mouse
             Cursor.SetCursor(_defaultHoverTexture, Vector2.zero, CursorMode.Auto);
         }
 
-        private void CursorHoverPickupItemHandler()
+        private void CursorHoverPickupItemHandler(IInteractable _)
         {
             Cursor.SetCursor(_hoverPickupItemCursorTexture, Vector2.zero, CursorMode.Auto);
         }
