@@ -2,18 +2,9 @@ using UnityEngine;
 
 namespace Environment.Interfaces
 {
-    public class IPickupItem : MonoBehaviour
+    public interface IPickupItem
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        public void PickupItemToInventory();
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

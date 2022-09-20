@@ -1,4 +1,5 @@
-using CentralSystems;
+using Environment.Interfaces;
+using EventSystems;
 using UnityEngine;
 
 namespace UI.Mouse
@@ -17,16 +18,16 @@ namespace UI.Mouse
         private void SubscribeMouseHoverEvents()
         {
             MouseHoverEventHandler.OnMouseHoverInteractable += CursorHoverInteractableHandler;
-            MouseHoverEventHandler.OnMouseExitHover += ExitHoverHandler;
+            MouseHoverEventHandler.OnMouseHoverNothing += HoverNothingHandler;
             MouseHoverEventHandler.OnMouseHoverPickupItem += CursorHoverPickupItemHandler;
         }
         
-        private void CursorHoverInteractableHandler()
+        private void CursorHoverInteractableHandler(IInteractable _)
         {
             Cursor.SetCursor(_hoverInteractableItemCursorTexture, Vector2.zero, CursorMode.Auto);
         }
 
-        private void ExitHoverHandler()
+        private void HoverNothingHandler()
         {
             Cursor.SetCursor(_defaultHoverTexture, Vector2.zero, CursorMode.Auto);
         }

@@ -7,10 +7,11 @@ namespace Environment.Scripts
     public class Object : MonoBehaviour, IInteractable
     {
         public string itemName = "Unrecognizable Object";
-        
+        private const string TAG_NAME = "Interactable";
         private void Awake()
         {
-            tag = "Interactable";
+            if(gameObject.CompareTag("Untagged"))
+                tag = TAG_NAME;
         }
 
         public void Interact()
