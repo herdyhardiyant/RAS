@@ -19,7 +19,6 @@ namespace Characters.Player.Scripts
 
         }
         
-        // TODO Mouse click on Interactable Object and Check the distance between player and object
         private void MouseClickHoveredObjectHandler(IInteractable hoveredObject)
         {
             hoveredObject.Interact();

@@ -1,10 +1,17 @@
+
 namespace DataStorage
 {
     public class InventoryItemData
     {
-       InventoryItemData()
-       {
-           // Initialize the inventory data structure
-       }
+        public string id;
+        public string name;
+        public string description;
+        InventoryItemData(string id, string name, string description)
+        {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+         
+        }
     }
 }
