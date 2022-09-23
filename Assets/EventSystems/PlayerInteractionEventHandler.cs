@@ -5,7 +5,7 @@ namespace EventSystems
     /// <summary>
     /// Unified communication between player and other GameObject
     /// </summary>
-    public static class PlayerInteractionSystem
+    public static class PlayerInteractionEventHandler
     {
         /// <summary>
         /// (string interactionText) {}

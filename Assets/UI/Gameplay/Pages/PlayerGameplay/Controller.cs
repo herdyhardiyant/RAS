@@ -42,16 +42,16 @@ namespace UI.Gameplay.Pages.PlayerGameplay
         
         private void ConnectDependenciesEvent()
         {
-            GameplayUIManager.OnOpenInventory += ToggleVisibility;
-            PlayerInteractionSystem.OnPlayerInteract += ShowInteractionText;
-            PlayerInteractionSystem.OnPlayerStopInteraction += HideInteractionText;
+            GameplayUIEventHandler.OnOpenInventory += ToggleVisibility;
+            PlayerInteractionEventHandler.OnPlayerInteract += ShowInteractionText;
+            PlayerInteractionEventHandler.OnPlayerStopInteraction += HideInteractionText;
         }
         
         private void DisconnectDependenciesEvent()
         {
-            GameplayUIManager.OnOpenInventory -= ToggleVisibility;
-            PlayerInteractionSystem.OnPlayerInteract -= ShowInteractionText;
-            PlayerInteractionSystem.OnPlayerStopInteraction -= HideInteractionText;
+            GameplayUIEventHandler.OnOpenInventory -= ToggleVisibility;
+            PlayerInteractionEventHandler.OnPlayerInteract -= ShowInteractionText;
+            PlayerInteractionEventHandler.OnPlayerStopInteraction -= HideInteractionText;
         }
     }
 }

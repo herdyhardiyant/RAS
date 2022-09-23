@@ -4,7 +4,7 @@ using EventSystems;
 
 namespace Characters.Player.Scripts
 {
-    [RequireComponent(typeof(BoxCollider))]
+
     public class Interact : MonoBehaviour
     {
         private bool _isPlayerInInteractRange;
@@ -14,7 +14,7 @@ namespace Characters.Player.Scripts
         private void Awake()
         {
             _isInteractionEnable = true;
-            GameplayUIManager.OnOpenInventory += ToggleEnable;
+            GameplayUIEventHandler.OnOpenInventory += ToggleEnable;
             MouseClickEventHandler.OnMouseClickHoveredObject += MouseClickHoveredObjectHandler;
 
         }
@@ -22,7 +22,7 @@ namespace Characters.Player.Scripts
         private void MouseClickHoveredObjectHandler(IInteractable hoveredObject)
         {
             hoveredObject.Interact();
-            PlayerInteractionSystem.PlayerStartInteract(hoveredObject.GetInteractionText());
+            PlayerInteractionEventHandler.PlayerStartInteract(hoveredObject.GetInteractionText());
         }
         
         private void ToggleEnable()
@@ -32,7 +32,7 @@ namespace Characters.Player.Scripts
         
         private void OnDisable()
         {
-            GameplayUIManager.OnOpenInventory -= ToggleEnable;
+            GameplayUIEventHandler.OnOpenInventory -= ToggleEnable;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EventSystems
 {
-    public class GameplayUIManager : MonoBehaviour
+    public class GameplayUIEventHandler : MonoBehaviour
     {
         public static event Action OnOpenInventory;
         

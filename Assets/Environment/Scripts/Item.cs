@@ -27,5 +27,10 @@ namespace Environment.Scripts
         {
             return "Item is added to inventory";
         }
+
+        public Vector3 GetInteractionWorldPosition()
+        {
+            return transform.position;
+        }
     }
 }

@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace Environment.Interfaces
 {
     
@@ -14,6 +16,8 @@ namespace Environment.Interfaces
         /// Get Player speech text about the object
         /// </summary>
         string GetInteractionText();
+        
+        Vector3 GetInteractionWorldPosition();
 
     }
 }

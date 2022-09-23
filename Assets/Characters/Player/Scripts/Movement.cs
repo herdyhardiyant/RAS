@@ -1,3 +1,4 @@
+using Environment.Interfaces;
 using EventSystems;
 using UnityEngine;
 using PlayerInput = Settings.PlayerInput;
@@ -21,28 +22,30 @@ namespace Characters.Player.Scripts
         private bool _isMovementEnabled;
         private Vector3 _moveDirection;
         
-       
-        // Start is called before the first frame update
         void Start()
         {
             _characterController = GetComponent<CharacterController>();
             _playerInput = gameObject.AddComponent<PlayerInput>();
             _isMovementEnabled = true;
-            GameplayUIManager.OnOpenInventory += ToggleEnable;
-        }
-        
-        public void SetEnable(bool isEnable)
-        {
-            _isMovementEnabled = isEnable;
+            GameplayUIEventHandler.OnOpenInventory += ToggleEnable;
+            MouseClickEventHandler.OnMouseClickHoveredObject += RotatePlayerToClickedObject;
         }
 
-        public void ToggleEnable()
+        private void RotatePlayerToClickedObject(IInteractable hoveredObject)
+        {
+            if (hoveredObject == null) return;
+            var hoveredObjectPosition = hoveredObject.GetInteractionWorldPosition();
+            var playerTransform = transform;
+            var directionToLook = (hoveredObjectPosition - playerTransform.position).normalized;
+            var directionToLook2d = new Vector3(directionToLook.x, 0, directionToLook.z);
+            playerTransform.forward = directionToLook2d;
+        }
+
+        private void ToggleEnable()
         {
             _isMovementEnabled = !_isMovementEnabled;
         }
-
-        // Update is called once per frame
-        // TODO Rotate Player to mouse click location when Interacting with Object
+        
         void Update()
         {
 

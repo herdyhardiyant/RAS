@@ -2,7 +2,7 @@ using System;
 
 namespace UI.Gameplay.Pages.PlayerMenu
 {
-    public static class MenuStateStorage
+    public static class MenuState
     {
         private static MenuStates _currentState;
         public static event Action OnMenuStateChange;

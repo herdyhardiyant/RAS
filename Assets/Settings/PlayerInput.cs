@@ -28,7 +28,5 @@ namespace Settings
         
         public bool IsInteractPressed => _keyboard.fKey.wasPressedThisFrame;
         
-        
-        
     }
 }

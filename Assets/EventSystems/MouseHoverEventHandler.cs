@@ -15,7 +15,7 @@ namespace EventSystems
         public static event Action OnMouseHoverNothing;
 
         [SerializeField]
-        private RectTransform _player;
+        private Transform _player;
         
         public static event Action OnMousePassMaxRange;
 

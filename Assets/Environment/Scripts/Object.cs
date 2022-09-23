@@ -26,6 +26,10 @@ namespace Environment.Scripts
         {
             return $"This is a {itemName}";
         }
-        
+
+        public Vector3 GetInteractionWorldPosition()
+        {
+            return transform.position;
+        }
     }
 }

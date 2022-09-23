@@ -18,13 +18,13 @@ namespace UI.Gameplay.Pages.PlayerMenu
         private void Awake()
         {
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
-            MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
+            MenuState.OnMenuStateChange += MenuStateChangeHandler;
             AddNavigationElementToRootElement();
         }
 
         void Start()
         {
-            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Inventory;
+            MenuState.CurrentMenuState = MenuState.MenuStates.Inventory;
             CloneTreesFromImportedVisualTreeAssets();
             ShowMenuFromCurrentMenuState();
         }
@@ -37,7 +37,7 @@ namespace UI.Gameplay.Pages.PlayerMenu
 
         private void OnDisable()
         {
-            MenuStateStorage.OnMenuStateChange -= MenuStateChangeHandler;
+            MenuState.OnMenuStateChange -= MenuStateChangeHandler;
         }
 
         private void CloneTreesFromImportedVisualTreeAssets()
@@ -55,15 +55,15 @@ namespace UI.Gameplay.Pages.PlayerMenu
 
         private void ShowMenuFromCurrentMenuState()
         {
-            switch (MenuStateStorage.CurrentMenuState)
+            switch (MenuState.CurrentMenuState)
             {
-                case MenuStateStorage.MenuStates.Crafting:
+                case MenuState.MenuStates.Crafting:
                     _rootMenuElement.Add(_craftingElement);
                     break;
-                case MenuStateStorage.MenuStates.Inventory:
+                case MenuState.MenuStates.Inventory:
                     _rootMenuElement.Add(_inventoryElement);
                     break;
-                case MenuStateStorage.MenuStates.Status:
+                case MenuState.MenuStates.Status:
                     _rootMenuElement.Add(_survivalStatusElement);
                     break;
             }

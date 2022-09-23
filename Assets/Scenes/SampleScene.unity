@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 960700966}
-  _maxHoverRange: 10
+  _maxHoverRange: 3
 --- !u!114 &709962735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909092734}
   m_Layer: 0
-  m_Name: Systems
+  m_Name: Events
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
