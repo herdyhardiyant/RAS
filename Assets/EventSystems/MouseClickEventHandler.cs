@@ -2,6 +2,7 @@ using System;
 using Environment.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Controls;
 
 namespace EventSystems
 {
@@ -11,26 +12,20 @@ namespace EventSystems
         public static event Action<IInteractable> OnMouseClickHoveredObject; 
 
         private Mouse _mouse;
+        private PlayerInputMap _playerInputMap;
         void Awake()
         {
             _mouse = Mouse.current;
+            _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
             MouseHoverEventHandler.OnMouseHoverInteractable += ClickHoveredInteractableObject;
-            MouseHoverEventHandler.OnMouseHoverPickupItem += ClickHoveredPickupItem;
+            MouseHoverEventHandler.OnMouseHoverPickupItem += ClickHoveredInteractableObject;
         }
 
         private void ClickHoveredInteractableObject(IInteractable hoveredObject)
         {
-            if(_mouse.leftButton.wasPressedThisFrame)
+            if(_playerInputMap.IsInteractClicked)
             {
                 OnMouseClickHoveredObject?.Invoke(hoveredObject);
-            }
-        }
-        
-        private void ClickHoveredPickupItem(IInteractable hoveredPickupObject)
-        {
-            if(_mouse.leftButton.wasPressedThisFrame)
-            {
-                OnMouseClickHoveredObject?.Invoke(hoveredPickupObject);
             }
         }
 

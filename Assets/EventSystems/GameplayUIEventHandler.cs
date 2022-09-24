@@ -1,5 +1,5 @@
 using System;
-using Settings;
+using Controls;
 using UnityEngine;
 
 namespace EventSystems
@@ -9,17 +9,17 @@ namespace EventSystems
         public static event Action OnOpenInventory;
         
         
-        private PlayerInput _playerInput;
+        private PlayerInputMap _playerInputMap;
         void Start()
         {
-            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
             gameObject.SetActive(true);
         }
         
         void Update()
         {
            
-            if (_playerInput.IsInventoryPressed)
+            if (_playerInputMap.IsInventoryPressed)
             {
                 OnOpenInventory?.Invoke();
             }

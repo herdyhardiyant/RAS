@@ -1,7 +1,7 @@
+using Controls;
 using Environment.Interfaces;
 using EventSystems;
 using UnityEngine;
-using PlayerInput = Settings.PlayerInput;
 
 namespace Characters.Player.Scripts
 {
@@ -17,7 +17,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private float runSpeed = 4.0f;
         
         private const float _gravityValue = -9.81f;
-        private PlayerInput _playerInput;
+        private PlayerInputMap _playerInputMap;
 
         private bool _isMovementEnabled;
         private Vector3 _moveDirection;
@@ -25,7 +25,7 @@ namespace Characters.Player.Scripts
         void Start()
         {
             _characterController = GetComponent<CharacterController>();
-            _playerInput = gameObject.AddComponent<PlayerInput>();
+            _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
             _isMovementEnabled = true;
             GameplayUIEventHandler.OnOpenInventory += ToggleEnable;
             MouseClickEventHandler.OnMouseClickHoveredObject += RotatePlayerToClickedObject;
@@ -80,23 +80,23 @@ namespace Characters.Player.Scripts
         {
 
             var move = _moveDirection;
-            move *= _playerInput.IsRunPressed ? runSpeed : walkSpeed;
+            move *= _playerInputMap.IsRunPressed ? runSpeed : walkSpeed;
             _characterController.Move(move * Time.deltaTime);
         }
         
         private Vector3 GetInputMoveDirection()
         {
             var moveDirection = Vector3.zero;
-            if (_playerInput.IsUpPressed)
+            if (_playerInputMap.IsUpPressed)
                 moveDirection.z = 1;
             
-            if (_playerInput.IsDownPressed)
+            if (_playerInputMap.IsDownPressed)
                 moveDirection.z = -1;
 
-            if (_playerInput.IsRightPressed)
+            if (_playerInputMap.IsRightPressed)
                 moveDirection.x = 1;
             
-            if (_playerInput.IsLeftPressed)
+            if (_playerInputMap.IsLeftPressed)
                 moveDirection.x = -1;
 
             return moveDirection.normalized;

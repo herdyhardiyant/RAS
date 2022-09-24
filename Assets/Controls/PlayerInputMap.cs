@@ -1,15 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Settings
+namespace Controls
 {
-    public class PlayerInput : MonoBehaviour
+    public class PlayerInputMap : MonoBehaviour
     {
         private Keyboard _keyboard;
+        private Mouse _mouse;
         
         void Awake()
         {
             _keyboard = Keyboard.current;
+            _mouse = Mouse.current;
         }
 
         public bool IsLeftPressed => _keyboard.aKey.isPressed;
@@ -25,8 +27,8 @@ namespace Settings
         public bool IsInventoryPressed => _keyboard.eKey.wasPressedThisFrame;
         
         public bool IsBackPressed => _keyboard.escapeKey.wasPressedThisFrame;
-        
-        public bool IsInteractPressed => _keyboard.fKey.wasPressedThisFrame;
+
+        public bool IsInteractClicked => _mouse.leftButton.wasPressedThisFrame;
         
     }
 }

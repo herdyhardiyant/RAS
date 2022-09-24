@@ -1,4 +1,5 @@
 using System;
+using Controls;
 using Environment.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,49 +9,50 @@ namespace EventSystems
     public class MouseHoverEventHandler : MonoBehaviour
     {
         /// <summary>
-        /// (hoveredInteractableObject) {}
+        /// (IInteractable hoveredInteractableObject) {}
         /// </summary>
         public static event Action<IInteractable> OnMouseHoverInteractable;
+
+        /// <summary>
+        /// (IInteractable hoveredInteractableObject) {}
+        /// </summary>
         public static event Action<IInteractable> OnMouseHoverPickupItem;
+
         public static event Action OnMouseHoverNothing;
 
-        [SerializeField]
-        private Transform _player;
-        
+        [SerializeField] private Transform _player;
+
         public static event Action OnMousePassMaxRange;
 
+
+        [SerializeField] private float _maxHoverRange = 5f;
         
-        [SerializeField]
-        private float _maxHoverRange = 5f;
-        
-        private Vector2 _hoveredObjectLocation2d = Vector2.zero;
         private float _currentHoverDistance;
-        
         private const string INTERACTABLE_TAG = "Interactable";
         private const string PICKUPABLE_TAG = "Pickupable";
-        private bool _isHovering;
-        private GameObject _hoveredObject;
-        private Camera _mainCamera;
-        private Mouse _mouse;
         
-        void Awake()
+        private GameObject _hoveredObject;
+        private MouseHover _mouseHover;
+
+        
+        private void Start()
         {
-            _isHovering = false;
-            _mainCamera = Camera.main;
-            _mouse = Mouse.current;
+            _mouseHover = gameObject.AddComponent<MouseHover>();
         }
 
         private void Update()
         {
-            UpdateHoverDistance();
             
-            if (_currentHoverDistance > _maxHoverRange)
+            var isHovering = _mouseHover.IsHovering;
+            _hoveredObject = _mouseHover.HoveredObject;
+
+            if (GetHoverInteractionDistanceIsInRange())
             {
                 OnMousePassMaxRange?.Invoke();
                 return;
             }
 
-            if (!_isHovering)
+            if (!isHovering)
             {
                 OnMouseHoverNothing?.Invoke();
                 return;
@@ -64,68 +66,48 @@ namespace EventSystems
 
             if (_hoveredObject.CompareTag(INTERACTABLE_TAG))
             {
-                InteractableObjectHoverHandler();
+                HoverInteractableOnlyObject();
             }
             else if (_hoveredObject.CompareTag(PICKUPABLE_TAG))
             {
-                PickupItemHoverHandler();
+                HoverPickupItem();
             }
             else
             {
                 OnMouseHoverNothing?.Invoke();
             }
         }
-
-        private void FixedUpdate()
+        
+        private bool GetHoverInteractionDistanceIsInRange()
         {
-            MouseRaycast();
-        }
-
-        private void UpdateHoverDistance()
-        {
-            var playerPosition = _player.position;
-            var playerPosition2d = new Vector2(playerPosition.x, playerPosition.z);
-            _currentHoverDistance = Vector2.Distance(playerPosition2d, _hoveredObjectLocation2d);
+            var currentHoverDistance = GetHoverDistanceFromPlayer();
+            return currentHoverDistance > _maxHoverRange;
         }
         
-
-        private void PickupItemHoverHandler()
+        private void HoverPickupItem()
         {
             _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
+            
             OnMouseHoverPickupItem?.Invoke(hoveredObject);
         }
 
-        private void InteractableObjectHoverHandler()
+        private void HoverInteractableOnlyObject()
         {
             _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
-            if(hoveredObject == null) return;
             OnMouseHoverInteractable?.Invoke(hoveredObject);
         }
-
-        private void MouseRaycast()
+        
+        private float GetHoverDistanceFromPlayer()
         {
-            var ray = _mainCamera.ScreenPointToRay(_mouse.position.ReadValue());
+                 
+            var hitPoint = _mouseHover.HoverHitPoint;
+            var hoveredObjectLocation2d = new Vector3(hitPoint.x, 0, hitPoint.z);
             
-            if (Physics.Raycast(ray, out var hit))
-            {
-                RaycastHitHandler(hit);
-            }
-            else
-            {
-                RaycastNotHitHandler();
-            }
-        }
+            var playerPosition = _player.position;
+            var playerPosition2d = new Vector3(playerPosition.x, 0, playerPosition.z);
+            
+            return Vector3.Distance(playerPosition2d, hoveredObjectLocation2d);
 
-        private void RaycastHitHandler(RaycastHit hit)
-        {
-            _hoveredObjectLocation2d = new Vector2(hit.point.x, hit.point.z);
-            _hoveredObject = hit.collider.gameObject;
-            _isHovering = true;
-        }
-
-        private void RaycastNotHitHandler()
-        {
-            _isHovering = false;
         }
     }
 }
