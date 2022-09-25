@@ -33,15 +33,21 @@ namespace EventSystems
         
         private GameObject _hoveredObject;
         private MouseHover _mouseHover;
+        private bool _isEnable;
 
-        
-        private void Start()
+
+        private void Awake()
         {
+            _isEnable = true;
             _mouseHover = gameObject.AddComponent<MouseHover>();
         }
 
         private void Update()
         {
+            // TODO off when inventory or pause menu is open
+
+            if (!_isEnable)
+                return;
             
             var isHovering = _mouseHover.IsHovering;
             _hoveredObject = _mouseHover.HoveredObject;
