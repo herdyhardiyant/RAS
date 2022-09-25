@@ -33,12 +33,12 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
             QueryTabs();
             SetupTabsEvent();
             SetNewCurrentActiveTabButton();
-            MenuStateStorage.OnMenuStateChange += MenuStateChangeHandler;
+            MenuState.OnMenuStateChange += MenuStateChangeHandler;
         }
 
         private void OnDisable()
         {
-            MenuStateStorage.OnMenuStateChange -= MenuStateChangeHandler;
+            MenuState.OnMenuStateChange -= MenuStateChangeHandler;
         }
 
         private void QueryTabs()
@@ -57,17 +57,17 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void CraftingTabClickHandler()
         {
-            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Crafting;
+            MenuState.CurrentMenuState = MenuState.MenuStates.Crafting;
         }
 
         private void StatusTabClickHandler()
         {
-            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Status;
+            MenuState.CurrentMenuState = MenuState.MenuStates.Status;
         }
 
         private void InventoryTabClickHandler()
         {
-            MenuStateStorage.CurrentMenuState = MenuStateStorage.MenuStates.Inventory;
+            MenuState.CurrentMenuState = MenuState.MenuStates.Inventory;
         }
 
         private void MenuStateChangeHandler()
@@ -83,19 +83,19 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void SetNewCurrentActiveTabButton()
         {
-            var newState = MenuStateStorage.CurrentMenuState;
+            var newState = MenuState.CurrentMenuState;
 
             switch (newState)
             {
-                case MenuStateStorage.MenuStates.Crafting:
+                case MenuState.MenuStates.Crafting:
                     _craftingTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     _currentActiveTabButton = _craftingTab;
                     break;
-                case MenuStateStorage.MenuStates.Inventory:
+                case MenuState.MenuStates.Inventory:
                     _inventoryTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     _currentActiveTabButton = _inventoryTab;
                     break;
-                case MenuStateStorage.MenuStates.Status:
+                case MenuState.MenuStates.Status:
                     _statusTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
                     _currentActiveTabButton = _statusTab;
                     break;

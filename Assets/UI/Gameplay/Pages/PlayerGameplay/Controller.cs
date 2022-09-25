@@ -1,4 +1,4 @@
-using CentralSystems;
+using EventSystems;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -38,21 +38,20 @@ namespace UI.Gameplay.Pages.PlayerGameplay
         private void OnDisable()
         {
             DisconnectDependenciesEvent();
-
         }
         
         private void ConnectDependenciesEvent()
         {
-            GameplayUIManager.OnOpenInventory += ToggleVisibility;
-            PlayerInteractionUIConnector.OnPlayerSendInteractionText += ShowInteractionText;
-            PlayerInteractionUIConnector.OnPlayerStopInteraction += HideInteractionText;
+            GameplayUIEventHandler.OnOpenInventory += ToggleVisibility;
+            PlayerInteractionEventHandler.OnPlayerInteract += ShowInteractionText;
+            PlayerInteractionEventHandler.OnPlayerStopInteraction += HideInteractionText;
         }
         
         private void DisconnectDependenciesEvent()
         {
-            GameplayUIManager.OnOpenInventory -= ToggleVisibility;
-            PlayerInteractionUIConnector.OnPlayerSendInteractionText -= ShowInteractionText;
-            PlayerInteractionUIConnector.OnPlayerStopInteraction -= HideInteractionText;
+            GameplayUIEventHandler.OnOpenInventory -= ToggleVisibility;
+            PlayerInteractionEventHandler.OnPlayerInteract -= ShowInteractionText;
+            PlayerInteractionEventHandler.OnPlayerStopInteraction -= HideInteractionText;
         }
     }
 }

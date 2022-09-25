@@ -1,31 +1,36 @@
+using Environment.Interfaces;
 using UnityEngine;
 
 namespace Environment.Scripts
 {
-    
-    public class Item : MonoBehaviour,IInteractable
+    /// <summary>
+    /// Class component for item that can be stored in inventory
+    /// </summary>
+    public class Item : MonoBehaviour, IInteractable
     {
-        public string itemName = "Unrecognizable Object";
-        // Start is called before the first frame update
-        void Start()
+        private const string TAG_NAME = "Pickupable";
+
+        void Awake()
         {
-        
+            tag = TAG_NAME;
         }
-        
+
         public void Interact()
         {
-            print($"Interact with {itemName}");
+            // TODO: Add to inventory storage
+            // After added to inventory destroy this object
+            // Update Inventory UI for stored object
+            print("Pickup Item");
         }
 
         public string GetInteractionText()
         {
-            return $"This is a {itemName}";
+            return "Item is added to inventory";
         }
-        
-        // Update is called once per frame
-        void Update()
+
+        public Vector3 GetInteractionWorldPosition()
         {
-        
+            return transform.position;
         }
     }
 }

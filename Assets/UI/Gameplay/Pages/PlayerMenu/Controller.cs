@@ -1,4 +1,4 @@
-using CentralSystems;
+using EventSystems;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,7 +13,7 @@ namespace UI.Gameplay.Pages.PlayerMenu
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
             CloseMenu();
-            GameplayUIManager.OnOpenInventory += OpenInventoryClickHandler;
+            GameplayUIEventHandler.OnOpenInventory += OpenInventoryClickHandler;
             SetRootBackgroundColor();
         }
 
@@ -46,7 +46,7 @@ namespace UI.Gameplay.Pages.PlayerMenu
 
         private void OnDisable()
         {
-            GameplayUIManager.OnOpenInventory -= OpenInventoryClickHandler;
+            GameplayUIEventHandler.OnOpenInventory -= OpenInventoryClickHandler;
         }
     }
 }
