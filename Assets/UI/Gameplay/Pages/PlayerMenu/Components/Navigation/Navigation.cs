@@ -1,3 +1,4 @@
+using UI.Gameplay.Pages.PlayerMenu.Components.MenuWindow;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,7 +7,7 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
     [RequireComponent(typeof(UIDocument))]
     public class Navigation : MonoBehaviour
     {
-        private VisualElement _rootMenuElement;
+        private VisualElement _rootInventoryElement;
 
         private Button _craftingTab;
         private Button _inventoryTab;
@@ -25,30 +26,30 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void Awake()
         {
-            _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
+            MenuState.OnMenuStateChange += SetActiveTab;
+            _rootInventoryElement = GetComponent<UIDocument>().rootVisualElement;
+            QueryTabs();
+            SubscribeTabsEvent();
         }
 
         void Start()
         {
-            QueryTabs();
-            SetupTabsEvent();
             SetNewCurrentActiveTabButton();
-            MenuState.OnMenuStateChange += MenuStateChangeHandler;
         }
 
         private void OnDisable()
         {
-            MenuState.OnMenuStateChange -= MenuStateChangeHandler;
+            MenuState.OnMenuStateChange -= SetActiveTab;
         }
 
         private void QueryTabs()
         {
-            _craftingTab = _rootMenuElement.Q<Button>(TabNames.CRAFTING);
-            _inventoryTab = _rootMenuElement.Q<Button>(TabNames.INVENTORY);
-            _statusTab = _rootMenuElement.Q<Button>(TabNames.STATUS);
+            _craftingTab = _rootInventoryElement.Q<Button>(TabNames.CRAFTING);
+            _inventoryTab = _rootInventoryElement.Q<Button>(TabNames.INVENTORY);
+            _statusTab = _rootInventoryElement.Q<Button>(TabNames.STATUS);
         }
 
-        private void SetupTabsEvent()
+        private void SubscribeTabsEvent()
         {
             _craftingTab.clicked += CraftingTabClickHandler;
             _inventoryTab.clicked += InventoryTabClickHandler;
@@ -70,7 +71,7 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
             MenuState.CurrentMenuState = MenuState.MenuStates.Inventory;
         }
 
-        private void MenuStateChangeHandler()
+        private void SetActiveTab()
         {
             ClearCurrentActiveTabButton();
             SetNewCurrentActiveTabButton();
@@ -78,7 +79,7 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
 
         private void ClearCurrentActiveTabButton()
         {
-            _currentActiveTabButton.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
+            _currentActiveTabButton?.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
         }
 
         private void SetNewCurrentActiveTabButton()

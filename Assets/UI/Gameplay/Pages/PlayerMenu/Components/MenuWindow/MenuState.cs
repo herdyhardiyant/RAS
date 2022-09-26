@@ -1,6 +1,6 @@
 using System;
 
-namespace UI.Gameplay.Pages.PlayerMenu
+namespace UI.Gameplay.Pages.PlayerMenu.Components.MenuWindow
 {
     public static class MenuState
     {

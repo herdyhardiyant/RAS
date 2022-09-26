@@ -1,59 +1,52 @@
+using UI.Gameplay.Pages.PlayerMenu.Components.Crafting;
+using UI.Gameplay.Pages.PlayerMenu.Components.Inventory;
+using UI.Gameplay.Pages.PlayerMenu.Components.PlayerSurvivalStatus;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu
+namespace UI.Gameplay.Pages.PlayerMenu.Components.MenuWindow
 {
     public class MenuRouter : MonoBehaviour
     {
-        [SerializeField] private VisualTreeAsset _inventory;
-        [SerializeField] private VisualTreeAsset _crafting;
-        [SerializeField] private VisualTreeAsset _survivalStatus;
-        [SerializeField] private VisualTreeAsset _navigation;
-
         private VisualElement _inventoryElement;
         private VisualElement _craftingElement;
         private VisualElement _survivalStatusElement;
         private VisualElement _rootMenuElement;
 
+        [SerializeField] private InventoryManipulator _inventoryManipulator;
+        [SerializeField] private CraftingManipulator _craftingManipulator;
+        [SerializeField] private SurvivalStatusManipulator _survivalStatusManipulator;
+        
+        
         private void Awake()
         {
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
             MenuState.OnMenuStateChange += MenuStateChangeHandler;
-            AddNavigationElementToRootElement();
+
+            _inventoryElement = _inventoryManipulator.InventoryVisualElement;
+            _craftingElement = _craftingManipulator.CraftingVisualElement;
+            _survivalStatusElement = _survivalStatusManipulator.SurvivalStatusVisualElement;
+
         }
 
         void Start()
         {
             MenuState.CurrentMenuState = MenuState.MenuStates.Inventory;
-            CloneTreesFromImportedVisualTreeAssets();
-            ShowMenuFromCurrentMenuState();
+            ShowMenuFromMenuState();
         }
-
-        private void AddNavigationElementToRootElement()
-        {
-            _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
-            _rootMenuElement.Add(_navigation.CloneTree());
-        }
-
+        
         private void OnDisable()
         {
             MenuState.OnMenuStateChange -= MenuStateChangeHandler;
         }
 
-        private void CloneTreesFromImportedVisualTreeAssets()
-        {
-            _inventoryElement = _inventory.CloneTree();
-            _craftingElement = _crafting.CloneTree();
-            _survivalStatusElement = _survivalStatus.CloneTree();
-        }
-
         private void MenuStateChangeHandler()
         {
-            ClearMenu();
-            ShowMenuFromCurrentMenuState();
+            ClearMenuWindow();
+            ShowMenuFromMenuState();
         }
 
-        private void ShowMenuFromCurrentMenuState()
+        private void ShowMenuFromMenuState()
         {
             switch (MenuState.CurrentMenuState)
             {
@@ -69,12 +62,12 @@ namespace UI.Gameplay.Pages.PlayerMenu
             }
         }
 
-        private void ClearMenu()
+        private void ClearMenuWindow()
         {
-            if (_rootMenuElement.childCount == 1)
+            if (_rootMenuElement.childCount == 0)
                 return;
 
-            _rootMenuElement.ElementAt(1).RemoveFromHierarchy();
+            _rootMenuElement.ElementAt(0).RemoveFromHierarchy();
         }
     }
 }
