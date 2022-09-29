@@ -19,6 +19,14 @@ namespace UI.Gameplay.Pages.PlayerGameplay
             ConnectDependenciesEvent();
         }
         
+        private void ConnectDependenciesEvent()
+        {
+            GameplayUIEventHandler.OnOpenInventory += CloseUI;
+            GameplayUIEventHandler.OnCloseInventory += OpenUI;
+            PlayerInteractionEventHandler.OnPlayerInteract += ShowInteractionText;
+            PlayerInteractionEventHandler.OnPlayerStopInteraction += HideInteractionText;
+        }
+        
         private void ShowInteractionText(string interactText)
         {
             _interactText.visible = true;
@@ -29,10 +37,15 @@ namespace UI.Gameplay.Pages.PlayerGameplay
         {
             _interactText.visible = false;
         }
-        
-        private void ToggleVisibility()
+
+        private void CloseUI()
         {
-            _visualElement.visible = !_visualElement.visible;
+            _visualElement.visible = false;
+        }
+
+        private void OpenUI()
+        {
+            _visualElement.visible = true;
         }
 
         private void OnDisable()
@@ -40,16 +53,10 @@ namespace UI.Gameplay.Pages.PlayerGameplay
             DisconnectDependenciesEvent();
         }
         
-        private void ConnectDependenciesEvent()
-        {
-            GameplayUIEventHandler.OnOpenInventory += ToggleVisibility;
-            PlayerInteractionEventHandler.OnPlayerInteract += ShowInteractionText;
-            PlayerInteractionEventHandler.OnPlayerStopInteraction += HideInteractionText;
-        }
-        
         private void DisconnectDependenciesEvent()
         {
-            GameplayUIEventHandler.OnOpenInventory -= ToggleVisibility;
+            GameplayUIEventHandler.OnOpenInventory -= CloseUI;
+            GameplayUIEventHandler.OnCloseInventory -= OpenUI;
             PlayerInteractionEventHandler.OnPlayerInteract -= ShowInteractionText;
             PlayerInteractionEventHandler.OnPlayerStopInteraction -= HideInteractionText;
         }

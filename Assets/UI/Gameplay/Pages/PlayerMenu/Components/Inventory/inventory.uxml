@@ -4,6 +4,6 @@
     <Style src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=d07233ab24c408e468172df32a6eb880&amp;type=3#Inventory" />
     <ui:VisualElement name="inventory-container" style="flex-direction: row; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; justify-content: center; align-items: center; height: auto; flex-grow: 1; position: relative; width: 100%; bottom: auto;">
         <ui:Instance template="item-slots" name="item-slots" />
-        <ui:Instance template="character-model" name="character-model" style="width: auto;" />
+        <ui:Instance template="character-model" name="character-model" style="width: auto; background-color: rgba(0, 0, 0, 0);" />
     </ui:VisualElement>
 </ui:UXML>

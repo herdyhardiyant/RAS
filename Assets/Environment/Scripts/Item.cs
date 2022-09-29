@@ -14,12 +14,13 @@ namespace Environment.Scripts
         {
             tag = TAG_NAME;
         }
-
+        
+        // TODO Pickup Item to Inventory
+        // Dispatch item to InventoryDataStorage
+        // Notified all InventoryDataStorage listeners
+        // Destroy item from scene
         public void Interact()
         {
-            // TODO: Add to inventory storage
-            // After added to inventory destroy this object
-            // Update Inventory UI for stored object
             print("Pickup Item");
         }
 

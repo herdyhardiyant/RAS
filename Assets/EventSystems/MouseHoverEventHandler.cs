@@ -26,11 +26,11 @@ namespace EventSystems
 
 
         [SerializeField] private float _maxHoverRange = 5f;
-        
+
         private float _currentHoverDistance;
         private const string INTERACTABLE_TAG = "Interactable";
         private const string PICKUPABLE_TAG = "Pickupable";
-        
+
         private GameObject _hoveredObject;
         private MouseHover _mouseHover;
         private bool _isEnable;
@@ -44,15 +44,20 @@ namespace EventSystems
 
         private void Update()
         {
-            // TODO off when inventory or pause menu is open
+            if (GameplayUIEventHandler.IsInventoryOpen)
+            {
+                print("Inventory is Open");
+                OnMouseHoverNothing?.Invoke();
+                return;
+            }
 
             if (!_isEnable)
                 return;
-            
+
             var isHovering = _mouseHover.IsHovering;
             _hoveredObject = _mouseHover.HoveredObject;
 
-            if (GetHoverInteractionDistanceIsInRange())
+            if (GetInteractionIsInRange())
             {
                 OnMousePassMaxRange?.Invoke();
                 return;
@@ -83,17 +88,17 @@ namespace EventSystems
                 OnMouseHoverNothing?.Invoke();
             }
         }
-        
-        private bool GetHoverInteractionDistanceIsInRange()
+
+        private bool GetInteractionIsInRange()
         {
             var currentHoverDistance = GetHoverDistanceFromPlayer();
             return currentHoverDistance > _maxHoverRange;
         }
-        
+
         private void HoverPickupItem()
         {
             _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
-            
+
             OnMouseHoverPickupItem?.Invoke(hoveredObject);
         }
 
@@ -102,18 +107,16 @@ namespace EventSystems
             _hoveredObject.TryGetComponent<IInteractable>(out var hoveredObject);
             OnMouseHoverInteractable?.Invoke(hoveredObject);
         }
-        
+
         private float GetHoverDistanceFromPlayer()
         {
-                 
             var hitPoint = _mouseHover.HoverHitPoint;
             var hoveredObjectLocation2d = new Vector3(hitPoint.x, 0, hitPoint.z);
-            
+
             var playerPosition = _player.position;
             var playerPosition2d = new Vector3(playerPosition.x, 0, playerPosition.z);
-            
-            return Vector3.Distance(playerPosition2d, hoveredObjectLocation2d);
 
+            return Vector3.Distance(playerPosition2d, hoveredObjectLocation2d);
         }
     }
 }

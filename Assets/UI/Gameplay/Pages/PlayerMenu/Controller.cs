@@ -13,20 +13,9 @@ namespace UI.Gameplay.Pages.PlayerMenu
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
             CloseMenu();
-            GameplayUIEventHandler.OnOpenInventory += OpenInventoryClickHandler;
+            GameplayUIEventHandler.OnOpenInventory += OpenMenu;
+            GameplayUIEventHandler.OnCloseInventory += CloseMenu;
             SetRootBackgroundColor();
-        }
-
-        private void OpenInventoryClickHandler()
-        {
-            if (_rootVisualElement.visible)
-            {
-                CloseMenu();
-            }
-            else
-            {
-                OpenMenu();
-            }
         }
 
         private void CloseMenu()
@@ -46,7 +35,8 @@ namespace UI.Gameplay.Pages.PlayerMenu
 
         private void OnDisable()
         {
-            GameplayUIEventHandler.OnOpenInventory -= OpenInventoryClickHandler;
+            GameplayUIEventHandler.OnOpenInventory -= OpenMenu;
+            GameplayUIEventHandler.OnCloseInventory -= CloseMenu;
         }
     }
 }
