@@ -1,3 +1,4 @@
+using System;
 using Controls;
 using Environment.Interfaces;
 using EventSystems;
@@ -86,6 +87,11 @@ namespace Characters.Player.Scripts
                 moveDirection.x = -1;
 
             return moveDirection.normalized;
+        }
+
+        private void OnDisable()
+        {
+            MouseClickEventHandler.OnMouseClickHoveredObject -= RotatePlayerToClickedObject;
         }
     }
 }
