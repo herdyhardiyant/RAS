@@ -3,7 +3,7 @@ using System;
 namespace EventSystems
 {
     /// <summary>
-    /// Unified communication between player and other GameObject
+    /// Unified communication handler between player and other GameObject
     /// </summary>
     public static class PlayerInteractionEventHandler
     {

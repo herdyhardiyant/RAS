@@ -19,6 +19,8 @@ namespace Environment.Scripts
         // Dispatch item to InventoryDataStorage
         // Notified all InventoryDataStorage listeners
         // Destroy item from scene
+        
+        
         public void Interact()
         {
             print("Pickup Item");
@@ -29,9 +31,6 @@ namespace Environment.Scripts
             return "Item is added to inventory";
         }
 
-        public Vector3 GetInteractionWorldPosition()
-        {
-            return transform.position;
-        }
+        public Vector3 Position => transform.position;
     }
 }

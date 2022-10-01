@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: _walkSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1492044225394276573, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 1858135467}
     - target: {fileID: 1604957863240639347, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1077,6 +1081,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5996564500903237082, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 1858135467}
     - target: {fileID: 6101546752846122262, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1836,6 +1844,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1858135467 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 5263107839992677586, guid: 01f2502e4417f9a40a636cdfa827899f, type: 3}
+  m_PrefabInstance: {fileID: 960700965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913335104
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,6 @@ namespace EventSystems
         {
             if (GameplayUIEventHandler.IsInventoryOpen)
             {
-                print("Inventory is Open");
                 OnMouseHoverNothing?.Invoke();
                 return;
             }

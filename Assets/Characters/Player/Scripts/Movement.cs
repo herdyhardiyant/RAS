@@ -19,23 +19,13 @@ namespace Characters.Player.Scripts
         private PlayerInputMap _playerInputMap;
         private Vector3 _moveDirection;
 
-        void Start()
+        void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
             MouseClickEventHandler.OnMouseClickHoveredObject += RotatePlayerToClickedObject;
         }
-
-        private void RotatePlayerToClickedObject(IInteractable hoveredObject)
-        {
-            if (hoveredObject == null) return;
-            var hoveredObjectPosition = hoveredObject.GetInteractionWorldPosition();
-            var playerTransform = transform;
-            var directionToLook = (hoveredObjectPosition - playerTransform.position).normalized;
-            var directionToLook2d = new Vector3(directionToLook.x, 0, directionToLook.z);
-            playerTransform.forward = directionToLook2d;
-        }
-
+        
         void Update()
         {
             UpdatePlayerGravity();
@@ -45,6 +35,16 @@ namespace Characters.Player.Scripts
             _moveDirection = GetInputMoveDirection();
             RotatePlayerToMoveDirection();
             MovePlayer();
+        }
+        
+        private void RotatePlayerToClickedObject(IInteractable hoveredObject)
+        {
+            if (hoveredObject == null) return;
+            var hoveredObjectPosition = hoveredObject.Position;
+            var playerTransform = transform;
+            var directionToLook = (hoveredObjectPosition - playerTransform.position).normalized;
+            var directionToLook2d = new Vector3(directionToLook.x, 0, directionToLook.z);
+            playerTransform.forward = directionToLook2d;
         }
 
         private void UpdatePlayerGravity()

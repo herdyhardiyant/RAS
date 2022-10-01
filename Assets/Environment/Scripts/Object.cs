@@ -11,6 +11,7 @@ namespace Environment.Scripts
     {
         public string itemName = "Unrecognizable Object";
         private const string TAG_NAME = "Interactable";
+
         private void Awake()
         {
             tag = TAG_NAME;
@@ -19,7 +20,6 @@ namespace Environment.Scripts
         public void Interact()
         {
             print("Interact Object");
-
         }
 
         public string GetInteractionText()
@@ -27,9 +27,6 @@ namespace Environment.Scripts
             return $"This is a {itemName}";
         }
 
-        public Vector3 GetInteractionWorldPosition()
-        {
-            return transform.position;
-        }
+        public Vector3 Position => transform.position;
     }
 }
