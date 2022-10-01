@@ -25,6 +25,12 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
 
         private void Start()
         {
+            CreateItemSlots();
+            FetchInventoryDataToSlots();
+        }
+
+        private void CreateItemSlots()
+        {
             var maxItemSlots = PlayerInventory.MaxInventorySize;
 
             for (var i = 0; i < maxItemSlots; i++)
@@ -34,7 +40,10 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
                 _itemSlots.Add(itemSlot.contentContainer);
                 itemSlot.AddToClassList("item-slot");
             }
+        }
 
+        private void FetchInventoryDataToSlots()
+        {
             var playerInventory = PlayerInventory.Inventory;
 
             for (int i = 0; i < playerInventory.Count; i++)
@@ -44,5 +53,6 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
                 itemSlot.style.backgroundImage = Background.FromRenderTexture(item.image);
             }
         }
+        
     }
 }
