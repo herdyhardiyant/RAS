@@ -26,6 +26,7 @@ namespace EventSystems
 
         public static void PlayerStopInteraction()
         {
+            //TODO Use this function to remove interaction text
             OnPlayerStopInteraction?.Invoke();
         }
     }

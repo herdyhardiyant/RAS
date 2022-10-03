@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DataStorage;
+using EventSystems;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -16,17 +17,30 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
 
         private VisualElement _itemSlots;
 
+        //TODO on click slot with item, show item info
+        //TODO on click slot, highlight border
+        private class FilledSlotDataStructure
+        {
+            public VisualElement slot;
+            public ItemData storedItemData;
+            
+            public FilledSlotDataStructure(VisualElement slot, ItemData storedItemData)
+            {
+                this.slot = slot;
+                this.storedItemData = storedItemData;
+            }
+        }
+
         void Awake()
         {
             _inventoryRoot = _inventoryTreeAsset.CloneTree();
             _itemSlots = _inventoryRoot.Query<VisualElement>("item-slots");
-            
+            InventoryEventHandler.onInventoryChanged += FetchInventoryDataToSlots;
         }
 
         private void Start()
         {
             CreateItemSlots();
-            FetchInventoryDataToSlots();
         }
 
         private void CreateItemSlots()
@@ -45,7 +59,6 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
         private void FetchInventoryDataToSlots()
         {
             var playerInventory = PlayerInventory.Inventory;
-
             for (int i = 0; i < playerInventory.Count; i++)
             {
                 var itemSlot = _inventoryRoot.Query<VisualElement>($"slot-{i}").First();
@@ -53,6 +66,5 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
                 itemSlot.style.backgroundImage = Background.FromRenderTexture(item.image);
             }
         }
-        
     }
 }

@@ -1,3 +1,4 @@
+using DataStorage;
 using Environment.Interfaces;
 using UnityEngine;
 
@@ -9,21 +10,29 @@ namespace Environment.Scripts
     public class Item : MonoBehaviour, IInteractable
     {
         private const string TAG_NAME = "Pickupable";
+        
+        [SerializeField]
+        private string _itemName;
+        
+        [SerializeField]
+        private string _description;
+        
+        [SerializeField]
+        private RenderTexture _image;
+
+        private ItemData _itemData;
 
         void Awake()
         {
             tag = TAG_NAME;
+            _itemData = new ItemData(_itemName, _description, _image);
         }
-        
-        // TODO Pickup Item to Inventory
-        // Dispatch item to InventoryDataStorage
-        // Notified all InventoryDataStorage listeners
-        // Destroy item from scene
-        
-        
+
         public void Interact()
         {
-            print("Pickup Item");
+            print($"Pickup {_itemName}");
+            PlayerInventory.AddItem(_itemData);
+            Destroy(gameObject);
         }
 
         public string GetInteractionText()
