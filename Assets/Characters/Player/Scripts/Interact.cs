@@ -15,6 +15,7 @@ namespace Characters.Player.Scripts
         
         private void MouseClickHoveredObjectHandler(IInteractable hoveredObject)
         {
+            // TODO Remove Environment Interface Dependency
             hoveredObject.Interact();
             PlayerInteractionEventHandler.PlayerStartInteract(hoveredObject.GetInteractionText());
         }

@@ -23,6 +23,9 @@ namespace EventSystems
 
         private void ClickHoveredInteractableObject(IInteractable hoveredObject)
         {
+            //TODO Hovered Object run Interact() here
+            //TODO Invoke event to UI to show interact text
+
             if(_playerInputMap.IsInteractClicked)
             {
                 OnMouseClickHoveredObject?.Invoke(hoveredObject);
