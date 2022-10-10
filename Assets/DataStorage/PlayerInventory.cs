@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using EventSystems;
-using UnityEditor;
-using UnityEngine;
 
 namespace DataStorage
 {
@@ -10,11 +7,11 @@ namespace DataStorage
     {
         public static int MaxInventorySize => maxInventorySize;
 
-        public static LinkedList<ItemData> Inventory => inventory;
-        
+        public static List<ItemData> Inventory => inventory;
+
         static PlayerInventory()
         {
-            inventory = new LinkedList<ItemData>();
+            inventory = new List<ItemData>();
         }
 
         public static void AddItem(ItemData item)
@@ -23,11 +20,25 @@ namespace DataStorage
             {
                 return;
             }
-            
-            inventory.AddLast(item);
+
+            inventory.Add(item);
             InventoryEventHandler.InvokeInventoryChangedEvent();
         }
-        private static LinkedList<ItemData> inventory;
+
+        public static void RemoveItem(ItemData item)
+        {
+            var itemIndex = inventory.FindIndex(checkedItem => checkedItem.id == item.id);
+            if (itemIndex == -1)
+            {
+                return;
+            }
+
+            inventory.RemoveAt(itemIndex);
+            
+            InventoryEventHandler.InvokeInventoryChangedEvent();
+        }
+
+        public static List<ItemData> inventory;
         private static readonly int maxInventorySize = 10;
     }
 }

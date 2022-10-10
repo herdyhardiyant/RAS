@@ -2,9 +2,6 @@ using System;
 
 namespace EventSystems
 {
-    /// <summary>
-    /// Unified communication handler between player and other GameObject
-    /// </summary>
     public static class PlayerInteractionEventHandler
     {
         /// <summary>

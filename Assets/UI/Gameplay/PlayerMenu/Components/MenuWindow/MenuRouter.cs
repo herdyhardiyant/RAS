@@ -1,10 +1,10 @@
-using UI.Gameplay.Pages.PlayerMenu.Components.Crafting;
-using UI.Gameplay.Pages.PlayerMenu.Components.Inventory;
-using UI.Gameplay.Pages.PlayerMenu.Components.PlayerSurvivalStatus;
+using UI.Gameplay.PlayerMenu.Components.Crafting;
+using UI.Gameplay.PlayerMenu.Components.Inventory;
+using UI.Gameplay.PlayerMenu.Components.PlayerSurvivalStatus;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu.Components.MenuWindow
+namespace UI.Gameplay.PlayerMenu.Components.MenuWindow
 {
     public class MenuRouter : MonoBehaviour
     {

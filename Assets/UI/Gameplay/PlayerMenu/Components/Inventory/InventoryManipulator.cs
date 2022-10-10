@@ -1,12 +1,10 @@
-using System;
 using System.Linq;
 using DataStorage;
 using EventSystems;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
+namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
     public class InventoryManipulator : MonoBehaviour
     {
@@ -14,29 +12,23 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
         private VisualElement _inventoryRoot;
 
         [SerializeField] private VisualTreeAsset _itemModalWindowTreeAsset;
+        [SerializeField] private GameObject _player;
 
         public VisualElement InventoryVisualElement => _inventoryRoot;
 
         private VisualElement _itemSlots;
         private VisualElement _containerForItemModal;
 
-
         void Awake()
         {
             _inventoryRoot = _inventoryTreeAsset.CloneTree();
             _itemSlots = _inventoryRoot.Query<VisualElement>("item-slots");
             _containerForItemModal = _inventoryRoot.Query<VisualElement>("item-modal-container");
-            InventoryEventHandler.onInventoryChanged += FetchInventoryDataToSlots;
-
             _containerForItemModal.visible = false;
-            GameplayUIEventHandler.OnCloseInventory += CloseInventory;
+            SubscribeEvents();
         }
 
-        /// <summary>
-        /// Handle weird bug where this ItemModal
-        /// is still showing up even though the root is set to not visible.
-        /// Use this to hide ItemModal when inventory root visual element is set to not visible.
-        /// </summary>
+
         private void CloseInventory()
         {
             _containerForItemModal.Clear();
@@ -50,7 +42,6 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
 
         private void CreateItemSlots()
         {
-            //TODO Create Slot Class and Handle all slot functionality there.
             var maxItemSlots = PlayerInventory.MaxInventorySize;
 
             for (var i = 0; i < maxItemSlots; i++)
@@ -62,9 +53,10 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
             }
         }
 
-        private void FetchInventoryDataToSlots()
+        private void BuildItemInInventoryDataToSlots()
         {
             var playerInventoryData = PlayerInventory.Inventory;
+
             for (int i = 0; i < playerInventoryData.Count; i++)
             {
                 var itemSlot = _inventoryRoot.Query<VisualElement>($"slot-{i}").First();
@@ -83,10 +75,12 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
             }
         }
 
+        //TODO Split Item Modal Window into its own class
         private void ShowItemModal(TemplateContainer itemModalWindow)
         {
             _containerForItemModal.visible = true;
             _containerForItemModal.Clear();
+
             _containerForItemModal.Add(itemModalWindow);
         }
 
@@ -95,10 +89,24 @@ namespace UI.Gameplay.Pages.PlayerMenu.Components.Inventory
             var itemModalWindow = _itemModalWindowTreeAsset.CloneTree();
             itemModalWindow.Query<Label>("item-name").First().text = item.name;
             itemModalWindow.Query<Label>("item-description").First().text = item.description;
-            //TODO Create Drop Method to spawn item to the world and delete from inventory
             itemModalWindow.Query<Button>("use-button").First().clicked += () => { print($"{item.name} is used"); };
-            itemModalWindow.Query<Button>("drop-button").First().clicked += () => { print($"{item.name} is dropped"); };
+            itemModalWindow.Query<Button>("drop-button").First().clicked += () => { DropItem(item); };
             return itemModalWindow;
+        }
+
+        private void DropItem(ItemData item)
+        {
+            PlayerInventory.RemoveItem(item);
+
+            var dropPosition = _player.transform.position + _player.transform.forward * 2;
+            
+            Instantiate(item.prefab, dropPosition, Quaternion.identity);
+        }
+
+        private void SubscribeEvents()
+        {
+            GameplayUIEventHandler.OnCloseInventory += CloseInventory;
+            InventoryEventHandler.onInventoryChanged += BuildItemInInventoryDataToSlots;
         }
     }
 }

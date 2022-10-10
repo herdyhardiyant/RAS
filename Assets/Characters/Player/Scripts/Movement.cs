@@ -1,4 +1,4 @@
-using System;
+
 using Controls;
 using Environment.Interfaces;
 using EventSystems;
@@ -18,7 +18,12 @@ namespace Characters.Player.Scripts
         private const float _gravityValue = -9.81f;
         private PlayerInputMap _playerInputMap;
         private Vector3 _moveDirection;
-
+        
+        public Vector3 GetPosition()
+        {
+            return transform.position;
+        }
+        
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
@@ -93,5 +98,7 @@ namespace Characters.Player.Scripts
         {
             MouseClickEventHandler.OnMouseClickHoveredObject -= RotatePlayerToClickedObject;
         }
+
+       
     }
 }

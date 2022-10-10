@@ -4,7 +4,7 @@ using EventSystems;
 
 namespace Characters.Player.Scripts
 {
-
+    
     public class Interact : MonoBehaviour
     {
         
@@ -15,7 +15,7 @@ namespace Characters.Player.Scripts
         
         private void MouseClickHoveredObjectHandler(IInteractable hoveredObject)
         {
-            // TODO Remove Environment Interface Dependency
+            // TODO Do this inside MouseClickEventHandler
             hoveredObject.Interact();
             PlayerInteractionEventHandler.PlayerStartInteract(hoveredObject.GetInteractionText());
         }

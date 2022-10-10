@@ -1,11 +1,11 @@
-using UI.Gameplay.Pages.PlayerMenu.Components.MenuWindow;
+using UI.Gameplay.PlayerMenu.Components.MenuWindow;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu.Components.Navigation
+namespace UI.Gameplay.PlayerMenu.Components.Navigation
 {
     [RequireComponent(typeof(UIDocument))]
-    public class Navigation : MonoBehaviour
+    public class NavigationManipulator : MonoBehaviour
     {
         private VisualElement _rootInventoryElement;
 

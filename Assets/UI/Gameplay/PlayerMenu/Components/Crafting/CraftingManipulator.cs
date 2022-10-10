@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UI.Gameplay.Pages.PlayerMenu.Components.Crafting
+namespace UI.Gameplay.PlayerMenu.Components.Crafting
 {
     [RequireComponent(typeof(UIDocument))]
     public class CraftingManipulator : MonoBehaviour

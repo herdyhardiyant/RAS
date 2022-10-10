@@ -113,3 +113,4 @@ MonoBehaviour:
   _itemName: DummyItem2
   _description: The second dummy item
   _image: {fileID: 8400000, guid: 9fde29617099f734fbac5819e37c3c73, type: 2}
+  _itemPrefabPath: EnvironmentPrefabs/DummyItem2.prefab

@@ -25,14 +25,14 @@ namespace Environment.Scripts
         void Awake()
         {
             tag = TAG_NAME;
-            _itemData = new ItemData(_itemName, _description, _image);
+            _itemData = new ItemData(_itemName, _description, _image, gameObject);
         }
 
         public void Interact()
         {
             print($"Pickup {_itemName}");
             PlayerInventory.AddItem(_itemData);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         public string GetInteractionText()
