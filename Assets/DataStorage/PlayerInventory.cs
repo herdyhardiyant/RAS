@@ -7,9 +7,7 @@ namespace DataStorage
 {
     public class PlayerInventory: MonoBehaviour
     {
-        
-        public static event Action OnOnInventoryChanged;
-        
+
         public static int MaxInventorySize => _maxInventorySize;
 
         public static List<ItemData> Inventory => _inventory;
@@ -27,16 +25,14 @@ namespace DataStorage
             }
             
             _inventory.Add(item);
-            // InventoryEventHandler.InvokeInventoryChangedEvent();
-            OnOnInventoryChanged?.Invoke();
+            InventoryEventHandler.ItemAdded();
         }
 
         public static void RemoveItem(ItemData item)
         {
             var itemIndex = _inventory.IndexOf(item);
             _inventory.RemoveAt(itemIndex);
-            // InventoryEventHandler.InvokeInventoryChangedEvent();
-            OnOnInventoryChanged?.Invoke();
+            InventoryEventHandler.ItemRemoved();
         }
         
 

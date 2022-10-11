@@ -16,11 +16,10 @@ namespace EventSystems
 
         public static void PlayerStartInteract(string interactionText)
         {
-           
             OnPlayerInteract?.Invoke(interactionText);
-            
         }
 
+        // TODO Use timer to call this after a certain amount of time
         public static void PlayerStopInteraction()
         {
             //TODO Use this function to remove interaction text

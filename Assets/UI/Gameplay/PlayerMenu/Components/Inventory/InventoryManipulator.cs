@@ -9,33 +9,34 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
     public class InventoryManipulator : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset inventoryTreeAsset;
-        private VisualElement _inventoryRoot;
 
         [SerializeField] private VisualTreeAsset itemModalWindowTreeAsset;
         [SerializeField] private GameObject player;
 
         public VisualElement InventoryVisualElement => _inventoryRoot;
 
+        private VisualElement _inventoryRoot;
         private VisualElement _itemSlots;
         private VisualElement _containerForItemModal;
         private int _playerInventoryItemCountBeforeInventoryChange;
+
+        private VisualElement _lastSelectedSlot;
+        private const int FocusBorderWidth = 2;
+        private const int DefaultBorderWidth = 0;
+        private const int DropItemDistanceFromPlayer = 2;
+        
+        private const string ItemSlotClass = "item-slot";
 
         void Awake()
         {
             _inventoryRoot = inventoryTreeAsset.CloneTree();
             _itemSlots = _inventoryRoot.Query<VisualElement>("item-slots");
+
             _containerForItemModal = _inventoryRoot.Query<VisualElement>("item-modal-container");
             _containerForItemModal.visible = false;
+
             SubscribeEvents();
-
             _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
-        }
-
-
-        private void CloseInventory()
-        {
-            _containerForItemModal.Clear();
-            _containerForItemModal.visible = false;
         }
 
         private void Start()
@@ -43,17 +44,46 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             CreateItemSlots();
         }
 
+
         private void CreateItemSlots()
         {
             var maxItemSlots = PlayerInventory.MaxInventorySize;
 
             for (var i = 0; i < maxItemSlots; i++)
             {
-                var itemSlot = new VisualElement();
-                itemSlot.name = "slot-" + i;
+                var itemSlot = CreateItemSlot(i);
+
                 _itemSlots.Add(itemSlot.contentContainer);
-                itemSlot.AddToClassList("item-slot");
             }
+        }
+
+        private static VisualElement CreateItemSlot(int slotId)
+        {
+            var itemSlot = new VisualElement
+            {
+                name = "slot-" + slotId
+            };
+            
+            itemSlot.AddToClassList(ItemSlotClass);
+
+            itemSlot.style.borderLeftWidth = DefaultBorderWidth;
+            itemSlot.style.borderRightWidth = DefaultBorderWidth;
+            itemSlot.style.borderTopWidth = DefaultBorderWidth;
+            itemSlot.style.borderBottomWidth = DefaultBorderWidth;
+
+            itemSlot.style.borderLeftColor = Color.white;
+            itemSlot.style.borderRightColor = Color.white;
+            itemSlot.style.borderTopColor = Color.white;
+            itemSlot.style.borderBottomColor = Color.white;
+            return itemSlot;
+        }
+
+        private void CloseInventory()
+        {
+            StopFocusingLastSelectedSlot();
+
+            _containerForItemModal.Clear();
+            _containerForItemModal.visible = false;
         }
 
         private void BuildItemInInventoryDataToSlots()
@@ -72,10 +102,25 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
                     if (evt.propagationPhase != PropagationPhase.AtTarget)
                         return;
 
+                    StopFocusingLastSelectedSlot();
+
+
+                    FocusClickedItemSlot(itemSlot);
+
                     var itemModalWindow = BuildItemModalWindow(item);
                     ShowItemModal(itemModalWindow);
                 });
             }
+        }
+
+        private void FocusClickedItemSlot(VisualElement itemSlot)
+        {
+            _lastSelectedSlot = itemSlot;
+
+            itemSlot.style.borderLeftWidth = FocusBorderWidth;
+            itemSlot.style.borderRightWidth = FocusBorderWidth;
+            itemSlot.style.borderTopWidth = FocusBorderWidth;
+            itemSlot.style.borderBottomWidth = FocusBorderWidth;
         }
 
         private void ClearItemSlots()
@@ -86,8 +131,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
                 itemSlot.style.backgroundImage = null;
             }
         }
-
-        //TODO Split Item Modal Window into its own class
+        
         private void ShowItemModal(TemplateContainer itemModalWindow)
         {
             _containerForItemModal.visible = true;
@@ -105,25 +149,37 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             itemModalWindow.Query<Button>("drop-button").First().clicked += () =>
             {
                 DropItem(item);
-                
                 _containerForItemModal.Clear();
             };
+
             return itemModalWindow;
         }
 
         private void DropItem(ItemData item)
         {
-            var dropPosition = player.transform.position + player.transform.forward * 2;
+            var dropPosition = player.transform.position + player.transform.forward * DropItemDistanceFromPlayer;
             item.ItemObjectReference.SetActive(true);
             item.ItemObjectReference.transform.position = dropPosition;
+            StopFocusingLastSelectedSlot();
             PlayerInventory.RemoveItem(item);
         }
-        
-        
+
+        private void StopFocusingLastSelectedSlot()
+        {
+            if (_lastSelectedSlot != null)
+            {
+                _lastSelectedSlot.style.borderLeftWidth = DefaultBorderWidth;
+                _lastSelectedSlot.style.borderRightWidth = DefaultBorderWidth;
+                _lastSelectedSlot.style.borderTopWidth = DefaultBorderWidth;
+                _lastSelectedSlot.style.borderBottomWidth = DefaultBorderWidth;
+            }
+        }
+
+
         private void SubscribeEvents()
         {
             GameplayUIEventHandler.OnCloseInventory += CloseInventory;
-            PlayerInventory.OnOnInventoryChanged += () =>
+            InventoryEventHandler.OnInventoryChanged += () =>
             {
                 ClearItemSlots();
                 BuildItemInInventoryDataToSlots();
