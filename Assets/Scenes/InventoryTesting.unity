@@ -338,6 +338,10 @@ PrefabInstance:
       value: DummyItem (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6720846461515166958, guid: 5568b26d9d9098349a8dc0cf31b1d52f, type: 3}
+      propertyPath: itemName
+      value: Dummy Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720846461515166958, guid: 5568b26d9d9098349a8dc0cf31b1d52f, type: 3}
       propertyPath: _itemPrefab
       value: 
       objectReference: {fileID: 3612404089587197893, guid: 5568b26d9d9098349a8dc0cf31b1d52f, type: 3}

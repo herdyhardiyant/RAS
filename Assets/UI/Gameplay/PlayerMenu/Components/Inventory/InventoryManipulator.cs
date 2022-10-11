@@ -8,24 +8,27 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
     public class InventoryManipulator : MonoBehaviour
     {
-        [SerializeField] private VisualTreeAsset _inventoryTreeAsset;
+        [SerializeField] private VisualTreeAsset inventoryTreeAsset;
         private VisualElement _inventoryRoot;
 
-        [SerializeField] private VisualTreeAsset _itemModalWindowTreeAsset;
-        [SerializeField] private GameObject _player;
+        [SerializeField] private VisualTreeAsset itemModalWindowTreeAsset;
+        [SerializeField] private GameObject player;
 
         public VisualElement InventoryVisualElement => _inventoryRoot;
 
         private VisualElement _itemSlots;
         private VisualElement _containerForItemModal;
+        private int _playerInventoryItemCountBeforeInventoryChange;
 
         void Awake()
         {
-            _inventoryRoot = _inventoryTreeAsset.CloneTree();
+            _inventoryRoot = inventoryTreeAsset.CloneTree();
             _itemSlots = _inventoryRoot.Query<VisualElement>("item-slots");
             _containerForItemModal = _inventoryRoot.Query<VisualElement>("item-modal-container");
             _containerForItemModal.visible = false;
             SubscribeEvents();
+
+            _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
         }
 
 
@@ -61,7 +64,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             {
                 var itemSlot = _inventoryRoot.Query<VisualElement>($"slot-{i}").First();
                 var item = playerInventoryData.ElementAt(i);
-                itemSlot.style.backgroundImage = Background.FromRenderTexture(item.image);
+                itemSlot.style.backgroundImage = Background.FromRenderTexture(item.Image);
 
                 //TODO on click slot, highlight border
                 itemSlot.RegisterCallback<ClickEvent>(evt =>
@@ -72,6 +75,15 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
                     var itemModalWindow = BuildItemModalWindow(item);
                     ShowItemModal(itemModalWindow);
                 });
+            }
+        }
+
+        private void ClearItemSlots()
+        {
+            for (int i = 0; i < _playerInventoryItemCountBeforeInventoryChange; i++)
+            {
+                var itemSlot = _itemSlots.Query($"slot-{i}").First();
+                itemSlot.style.backgroundImage = null;
             }
         }
 
@@ -86,27 +98,43 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 
         private TemplateContainer BuildItemModalWindow(ItemData item)
         {
-            var itemModalWindow = _itemModalWindowTreeAsset.CloneTree();
-            itemModalWindow.Query<Label>("item-name").First().text = item.name;
-            itemModalWindow.Query<Label>("item-description").First().text = item.description;
-            itemModalWindow.Query<Button>("use-button").First().clicked += () => { print($"{item.name} is used"); };
-            itemModalWindow.Query<Button>("drop-button").First().clicked += () => { DropItem(item); };
+            var itemModalWindow = itemModalWindowTreeAsset.CloneTree();
+            itemModalWindow.Query<Label>("item-name").First().text = item.Name;
+            itemModalWindow.Query<Label>("item-description").First().text = item.Description;
+            itemModalWindow.Query<Button>("use-button").First().clicked += () => { print($"{item.Name} is used"); };
+            itemModalWindow.Query<Button>("drop-button").First().clicked += () =>
+            {
+                DropItem(item);
+                
+                _containerForItemModal.Clear();
+            };
             return itemModalWindow;
         }
 
         private void DropItem(ItemData item)
         {
+            var dropPosition = player.transform.position + player.transform.forward * 2;
+            item.ItemObjectReference.SetActive(true);
+            item.ItemObjectReference.transform.position = dropPosition;
             PlayerInventory.RemoveItem(item);
-
-            var dropPosition = _player.transform.position + _player.transform.forward * 2;
-            
-            Instantiate(item.prefab, dropPosition, Quaternion.identity);
         }
+        
+        
 
         private void SubscribeEvents()
         {
             GameplayUIEventHandler.OnCloseInventory += CloseInventory;
-            InventoryEventHandler.onInventoryChanged += BuildItemInInventoryDataToSlots;
+            InventoryEventHandler.onInventoryChanged += () =>
+            {
+                // foreach (var item in PlayerInventory.Inventory)
+                // {
+                //     print(item.Name);
+                // }
+                
+                ClearItemSlots();
+                BuildItemInInventoryDataToSlots();
+                _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
+            };
         }
     }
 }

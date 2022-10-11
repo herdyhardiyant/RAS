@@ -79,8 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc2ee5db04e04e4db9b1fc44b5587d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
-  _itemModalWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
+  inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
+  itemModalWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
+  player: {fileID: 0}
 --- !u!114 &8815093298756791792
 MonoBehaviour:
   m_ObjectHideFlags: 0

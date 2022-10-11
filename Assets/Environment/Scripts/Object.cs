@@ -10,11 +10,11 @@ namespace Environment.Scripts
     public class Object : MonoBehaviour, IInteractable
     {
         public string itemName = "Unrecognizable Object";
-        private const string TAG_NAME = "Interactable";
+        private const string TagName = "Interactable";
 
         private void Awake()
         {
-            tag = TAG_NAME;
+            tag = TagName;
         }
 
         public void Interact()

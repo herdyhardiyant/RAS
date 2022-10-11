@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5490d156514d0fd4a8b67baf9e667428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: DummyItem3
-  _description: The Third Dummy Item
-  _image: {fileID: 8400000, guid: c0b6d3121e3667549ad41a950d7cc54a, type: 2}
-  _itemPrefabPath: EnvironmentPrefabs/DummyItem3.prefab
+  itemName: DummyItem 3
+  description: This is just a dummy item 3
+  image: {fileID: 8400000, guid: c0b6d3121e3667549ad41a950d7cc54a, type: 2}

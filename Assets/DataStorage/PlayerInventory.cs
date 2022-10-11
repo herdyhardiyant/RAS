@@ -1,44 +1,39 @@
 using System.Collections.Generic;
 using EventSystems;
+using UnityEngine;
 
 namespace DataStorage
 {
-    public static class PlayerInventory
+    public class PlayerInventory: MonoBehaviour
     {
-        public static int MaxInventorySize => maxInventorySize;
+        public static int MaxInventorySize => _maxInventorySize;
 
-        public static List<ItemData> Inventory => inventory;
+        public static List<ItemData> Inventory => _inventory;
 
         static PlayerInventory()
         {
-            inventory = new List<ItemData>();
+            _inventory = new List<ItemData>();
         }
 
         public static void AddItem(ItemData item)
         {
-            if (inventory.Count >= maxInventorySize)
+            if (_inventory.Count >= _maxInventorySize)
             {
                 return;
             }
-
-            inventory.Add(item);
+            
+            _inventory.Add(item);
             InventoryEventHandler.InvokeInventoryChangedEvent();
         }
 
         public static void RemoveItem(ItemData item)
         {
-            var itemIndex = inventory.FindIndex(checkedItem => checkedItem.id == item.id);
-            if (itemIndex == -1)
-            {
-                return;
-            }
-
-            inventory.RemoveAt(itemIndex);
-            
+            var itemIndex = _inventory.IndexOf(item);
+            _inventory.RemoveAt(itemIndex);
             InventoryEventHandler.InvokeInventoryChangedEvent();
         }
 
-        public static List<ItemData> inventory;
-        private static readonly int maxInventorySize = 10;
+        private static List<ItemData> _inventory;
+        private static readonly int _maxInventorySize = 10;
     }
 }
