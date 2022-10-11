@@ -120,17 +120,11 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
         }
         
         
-
         private void SubscribeEvents()
         {
             GameplayUIEventHandler.OnCloseInventory += CloseInventory;
-            InventoryEventHandler.onInventoryChanged += () =>
+            PlayerInventory.OnOnInventoryChanged += () =>
             {
-                // foreach (var item in PlayerInventory.Inventory)
-                // {
-                //     print(item.Name);
-                // }
-                
                 ClearItemSlots();
                 BuildItemInInventoryDataToSlots();
                 _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
