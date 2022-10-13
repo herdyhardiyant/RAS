@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
-    public class ItemSlotManipulator : MonoBehaviour
+    public class ItemActionWindow
     {
         // Start is called before the first frame update
         void Start()

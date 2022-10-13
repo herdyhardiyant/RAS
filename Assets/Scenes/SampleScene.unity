@@ -1740,6 +1740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7836314129798382715, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1376669154}
     - target: {fileID: 8319959866838433391, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
       propertyPath: player
       value: 

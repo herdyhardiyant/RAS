@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 128415067659538329}
   - component: {fileID: 6182069064105067956}
   - component: {fileID: 958718505431124213}
-  - component: {fileID: 8319959866838433391}
   - component: {fileID: 8815093298756791792}
   - component: {fileID: 3078150115441635704}
   m_Layer: 0
@@ -32,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6663703825461547498}
   m_Father: {fileID: 521687347833175937}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,24 +64,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a304ef389991c409dce919d7d0c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryManipulator: {fileID: 8319959866838433391}
+  _inventoryManipulator: {fileID: 7836314129798382715}
   _craftingManipulator: {fileID: 8815093298756791792}
   _survivalStatusManipulator: {fileID: 3078150115441635704}
---- !u!114 &8319959866838433391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3506725140407815791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdc2ee5db04e04e4db9b1fc44b5587d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
-  itemModalWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
-  player: {fileID: 0}
 --- !u!114 &8815093298756791792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +93,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _survivalStatusTreeAsset: {fileID: 9197481963319205126, guid: 3ae679833c584404cb3eae2065869b80, type: 3}
+--- !u!1 &5169822900246454629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6663703825461547498}
+  - component: {fileID: 7836314129798382715}
+  m_Layer: 0
+  m_Name: InventoryWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6663703825461547498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169822900246454629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 128415067659538329}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836314129798382715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169822900246454629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc2ee5db04e04e4db9b1fc44b5587d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
+  itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
+  player: {fileID: 0}
 --- !u!1 &5251485134412664386
 GameObject:
   m_ObjectHideFlags: 0
