@@ -1,26 +1,26 @@
 using System;
 using System.Collections.Generic;
-using Codice.Client.BaseCommands;
 using DataStorage;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
     public class ItemSlotsManipulator
     {
-        
         public List<ItemSlot> ItemSlots => _itemSlots;
         private List<ItemSlot> _itemSlots = new List<ItemSlot>();
         private int _itemSlotsCount;
         private string _individualItemSlotClass;
 
         private ItemSlot _focusedItemSlot;
-        private Action<ItemData?> _onItemSlotClicked;
+        private Action<ItemData> _onItemSlotClicked;
 
         public void ResetSlotFocus()
         {
-            _focusedItemSlot?.StopFocusing();
+            if (_focusedItemSlot != null)
+            {
+                _focusedItemSlot.StopFocusing();
+            }
         }
 
         public ItemSlotsManipulator(int itemSlotsCount, string individualItemSlotClass)
@@ -29,10 +29,11 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             _individualItemSlotClass = individualItemSlotClass;
             CreateItemSlots();
         }
-        
-        public void OnClickIndividualItemSlot(Action<ItemData?> callback)
+
+        public void OnClickIndividualItemSlot(Action<ItemData> callback)
         {
-            _onItemSlotClicked = callback;
+            if (callback != null)
+                _onItemSlotClicked = callback;
         }
 
         private void CreateItemSlots()
@@ -41,21 +42,36 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 
             for (var slotId = 0; slotId < maxItemSlots; slotId++)
             {
-                var slotName = "slot-" + slotId;
-                var itemSlot = new ItemSlot(slotName, _individualItemSlotClass);
+                var itemSlot = CreateItem(slotId);
+
                 itemSlot.SlotVisualElement.RegisterCallback<ClickEvent>(clickEvent =>
                 {
-                    if(clickEvent.propagationPhase != PropagationPhase.AtTarget)
+                    if (clickEvent.propagationPhase != PropagationPhase.AtTarget)
                         return;
-                    
-                    _focusedItemSlot?.StopFocusing();
+
+                    if (_focusedItemSlot != null)
+                    {
+                        _focusedItemSlot.StopFocusing();
+                    }
+
                     _focusedItemSlot = itemSlot;
                     itemSlot.Focus();
 
-                    _onItemSlotClicked(itemSlot.StoredItemData);
-                } );
+                    if (_onItemSlotClicked != null)
+                    {
+                        _onItemSlotClicked(itemSlot.StoredItemData);
+                    }
+                });
+
                 _itemSlots.Add(itemSlot);
             }
+        }
+
+        private ItemSlot CreateItem(int slotId)
+        {
+            var slotName = "slot-" + slotId;
+            var itemSlot = new ItemSlot(slotName, _individualItemSlotClass);
+            return itemSlot;
         }
     }
 }

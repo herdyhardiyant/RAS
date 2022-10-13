@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace UI.Gameplay.PlayerMenu.Components.Crafting
 {
-    [RequireComponent(typeof(UIDocument))]
+    
     public class CraftingManipulator : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset _craftingTreeAsset;

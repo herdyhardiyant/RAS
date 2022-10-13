@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using DataStorage;
 using EventSystems;
 using UnityEngine;
@@ -12,7 +11,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
         [SerializeField] private VisualTreeAsset inventoryTreeAsset;
 
         [SerializeField] private VisualTreeAsset itemActionWindowTreeAsset;
-        [SerializeField] private GameObject player;
+        [SerializeField] private Transform playerPosition;
 
         public VisualElement InventoryVisualElement => _inventoryRoot;
 
@@ -67,8 +66,6 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
         
             foreach (var slot in _itemSlotsList)
             {
-                print(slot.Name);
-                print(slot.SlotVisualElement);
                 _itemSlotsContainer.Add(slot.SlotVisualElement);
             }
             
@@ -128,7 +125,8 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 
         private void DropItem(ItemData item)
         {
-            var dropPosition = player.transform.position + player.transform.forward * DropItemDistanceFromPlayer;
+            var transform1 = playerPosition.transform;
+            var dropPosition = transform1.position + transform1.forward * DropItemDistanceFromPlayer;
             item.ItemObjectReference.SetActive(true);
             item.ItemObjectReference.transform.position = dropPosition;
             _itemSlotsManipulator.ResetSlotFocus();

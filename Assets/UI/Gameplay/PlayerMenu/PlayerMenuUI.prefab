@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &435997396138100889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6287016847374267539}
+  - component: {fileID: 4636020836335035882}
+  m_Layer: 0
+  m_Name: StatusWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6287016847374267539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435997396138100889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 128415067659538329}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4636020836335035882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435997396138100889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b0720ca421ac04a9d00a368c10a635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _survivalStatusTreeAsset: {fileID: 9197481963319205126, guid: 3ae679833c584404cb3eae2065869b80, type: 3}
+--- !u!1 &880342731911083972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7665534467219124595}
+  - component: {fileID: 6508918568361856183}
+  m_Layer: 0
+  m_Name: CraftingWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7665534467219124595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880342731911083972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 128415067659538329}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6508918568361856183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880342731911083972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73123430cb33981409594e3e5b0e63c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _craftingTreeAsset: {fileID: 9197481963319205126, guid: 491f84cb096e72b488b17d7c172e24ef, type: 3}
 --- !u!1 &3506725140407815791
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,8 +101,6 @@ GameObject:
   - component: {fileID: 128415067659538329}
   - component: {fileID: 6182069064105067956}
   - component: {fileID: 958718505431124213}
-  - component: {fileID: 8815093298756791792}
-  - component: {fileID: 3078150115441635704}
   m_Layer: 0
   m_Name: MenuWindow
   m_TagString: Untagged
@@ -33,6 +121,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6663703825461547498}
+  - {fileID: 7665534467219124595}
+  - {fileID: 6287016847374267539}
   m_Father: {fileID: 521687347833175937}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,34 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryManipulator: {fileID: 7836314129798382715}
-  _craftingManipulator: {fileID: 8815093298756791792}
-  _survivalStatusManipulator: {fileID: 3078150115441635704}
---- !u!114 &8815093298756791792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3506725140407815791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73123430cb33981409594e3e5b0e63c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _craftingTreeAsset: {fileID: 9197481963319205126, guid: 491f84cb096e72b488b17d7c172e24ef, type: 3}
---- !u!114 &3078150115441635704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3506725140407815791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b0720ca421ac04a9d00a368c10a635, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _survivalStatusTreeAsset: {fileID: 9197481963319205126, guid: 3ae679833c584404cb3eae2065869b80, type: 3}
+  _craftingManipulator: {fileID: 6508918568361856183}
+  _survivalStatusManipulator: {fileID: 4636020836335035882}
 --- !u!1 &5169822900246454629
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6663703825461547498}
   - component: {fileID: 7836314129798382715}
+  - component: {fileID: 5333561970815657241}
   m_Layer: 0
   m_Name: InventoryWindow
   m_TagString: Untagged
@@ -140,6 +205,20 @@ MonoBehaviour:
   inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
   itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
   player: {fileID: 0}
+--- !u!114 &5333561970815657241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169822900246454629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21dd9f97d81d99438e295c8c0b0e253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
+  inventory: {fileID: 7836314129798382715}
 --- !u!1 &5251485134412664386
 GameObject:
   m_ObjectHideFlags: 0

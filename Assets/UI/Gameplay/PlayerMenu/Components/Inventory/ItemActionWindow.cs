@@ -1,16 +1,27 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
-    public class ItemActionWindow
+    public class ItemActionWindow: MonoBehaviour
     {
-        // Start is called before the first frame update
+        
+        [SerializeField] private VisualTreeAsset itemActionWindowTreeAsset;
+        [SerializeField] private InventoryManipulator inventory;
+
+        private VisualElement _inventoryRoot;
+        private VisualElement _itemActionWindow;
+       
+        
         void Start()
         {
-        
+            _inventoryRoot = inventory.InventoryVisualElement;
+            _itemActionWindow = itemActionWindowTreeAsset.CloneTree();
+            _inventoryRoot.Add(_itemActionWindow);
+            _itemActionWindow.style.display = DisplayStyle.None;
         }
-
-        // Update is called once per frame
+        
+        
         void Update()
         {
         
