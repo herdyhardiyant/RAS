@@ -203,8 +203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
+  itemActionWindow: {fileID: 5333561970815657241}
   itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
-  player: {fileID: 0}
+  playerPosition: {fileID: 0}
 --- !u!114 &5333561970815657241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
   inventory: {fileID: 7836314129798382715}
+  playerPositionForItemDrop: {fileID: 0}
 --- !u!1 &5251485134412664386
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
-    public class ItemSlotsManipulator
+    public class ItemSlotsBuilder
     {
         public List<ItemSlot> ItemSlots => _itemSlots;
         private List<ItemSlot> _itemSlots = new List<ItemSlot>();
@@ -23,7 +23,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             }
         }
 
-        public ItemSlotsManipulator(int itemSlotsCount, string individualItemSlotClass)
+        public ItemSlotsBuilder(int itemSlotsCount, string individualItemSlotClass)
         {
             _itemSlotsCount = itemSlotsCount;
             _individualItemSlotClass = individualItemSlotClass;

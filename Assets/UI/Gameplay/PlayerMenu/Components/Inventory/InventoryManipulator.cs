@@ -9,32 +9,22 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
     public class InventoryManipulator : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset inventoryTreeAsset;
-
-        [SerializeField] private VisualTreeAsset itemActionWindowTreeAsset;
-        [SerializeField] private Transform playerPosition;
-
+        [SerializeField] private ItemActionWindow itemActionWindow;
         public VisualElement InventoryVisualElement => _inventoryRoot;
-
         private VisualElement _inventoryRoot;
         private VisualElement _itemSlotsContainer;
-        private VisualElement _itemModalContainer;
-        
+
         private int _playerInventoryItemCountBeforeInventoryChange;
 
-        private const int DropItemDistanceFromPlayer = 2;
-
         private const string ItemSlotClass = "item-slot";
-        
+
         private List<ItemSlot> _itemSlotsList = new List<ItemSlot>();
-        private ItemSlotsManipulator _itemSlotsManipulator;
+        private ItemSlotsBuilder _itemSlotsBuilder;
 
         void Awake()
         {
             _inventoryRoot = inventoryTreeAsset.CloneTree();
             _itemSlotsContainer = _inventoryRoot.Query<VisualElement>("item-slots");
-
-            _itemModalContainer = _inventoryRoot.Query<VisualElement>("item-modal-container");
-            _itemModalContainer.visible = false;
 
             SubscribeEvents();
             _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
@@ -49,40 +39,30 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
         private void CreateItemSlots()
         {
             var maxItemSlots = PlayerInventory.MaxInventorySize;
-            
-            _itemSlotsManipulator = new ItemSlotsManipulator(maxItemSlots, ItemSlotClass);
-            
-            _itemSlotsManipulator.OnClickIndividualItemSlot((itemDataOnSlot =>
+
+            _itemSlotsBuilder = new ItemSlotsBuilder(maxItemSlots, ItemSlotClass);
+
+            _itemSlotsBuilder.OnClickIndividualItemSlot((itemDataOnSlot =>
             {
-                if(itemDataOnSlot == null)
+                if (itemDataOnSlot == null)
                     return;
 
-                var itemModal = BuildItemActionWindow(itemDataOnSlot);
-                ShowItemActionWindow(itemModal);
-
+                itemActionWindow.ShowItemActionWindow(itemDataOnSlot, () => { DropItem(itemDataOnSlot); });
+              
             }));
-            
-            _itemSlotsList = _itemSlotsManipulator.ItemSlots;
-        
+
+            _itemSlotsList = _itemSlotsBuilder.ItemSlots;
+
             foreach (var slot in _itemSlotsList)
             {
                 _itemSlotsContainer.Add(slot.SlotVisualElement);
             }
-            
-        }
-        
-        private void CloseInventory()
-        {
-            _itemSlotsManipulator.ResetSlotFocus();
-
-            _itemModalContainer.Clear();
-            _itemModalContainer.visible = false;
         }
 
-        private void InventoryDataItemsToSlots()
+        private void RetrieveInventoryDataItemsToSlots()
         {
             var playerInventoryData = PlayerInventory.Inventory;
-            
+
             for (int i = 0; i < playerInventoryData.Count; i++)
             {
                 var itemData = playerInventoryData[i];
@@ -90,7 +70,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             }
         }
 
-        private void ClearItemSlots()
+        private void ClearItemFromSlots()
         {
             for (int i = 0; i < _playerInventoryItemCountBeforeInventoryChange; i++)
             {
@@ -100,48 +80,27 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             }
         }
 
-        private void ShowItemActionWindow(TemplateContainer itemModalWindow)
-        {
-            _itemModalContainer.visible = true;
-            _itemModalContainer.Clear();
-
-            _itemModalContainer.Add(itemModalWindow);
-        }
-
-        private TemplateContainer BuildItemActionWindow(ItemData item)
-        {
-            var itemModalWindow = itemActionWindowTreeAsset.CloneTree();
-            itemModalWindow.Query<Label>("item-name").First().text = item.Name;
-            itemModalWindow.Query<Label>("item-description").First().text = item.Description;
-            itemModalWindow.Query<Button>("use-button").First().clicked += () => { print($"{item.Name} is used"); };
-            itemModalWindow.Query<Button>("drop-button").First().clicked += () =>
-            {
-                DropItem(item);
-                _itemModalContainer.Clear();
-            };
-
-            return itemModalWindow;
-        }
-
         private void DropItem(ItemData item)
         {
-            var transform1 = playerPosition.transform;
-            var dropPosition = transform1.position + transform1.forward * DropItemDistanceFromPlayer;
-            item.ItemObjectReference.SetActive(true);
-            item.ItemObjectReference.transform.position = dropPosition;
-            _itemSlotsManipulator.ResetSlotFocus();
+            _itemSlotsBuilder.ResetSlotFocus();
             PlayerInventory.RemoveItem(item);
         }
-        
+
         private void SubscribeEvents()
         {
             GameplayUIEventHandler.OnCloseInventory += CloseInventory;
+            
             InventoryEventHandler.OnInventoryChanged += () =>
             {
-                ClearItemSlots();
-                InventoryDataItemsToSlots();
+                ClearItemFromSlots();
+                RetrieveInventoryDataItemsToSlots();
                 _playerInventoryItemCountBeforeInventoryChange = PlayerInventory.Inventory.Count;
             };
+        }
+
+        private void CloseInventory()
+        {
+            itemActionWindow.Hide();
         }
     }
 }
