@@ -13,7 +13,7 @@ namespace UI.Gameplay.PlayerMenu.Components.MenuWindow
         private VisualElement _survivalStatusElement;
         private VisualElement _rootMenuElement;
 
-        [SerializeField] private InventoryManipulator _inventoryManipulator;
+        [SerializeField] private InventoryController inventoryController;
         [SerializeField] private CraftingManipulator _craftingManipulator;
         [SerializeField] private SurvivalStatusManipulator _survivalStatusManipulator;
         
@@ -23,7 +23,7 @@ namespace UI.Gameplay.PlayerMenu.Components.MenuWindow
             _rootMenuElement = GetComponent<UIDocument>().rootVisualElement;
             MenuState.OnMenuStateChange += MenuStateChangeHandler;
 
-            _inventoryElement = _inventoryManipulator.InventoryVisualElement;
+            _inventoryElement = inventoryController.InventoryVisualElement;
             _craftingElement = _craftingManipulator.CraftingVisualElement;
             _survivalStatusElement = _survivalStatusManipulator.SurvivalStatusVisualElement;
 

@@ -8,7 +8,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
     public class ItemActionWindow : MonoBehaviour
     {
         [SerializeField] private VisualTreeAsset itemActionWindowTreeAsset;
-        [SerializeField] private InventoryManipulator inventory;
+        [SerializeField] private InventoryController inventory;
         [SerializeField] private Transform playerPositionForItemDrop;
 
         private VisualElement _inventoryRoot;
@@ -29,13 +29,12 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
         private ItemData _itemData;
 
 
-        public void ShowItemActionWindow(ItemData itemData, Action onDropItem)
+        public void ShowItemActionWindow(ItemData itemData)
         {
             _itemActionWindow.style.visibility = Visibility.Visible;
             _itemData = itemData;
             _itemName.text = itemData.Name;
             _itemDescription.text = itemData.Description;
-            _dropItem = onDropItem;
         }
 
         public void Hide()
@@ -71,7 +70,8 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             _itemData.ItemObjectReference.SetActive(true);
             _itemData.ItemObjectReference.transform.position =
                 playerPositionForItemDrop.position + playerPositionForItemDrop.forward;
-            _dropItem();
+            PlayerInventory.RemoveItem(_itemData);
+
         }
 
         private void OnUseItem()

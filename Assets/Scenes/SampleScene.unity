@@ -1638,6 +1638,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5076620311055232743, guid: 9ac641efa1ed8ef40aa07064c61b89b0, type: 3}
   m_PrefabInstance: {fileID: 1418297114}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466399425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7836314129798382715, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+  m_PrefabInstance: {fileID: 1515369643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc2ee5db04e04e4db9b1fc44b5587d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1466399426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7030503592679635843, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+  m_PrefabInstance: {fileID: 1515369643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488f8fa3b7a1dbe41bd0d7f58c14d0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482895884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,10 +1759,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 958718505431124213, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+      propertyPath: inventoryController
+      value: 
+      objectReference: {fileID: 1466399425}
     - target: {fileID: 5251485134412664386, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
       propertyPath: m_Name
       value: PlayerMenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5333561970815657241, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+      propertyPath: playerPositionForItemDrop
+      value: 
+      objectReference: {fileID: 960700966}
     - target: {fileID: 7836314129798382715, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
       propertyPath: player
       value: 
@@ -1749,6 +1779,10 @@ PrefabInstance:
       propertyPath: playerPosition
       value: 
       objectReference: {fileID: 960700966}
+    - target: {fileID: 7836314129798382715, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
+      propertyPath: itemSlotsManipulator
+      value: 
+      objectReference: {fileID: 1466399426}
     - target: {fileID: 8319959866838433391, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
       propertyPath: player
       value: 
@@ -1757,7 +1791,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1376669154}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1984680241216751741, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b0a5458078c15848943837cdf1ab021, type: 3}
 --- !u!4 &1515369644 stripped
 Transform:

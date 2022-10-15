@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a304ef389991c409dce919d7d0c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryManipulator: {fileID: 7836314129798382715}
+  inventoryController: {fileID: 7836314129798382715}
   _craftingManipulator: {fileID: 6508918568361856183}
   _survivalStatusManipulator: {fileID: 4636020836335035882}
 --- !u!1 &5169822900246454629
@@ -167,6 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6663703825461547498}
   - component: {fileID: 7836314129798382715}
+  - component: {fileID: 7030503592679635843}
   - component: {fileID: 5333561970815657241}
   m_Layer: 0
   m_Name: InventoryWindow
@@ -204,8 +205,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryTreeAsset: {fileID: 9197481963319205126, guid: 25f76ad72d910714f8f35c300ae1d594, type: 3}
   itemActionWindow: {fileID: 5333561970815657241}
-  itemActionWindowTreeAsset: {fileID: 9197481963319205126, guid: 6576c38176efdfa43a01a4a259ae0bcf, type: 3}
-  playerPosition: {fileID: 0}
+  itemSlotsManipulator: {fileID: 0}
+--- !u!114 &7030503592679635843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169822900246454629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488f8fa3b7a1dbe41bd0d7f58c14d0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 7836314129798382715}
 --- !u!114 &5333561970815657241
 MonoBehaviour:
   m_ObjectHideFlags: 0
