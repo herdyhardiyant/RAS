@@ -15,23 +15,19 @@ namespace Characters.Player.Scripts
     {
         private Animator _animator;
         private CharacterController _characterController;
-        // Start is called before the first frame update
-        void Start()
+
+        void Awake()
         {
             _animator = GetComponent<Animator>();
             _characterController = GetComponent<CharacterController>();
             _animator.applyRootMotion = false;
-            
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
             var characterVelocity = _characterController.velocity.magnitude;
-            
             var isWalking = characterVelocity > 0.1;
             var isRunning = characterVelocity > 3;
-            
             _animator.SetBool(AnimationParameters.isWalking.ToString(), isWalking);
             _animator.SetBool(AnimationParameters.isRunning.ToString(), isRunning);
 

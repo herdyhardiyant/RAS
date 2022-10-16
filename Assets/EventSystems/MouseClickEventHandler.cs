@@ -8,14 +8,12 @@ namespace EventSystems
 {
     public class MouseClickEventHandler : MonoBehaviour
     {
-
-        public static event Action<IInteractable> OnMouseClickHoveredObject; 
-
-        private Mouse _mouse;
+        public static event Action<IInteractable> OnMouseClickHoveredObject;
+        
         private PlayerInputMap _playerInputMap;
+
         void Awake()
         {
-            _mouse = Mouse.current;
             _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
             MouseHoverEventHandler.OnMouseHoverInteractable += ClickHoveredInteractableObject;
             MouseHoverEventHandler.OnMouseHoverPickupItem += ClickHoveredInteractableObject;
@@ -23,12 +21,13 @@ namespace EventSystems
 
         private void ClickHoveredInteractableObject(IInteractable hoveredObject)
         {
-            if(_playerInputMap.IsInteractClicked)
+
+            if (_playerInputMap.IsInteractClicked)
             {
+                hoveredObject.Interact();
+                PlayerInteractionEventHandler.PlayerStartInteract(hoveredObject.GetInteractionText());
                 OnMouseClickHoveredObject?.Invoke(hoveredObject);
             }
         }
-
-
     }
 }

@@ -2,9 +2,6 @@ using System;
 
 namespace EventSystems
 {
-    /// <summary>
-    /// Unified communication between player and other GameObject
-    /// </summary>
     public static class PlayerInteractionEventHandler
     {
         /// <summary>
@@ -19,13 +16,13 @@ namespace EventSystems
 
         public static void PlayerStartInteract(string interactionText)
         {
-           
             OnPlayerInteract?.Invoke(interactionText);
-            
         }
 
+        // TODO Use timer to call this after a certain amount of time
         public static void PlayerStopInteraction()
         {
+            //TODO Use this function to remove interaction text
             OnPlayerStopInteraction?.Invoke();
         }
     }

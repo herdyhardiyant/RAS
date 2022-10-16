@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +10,7 @@ namespace Controls
         private GameObject _hoveredObject;
         private bool _isHovering;
         private Vector3 _hoverHitPoint;
-        
         public Vector3 HoverHitPoint => _hoverHitPoint;
-        
         public GameObject HoveredObject => _hoveredObject;
         public bool IsHovering => _isHovering;
         

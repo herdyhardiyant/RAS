@@ -1,3 +1,4 @@
+using DataStorage;
 using Environment.Interfaces;
 using UnityEngine;
 
@@ -8,20 +9,30 @@ namespace Environment.Scripts
     /// </summary>
     public class Item : MonoBehaviour, IInteractable
     {
-        private const string TAG_NAME = "Pickupable";
+        private const string TagName = "Pickupable";
+
+        [SerializeField] private string itemName;
+
+        [SerializeField] private string description;
+
+        [SerializeField] private RenderTexture image;
+
+        private ItemData _itemData;
 
         void Awake()
         {
-            tag = TAG_NAME;
+            tag = TagName;
+            _itemData = new ItemData(itemName + transform.position + gameObject.name, itemName, description, image,
+                gameObject);
+
+            CheckDataIsAvailable();
         }
-        
-        // TODO Pickup Item to Inventory
-        // Dispatch item to InventoryDataStorage
-        // Notified all InventoryDataStorage listeners
-        // Destroy item from scene
+
         public void Interact()
         {
-            print("Pickup Item");
+            print($"Pickup {itemName}");
+            PlayerInventory.AddItem(_itemData);
+            gameObject.SetActive(false);
         }
 
         public string GetInteractionText()
@@ -29,9 +40,13 @@ namespace Environment.Scripts
             return "Item is added to inventory";
         }
 
-        public Vector3 GetInteractionWorldPosition()
+        public Vector3 Position => transform.position;
+
+
+        private void CheckDataIsAvailable()
         {
-            return transform.position;
+            if (itemName == null || description == null || image == null)
+                Debug.LogError("Item " + gameObject.name + " is missing data");
         }
     }
 }
