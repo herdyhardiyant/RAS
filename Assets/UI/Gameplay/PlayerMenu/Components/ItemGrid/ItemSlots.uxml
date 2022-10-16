@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Gameplay/Pages/PlayerMenu/Components/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=d07233ab24c408e468172df32a6eb880&amp;type=3#Inventory" />
-    <ui:VisualElement name="item-slots" style="flex-direction: row; flex-wrap: wrap; justify-content: flex-start; background-color: rgba(56, 56, 56, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; flex-grow: initial; flex-basis: auto; align-items: stretch; width: auto; height: auto; max-width: 300px;">
+    <Style src="project://database/Assets/UI/Gameplay/PlayerMenu/Components/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=d07233ab24c408e468172df32a6eb880&amp;type=3#Inventory" />
+    <ui:VisualElement name="item-slots" class="item-slots-container" style="width: 301px;">
         <ui:VisualElement name="slot" class="item-slot" />
         <ui:VisualElement name="slot" class="item-slot" />
         <ui:VisualElement name="slot" class="item-slot" />

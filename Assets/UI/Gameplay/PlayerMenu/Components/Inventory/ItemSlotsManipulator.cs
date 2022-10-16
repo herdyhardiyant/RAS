@@ -11,9 +11,9 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
     {
         [SerializeField] private InventoryController inventory;
 
-        private List<ItemSlot> _itemSlots = new List<ItemSlot>();
+        private List<ItemSlotBuilder> _itemSlots = new List<ItemSlotBuilder>();
 
-        private ItemSlot _currentFocusedItemSlot;
+        private ItemSlotBuilder _currentFocusedItemSlotBuilder;
         private Action<ItemData> _onItemSlotClicked;
 
         private const string ItemSlotClass = "item-slot";
@@ -24,9 +24,9 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 
         public void ResetSlotFocus()
         {
-            if (_currentFocusedItemSlot != null)
+            if (_currentFocusedItemSlotBuilder != null)
             {
-                _currentFocusedItemSlot.StopFocusing();
+                _currentFocusedItemSlotBuilder.StopFocusing();
             }
         }
 
@@ -87,11 +87,11 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
 
         private void BuildItemSlots()
         {
-            var maxItemSlots = PlayerInventory.MaxInventorySize;
+            var slotsCount = PlayerInventory.MaxInventorySize;
 
-            for (var slotId = 0; slotId < maxItemSlots; slotId++)
+            for (var slotId = 0; slotId < slotsCount; slotId++)
             {
-                var itemSlot = CreateNewItem(slotId);
+                var itemSlot = CreateNewSlot(slotId);
 
                 itemSlot.SlotVisualElement.RegisterCallback<ClickEvent>(clickEvent =>
                 {
@@ -102,31 +102,31 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             }
         }
 
-        private void ItemSlotClickHandler(ClickEvent clickEvent, ItemSlot itemSlot)
+        private void ItemSlotClickHandler(ClickEvent clickEvent, ItemSlotBuilder itemSlotBuilder)
         {
             if (clickEvent.propagationPhase != PropagationPhase.AtTarget)
                 return;
 
             ResetSlotFocus();
 
-            SetCurrentFocusSlot(itemSlot);
+            SetCurrentFocusSlot(itemSlotBuilder);
 
             if (_onItemSlotClicked != null)
             {
-                _onItemSlotClicked(itemSlot.StoredItemData);
+                _onItemSlotClicked(itemSlotBuilder.StoredItemData);
             }
         }
 
-        private void SetCurrentFocusSlot(ItemSlot itemSlot)
+        private void SetCurrentFocusSlot(ItemSlotBuilder itemSlotBuilder)
         {
-            _currentFocusedItemSlot = itemSlot;
-            _currentFocusedItemSlot.Focus();
+            _currentFocusedItemSlotBuilder = itemSlotBuilder;
+            _currentFocusedItemSlotBuilder.Focus();
         }
 
-        private ItemSlot CreateNewItem(int slotId)
+        private ItemSlotBuilder CreateNewSlot(int slotId)
         {
             var slotName = "slot-" + slotId;
-            var itemSlot = new ItemSlot(slotName, ItemSlotClass);
+            var itemSlot = new ItemSlotBuilder(slotName, ItemSlotClass);
             return itemSlot;
         }
     }

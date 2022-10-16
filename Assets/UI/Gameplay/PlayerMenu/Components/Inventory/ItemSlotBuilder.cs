@@ -5,11 +5,12 @@ using UnityEngine.UIElements;
 
 namespace UI.Gameplay.PlayerMenu.Components.Inventory
 {
-    public class ItemSlot
+    /// <summary>
+    /// Builder Class for the Inventory UI
+    /// </summary>
+    public class ItemSlotBuilder
     {
         public VisualElement SlotVisualElement => _slotVisualElement;
-        public string Name => _name;
-        
         [CanBeNull] public ItemData StoredItemData => _storedItemData;
 
         private string _name;
@@ -51,7 +52,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Inventory
             _slotVisualElement.style.borderBottomWidth = DefaultBorderWidth;
         }
 
-        public ItemSlot(string slotName, string itemSlotVisualClass)
+        public ItemSlotBuilder(string slotName, string itemSlotVisualClass)
         {
             _name = slotName;
             var slot = new VisualElement

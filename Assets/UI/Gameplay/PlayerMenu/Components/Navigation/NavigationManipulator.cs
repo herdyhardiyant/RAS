@@ -17,12 +17,12 @@ namespace UI.Gameplay.PlayerMenu.Components.Navigation
 
         private static class TabNames
         {
-            public const string CRAFTING = "crafting-tab";
-            public const string INVENTORY = "inventory-tab";
-            public const string STATUS = "status-tab";
+            public const string Crafting = "crafting-tab";
+            public const string Inventory = "inventory-tab";
+            public const string Status = "status-tab";
         }
 
-        private const string CURRENT_TAB_STYLE_CLASS = "current-tab";
+        private const string CurrentTabStyleClass = "current-tab";
 
         private void Awake()
         {
@@ -44,9 +44,9 @@ namespace UI.Gameplay.PlayerMenu.Components.Navigation
 
         private void QueryTabs()
         {
-            _craftingTab = _rootInventoryElement.Q<Button>(TabNames.CRAFTING);
-            _inventoryTab = _rootInventoryElement.Q<Button>(TabNames.INVENTORY);
-            _statusTab = _rootInventoryElement.Q<Button>(TabNames.STATUS);
+            _craftingTab = _rootInventoryElement.Q<Button>(TabNames.Crafting);
+            _inventoryTab = _rootInventoryElement.Q<Button>(TabNames.Inventory);
+            _statusTab = _rootInventoryElement.Q<Button>(TabNames.Status);
         }
 
         private void SubscribeTabsEvent()
@@ -79,7 +79,7 @@ namespace UI.Gameplay.PlayerMenu.Components.Navigation
 
         private void ClearCurrentActiveTabButton()
         {
-            _currentActiveTabButton?.RemoveFromClassList(CURRENT_TAB_STYLE_CLASS);
+            _currentActiveTabButton?.RemoveFromClassList(CurrentTabStyleClass);
         }
 
         private void SetNewCurrentActiveTabButton()
@@ -89,15 +89,15 @@ namespace UI.Gameplay.PlayerMenu.Components.Navigation
             switch (newState)
             {
                 case MenuState.MenuStates.Crafting:
-                    _craftingTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
+                    _craftingTab.AddToClassList(CurrentTabStyleClass);
                     _currentActiveTabButton = _craftingTab;
                     break;
                 case MenuState.MenuStates.Inventory:
-                    _inventoryTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
+                    _inventoryTab.AddToClassList(CurrentTabStyleClass);
                     _currentActiveTabButton = _inventoryTab;
                     break;
                 case MenuState.MenuStates.Status:
-                    _statusTab.AddToClassList(CURRENT_TAB_STYLE_CLASS);
+                    _statusTab.AddToClassList(CurrentTabStyleClass);
                     _currentActiveTabButton = _statusTab;
                     break;
             }

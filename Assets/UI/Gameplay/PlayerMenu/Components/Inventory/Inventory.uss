@@ -4,3 +4,30 @@
     width: 40px;
     height: 40px;
 }
+
+.item-slots-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: rgba(56, 56, 56, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    padding: 4px;
+    flex-grow: initial;
+    flex-basis: auto;
+    align-items: flex-start;
+    width: auto;
+    height: auto;
+    max-width: none;
+    align-self: center;
+}
+
+.container{
+  
+}
