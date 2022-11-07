@@ -2,7 +2,7 @@
 
 `Unity 2021.3.12f1`
 
-Recycle and Survival
+Recycle and Selling
 
 ### Peraturan Collaborasi
 Biar Project Game RAS bersih dan gampang.
