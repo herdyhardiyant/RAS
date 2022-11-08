@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Environment/Scenes/ItemRenderTexture.unity
     guid: b0048b0a1e3b9a748a1e32888e8e7b4e
+  - enabled: 1
+    path: Assets/Scenes/PilihLevel.unity
+    guid: 8593239ee2a2fb74685c8f0b76b850c5
   m_configObjects: {}
