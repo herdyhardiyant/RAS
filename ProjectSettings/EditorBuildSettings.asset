@@ -8,10 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/InventoryTesting.unity
-    guid: b7030c000507734488d3364cb9cc6487
-  - enabled: 1
-    path: Assets/Environment/Scenes/ItemRenderTexture.unity
-    guid: b0048b0a1e3b9a748a1e32888e8e7b4e
   m_configObjects: {}
