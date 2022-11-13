@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Smelter : MonoBehaviour
+namespace Environment.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Smelter : MonoBehaviour
     {
+    
+        // TODO: Add a list of ores that can be smelted
+        // TODO: Add on and off states
+        // TODO: Import the materials assets that can be smelted
+        // TODO: Player holds the material and click f to smelt
+        // TODO: Add a timer to smelt the material
+        // TODO: UI to show the smelting progress
+        // TODO: Add a sound effect when smelting
+        // TODO: Add a sound effect when smelting is done
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        [SerializeField] private bool debugActiveSmelting = false;
         
+        private Light[] _lights;
+
+        private void Awake()
+        {
+            _lights = GetComponentsInChildren<Light>();
+        }
+
+        void Update()
+        {
+            if (debugActiveSmelting)
+            {
+                SetSmelterFireActive(true);
+
+            } else
+            {
+                SetSmelterFireActive(false);
+            }
+        
+        }
+
+        private void SetSmelterFireActive( bool active)
+        {
+            foreach (var light in _lights)
+            {
+                light.enabled = active;
+            }
+        }
     }
 }
