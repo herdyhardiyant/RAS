@@ -24,32 +24,45 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
-            
-            
-            if (!_interactedObject)
-                return;
-            
+
             if (_inputControl.IsInteractClicked)
             {
 
-                if (_holdingObject)
+                if (_holdingObject == null)
                 {
+                    
+                    if (!_interactedObject)
+                        return;
+                    
+                    print("Pickup");
                     PickupObject();
+                    
                 }
                 else
                 {
                     DropObject();
                 }
-                    
-                
-                print("Interact" + _interactedObject.name);
-                _holdingObject = _interactedObject;
-                _holdingObject.transform.parent = transform;
-                _interactedObject = null;
+
             }
             
             
         }
+
+        private void DropObject()
+        {
+            print("Put");
+            _holdingObject.transform.parent = null;
+            _holdingObject = null;
+        }
+
+        private void PickupObject()
+        {
+            _holdingObject = _interactedObject;
+            _holdingObject.transform.parent = transform;
+            _interactedObject = null;
+        }
+        
+        
 
         private void OnTriggerEnter(Collider other)
         {
