@@ -17,6 +17,7 @@ namespace Characters.Player.Scripts
         private const float _gravityValue = -9.81f;
         private PlayerInputMap _playerInputMap;
         private Vector3 _moveDirection;
+        public AudioSource soundKaki;
 
         public Vector3 GetPosition()
         {
@@ -34,6 +35,14 @@ namespace Characters.Player.Scripts
         {
             UpdatePlayerGravity();
             _moveDirection = GetInputMoveDirection();
+            if (_moveDirection != Vector3.zero)
+            {
+                soundKaki.enabled = true;
+            }
+            else
+            {
+                soundKaki.enabled = false;
+            }
 
             RotatePlayerToMoveDirection();
             MovePlayer();
