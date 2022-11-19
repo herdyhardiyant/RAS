@@ -28,7 +28,7 @@ namespace Controls
         
         public bool IsBackPressed => _keyboard.escapeKey.wasPressedThisFrame;
 
-        public bool IsInteractClicked => _mouse.leftButton.wasPressedThisFrame;
+        public bool IsInteractClicked => _keyboard.fKey.wasPressedThisFrame;
         
     }
 }
