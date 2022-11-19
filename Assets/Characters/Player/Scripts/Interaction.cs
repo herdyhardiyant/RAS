@@ -7,13 +7,19 @@ namespace Characters.Player.Scripts
 {
     public class Interaction : MonoBehaviour
     {
+        
+        [SerializeField] private Transform holdingPoint;
+        
+        
         // Add box collider to detect material and machine
         // Press F to pickup material or put material to machine when box collider is triggered
+        
+        public bool IsHolding => _holdingObject != null;
         
         private GameObject _interactedObject;
         private PlayerInputMap _inputControl;
         private GameObject _holdingObject;
-        
+        private Rigidbody _holdingObjectRigidBody;
         
         private void Awake()
         {
@@ -50,15 +56,22 @@ namespace Characters.Player.Scripts
 
         private void DropObject()
         {
-            print("Put");
             _holdingObject.transform.parent = null;
             _holdingObject = null;
+            _holdingObjectRigidBody.isKinematic = false;
+            _holdingObjectRigidBody = null;
         }
 
         private void PickupObject()
         {
             _holdingObject = _interactedObject;
+            _holdingObjectRigidBody = _holdingObject.GetComponent<Rigidbody>();
+            _holdingObjectRigidBody.isKinematic = true;
+            
             _holdingObject.transform.parent = transform;
+            _holdingObject.transform.position = holdingPoint.position;
+            _holdingObject.transform.forward = transform.forward;
+            
             _interactedObject = null;
         }
         

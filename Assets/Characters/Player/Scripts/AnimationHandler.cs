@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace Characters.Player.Scripts
 {            
+    
+    
     // See the parameters at ./Characters/Player/Animations/Player_AC
     public enum AnimationParameters
     {
@@ -13,6 +15,9 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class AnimationHandler : MonoBehaviour
     {
+        
+        [SerializeField] private Interaction playerInteraction;
+        
         private Animator _animator;
         private CharacterController _characterController;
 
@@ -31,6 +36,20 @@ namespace Characters.Player.Scripts
             _animator.SetBool(AnimationParameters.isWalking.ToString(), isWalking);
             _animator.SetBool(AnimationParameters.isRunning.ToString(), isRunning);
 
+            if (playerInteraction.IsHolding)
+            {
+                SetHoldingAnimationLayerWeight(1);
+            }
+            else
+            {
+                SetHoldingAnimationLayerWeight(0);
+            }
+        }
+
+        private void SetHoldingAnimationLayerWeight(float weight)
+        {
+            var holdingAnimationLayerIndex = _animator.GetLayerIndex("Holding");
+            _animator.SetLayerWeight(holdingAnimationLayerIndex, weight);
         }
     }
 }
