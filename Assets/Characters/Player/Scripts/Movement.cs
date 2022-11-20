@@ -1,6 +1,5 @@
 using System;
 using Controls;
-using Environment.Interfaces;
 using UnityEngine;
 
 namespace Characters.Player.Scripts
@@ -37,16 +36,6 @@ namespace Characters.Player.Scripts
 
             RotatePlayerToMoveDirection();
             MovePlayer();
-        }
-
-        private void RotatePlayerToClickedObject(IInteractable hoveredObject)
-        {
-            if (hoveredObject == null) return;
-            var hoveredObjectPosition = hoveredObject.Position;
-            var playerTransform = transform;
-            var directionToLook = (hoveredObjectPosition - playerTransform.position).normalized;
-            var directionToLook2d = new Vector3(directionToLook.x, 0, directionToLook.z);
-            playerTransform.forward = directionToLook2d;
         }
 
         private void UpdatePlayerGravity()
