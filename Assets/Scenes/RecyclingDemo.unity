@@ -400,17 +400,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 877181969890204545, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
       propertyPath: m_Name
       value: Glass Ingot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
-      propertyPath: m_TagString
-      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 8560200426511017884, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
       propertyPath: m_RootOrder
@@ -465,10 +457,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3491323366641435145, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7073282037372344824, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
       propertyPath: m_Name
       value: Pico
@@ -691,10 +679,6 @@ PrefabInstance:
     - target: {fileID: 3283113057661087131, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
       propertyPath: m_Name
       value: Smelter
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283113057661087131, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
-      propertyPath: m_TagString
-      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}

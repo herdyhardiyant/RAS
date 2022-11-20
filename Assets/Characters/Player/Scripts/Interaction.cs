@@ -14,12 +14,12 @@ namespace Characters.Player.Scripts
         // Add box collider to detect material and machine
         // Press F to pickup material or put material to machine when box collider is triggered
         
-        public bool IsHolding => _holdingObject != null;
+        public bool IsHolding => _holdObject != null;
         
         private GameObject _interactedObject;
         private PlayerInputMap _inputControl;
-        private GameObject _holdingObject;
-        private Rigidbody _holdingObjectRigidBody;
+        private GameObject _holdObject;
+        private Rigidbody _holdObjectRigidBody;
         
         private void Awake()
         {
@@ -34,7 +34,7 @@ namespace Characters.Player.Scripts
             if (_inputControl.IsInteractClicked)
             {
 
-                if (_holdingObject == null)
+                if (_holdObject == null)
                 {
                     
                     if (!_interactedObject)
@@ -56,21 +56,21 @@ namespace Characters.Player.Scripts
 
         private void DropObject()
         {
-            _holdingObject.transform.parent = null;
-            _holdingObject = null;
-            _holdingObjectRigidBody.isKinematic = false;
-            _holdingObjectRigidBody = null;
+            _holdObject.transform.parent = null;
+            _holdObject = null;
+            _holdObjectRigidBody.isKinematic = false;
+            _holdObjectRigidBody = null;
         }
 
         private void PickupObject()
         {
-            _holdingObject = _interactedObject;
-            _holdingObjectRigidBody = _holdingObject.GetComponent<Rigidbody>();
-            _holdingObjectRigidBody.isKinematic = true;
+            _holdObject = _interactedObject;
+            _holdObjectRigidBody = _holdObject.GetComponent<Rigidbody>();
+            _holdObjectRigidBody.isKinematic = true;
             
-            _holdingObject.transform.parent = transform;
-            _holdingObject.transform.position = holdingPoint.position;
-            _holdingObject.transform.forward = transform.forward;
+            _holdObject.transform.parent = transform;
+            _holdObject.transform.position = holdingPoint.position;
+            _holdObject.transform.forward = transform.forward;
             
             _interactedObject = null;
         }
@@ -79,7 +79,7 @@ namespace Characters.Player.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Interactable"))
+            if (!other.CompareTag("PickupItem"))
                 return;
 
             print(other.name);
