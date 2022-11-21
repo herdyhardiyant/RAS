@@ -680,5 +680,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smelter
       objectReference: {fileID: 0}
+    - target: {fileID: 6660117078187361968, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
+      propertyPath: plasticBarPrefab
+      value: 
+      objectReference: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}

@@ -1,25 +1,24 @@
 using UnityEngine;
 
 namespace Characters.Player.Scripts
-{            
-    
-    
-    // See the parameters at ./Characters/Player/Animations/Player_AC
-    public enum AnimationParameters
-    {
-        isWalking,
-        isRunning,
-    }
-    
+{
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CharacterController))]
     public class AnimationHandler : MonoBehaviour
     {
-        
         [SerializeField] private Interaction playerInteraction;
-        
+
         private Animator _animator;
         private CharacterController _characterController;
+
+        private const string IsWalkingStateName = "isWalking";
+        private const string IsRunningStateName = "isRunning";
+
+        private const string HoldingLayerName = "Holding";
+
+        private static readonly int IsWalking = Animator.StringToHash(IsWalkingStateName);
+        private static readonly int IsRunning = Animator.StringToHash(IsRunningStateName);
+
 
         void Awake()
         {
@@ -27,29 +26,27 @@ namespace Characters.Player.Scripts
             _characterController = GetComponent<CharacterController>();
             _animator.applyRootMotion = false;
         }
-        
+
         void Update()
+        {
+            UpdateAnimatorStateFromVelocity();
+
+            UpdateHoldingAnimationLayerWeight();
+        }
+
+        private void UpdateAnimatorStateFromVelocity()
         {
             var characterVelocity = _characterController.velocity.magnitude;
             var isWalking = characterVelocity > 0.1;
             var isRunning = characterVelocity > 3;
-            _animator.SetBool(AnimationParameters.isWalking.ToString(), isWalking);
-            _animator.SetBool(AnimationParameters.isRunning.ToString(), isRunning);
-
-            if (playerInteraction.IsHolding)
-            {
-                SetHoldingAnimationLayerWeight(1);
-            }
-            else
-            {
-                SetHoldingAnimationLayerWeight(0);
-            }
+            _animator.SetBool(IsWalking, isWalking);
+            _animator.SetBool(IsRunning, isRunning);
         }
 
-        private void SetHoldingAnimationLayerWeight(float weight)
+        private void UpdateHoldingAnimationLayerWeight()
         {
-            var holdingAnimationLayerIndex = _animator.GetLayerIndex("Holding");
-            _animator.SetLayerWeight(holdingAnimationLayerIndex, weight);
+            var holdingAnimationLayerIndex = _animator.GetLayerIndex(HoldingLayerName);
+            _animator.SetLayerWeight(holdingAnimationLayerIndex, playerInteraction.IsHolding.GetHashCode());
         }
     }
 }

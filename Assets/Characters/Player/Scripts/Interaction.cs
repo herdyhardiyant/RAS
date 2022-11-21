@@ -34,12 +34,23 @@ namespace Characters.Player.Scripts
                 if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
                 {
                     var machine = _triggeredObject.GetComponent<IMachine>();
-                    if (_holdObject)
+
+                    if (machine.IsProcessing)
+                    {
+                        return;
+                    }
+
+                    if (machine.IsHoldingMaterial)
+                    {
+                        var materialOutputFromMachine = machine.GetResultAfterProcessing();
+                        var material = Instantiate(materialOutputFromMachine);
+                        HoldObjectOnHand(material);
+                    }
+                    else if (_holdObject)
                     {
                         machine.InputMaterial(_holdObject);
                         _holdObject = null;
                     }
-                    
                 }
                 else
                 {
@@ -90,15 +101,20 @@ namespace Characters.Player.Scripts
             if (!_triggeredObject)
                 return;
 
-            _holdObject = _triggeredObject;
+            HoldObjectOnHand(_triggeredObject);
+
+            _triggeredObject = null;
+        }
+
+        private void HoldObjectOnHand(GameObject holdedObject)
+        {
+            _holdObject = holdedObject;
             _holdObjectRigidBody = _holdObject.GetComponent<Rigidbody>();
             _holdObjectRigidBody.isKinematic = true;
 
             _holdObject.transform.parent = transform;
             _holdObject.transform.position = holdingPoint.position;
             _holdObject.transform.forward = transform.forward;
-
-            _triggeredObject = null;
         }
     }
 }

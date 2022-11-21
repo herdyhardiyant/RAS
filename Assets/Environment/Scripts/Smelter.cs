@@ -18,29 +18,44 @@ namespace Environment.Scripts
         // TODO: Add UI when smelting is done
         
         public GameObject CurrentlyProcessedMaterial { get; }
-        
-        
-        // [SerializeField] private bool debugActiveSmelting = false;
+
+
+        [SerializeField] private GameObject plasticBarPrefab;
+        public bool IsProcessing => _isSmelting;
+        public bool IsHoldingMaterial => _isSmeltingDone;
         
         private Light[] _lights;
         private bool _isSmelting;
+        private bool _isSmeltingDone;
         
         public void InputMaterial(GameObject material)
         {
+            if (_isSmeltingDone)
+            {
+                return;
+            }
+            
             Destroy(material);
             _isSmelting = true;
+            
         }
 
         public GameObject GetResultAfterProcessing()
         {
-            throw new NotImplementedException();
+            if(!_isSmeltingDone){
+                return null;
+            }
+            print("Get smelting result");
+            return plasticBarPrefab;
+
         }
 
         public GameObject GetExpectedResult(GameObject material)
         {
             throw new NotImplementedException();
         }
-
+        
+        
         private void Awake()
         {
             _lights = GetComponentsInChildren<Light>();
@@ -48,15 +63,26 @@ namespace Environment.Scripts
 
         void Update()
         {
-            SetSmelterFireActive(_isSmelting);
-            
-        }
-
-        private void SetSmelterFireActive( bool active)
-        {
-            foreach (var light in _lights)
+            if (_isSmelting)
             {
-                light.enabled = active;
+                StartCoroutine(ProcessingDelay());
+            }
+
+            SmelterFireLightsUpdate();
+        }
+        
+        IEnumerator ProcessingDelay()
+        {
+            yield return new WaitForSecondsRealtime(3);
+            _isSmeltingDone = true;
+            _isSmelting = false;
+        }
+        
+        private void SmelterFireLightsUpdate( )
+        {
+            foreach (var smelterLight in _lights)
+            {
+                smelterLight.enabled = _isSmelting;
             }
         }
 
