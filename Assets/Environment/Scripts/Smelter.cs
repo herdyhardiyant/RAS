@@ -7,85 +7,92 @@ namespace Environment.Scripts
 {
     public class Smelter : MonoBehaviour, IMachine
     {
-    
         // TODO: Add a list of ores that can be smelted
         // TODO: Import the materials assets that can be smelted
-        // TODO: Player holds the material and click f to smelt
         // TODO: Add a timer to smelt the material
-        // TODO: UI to show the smelting progress
+        // TODO: Add a timer ui to show the progress of the smelting
         // TODO: Add a sound effect when smelting
         // TODO: Add a sound effect when smelting is done
         // TODO: Add UI when smelting is done
-        
+
         public GameObject CurrentlyProcessedMaterial { get; }
 
 
         [SerializeField] private GameObject plasticBarPrefab;
+        [SerializeField] private GameObject machineUI;
+
         public bool IsProcessing => _isSmelting;
-        public bool IsHoldingMaterial => _isSmeltingDone;
-        
+        public bool IsHoldingOutputItem => _isHoldingResult;
+
         private Light[] _lights;
         private bool _isSmelting;
-        private bool _isSmeltingDone;
-        
+        private bool _isHoldingResult;
+
         public void InputMaterial(GameObject material)
         {
-            if (_isSmeltingDone)
+            print("Input material: " + material.name);
+
+            if (_isHoldingResult || _isSmelting)
             {
                 return;
             }
-            
-            Destroy(material);
-            _isSmelting = true;
-            
-        }
 
+            Destroy(material);
+
+            _isSmelting = true;
+
+            StartCoroutine(ProcessingDelay());
+        }
+        
         public GameObject GetResultAfterProcessing()
         {
-            if(!_isSmeltingDone){
+            if (!_isHoldingResult)
+            {
                 return null;
             }
-            print("Get smelting result");
-            return plasticBarPrefab;
 
+            _isHoldingResult = false;
+            machineUI.SetActive(false);
+
+            return plasticBarPrefab;
         }
 
         public GameObject GetExpectedResult(GameObject material)
         {
             throw new NotImplementedException();
         }
-        
-        
+
+
         private void Awake()
         {
             _lights = GetComponentsInChildren<Light>();
+            machineUI.SetActive(false);
+            var direction = Camera.main.transform.position - transform.position;
+            machineUI.transform.forward = direction;
         }
 
         void Update()
         {
-            if (_isSmelting)
-            {
-                StartCoroutine(ProcessingDelay());
-            }
-
             SmelterFireLightsUpdate();
         }
-        
-        IEnumerator ProcessingDelay()
+
+        private IEnumerator ProcessingDelay()
         {
-            yield return new WaitForSecondsRealtime(3);
-            _isSmeltingDone = true;
+            _isHoldingResult = false;
+            yield return new WaitForSecondsRealtime(1);
+            _isHoldingResult = true;
             _isSmelting = false;
+            
+            print("Smelting done");
+            machineUI.SetActive(true);
         }
-        
-        private void SmelterFireLightsUpdate( )
+
+        private void SmelterFireLightsUpdate()
         {
             foreach (var smelterLight in _lights)
             {
                 smelterLight.enabled = _isSmelting;
             }
         }
-
-   
     }
 }

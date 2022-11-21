@@ -9,11 +9,7 @@ namespace Characters.Player.Scripts
     public class Interaction : MonoBehaviour
     {
         [SerializeField] private Transform holdingPoint;
-
-
-        // Add box collider to detect material and machine
-        // Press F to pickup material or put material to machine when box collider is triggered
-
+        
         public bool IsHolding => _holdObject != null;
 
         private GameObject _triggeredObject;
@@ -29,33 +25,40 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
-            if (_inputControl.IsInteractClicked)
+            if (!_inputControl.IsInteractClicked) return;
+            
+            if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
-                if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
-                {
-                    var machine = _triggeredObject.GetComponent<IMachine>();
+                MachineInteraction();
+            }
+            else
+            {
+                HoldableObjectInteraction();
+            }
+        }
 
-                    if (machine.IsProcessing)
-                    {
-                        return;
-                    }
+        private void MachineInteraction()
+        {
+            var machine = _triggeredObject.GetComponent<IMachine>();
 
-                    if (machine.IsHoldingMaterial)
-                    {
-                        var materialOutputFromMachine = machine.GetResultAfterProcessing();
-                        var material = Instantiate(materialOutputFromMachine);
-                        HoldObjectOnHand(material);
-                    }
-                    else if (_holdObject)
-                    {
-                        machine.InputMaterial(_holdObject);
-                        _holdObject = null;
-                    }
-                }
-                else
-                {
-                    HoldObjectInteraction();
-                }
+            if (machine.IsProcessing)
+            {
+                print("Machine is processing");
+                return;
+            }
+
+            if (machine.IsHoldingOutputItem && !_holdObject)
+            {
+                print("Machine is holding material");
+                var materialOutputFromMachine = machine.GetResultAfterProcessing();
+                var material = Instantiate(materialOutputFromMachine);
+                HoldObjectOnHand(material);
+            }
+            else if (_holdObject && !machine.IsHoldingOutputItem)
+            {
+                print("Machine is not holding material");
+                machine.InputMaterial(_holdObject);
+                _holdObject = null;
             }
         }
 
@@ -76,7 +79,7 @@ namespace Characters.Player.Scripts
             _triggeredObject = null;
         }
 
-        private void HoldObjectInteraction()
+        private void HoldableObjectInteraction()
         {
             if (!_holdObject)
             {

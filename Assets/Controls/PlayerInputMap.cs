@@ -8,6 +8,9 @@ namespace Controls
         private Keyboard _keyboard;
         private Mouse _mouse;
         
+        //TODO: Change to singleton
+        //TODO: Update every script that uses this to use the singleton instead
+        
         void Awake()
         {
             _keyboard = Keyboard.current;
