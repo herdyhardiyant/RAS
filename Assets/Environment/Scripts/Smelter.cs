@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Interfaces;
+using RAS.Environment.MachineUI;
 using UnityEngine;
 
 namespace Environment.Scripts
@@ -13,14 +14,13 @@ namespace Environment.Scripts
         // TODO: Add a timer ui to show the progress of the smelting
         // TODO: Add a sound effect when smelting
         // TODO: Add a sound effect when smelting is done
-        // TODO: Add UI when smelting is done
 
         public GameObject CurrentlyProcessedMaterial { get; }
         public string RecycleType => "Smelter";
-
+        [SerializeField] private float smeltingTime = 5f;
         [SerializeField] private GameObject plasticBarPrefab;
-        [SerializeField] private GameObject machineUI;
-        [SerializeField] private SmelterCrafting smelterCrafting;
+        [SerializeField] private MachineUIManipulator machineUI;
+        [SerializeField] private SmelterCraftingSelection smelterCraftingSelection;
 
         public bool IsProcessing => _isSmelting;
         public bool IsHoldingOutputItem => _isHoldingResult;
@@ -33,16 +33,25 @@ namespace Environment.Scripts
         public bool InputMaterial(GameObject inputMaterialGameObject)
         {
             var inputRecycleName = inputMaterialGameObject.TryGetComponent<Trash>(out var trash );
-            
-            if(!inputRecycleName) return false;
-            
 
-            if (!smelterCrafting.IsObjectCanBeSmelt(trash.RecycleType))
+            if (!inputRecycleName)
             {
+                StartCoroutine(machineUI.ShowBlockDelay());
                 return false;
             }
 
-            if (_isHoldingResult || _isSmelting) return false;
+            if (!smelterCraftingSelection.IsObjectCanBeSmelt(trash.RecycleType))
+            {
+                StartCoroutine(machineUI.ShowBlockDelay());
+                return false;
+            }
+
+            if (_isHoldingResult || _isSmelting)
+            {
+                return false;
+            }
+            
+            
             
             _inputTrashName = trash.TrashName;
 
@@ -64,10 +73,11 @@ namespace Environment.Scripts
             }
 
             _isHoldingResult = false;
-            machineUI.SetActive(false);
-            
-            var result = smelterCrafting.GetSmelterResultFromInputObject(_inputTrashName);
 
+            var result = smelterCraftingSelection.GetSmelterResultFromInputObject(_inputTrashName);
+            
+            machineUI.HideImages();
+            
             return result;
         }
 
@@ -76,13 +86,9 @@ namespace Environment.Scripts
             throw new NotImplementedException();
         }
 
-
         private void Awake()
         {
             _lights = GetComponentsInChildren<Light>();
-            machineUI.SetActive(false);
-            var direction = Camera.main.transform.position - transform.position;
-            machineUI.transform.forward = direction;
         }
 
         void Update()
@@ -92,12 +98,12 @@ namespace Environment.Scripts
 
         private IEnumerator ProcessingDelay()
         {
+            
             _isHoldingResult = false;
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(smeltingTime);
             _isHoldingResult = true;
             _isSmelting = false;
-            
-            machineUI.SetActive(true);
+            machineUI.ShowComplete();
         }
 
         private void SmelterFireLightsUpdate()

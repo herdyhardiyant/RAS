@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class SmelterCrafting : MonoBehaviour
+    public class SmelterCraftingSelection : MonoBehaviour
     {
         [SerializeField] private GameObject smelterPrefab;
 
@@ -35,16 +35,13 @@ namespace Environment.Scripts
 
         public GameObject GetSmelterResultFromInputObject(string trashName)
         {
-            print("inputObjectRecycleName: " + trashName);
-            print("glassBottleRecycleName: " + _glassBottleTrashName);
+
             if (trashName == _glassBottleTrashName)
             {
-                print("smelling glass bottle");
                 return glassSlabPrefab;
             }
             else
             {
-                print("smelling nothing");
                 return null;
             }
 

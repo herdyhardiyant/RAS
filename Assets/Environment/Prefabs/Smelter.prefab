@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plasticBarPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
-  machineUI: {fileID: 1987606677115383944}
-  smelterCrafting: {fileID: -1529584523860895677}
+  machineUI: {fileID: 6930991027922133250}
+  smelterCraftingSelection: {fileID: -1529584523860895677}
 --- !u!114 &-1529584523860895677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,11 +514,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561dfe89d69efa34ab07ffe7b778158a, type: 3}
---- !u!1 &1987606677115383944 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6146501141201869817, guid: 561dfe89d69efa34ab07ffe7b778158a, type: 3}
+--- !u!114 &6930991027922133250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3384019830045739635, guid: 561dfe89d69efa34ab07ffe7b778158a, type: 3}
   m_PrefabInstance: {fileID: 5681756595021081457}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67855376888b6c746ad583bee7978ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8194207671246375875 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4570603811443122354, guid: 561dfe89d69efa34ab07ffe7b778158a, type: 3}
