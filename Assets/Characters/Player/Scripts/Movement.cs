@@ -38,6 +38,10 @@ namespace Characters.Player.Scripts
             if (_moveDirection != Vector3.zero)
             {
                 soundKaki.enabled = true;
+                if (_playerInputMap.IsRunPressed)
+                {
+                    soundKaki.enabled = false;
+                }
             }
             else
             {
