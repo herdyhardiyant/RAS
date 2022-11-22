@@ -124,8 +124,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2793398638534309665}
-  - component: {fileID: 6660117078187361968}
   - component: {fileID: 999477526862182088}
+  - component: {fileID: 6660117078187361968}
+  - component: {fileID: -1529584523860895677}
   m_Layer: 0
   m_Name: Smelter
   m_TagString: Machine
@@ -152,6 +153,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &999477526862182088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283113057661087131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6660117078187361968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,19 +180,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plasticBarPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
   machineUI: {fileID: 1987606677115383944}
---- !u!65 &999477526862182088
-BoxCollider:
+  smelterCrafting: {fileID: -1529584523860895677}
+--- !u!114 &-1529584523860895677
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3283113057661087131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52733ef3c34bfc44815697ef278bf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smelterPrefab: {fileID: 3283113057661087131}
+  glassBottlePrefab: {fileID: 6324869654762242161, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
+  glassSlabPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
 --- !u!1 &3378709117778453485
 GameObject:
   m_ObjectHideFlags: 0

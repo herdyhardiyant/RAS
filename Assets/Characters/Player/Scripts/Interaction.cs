@@ -9,7 +9,7 @@ namespace Characters.Player.Scripts
     public class Interaction : MonoBehaviour
     {
         [SerializeField] private Transform holdingPoint;
-        
+
         public bool IsHolding => _holdObject != null;
 
         private GameObject _triggeredObject;
@@ -26,7 +26,7 @@ namespace Characters.Player.Scripts
         private void Update()
         {
             if (!_inputControl.IsInteractClicked) return;
-            
+
             if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
                 MachineInteraction();
@@ -43,22 +43,21 @@ namespace Characters.Player.Scripts
 
             if (machine.IsProcessing)
             {
-                print("Machine is processing");
                 return;
             }
 
             if (machine.IsHoldingOutputItem && !_holdObject)
             {
-                print("Machine is holding material");
+           
                 var materialOutputFromMachine = machine.GetResultAfterProcessing();
                 var material = Instantiate(materialOutputFromMachine);
                 HoldObjectOnHand(material);
             }
             else if (_holdObject && !machine.IsHoldingOutputItem)
             {
-                print("Machine is not holding material");
-                machine.InputMaterial(_holdObject);
-                _holdObject = null;
+       
+                var isMaterialInserted = machine.InputMaterial(_holdObject);
+                _holdObject = isMaterialInserted ? null : _holdObject;
             }
         }
 

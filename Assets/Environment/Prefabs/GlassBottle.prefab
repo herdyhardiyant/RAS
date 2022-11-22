@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4310126401999077718}
   - component: {fileID: 7540543109440536539}
   - component: {fileID: 1588392527430886819}
+  - component: {fileID: 6324869654762242161}
   m_Layer: 6
   m_Name: GlassBottle
   m_TagString: PickupItem
@@ -66,6 +67,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6324869654762242161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502522383435062252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae1dc00a6bfadf40b07de6b92bb2bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recycleMachinePrefab: {fileID: 3283113057661087131, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
+  trashName: GlassBottle
 --- !u!1001 &284893158284293902
 PrefabInstance:
   m_ObjectHideFlags: 0

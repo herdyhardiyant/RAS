@@ -7,8 +7,14 @@ namespace Interfaces
         public GameObject CurrentlyProcessedMaterial { get; }
         public bool IsProcessing { get; }
         public bool IsHoldingOutputItem { get; }
+        public string RecycleType { get; }
         
-        public void InputMaterial(GameObject material);
+        /// <summary>
+        /// Input material to the machine. Return true if the material was accepted and false if it was not.
+        /// </summary>
+        /// <param name="inputMaterialGameObject that can be picked up by player and can be put in machine"></param>
+        /// <returns></returns>
+        public bool InputMaterial(GameObject inputMaterialGameObject);
         public GameObject GetResultAfterProcessing();
         public GameObject GetExpectedResult(GameObject material);
         

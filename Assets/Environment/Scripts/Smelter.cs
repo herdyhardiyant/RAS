@@ -16,10 +16,11 @@ namespace Environment.Scripts
         // TODO: Add UI when smelting is done
 
         public GameObject CurrentlyProcessedMaterial { get; }
-
+        public string RecycleType => "Smelter";
 
         [SerializeField] private GameObject plasticBarPrefab;
         [SerializeField] private GameObject machineUI;
+        [SerializeField] private SmelterCrafting smelterCrafting;
 
         public bool IsProcessing => _isSmelting;
         public bool IsHoldingOutputItem => _isHoldingResult;
@@ -27,23 +28,34 @@ namespace Environment.Scripts
         private Light[] _lights;
         private bool _isSmelting;
         private bool _isHoldingResult;
-
-        public void InputMaterial(GameObject material)
+        private string _inputTrashName;
+      
+        public bool InputMaterial(GameObject inputMaterialGameObject)
         {
-            print("Input material: " + material.name);
+            var inputRecycleName = inputMaterialGameObject.TryGetComponent<Trash>(out var trash );
+            
+            if(!inputRecycleName) return false;
+            
 
-            if (_isHoldingResult || _isSmelting)
+            if (!smelterCrafting.IsObjectCanBeSmelt(trash.RecycleType))
             {
-                return;
+                return false;
             }
 
-            Destroy(material);
+            if (_isHoldingResult || _isSmelting) return false;
+            
+            _inputTrashName = trash.TrashName;
 
+            // TODO: Send the object to pool and hide it;
+            Destroy(inputMaterialGameObject);
+            
             _isSmelting = true;
-
+            
             StartCoroutine(ProcessingDelay());
+            
+            return true;
         }
-        
+
         public GameObject GetResultAfterProcessing()
         {
             if (!_isHoldingResult)
@@ -53,8 +65,10 @@ namespace Environment.Scripts
 
             _isHoldingResult = false;
             machineUI.SetActive(false);
+            
+            var result = smelterCrafting.GetSmelterResultFromInputObject(_inputTrashName);
 
-            return plasticBarPrefab;
+            return result;
         }
 
         public GameObject GetExpectedResult(GameObject material)
@@ -83,7 +97,6 @@ namespace Environment.Scripts
             _isHoldingResult = true;
             _isSmelting = false;
             
-            print("Smelting done");
             machineUI.SetActive(true);
         }
 
