@@ -1,7 +1,6 @@
 using System;
 using Controls;
 using Environment.Interfaces;
-using EventSystems;
 using UnityEngine;
 
 namespace Characters.Player.Scripts
@@ -28,15 +27,12 @@ namespace Characters.Player.Scripts
         {
             _characterController = GetComponent<CharacterController>();
             _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
-            MouseClickEventHandler.OnMouseClickHoveredObject += RotatePlayerToClickedObject;
+           
         }
 
         void Update()
         {
             UpdatePlayerGravity();
-            if (GameplayUIEventHandler.IsInventoryOpen)
-                return;
-
             _moveDirection = GetInputMoveDirection();
 
             RotatePlayerToMoveDirection();
@@ -97,7 +93,7 @@ namespace Characters.Player.Scripts
 
         private void OnDisable()
         {
-            MouseClickEventHandler.OnMouseClickHoveredObject -= RotatePlayerToClickedObject;
+            
         }
     }
 }
