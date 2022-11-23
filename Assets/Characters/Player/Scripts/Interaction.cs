@@ -11,11 +11,13 @@ namespace Characters.Player.Scripts
         [SerializeField] private Transform holdingPoint;
 
         public bool IsHolding => _holdObject != null;
-
+        public bool IsCrafting => _isCrafting;
+        
         private GameObject _triggeredObject;
         private PlayerInputMap _inputControl;
         private GameObject _holdObject;
         private Rigidbody _holdObjectRigidBody;
+        private bool _isCrafting;
 
         private void Awake()
         {
@@ -25,8 +27,13 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
-            if (!_inputControl.IsInteractClicked) return;
+            _isCrafting = _inputControl.IsDebugKeyPressed;
 
+            if (!_inputControl.IsInteractClicked) return;
+            
+            //TODO: Add crafting interaction
+            // TODO: Split machine and object interaction to separate classes
+            
             if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
                 MachineInteraction();
@@ -39,13 +46,14 @@ namespace Characters.Player.Scripts
 
         private void MachineInteraction()
         {
-            var machine = _triggeredObject.GetComponent<IMachine>();
+            _triggeredObject.TryGetComponent<IMachine>(out var machine);
 
             if (machine.IsProcessing)
             {
                 return;
             }
 
+     
             if (machine.IsHoldingOutputItem && !_holdObject)
             {
            

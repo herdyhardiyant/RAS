@@ -17,6 +17,8 @@ namespace Controls
             _mouse = Mouse.current;
         }
 
+        public bool IsDebugKeyPressed => _keyboard.spaceKey.isPressed;
+
         public bool IsLeftPressed => _keyboard.aKey.isPressed;
 
         public bool IsRightPressed => _keyboard.dKey.isPressed;
