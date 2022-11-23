@@ -1,6 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:VisualElement name="status-item" class="status-item" style="align-items: center;">
-        <ui:VisualElement name="status-icon" style="width: 24px; height: 24px; background-color: rgba(2, 2, 2, 255);" />
-        <ui:Label text="80%" display-tooltip-when-elided="true" name="status-percentage" />
-    </ui:VisualElement>
-</ui:UXML>
