@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24114c51da094a64ea147434560746eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plasticBarPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
+  smeltingTime: 1
   machineUI: {fileID: 6930991027922133250}
   smelterCraftingSelection: {fileID: -1529584523860895677}
 --- !u!114 &-1529584523860895677
@@ -196,6 +196,8 @@ MonoBehaviour:
   smelterPrefab: {fileID: 3283113057661087131}
   glassBottlePrefab: {fileID: 6324869654762242161, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
   glassSlabPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
+  metalCansPrefab: {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
+  metalSlabPrefab: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
 --- !u!1 &3378709117778453485
 GameObject:
   m_ObjectHideFlags: 0

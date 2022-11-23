@@ -18,7 +18,6 @@ namespace Environment.Scripts
         public GameObject CurrentlyProcessedMaterial { get; }
         public string RecycleType => "Smelter";
         [SerializeField] private float smeltingTime = 5f;
-        [SerializeField] private GameObject plasticBarPrefab;
         [SerializeField] private MachineUIManipulator machineUI;
         [SerializeField] private SmelterCraftingSelection smelterCraftingSelection;
 
@@ -50,9 +49,7 @@ namespace Environment.Scripts
             {
                 return false;
             }
-            
-            
-            
+
             _inputTrashName = trash.TrashName;
 
             // TODO: Send the object to pool and hide it;
