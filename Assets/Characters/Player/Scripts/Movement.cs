@@ -18,6 +18,7 @@ namespace Characters.Player.Scripts
         private PlayerInputMap _playerInputMap;
         private Vector3 _moveDirection;
         public AudioSource soundKaki;
+        public AudioSource soundLari;
 
         public Vector3 GetPosition()
         {
@@ -41,11 +42,13 @@ namespace Characters.Player.Scripts
                 if (_playerInputMap.IsRunPressed)
                 {
                     soundKaki.enabled = false;
+                    soundLari.enabled = true;
                 }
             }
             else
             {
                 soundKaki.enabled = false;
+                soundLari.enabled = false;
             }
 
             RotatePlayerToMoveDirection();
