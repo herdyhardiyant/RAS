@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: -2092900363830371540}
   m_Layer: 6
   m_Name: MetalCans
-  m_TagString: PickupItem
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -33,14 +33,10 @@ namespace Characters.Player.Scripts
             }
             else if (_triggeredObject && _triggeredObject.CompareTag("Crafting"))
             {
-                _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
-
-                if (heldObjectInteraction.IsHoldingObject)
-                {
-                    craftingTable.PutObjectOnCraftingBench(heldObjectInteraction.GetHeldObjectAndDropFromPlayer());
-                }
+                CraftingTableInteraction();
             }
-            else if (_triggeredObject && _triggeredObject.CompareTag("PickupItem") ||
+            else if (_triggeredObject && _triggeredObject.CompareTag("Trash") ||
+                     _triggeredObject && _triggeredObject.CompareTag("Material") ||
                      heldObjectInteraction.IsHoldingObject)
             {
                 heldObjectInteraction.InteractObject(_triggeredObject);
@@ -53,7 +49,7 @@ namespace Characters.Player.Scripts
             {
                 _triggeredObject = other.gameObject;
             }
-            else if (other.CompareTag("PickupItem"))
+            else if (other.CompareTag("Trash") || other.CompareTag("Material"))
             {
                 _triggeredObject = other.gameObject;
             }
@@ -66,6 +62,19 @@ namespace Characters.Player.Scripts
         private void OnTriggerExit(Collider other)
         {
             _triggeredObject = null;
+        }
+        
+        private void CraftingTableInteraction()
+        {
+            _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
+
+            if (!heldObjectInteraction.IsHoldingObject) return;
+
+            var material = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
+
+            if (!material.CompareTag("Material")) return;
+
+            craftingTable.PutObjectOnCraftingBench(material);
         }
     }
 }

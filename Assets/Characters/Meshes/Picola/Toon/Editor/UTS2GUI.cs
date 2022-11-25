@@ -333,7 +333,7 @@ namespace UnityChan
             EditorGUIUtility.fieldWidth = 0;
             FindProperties(props);
             m_MaterialEditor = materialEditor;
-            Material material = materialEditor.target as Material;
+            UnityEngine.Material material = materialEditor.target as UnityEngine.Material;
 
             //v.2.0.7.2 / v.2.0.7.4
             //v.2.0.4.3p1以前のBaseMap名との互換性対策、および_utsVersionの更新をおこなう.
@@ -561,7 +561,7 @@ namespace UnityChan
 
     // --------------------------------
 
-        void CheckUtsTechnique(Material material){
+        void CheckUtsTechnique(UnityEngine.Material material){
             if (material.HasProperty("_utsTechnique"))//DoubleWithFeather==0 or ShadingGradeMap==1
             {
                 if(material.GetInt("_utsTechnique") == (int)_UTS_Technique.DoubleSideWithFeather)   //DWF
@@ -595,7 +595,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_SetCullingMode(Material material){
+        void GUI_SetCullingMode(UnityEngine.Material material){
             int _CullMode_Setting = material.GetInt("_CullMode");
             //Enum形式に変換して、outlineMode変数に保持しておく.
             if ((int)_CullingMode.CullingOff == _CullMode_Setting){
@@ -617,7 +617,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_SetStencilNo(Material material){
+        void GUI_SetStencilNo(UnityEngine.Material material){
             GUILayout.Label("For _StencilMask or _StencilOut Shader", EditorStyles.boldLabel);
             _StencilNo_Setting = material.GetInt("_StencilNo");
             int _Current_StencilNo = _StencilNo_Setting;
@@ -627,7 +627,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_SetClippingMask(Material material){
+        void GUI_SetClippingMask(UnityEngine.Material material){
             GUILayout.Label("For _Clipping or _TransClipping Shader", EditorStyles.boldLabel);
             m_MaterialEditor.TexturePropertySingleLine(Styles.clippingMaskText, clippingMask);
         
@@ -650,7 +650,7 @@ namespace UnityChan
             m_MaterialEditor.RangeProperty(clipping_Level, "Clipping Level");
         }
 
-        void GUI_SetTransparencySetting(Material material){
+        void GUI_SetTransparencySetting(UnityEngine.Material material){
 
             GUILayout.Label("For _TransClipping Shader", EditorStyles.boldLabel);
             m_MaterialEditor.RangeProperty(tweak_transparency, "Transparency Level");
@@ -672,7 +672,7 @@ namespace UnityChan
             EditorGUILayout.EndHorizontal();
         }
 
-        void GUI_OptionMenu(Material material){
+        void GUI_OptionMenu(UnityEngine.Material material){
             GUILayout.Label("Option Menu", EditorStyles.boldLabel);
             if(material.HasProperty("_simpleUI")){
                 if(material.GetInt("_simpleUI") == 1){
@@ -729,13 +729,13 @@ namespace UnityChan
         }
 
         //v.2.0.7
-        void RemoveUnusedKeywordsUtility(Material material)
+        void RemoveUnusedKeywordsUtility(UnityEngine.Material material)
         {
 				RemoveUnusedMaterialProperties(material);
 				RemoveShaderKeywords(material);
         }
 
-		void RemoveShaderKeywords(Material material)
+		void RemoveShaderKeywords(UnityEngine.Material material)
 		{
 			string shaderKeywords = "";
 
@@ -765,7 +765,7 @@ namespace UnityChan
 		}
 
 		// http://light11.hatenadiary.com/entry/2018/12/04/224253
-		void RemoveUnusedMaterialProperties(Material material)
+		void RemoveUnusedMaterialProperties(UnityEngine.Material material)
 		{
 			var sourceProps = new SerializedObject(material);
 			sourceProps.Update();
@@ -802,7 +802,7 @@ namespace UnityChan
 		}
         //
 
-        void Set_Vrchat_Recommendation(Material material)
+        void Set_Vrchat_Recommendation(UnityEngine.Material material)
         {
             material.SetFloat("_Is_LightColor_Base",1);
             material.SetFloat("_Is_LightColor_1st_Shade",1);
@@ -827,7 +827,7 @@ namespace UnityChan
             material.SetFloat("_Is_Filter_LightColor",1);
         }
 
-        void GUI_BasicThreeColors(Material material)
+        void GUI_BasicThreeColors(UnityEngine.Material material)
         {
             GUILayout.Label("3 Basic Colors Settings : Textures × Colors", EditorStyles.boldLabel);
 
@@ -943,7 +943,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_ShadowControlMaps(Material material)
+        void GUI_ShadowControlMaps(UnityEngine.Material material)
         {
             if (material.HasProperty("_utsTechnique"))//DoubleWithFeather or ShadingGradeMap
             {
@@ -961,7 +961,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_StepAndFeather(Material material)
+        void GUI_StepAndFeather(UnityEngine.Material material)
         {
                 GUI_BasicLookdevs(material);
 
@@ -980,7 +980,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_SystemShadows(Material material){
+        void GUI_SystemShadows(UnityEngine.Material material){
 
                 GUILayout.Label("System Shadows : Self Shadows Receiving", EditorStyles.boldLabel);
 
@@ -1009,7 +1009,7 @@ namespace UnityChan
                 EditorGUILayout.Space();
         }
 
-        void GUI_BasicLookdevs(Material material){
+        void GUI_BasicLookdevs(UnityEngine.Material material){
                 if (material.HasProperty("_utsTechnique"))//DoubleWithFeather or ShadingGradeMap
                 {
                     if(material.GetInt("_utsTechnique") == (int)_UTS_Technique.DoubleSideWithFeather)   //DWF
@@ -1043,7 +1043,7 @@ namespace UnityChan
                 EditorGUILayout.Space();
         }
 
-        void GUI_AdditionalLookdevs(Material material){
+        void GUI_AdditionalLookdevs(UnityEngine.Material material){
             GUILayout.Label("    Settings for PointLights in ForwardAdd Pass");
             EditorGUI.indentLevel++;
             m_MaterialEditor.RangeProperty(stepOffset, "Step Offset for PointLights");
@@ -1068,7 +1068,7 @@ namespace UnityChan
             EditorGUILayout.Space();
         }
 
-        void GUI_HighColor(Material material)
+        void GUI_HighColor(UnityEngine.Material material)
         {
             m_MaterialEditor.TexturePropertySingleLine(Styles.highColorText, highColor_Tex, highColor);
             m_MaterialEditor.RangeProperty(highColor_Power, "HighColor Power");
@@ -1149,7 +1149,7 @@ namespace UnityChan
             EditorGUILayout.Space();
         }
 
-        void GUI_RimLight(Material material)
+        void GUI_RimLight(UnityEngine.Material material)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("RimLight");
@@ -1275,7 +1275,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_MatCap(Material material)
+        void GUI_MatCap(UnityEngine.Material material)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("MatCap");
@@ -1431,7 +1431,7 @@ namespace UnityChan
             //EditorGUILayout.Space();
         }
 
-        void GUI_AngelRing(Material material)
+        void GUI_AngelRing(UnityEngine.Material material)
         {
             EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel("AngelRing Projection");
@@ -1477,7 +1477,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_Emissive(Material material)
+        void GUI_Emissive(UnityEngine.Material material)
         {
             GUILayout.Label("Emissive Tex × HDR Color", EditorStyles.boldLabel);
             GUILayout.Label("(Bloom Post-Processing Effect necessary)");
@@ -1608,7 +1608,7 @@ namespace UnityChan
         }
 
 
-        void GUI_Outline(Material material)
+        void GUI_Outline(UnityEngine.Material material)
         {
             //Shaderプロパティ [KeywordEnum(NML,POS)] をEumPopupで表現する.
             //マテリアル内のアウトラインモードの設定を読み込み.
@@ -1706,7 +1706,7 @@ namespace UnityChan
             }
         }
 
-        void GUI_Tessellation(Material material)
+        void GUI_Tessellation(UnityEngine.Material material)
         {
             GUILayout.Label("Technique : DX11 Phong Tessellation", EditorStyles.boldLabel);
             m_MaterialEditor.RangeProperty(tessEdgeLength, "Edge Length");
@@ -1716,7 +1716,7 @@ namespace UnityChan
             EditorGUILayout.Space();
         }
 
-        void GUI_LightColorContribution(Material material)
+        void GUI_LightColorContribution(UnityEngine.Material material)
         {
             GUILayout.Label("Realtime LightColor Contribution to each colors", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
@@ -1871,7 +1871,7 @@ namespace UnityChan
             EditorGUILayout.Space();
         }
 
-        void GUI_AdditionalLightingSettings(Material material)
+        void GUI_AdditionalLightingSettings(UnityEngine.Material material)
         {
             m_MaterialEditor.RangeProperty(gi_Intensity, "GI Intensity");
             m_MaterialEditor.RangeProperty(unlit_Intensity, "Unlit Intensity");

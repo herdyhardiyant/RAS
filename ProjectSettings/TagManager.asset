@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Machine
-  - PickupItem
   - Crafting
+  - Material
+  - Trash
   layers:
   - Default
   - TransparentFX
