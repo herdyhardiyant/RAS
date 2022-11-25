@@ -11,7 +11,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private MachineInteraction machineInteraction;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private PlayerInputMap playerInputMap;
-        [SerializeField] private Crafting crafting;
+        // [SerializeField] private Crafting crafting;
         public bool IsCrafting => _isCrafting;
 
         private GameObject _triggeredObject;
@@ -39,10 +39,13 @@ namespace Characters.Player.Scripts
                 heldObjectInteraction.ObjectInteract(_triggeredObject);
             } else if (_triggeredObject.CompareTag("Crafting"))
             {
-                if (_triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable))
+                print("Crafting: " + _triggeredObject.name);
+                _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
+
+                print("Put Crafting Table");
+                if (heldObjectInteraction.IsHoldingObject)
                 {
                     craftingTable.PutObjectOnCraftingBench(heldObjectInteraction.HoldObject);
-                    
                 }
             }
         }
@@ -59,6 +62,7 @@ namespace Characters.Player.Scripts
             } else if (other.CompareTag("Crafting"))
             {
                 _triggeredObject = other.gameObject;
+
             }
         }
 

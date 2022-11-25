@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2371076}
   m_Layer: 0
   m_Name: MetalA1
-  m_TagString: Untagged
+  m_TagString: Crafting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2213778055900151856}
   m_Layer: 0
   m_Name: WoodA1
-  m_TagString: Untagged
+  m_TagString: Crafting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 3232352882242517804}
   m_Layer: 0
   m_Name: ItemPosition
-  m_TagString: Untagged
+  m_TagString: Crafting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
