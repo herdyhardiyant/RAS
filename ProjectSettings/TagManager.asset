@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Machine
   - PickupItem
+  - Crafting
   layers:
   - Default
   - TransparentFX

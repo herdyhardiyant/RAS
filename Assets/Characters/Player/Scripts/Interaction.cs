@@ -10,36 +10,43 @@ namespace Characters.Player.Scripts
     {
         [SerializeField] private MachineInteraction machineInteraction;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
-        
+        [SerializeField] private PlayerInputMap playerInputMap;
+        [SerializeField] private Crafting crafting;
         public bool IsCrafting => _isCrafting;
-        
+
         private GameObject _triggeredObject;
-        private PlayerInputMap _inputControl;
         private Rigidbody _holdObjectRigidBody;
         private bool _isCrafting;
 
         private void Awake()
         {
             _triggeredObject = null;
-            _inputControl = gameObject.AddComponent<PlayerInputMap>();
         }
 
         private void Update()
         {
-            _isCrafting = _inputControl.IsDebugKeyPressed;
 
-            if (!_inputControl.IsInteractClicked) return;
+            if (!playerInputMap.IsInteractClicked) return;
 
-            if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
+            if (!_triggeredObject) return;
+
+            if (_triggeredObject.CompareTag("Machine"))
             {
                 machineInteraction.InteractMachine(_triggeredObject);
             }
-            else
+            else if(_triggeredObject.CompareTag("PickupItem"))
             {
                 heldObjectInteraction.ObjectInteract(_triggeredObject);
+            } else if (_triggeredObject.CompareTag("Crafting"))
+            {
+                if (_triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable))
+                {
+                    craftingTable.PutObjectOnCraftingBench(heldObjectInteraction.HoldObject);
+                    
+                }
             }
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Machine"))
@@ -49,6 +56,9 @@ namespace Characters.Player.Scripts
             else if (other.CompareTag("PickupItem"))
             {
                 _triggeredObject = other.gameObject;
+            } else if (other.CompareTag("Crafting"))
+            {
+                _triggeredObject = other.gameObject;
             }
         }
 
@@ -56,6 +66,5 @@ namespace Characters.Player.Scripts
         {
             _triggeredObject = null;
         }
-        
     }
 }

@@ -9,6 +9,8 @@ namespace Characters.Player.Scripts
         [SerializeField] private Transform holdingPoint;
 
         public bool IsHoldingObject => _holdObject != null;
+        
+        //TODO Drop object when holdObject getter is called or create TransferObject method
         public GameObject HoldObject => _holdObject;
         private GameObject _holdObject;
         private Rigidbody _holdObjectRigidBody;
