@@ -31,6 +31,11 @@ namespace Environment.Scripts
       
         public bool InputMaterial(GameObject inputMaterialGameObject)
         {
+            if (_isHoldingResult || _isSmelting)
+            {
+                return false;
+            }
+            
             var inputRecycleName = inputMaterialGameObject.TryGetComponent<Trash>(out var trash );
 
             if (!inputRecycleName)
@@ -42,11 +47,6 @@ namespace Environment.Scripts
             if (!smelterCraftingSelection.IsObjectCanBeSmelt(trash.RecycleType))
             {
                 StartCoroutine(machineUI.ShowBlockDelay());
-                return false;
-            }
-
-            if (_isHoldingResult || _isSmelting)
-            {
                 return false;
             }
 

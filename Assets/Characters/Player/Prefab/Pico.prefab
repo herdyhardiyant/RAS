@@ -7359,6 +7359,8 @@ GameObject:
   - component: {fileID: 343385276406115295}
   - component: {fileID: 3869663057050000928}
   - component: {fileID: 5572516661829579194}
+  - component: {fileID: 461803838244581532}
+  - component: {fileID: 1361469361619350156}
   m_Layer: 3
   m_Name: Pico
   m_TagString: Untagged
@@ -7467,6 +7469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInteraction: {fileID: 5572516661829579194}
   hammerOnPlayerHand: {fileID: 7765541077022116017}
+  heldObjectInteraction: {fileID: 1361469361619350156}
 --- !u!114 &3869663057050000928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7491,6 +7494,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd9e64d5482028946a5a1df83a1f5fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineInteraction: {fileID: 461803838244581532}
+  heldObjectInteraction: {fileID: 1361469361619350156}
+--- !u!114 &461803838244581532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073282037372344824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed48f8ce60e58584e8402dcb713c005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldObjectInteraction: {fileID: 1361469361619350156}
+--- !u!114 &1361469361619350156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073282037372344824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2471e44eb38b0fb419aac8383b572e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   holdingPoint: {fileID: 753919520959798243}

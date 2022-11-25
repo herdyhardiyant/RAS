@@ -8,6 +8,7 @@ namespace Characters.Player.Scripts
     {
         [SerializeField] private Interaction playerInteraction;
         [SerializeField] private GameObject hammerOnPlayerHand;
+        [SerializeField] private HeldObjectInteraction heldObjectInteraction;
 
         private Animator _animator;
         private CharacterController _characterController;
@@ -58,7 +59,7 @@ namespace Characters.Player.Scripts
         private void UpdateHoldingAnimationLayerWeight()
         {
             var holdingAnimationLayerIndex = _animator.GetLayerIndex(HoldingLayerName);
-            _animator.SetLayerWeight(holdingAnimationLayerIndex, playerInteraction.IsHolding.GetHashCode());
+            _animator.SetLayerWeight(holdingAnimationLayerIndex, heldObjectInteraction.IsHoldingObject.GetHashCode());
         }
     }
 }

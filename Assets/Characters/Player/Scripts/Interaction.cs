@@ -8,14 +8,13 @@ namespace Characters.Player.Scripts
 {
     public class Interaction : MonoBehaviour
     {
-        [SerializeField] private Transform holdingPoint;
-
-        public bool IsHolding => _holdObject != null;
+        [SerializeField] private MachineInteraction machineInteraction;
+        [SerializeField] private HeldObjectInteraction heldObjectInteraction;
+        
         public bool IsCrafting => _isCrafting;
         
         private GameObject _triggeredObject;
         private PlayerInputMap _inputControl;
-        private GameObject _holdObject;
         private Rigidbody _holdObjectRigidBody;
         private bool _isCrafting;
 
@@ -30,45 +29,17 @@ namespace Characters.Player.Scripts
             _isCrafting = _inputControl.IsDebugKeyPressed;
 
             if (!_inputControl.IsInteractClicked) return;
-            
-            //TODO: Add crafting interaction
-            // TODO: Split machine and object interaction to separate classes
-            
+
             if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
-                MachineInteraction();
+                machineInteraction.InteractMachine(_triggeredObject);
             }
             else
             {
-                HoldableObjectInteraction();
+                heldObjectInteraction.ObjectInteract(_triggeredObject);
             }
         }
-
-        private void MachineInteraction()
-        {
-            _triggeredObject.TryGetComponent<IMachine>(out var machine);
-
-            if (machine.IsProcessing)
-            {
-                return;
-            }
-
-     
-            if (machine.IsHoldingOutputItem && !_holdObject)
-            {
-           
-                var materialOutputFromMachine = machine.GetResultAfterProcessing();
-                var material = Instantiate(materialOutputFromMachine);
-                HoldObjectOnHand(material);
-            }
-            else if (_holdObject && !machine.IsHoldingOutputItem)
-            {
-       
-                var isMaterialInserted = machine.InputMaterial(_holdObject);
-                _holdObject = isMaterialInserted ? null : _holdObject;
-            }
-        }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Machine"))
@@ -85,46 +56,6 @@ namespace Characters.Player.Scripts
         {
             _triggeredObject = null;
         }
-
-        private void HoldableObjectInteraction()
-        {
-            if (!_holdObject)
-            {
-                PickupTriggeredObject();
-            }
-            else
-            {
-                DropHoldObject();
-            }
-        }
-
-        private void DropHoldObject()
-        {
-            _holdObject.transform.parent = null;
-            _holdObject = null;
-            _holdObjectRigidBody.isKinematic = false;
-            _holdObjectRigidBody = null;
-        }
-
-        private void PickupTriggeredObject()
-        {
-            if (!_triggeredObject)
-                return;
-
-            HoldObjectOnHand(_triggeredObject);
-
-            _triggeredObject = null;
-        }
-
-        private void HoldObjectOnHand(GameObject holdedObject)
-        {
-            _holdObject = holdedObject;
-            _holdObjectRigidBody = _holdObject.GetComponent<Rigidbody>();
-            _holdObjectRigidBody.isKinematic = true;
-
-            _holdObject.transform.parent = transform;
-            _holdObject.transform.position = holdingPoint.position;
-            _holdObject.transform.forward = transform.forward;
-        }
+        
     }
 }
