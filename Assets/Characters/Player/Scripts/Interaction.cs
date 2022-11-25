@@ -11,7 +11,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private MachineInteraction machineInteraction;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private PlayerInputMap playerInputMap;
-        // [SerializeField] private Crafting crafting;
+
         public bool IsCrafting => _isCrafting;
 
         private GameObject _triggeredObject;
@@ -25,28 +25,25 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
-
             if (!playerInputMap.IsInteractClicked) return;
 
-            if (!_triggeredObject) return;
-
-            if (_triggeredObject.CompareTag("Machine"))
+            if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
                 machineInteraction.InteractMachine(_triggeredObject);
             }
-            else if(_triggeredObject.CompareTag("PickupItem"))
+            else if (_triggeredObject && _triggeredObject.CompareTag("Crafting"))
             {
-                heldObjectInteraction.ObjectInteract(_triggeredObject);
-            } else if (_triggeredObject.CompareTag("Crafting"))
-            {
-                print("Crafting: " + _triggeredObject.name);
                 _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
 
-                print("Put Crafting Table");
                 if (heldObjectInteraction.IsHoldingObject)
                 {
-                    craftingTable.PutObjectOnCraftingBench(heldObjectInteraction.HoldObject);
+                    craftingTable.PutObjectOnCraftingBench(heldObjectInteraction.GetHeldObjectAndDropFromPlayer());
                 }
+            }
+            else if (_triggeredObject && _triggeredObject.CompareTag("PickupItem") ||
+                     heldObjectInteraction.IsHoldingObject)
+            {
+                heldObjectInteraction.InteractObject(_triggeredObject);
             }
         }
 
@@ -59,10 +56,10 @@ namespace Characters.Player.Scripts
             else if (other.CompareTag("PickupItem"))
             {
                 _triggeredObject = other.gameObject;
-            } else if (other.CompareTag("Crafting"))
+            }
+            else if (other.CompareTag("Crafting"))
             {
                 _triggeredObject = other.gameObject;
-
             }
         }
 

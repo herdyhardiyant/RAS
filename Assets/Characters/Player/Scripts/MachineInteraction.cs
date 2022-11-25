@@ -12,12 +12,12 @@ namespace Characters.Player.Scripts
         public void InteractMachine(GameObject interactedMachine)
         {
             interactedMachine.TryGetComponent<IMachine>(out var machine);
-            
+
             if (machine.IsProcessing)
             {
                 return;
             }
-            
+
             if (machine.IsHoldingOutputItem && !heldObjectInteraction.IsHoldingObject)
             {
                 TakeOutObjectFromMachineAndHoldIt(machine);
@@ -32,19 +32,20 @@ namespace Characters.Player.Scripts
         {
             var materialOutputFromMachine = machine.GetResultAfterProcessing();
             var material = Instantiate(materialOutputFromMachine);
-            heldObjectInteraction.HoldObjectOnHand(material);
+            heldObjectInteraction.InteractObject(material);
         }
 
         private void InsertHeldObjectToMachine(IMachine machine)
         {
-            var isMaterialInserted = machine.InputMaterial(heldObjectInteraction.HoldObject);
+            var heldObject = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
+            var isMaterialInserted = machine.InputMaterial(heldObject);
             if (isMaterialInserted)
             {
                 heldObjectInteraction.DropHoldObject();
             }
             else
             {
-                heldObjectInteraction.HoldObjectOnHand(heldObjectInteraction.HoldObject);
+                heldObjectInteraction.InteractObject(heldObject);
             }
         }
     }

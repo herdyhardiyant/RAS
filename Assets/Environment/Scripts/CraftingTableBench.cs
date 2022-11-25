@@ -5,13 +5,19 @@ namespace Environment.Scripts
 {
     public class CraftingTableBench : MonoBehaviour, ICraftingTable
     {
-        //TODO put object on the crafting table
-        //TODO craft object
+        [SerializeField] private Transform putObjectLocation;
+
+        private GameObject _objectOnCraftingTable;
+        //TODO craft object if the material is on the table
         //TODO After the crafting complete, player can hold the object
 
         public void PutObjectOnCraftingBench(GameObject objectToCraft)
         {
-            print("Put object on crafting bench");
+            _objectOnCraftingTable = objectToCraft;
+            _objectOnCraftingTable.transform.position = putObjectLocation.position;
+            _objectOnCraftingTable.transform.rotation = putObjectLocation.rotation;
+            _objectOnCraftingTable.transform.parent = putObjectLocation;
+            _objectOnCraftingTable.tag = "Untagged";
         }
     }
 }

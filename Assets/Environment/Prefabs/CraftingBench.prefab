@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 416638}
   - component: {fileID: 3350268}
   - component: {fileID: 2363916}
-  - component: {fileID: 2213778055900151856}
   m_Layer: 0
   m_Name: WoodA1
   m_TagString: Crafting
@@ -167,19 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2213778055900151856
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151746}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6028123, y: 2.7973168, z: 3.6028514}
-  m_Center: {x: -0.5808203, y: 1.3986584, z: 0.13641846}
 --- !u!1 &188988
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429058}
+  - component: {fileID: 2615072258492745923}
   - component: {fileID: -8613593118961506185}
   m_Layer: 0
   m_Name: CraftingBench
@@ -215,6 +202,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2615072258492745923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.582958, y: 2.7936528, z: 3.6761777}
+  m_Center: {x: -0.709842, y: 1.4068264, z: 0.12733833}
 --- !u!114 &-8613593118961506185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433bb413666b86b4bb8e46f53a22bf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  putObjectLocation: {fileID: 3232352882242517804}
 --- !u!1 &7878891362124047338
 GameObject:
   m_ObjectHideFlags: 0

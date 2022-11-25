@@ -1869,7 +1869,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 753919520959798243}
-  - component: {fileID: 248342156657374799}
   m_Layer: 3
   m_Name: HoldingPosition
   m_TagString: Untagged
@@ -1892,19 +1891,6 @@ Transform:
   m_Father: {fileID: 7593781614648918850}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &248342156657374799
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733474007399103758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1743121213190463770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,8 +4763,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.0447483}
-  m_Center: {x: 0, y: 0, z: 0.16558969}
+  m_Size: {x: 1, y: 1.397195, z: 1.0447483}
+  m_Center: {x: 0, y: 0.19859749, z: 0.16558969}
 --- !u!1 &4300538338184622919
 GameObject:
   m_ObjectHideFlags: 0
