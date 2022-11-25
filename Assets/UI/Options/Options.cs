@@ -12,9 +12,10 @@ namespace RAS
         [SerializeField] private Slider masterSlider;
         [SerializeField] private Slider sfxSlider;
         [SerializeField] private Slider bgmSlider;
-        [SerializeField] private Slider brightness;
         [SerializeField] private AudioMixer mixer;
         [SerializeField] private TMP_Dropdown reso;
+        [SerializeField] private TMP_Dropdown screenDropdown;
+        private bool screen = true;
 
         public void Start() {
             float db;
@@ -64,25 +65,35 @@ namespace RAS
         public void Resolution(){
         switch(reso.value){
             case 0:
-                Screen.SetResolution(640,360, false);
-                Debug.Log("640 x 360");
+                Screen.SetResolution(1920,1080, screen);
                 break;
             case 1:
-                Screen.SetResolution(1024,768, false);
-                Debug.Log("1024 x 768");
+                Screen.SetResolution(1366,768, screen);
                 break;
             case 2:
-                Screen.SetResolution(1280,720, false);
-                Debug.Log("1280 x 720");
+                Screen.SetResolution(1280,1024, screen);
                 break;
             case 3:
-                Screen.SetResolution(1920,1080, false);
-                Debug.Log("1920 x 1080");
+                Screen.SetResolution(1024,768, screen);
+                break;
+            case 4:
+                Screen.SetResolution(800,600, screen);
                 break;
             }
         }
-        public void Brightness(){
-
+        public void ScreenTogle(){
+            switch (screenDropdown.value)
+            {
+                
+                case 0:
+                    screen = true;
+                    Screen.fullScreen = screen;
+                    break;
+                case 1:
+                    screen = false;
+                    Screen.fullScreen = screen;
+                    break;
+            }
         }
     }
 }
