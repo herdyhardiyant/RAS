@@ -11,51 +11,65 @@ namespace Environment.Scripts
 
         [SerializeField] private Transform putObjectLocation;
         [SerializeField] private float craftingTime = 2f;
-        
-        private GameObject _craftingMaterial;
+
+        private GameObject _craftingMaterialInput;
         private bool _isCrafting;
-
-        //TODO craft object if the material is on the table
-        // player press f on front of the bench *
-        // player put material on the bench *
-        // Player start crafting animation and disable player movement *
-        // Wait for 3 seconds *
-        // Player stop crafting animation and enable player movement
-        // Player get crafted object from CraftingMaterial class
-        // Hold the crafted object in hand
-
-        //TODO After the crafting complete, player can hold the object
-
-
-        private void Awake()
+        private GameObject _craftingResultPrefab;
+        
+        private void ReplaceMaterialToCraftingResult()
         {
-            _isCrafting = false;
+            Destroy(_craftingMaterialInput);
+
+            var craftingResult = Instantiate(_craftingResultPrefab);
+            
+            PutObjectOnCraftingBench(craftingResult);
         }
+
 
         public bool StartCrafting(GameObject materialInput)
         {
             if (!materialInput.CompareTag("Material")) return false;
-            _craftingMaterial = materialInput;
-            PutObjectOnCraftingBench();
+
+            var isCraftingMaterialExist = materialInput.TryGetComponent<CraftingMaterial>(out var craftingMaterial);
+
+            if (!isCraftingMaterialExist) return false;
+
+            _craftingResultPrefab = craftingMaterial.CraftingResultPrefab;
+
+            _craftingMaterialInput = materialInput;
+            
+            _craftingMaterialInput.tag= "Untagged";
+
+            PutObjectOnCraftingBench(_craftingMaterialInput);
+
             StartCoroutine(CraftingDelay());
+
             return true;
+        }
+
+        private void Awake()
+        {
+            _isCrafting = false;
+            _craftingResultPrefab = null;
         }
 
         private IEnumerator CraftingDelay()
         {
-            print("Crafting started");
+         
             _isCrafting = true;
             yield return new WaitForSecondsRealtime(craftingTime);
             _isCrafting = false;
-            print("Crafting finished");
+          
+            ReplaceMaterialToCraftingResult();
         }
 
-        private void PutObjectOnCraftingBench()
+        private void PutObjectOnCraftingBench(GameObject objectToPut)
         {
-            _craftingMaterial.transform.position = putObjectLocation.position;
-            _craftingMaterial.transform.rotation = putObjectLocation.rotation;
-            _craftingMaterial.transform.parent = putObjectLocation;
-            _craftingMaterial.tag = "Untagged";
+            if (!objectToPut) return;
+
+            objectToPut.transform.position = putObjectLocation.position;
+            objectToPut.transform.rotation = putObjectLocation.rotation;
+            objectToPut.transform.parent = putObjectLocation;
         }
     }
 }

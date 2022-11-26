@@ -5,10 +5,10 @@ namespace Environment.Scripts
     public class CraftingMaterial : MonoBehaviour
     {
 
-        public GameObject CraftingResult => craftingResult;
+        public GameObject CraftingResultPrefab => craftingResultPrefab;
         
         [Tooltip("Crafting result after the material is used")]
-        [SerializeField] private GameObject craftingResult;
+        [SerializeField] private GameObject craftingResultPrefab;
         
     }
 }

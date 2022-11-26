@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee99b1a6b6c2174681e9ad3002a67e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialName: 
+  craftingResultPrefab: {fileID: 131046, guid: 5a420868f5dc52c4db173da380309aea, type: 3}
 --- !u!1001 &752946332424184015
 PrefabInstance:
   m_ObjectHideFlags: 0
