@@ -9,6 +9,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private Interaction playerInteraction;
         [SerializeField] private GameObject hammerOnPlayerHand;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
+        [SerializeField] private CraftingTableInteraction craftingTableInteraction;
 
         private Animator _animator;
         private CharacterController _characterController;
@@ -43,8 +44,8 @@ namespace Characters.Player.Scripts
 
         private void CraftingAnimationHandler()
         {
-            _animator.SetLayerWeight(_craftingAnimationLayerIndex, playerInteraction.IsCrafting.GetHashCode());
-            hammerOnPlayerHand.SetActive(playerInteraction.IsCrafting);
+            _animator.SetLayerWeight(_craftingAnimationLayerIndex, craftingTableInteraction.IsCrafting.GetHashCode());
+            hammerOnPlayerHand.SetActive(craftingTableInteraction.IsCrafting);
         }
 
         private void UpdateAnimatorStateFromVelocity()

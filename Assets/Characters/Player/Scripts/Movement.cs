@@ -7,15 +7,17 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
-        private CharacterController _characterController;
-        private Vector3 _playerVerticalVelocity;
-
         [SerializeField] private float walkSpeed = 2.0f;
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private float runSpeed = 4.0f;
+        [SerializeField] private CraftingTableInteraction craftingTableInteraction;
+
+
+        private CharacterController _characterController;
+        private Vector3 _playerVerticalVelocity;
         private const float GravityValue = -9.81f;
         private Vector3 _moveDirection;
-        
+
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
@@ -23,6 +25,12 @@ namespace Characters.Player.Scripts
 
         void Update()
         {
+            if (craftingTableInteraction.IsCrafting)
+            {
+                _characterController.Move(Vector3.zero);
+                return;
+            }
+
             UpdatePlayerGravity();
             _moveDirection = GetInputMoveDirection();
 
@@ -74,7 +82,6 @@ namespace Characters.Player.Scripts
 
         private void OnDisable()
         {
-            
         }
     }
 }

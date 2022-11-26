@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Interfaces;
 using UnityEngine;
 
@@ -9,14 +10,16 @@ namespace Environment.Scripts
         public bool IsCrafting => _isCrafting;
 
         [SerializeField] private Transform putObjectLocation;
+        [SerializeField] private float craftingTime = 2f;
+        
         private GameObject _craftingMaterial;
         private bool _isCrafting;
 
         //TODO craft object if the material is on the table
-        // player press f on front of the bench
-        // player put material on the bench
-        // Player start crafting animation and disable player movement
-        // Wait for 3 seconds
+        // player press f on front of the bench *
+        // player put material on the bench *
+        // Player start crafting animation and disable player movement *
+        // Wait for 3 seconds *
         // Player stop crafting animation and enable player movement
         // Player get crafted object from CraftingMaterial class
         // Hold the crafted object in hand
@@ -34,12 +37,20 @@ namespace Environment.Scripts
             if (!materialInput.CompareTag("Material")) return false;
             _craftingMaterial = materialInput;
             PutObjectOnCraftingBench();
-            _isCrafting = true;
-
+            StartCoroutine(CraftingDelay());
             return true;
         }
 
-        public void PutObjectOnCraftingBench()
+        private IEnumerator CraftingDelay()
+        {
+            print("Crafting started");
+            _isCrafting = true;
+            yield return new WaitForSecondsRealtime(craftingTime);
+            _isCrafting = false;
+            print("Crafting finished");
+        }
+
+        private void PutObjectOnCraftingBench()
         {
             _craftingMaterial.transform.position = putObjectLocation.position;
             _craftingMaterial.transform.rotation = putObjectLocation.rotation;

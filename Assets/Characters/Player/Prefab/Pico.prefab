@@ -7444,6 +7444,7 @@ MonoBehaviour:
   playerInteraction: {fileID: 5572516661829579194}
   hammerOnPlayerHand: {fileID: 7765541077022116017}
   heldObjectInteraction: {fileID: 1361469361619350156}
+  craftingTableInteraction: {fileID: 7288402082965503163}
 --- !u!114 &3869663057050000928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7459,6 +7460,7 @@ MonoBehaviour:
   walkSpeed: 2
   playerInputMap: {fileID: 1615733722268019514}
   runSpeed: 4
+  craftingTableInteraction: {fileID: 7288402082965503163}
 --- !u!114 &5572516661829579194
 MonoBehaviour:
   m_ObjectHideFlags: 0

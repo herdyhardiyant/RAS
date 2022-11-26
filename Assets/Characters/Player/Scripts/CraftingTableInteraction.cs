@@ -6,11 +6,12 @@ namespace Characters.Player.Scripts
 {
     public class CraftingTableInteraction : MonoBehaviour
     {
-        public bool IsCrafting => _isCrafting;
+        public bool IsCrafting => _craftingTable != null && _craftingTable.IsCrafting;
 
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
 
         private bool _isCrafting;
+        private ICraftingTable _craftingTable;
 
         private void Awake()
         {
@@ -20,6 +21,8 @@ namespace Characters.Player.Scripts
         public void InteractCraftingTable(ICraftingTable craftingTable)
         {
             if (!heldObjectInteraction.IsHoldingObject) return;
+            if (craftingTable.IsCrafting) return;
+            _craftingTable = craftingTable;
 
             var material = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
 
@@ -29,8 +32,6 @@ namespace Characters.Player.Scripts
             {
                 heldObjectInteraction.InteractObject(material);
             }
-
-            _isCrafting = craftingTable.IsCrafting;
         }
     }
 }

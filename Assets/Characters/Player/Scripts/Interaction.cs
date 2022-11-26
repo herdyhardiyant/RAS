@@ -12,13 +12,9 @@ namespace Characters.Player.Scripts
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
-        
-        
-        public bool IsCrafting => _isCrafting;
 
         private GameObject _triggeredObject;
         private Rigidbody _holdObjectRigidBody;
-        private bool _isCrafting;
 
         private void Awake()
         {
