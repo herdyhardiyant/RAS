@@ -11,7 +11,9 @@ namespace Characters.Player.Scripts
         [SerializeField] private MachineInteraction machineInteraction;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private PlayerInputMap playerInputMap;
-
+        [SerializeField] private CraftingTableInteraction craftingTableInteraction;
+        
+        
         public bool IsCrafting => _isCrafting;
 
         private GameObject _triggeredObject;
@@ -33,7 +35,13 @@ namespace Characters.Player.Scripts
             }
             else if (_triggeredObject && _triggeredObject.CompareTag("Crafting"))
             {
-                CraftingTableInteraction();
+                // CraftingTableInteraction();
+               var isCraftingTable = _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
+               
+               if (isCraftingTable)
+                {
+                    craftingTableInteraction.InteractCraftingTable(craftingTable);
+                }    
             }
             else if (_triggeredObject && _triggeredObject.CompareTag("Trash") ||
                      _triggeredObject && _triggeredObject.CompareTag("Material") ||
@@ -63,7 +71,7 @@ namespace Characters.Player.Scripts
         {
             _triggeredObject = null;
         }
-        
+
         private void CraftingTableInteraction()
         {
             _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
@@ -72,9 +80,12 @@ namespace Characters.Player.Scripts
 
             var material = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
 
-            if (!material.CompareTag("Material")) return;
+            var isSuccessStartCrafting = craftingTable.StartCrafting(material);
 
-            craftingTable.PutObjectOnCraftingBench(material);
+            if (!isSuccessStartCrafting)
+            {
+                heldObjectInteraction.InteractObject(material);
+            }
         }
     }
 }

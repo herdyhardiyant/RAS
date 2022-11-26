@@ -4,21 +4,11 @@ namespace Environment.Scripts
 {
     public class CraftingMaterial : MonoBehaviour
     {
-        public string MaterialName => materialName;
-        
-        [SerializeField] private string materialName;
-        
-        
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
+        public GameObject CraftingResult => craftingResult;
         
-        }
+        [Tooltip("Crafting result after the material is used")]
+        [SerializeField] private GameObject craftingResult;
+        
     }
 }

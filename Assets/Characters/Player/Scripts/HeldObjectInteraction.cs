@@ -49,6 +49,12 @@ namespace Characters.Player.Scripts
             _holdObjectRigidBody = null;
         }
 
+        
+        /// <summary>
+        /// Start interact with object that can be held. if holding an object, drop it.
+        /// If not, try to pick up the object
+        /// </summary>
+        /// <param name="interactedObject"></param>
         public void InteractObject(GameObject interactedObject)
         {
             if (!_holdObject)
