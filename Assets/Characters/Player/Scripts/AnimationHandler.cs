@@ -6,7 +6,6 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class AnimationHandler : MonoBehaviour
     {
-        [SerializeField] private Interaction playerInteraction;
         [SerializeField] private GameObject hammerOnPlayerHand;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;

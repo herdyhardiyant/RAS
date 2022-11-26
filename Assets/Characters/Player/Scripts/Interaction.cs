@@ -16,6 +16,7 @@ namespace Characters.Player.Scripts
         private GameObject _triggeredObject;
         private Rigidbody _holdObjectRigidBody;
 
+
         private void Awake()
         {
             _triggeredObject = null;
@@ -25,23 +26,26 @@ namespace Characters.Player.Scripts
         {
             if (!playerInputMap.IsInteractClicked) return;
 
+            var isInteractingHeldObject = _triggeredObject && _triggeredObject.CompareTag("Trash") ||
+                                          _triggeredObject && _triggeredObject.CompareTag("Material") ||
+                                          _triggeredObject && _triggeredObject.CompareTag("SellObject") ||
+                                          heldObjectInteraction.IsHoldingObject;
+
+
             if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
             {
                 machineInteraction.InteractMachine(_triggeredObject);
             }
             else if (_triggeredObject && _triggeredObject.CompareTag("Crafting"))
             {
-                // CraftingTableInteraction();
-               var isCraftingTable = _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
-               
-               if (isCraftingTable)
+                var isCraftingTable = _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
+
+                if (isCraftingTable)
                 {
                     craftingTableInteraction.InteractCraftingTable(craftingTable);
-                }    
+                }
             }
-            else if (_triggeredObject && _triggeredObject.CompareTag("Trash") ||
-                     _triggeredObject && _triggeredObject.CompareTag("Material") ||
-                     heldObjectInteraction.IsHoldingObject)
+            else if (isInteractingHeldObject)
             {
                 heldObjectInteraction.InteractObject(_triggeredObject);
             }
@@ -53,7 +57,7 @@ namespace Characters.Player.Scripts
             {
                 _triggeredObject = other.gameObject;
             }
-            else if (other.CompareTag("Trash") || other.CompareTag("Material"))
+            else if (other.CompareTag("Trash") || other.CompareTag("Material") || other.CompareTag("SellObject"))
             {
                 _triggeredObject = other.gameObject;
             }
@@ -66,22 +70,6 @@ namespace Characters.Player.Scripts
         private void OnTriggerExit(Collider other)
         {
             _triggeredObject = null;
-        }
-
-        private void CraftingTableInteraction()
-        {
-            _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
-
-            if (!heldObjectInteraction.IsHoldingObject) return;
-
-            var material = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
-
-            var isSuccessStartCrafting = craftingTable.StartCrafting(material);
-
-            if (!isSuccessStartCrafting)
-            {
-                heldObjectInteraction.InteractObject(material);
-            }
         }
     }
 }

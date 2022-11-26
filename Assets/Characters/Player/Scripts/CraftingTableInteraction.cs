@@ -10,13 +10,7 @@ namespace Characters.Player.Scripts
 
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
 
-        private bool _isCrafting;
         private ICraftingTable _craftingTable;
-
-        private void Awake()
-        {
-            _isCrafting = false;
-        }
 
         public void InteractCraftingTable(ICraftingTable craftingTable)
         {

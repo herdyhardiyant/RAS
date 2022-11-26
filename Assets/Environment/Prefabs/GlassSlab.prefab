@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee99b1a6b6c2174681e9ad3002a67e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialName: 
+  craftingResult: {fileID: 158136, guid: ea8da9f1952b4d441a6672c54c0e617d, type: 3}
 --- !u!1001 &752946332424184015
 PrefabInstance:
   m_ObjectHideFlags: 0
