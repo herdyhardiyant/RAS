@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recycleMachinePrefab: {fileID: 3283113057661087131, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
   trashName: GlassBottle
+  smeltedPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
 --- !u!1001 &284893158284293902
 PrefabInstance:
   m_ObjectHideFlags: 0

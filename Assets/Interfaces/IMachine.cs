@@ -4,7 +4,6 @@ namespace Interfaces
 {
     public interface IMachine
     {
-        public GameObject CurrentlyProcessedMaterial { get; }
         public bool IsProcessing { get; }
         public bool IsHoldingOutputItem { get; }
         public string RecycleType { get; }
@@ -15,10 +14,9 @@ namespace Interfaces
         /// <param name="inputMaterialGameObject that can be picked up by player and can be put in machine"></param>
         /// <returns></returns>
         public bool InputMaterial(GameObject inputMaterialGameObject);
-        public GameObject GetResultAfterProcessing();
-        public GameObject GetExpectedResult(GameObject material);
-        
-        
+        public GameObject GetInstantiateResultAfterSmelting();
+
+
 
     }
 }

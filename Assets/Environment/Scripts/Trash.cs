@@ -6,20 +6,10 @@ namespace Environment.Scripts
 {
     public class Trash : MonoBehaviour
     {
-        public string RecycleType => _recycleType;
-        public string TrashName => trashName;
+        public GameObject SmeltedPrefab => smeltedPrefab;
         
-        [Tooltip("This Trash Recycle Machine")]
-        [SerializeField] private GameObject recycleMachinePrefab;
-
-        [SerializeField] private string trashName;
+        [Tooltip("Prefab of the smelted trash")]
+        [SerializeField] private GameObject smeltedPrefab;
         
-        private string _recycleType;
-
-        private void Awake()
-        {
-            var machine = recycleMachinePrefab.GetComponent<IMachine>();
-            _recycleType = machine.RecycleType;
-        }
     }
 }

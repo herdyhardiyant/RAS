@@ -30,9 +30,9 @@ namespace Characters.Player.Scripts
 
         private void TakeOutObjectFromMachineAndHoldIt(IMachine machine)
         {
-            var materialOutputFromMachine = machine.GetResultAfterProcessing();
-            var material = Instantiate(materialOutputFromMachine);
-            heldObjectInteraction.InteractObject(material);
+            var materialOutputFromMachine = machine.GetInstantiateResultAfterSmelting();
+            // var material = Instantiate(materialOutputFromMachine);
+            heldObjectInteraction.InteractObject(materialOutputFromMachine);
         }
 
         private void InsertHeldObjectToMachine(IMachine machine)
