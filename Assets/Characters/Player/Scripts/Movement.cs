@@ -7,8 +7,6 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private AudioSource walkSound;
-        [SerializeField] private AudioSource runSound;
         [SerializeField] private float walkSpeed = 2.0f;
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private float runSpeed = 4.0f;
@@ -34,16 +32,14 @@ namespace Characters.Player.Scripts
             }
 
             UpdatePlayerGravity();
-            _moveDirection = GetInputMoveDirection();
             
-            walkSound.enabled = !playerInputMap.IsRunPressed && _moveDirection.magnitude > Vector3.zero.magnitude;
-            runSound.enabled = playerInputMap.IsRunPressed && _moveDirection.magnitude > Vector3.zero.magnitude;
-
+            _moveDirection = GetInputMoveDirection();
 
             RotatePlayerToMoveDirection();
+            
             MovePlayer();
         }
-
+        
         private void UpdatePlayerGravity()
         {
             var isGrounded = _characterController.isGrounded;
