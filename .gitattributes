@@ -137,3 +137,8 @@
 *.gz lfs-file
 *.rar lfs-file
 *.tar lfs-file
+
+# Unity Git Merging
+*.unity binary
+*.prefab binary
+*.asset binary
