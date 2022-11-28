@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 389a1dbfc28e7b44f852886eca6d3da2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 9ab02e91a7281fd4097af666b20e5e61, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Environment/meshes/Smelter/Smelter_Door Handle.sbsar

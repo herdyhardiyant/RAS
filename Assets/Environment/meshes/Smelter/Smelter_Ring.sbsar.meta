@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4552bab4da3ee614e9d06bf659401f91
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: b9d9445c5c667ea4db8af83658a084c2, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Environment/meshes/Smelter/Smelter_Ring.sbsar
