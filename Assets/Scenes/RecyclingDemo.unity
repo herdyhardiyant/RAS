@@ -661,6 +661,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!82 &1303114366 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6928588582907838464, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+  m_PrefabInstance: {fileID: 1994493273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1303114367 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3165735249950564935, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+  m_PrefabInstance: {fileID: 1994493273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1409775814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1107,6 +1117,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3165735249950564935, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165735249950564935, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869663057050000928, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: runSound
+      value: 
+      objectReference: {fileID: 1303114366}
+    - target: {fileID: 3869663057050000928, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: soundKaki
+      value: 
+      objectReference: {fileID: 1303114367}
+    - target: {fileID: 3869663057050000928, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: walkSound
+      value: 
+      objectReference: {fileID: 1303114367}
+    - target: {fileID: 6928588582907838464, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928588582907838464, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7073282037372344824, guid: 0b5bb025137388441b7adbda5937dded, type: 3}
       propertyPath: m_Name
       value: Pico

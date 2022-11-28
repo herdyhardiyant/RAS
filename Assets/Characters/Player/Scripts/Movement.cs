@@ -7,17 +7,18 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
+        [SerializeField] private AudioSource walkSound;
+        [SerializeField] private AudioSource runSound;
         [SerializeField] private float walkSpeed = 2.0f;
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private float runSpeed = 4.0f;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
-        
+
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
         private const float GravityValue = -9.81f;
         private Vector3 _moveDirection;
-        public AudioSource soundKaki;
-        public AudioSource soundLari;
+
 
         void Awake()
         {
@@ -34,20 +35,10 @@ namespace Characters.Player.Scripts
 
             UpdatePlayerGravity();
             _moveDirection = GetInputMoveDirection();
-            if (_moveDirection != Vector3.zero)
-            {
-                soundKaki.enabled = true;
-                if (_playerInputMap.IsRunPressed)
-                {
-                    soundKaki.enabled = false;
-                    soundLari.enabled = true;
-                }
-            }
-            else
-            {
-                soundKaki.enabled = false;
-                soundLari.enabled = false;
-            }
+            
+            walkSound.enabled = !playerInputMap.IsRunPressed && _moveDirection.magnitude > Vector3.zero.magnitude;
+            runSound.enabled = playerInputMap.IsRunPressed && _moveDirection.magnitude > Vector3.zero.magnitude;
+
 
             RotatePlayerToMoveDirection();
             MovePlayer();
@@ -94,6 +85,5 @@ namespace Characters.Player.Scripts
 
             return moveDirection.normalized;
         }
-        
     }
 }
