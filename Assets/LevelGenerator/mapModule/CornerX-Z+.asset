@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 471423627773247483, guid: 024bbd3f380c092429f8e45401711601, type: 3}
   down:
-    name: 0
-  left:
     name: e
-  up:
-    name: f
-  right:
+  left:
     name: 0
+  up:
+    name: 0
+  right:
+    name: f
   above:
     name: 
   below:
