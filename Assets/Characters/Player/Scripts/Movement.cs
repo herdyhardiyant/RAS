@@ -11,11 +11,12 @@ namespace Characters.Player.Scripts
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private float runSpeed = 4.0f;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
-        
+
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
         private const float GravityValue = -9.81f;
         private Vector3 _moveDirection;
+
 
         void Awake()
         {
@@ -31,12 +32,14 @@ namespace Characters.Player.Scripts
             }
 
             UpdatePlayerGravity();
+            
             _moveDirection = GetInputMoveDirection();
 
             RotatePlayerToMoveDirection();
+            
             MovePlayer();
         }
-
+        
         private void UpdatePlayerGravity()
         {
             var isGrounded = _characterController.isGrounded;
@@ -78,6 +81,5 @@ namespace Characters.Player.Scripts
 
             return moveDirection.normalized;
         }
-        
     }
 }
