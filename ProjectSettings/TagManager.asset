@@ -9,6 +9,7 @@ TagManager:
   - Material
   - Trash
   - SellObject
+  - TrashContainer
   layers:
   - Default
   - TransparentFX

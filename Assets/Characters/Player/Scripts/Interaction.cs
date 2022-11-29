@@ -24,6 +24,8 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
+            //TODO Refactor this for better readability
+
             if (!playerInputMap.IsInteractClicked) return;
 
             var isInteractingHeldObject = _triggeredObject && _triggeredObject.CompareTag("Trash") ||
@@ -31,21 +33,38 @@ namespace Characters.Player.Scripts
                                           _triggeredObject && _triggeredObject.CompareTag("SellObject") ||
                                           heldObjectInteraction.IsHoldingObject;
 
+          
 
-            if (_triggeredObject && _triggeredObject.CompareTag("Machine"))
+            if (_triggeredObject)
             {
-                machineInteraction.InteractMachine(_triggeredObject);
-            }
-            else if (_triggeredObject && _triggeredObject.CompareTag("Crafting"))
-            {
+                var isMachine = _triggeredObject.TryGetComponent<IMachine>(out var machine);
+                if (isMachine)
+                {
+                    machineInteraction.InteractMachine(machine);
+                    return;
+                }
+                
                 var isCraftingTable = _triggeredObject.TryGetComponent<ICraftingTable>(out var craftingTable);
-
                 if (isCraftingTable)
                 {
                     craftingTableInteraction.InteractCraftingTable(craftingTable);
+                    return;
                 }
+
+                var isHoldingObject = heldObjectInteraction.IsHoldingObject;
+                var isTrashContainer = _triggeredObject.TryGetComponent<ITrashContainer>(out var trashContainer);
+                if (isTrashContainer && !isHoldingObject)
+                {
+                    var newTrash = trashContainer.GetInstantiatedTrash();
+                    heldObjectInteraction.InteractObject(newTrash);
+                    return;
+                }
+                
             }
-            else if (isInteractingHeldObject)
+            
+            
+            
+            if (isInteractingHeldObject)
             {
                 heldObjectInteraction.InteractObject(_triggeredObject);
             }
@@ -53,18 +72,7 @@ namespace Characters.Player.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Machine"))
-            {
-                _triggeredObject = other.gameObject;
-            }
-            else if (other.CompareTag("Trash") || other.CompareTag("Material") || other.CompareTag("SellObject"))
-            {
-                _triggeredObject = other.gameObject;
-            }
-            else if (other.CompareTag("Crafting"))
-            {
-                _triggeredObject = other.gameObject;
-            }
+            _triggeredObject = other.gameObject;
         }
 
         private void OnTriggerExit(Collider other)
