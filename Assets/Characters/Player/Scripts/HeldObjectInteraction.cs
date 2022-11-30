@@ -10,7 +10,7 @@ namespace Characters.Player.Scripts
 
         public bool IsHoldingObject => _holdObject != null;
 
-        //TODO Drop object when holdObject getter is called or create TransferObject method
+        
         public GameObject GetHeldObjectAndDropFromPlayer()
         {
            

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Security.Cryptography;
 using Interfaces;
-using RAS.Environment.MachineUI;
 using UnityEngine;
 
 namespace Environment.Scripts
@@ -21,16 +20,16 @@ namespace Environment.Scripts
         private bool _isHoldingResult;
 
         private Trash _inputTrash;
-      
+
         public bool InputMaterial(GameObject inputMaterialGameObject)
         {
             if (_isHoldingResult || _isSmelting)
             {
                 return false;
             }
-            
-            var isTrashCompAvailable = inputMaterialGameObject.TryGetComponent<Trash>(out var trash );
-            
+
+            var isTrashCompAvailable = inputMaterialGameObject.TryGetComponent<Trash>(out var trash);
+
             if (!isTrashCompAvailable)
             {
                 StartCoroutine(machineUI.ShowBlockDelay());
@@ -42,9 +41,9 @@ namespace Environment.Scripts
             inputMaterialGameObject.SetActive(false);
 
             _isSmelting = true;
-            
+
             StartCoroutine(ProcessingDelay());
-            
+
             return true;
         }
 
@@ -57,15 +56,15 @@ namespace Environment.Scripts
 
             _isHoldingResult = false;
 
-            var result = Instantiate(_inputTrash.SmeltedPrefab);
-            
+            var result = PickupObjectPool.SharedInstance.GetPooledObject(_inputTrash.GetSmeltedPrefab.name);
+
             machineUI.HideImages();
             
-            // TODO: Send the object to pool and hide it;
-            Destroy(_inputTrash.gameObject);
-            
+            PickupObjectPool.SharedInstance.ReturnObjectToPool(_inputTrash.gameObject);
+
+
             _inputTrash = null;
-            
+
             return result;
         }
 
@@ -81,7 +80,6 @@ namespace Environment.Scripts
 
         private IEnumerator ProcessingDelay()
         {
-            
             _isHoldingResult = false;
             yield return new WaitForSecondsRealtime(smeltingTime);
             _isHoldingResult = true;
