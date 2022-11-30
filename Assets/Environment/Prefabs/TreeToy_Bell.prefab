@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 459236}
   - component: {fileID: 1409775817}
   - component: {fileID: 1409775816}
+  - component: {fileID: -4948649644428216462}
   m_Layer: 6
   m_Name: TreeToy_Bell
   m_TagString: SellObject
@@ -64,6 +65,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15473108, y: 0.1700847, z: 0.14977531}
   m_Center: {x: 0.009421015, y: 0.07391621, z: -0.0020881654}
+--- !u!114 &-4948649644428216462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27221bb51f256d446865cfd40d9b09e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: BellToy
+  price: 30
 --- !u!1 &159280
 GameObject:
   m_ObjectHideFlags: 0

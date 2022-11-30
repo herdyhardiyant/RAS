@@ -6,26 +6,6 @@ namespace Environment.Scripts
 {
     public class PickupObjectPool : MonoBehaviour
     {
-        // TODO Pool
-        // Get all object prefab *
-
-        // Create scriptable object for each object prefab
-        
-        // instantiate all object to pool
-        // Create dictionary to store the object
-        // Give a name in the prefab script to identify the object
-        // Dictionary key is the object name
-        // Dictionary value is the list of object
-
-        // get object from pool
-        // Call a function and input the object name
-        // Set the object to active
-
-        // Return the object
-        // return object to pool
-        // Call a function and input the object
-        // Set the object to inactive
-
         public static PickupObjectPool SharedInstance;
 
         [SerializeField] GameObject[] pickupObjectPrefabs;
@@ -36,6 +16,8 @@ namespace Environment.Scripts
         
         public void ReturnObjectToPool(GameObject objectToReturn)
         {
+           
+            objectToReturn.transform.parent = transform;
             objectToReturn.SetActive(false);
         }
         
@@ -47,7 +29,9 @@ namespace Environment.Scripts
                 {
                     if (!_pooledObjects[objectName][i].activeInHierarchy)
                     {
-                        return _pooledObjects[objectName][i];
+                        var pooledObject = _pooledObjects[objectName][i];
+                        pooledObject.SetActive(true);
+                        return pooledObject;
                     }
                 }
             }
@@ -80,7 +64,7 @@ namespace Environment.Scripts
 
                 for (int i = 0; i < amountToPoolForEachObject; i++)
                 {
-                    var obj = Instantiate(pickupPrefab);
+                    var obj = Instantiate(pickupPrefab, transform);
                     obj.SetActive(false);
                     objectList.Add(obj);
                 }

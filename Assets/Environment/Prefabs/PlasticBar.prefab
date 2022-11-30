@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingResultPrefab: {fileID: 175532, guid: 52f59ae1df567b44cbe96041a4a5207e, type: 3}
+  materialName: PlasticBar
 --- !u!1 &7093146087207049864
 GameObject:
   m_ObjectHideFlags: 0

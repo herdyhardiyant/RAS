@@ -15,14 +15,11 @@ namespace Environment.Scripts
         private GameObject _craftingMaterialInput;
         private bool _isCrafting;
         private GameObject _craftingResultPrefab;
-        
+
         private void ReplaceMaterialToCraftingResult()
         {
-            //TODO Pool
-            Destroy(_craftingMaterialInput);
-
-            var craftingResult = Instantiate(_craftingResultPrefab);
-            
+            PickupObjectPool.SharedInstance.ReturnObjectToPool(_craftingMaterialInput);
+            var craftingResult = PickupObjectPool.SharedInstance.GetPooledObject(_craftingResultPrefab.name);
             PutObjectOnCraftingBench(craftingResult);
         }
 
@@ -38,8 +35,8 @@ namespace Environment.Scripts
             _craftingResultPrefab = craftingMaterial.CraftingResultPrefab;
 
             _craftingMaterialInput = materialInput;
-            
-            _craftingMaterialInput.tag= "Untagged";
+
+            _craftingMaterialInput.tag = "Untagged";
 
             PutObjectOnCraftingBench(_craftingMaterialInput);
 
@@ -56,11 +53,10 @@ namespace Environment.Scripts
 
         private IEnumerator CraftingDelay()
         {
-         
             _isCrafting = true;
             yield return new WaitForSecondsRealtime(craftingTime);
             _isCrafting = false;
-          
+
             ReplaceMaterialToCraftingResult();
         }
 
