@@ -9,12 +9,16 @@ namespace Environment.Scripts
     {
         public bool IsCrafting => _isCrafting;
 
+
         [SerializeField] private Transform putObjectLocation;
         [SerializeField] private float craftingTime = 2f;
+        [SerializeField] private AudioClip soundPalu;
+        [SerializeField] private AudioSource sound;
 
         private GameObject _craftingMaterialInput;
         private bool _isCrafting;
         private GameObject _craftingResultPrefab;
+
         
         private void ReplaceMaterialToCraftingResult()
         {
@@ -41,6 +45,8 @@ namespace Environment.Scripts
             _craftingMaterialInput.tag= "Untagged";
 
             PutObjectOnCraftingBench(_craftingMaterialInput);
+
+            sound.PlayOneShot(soundPalu);
 
             StartCoroutine(CraftingDelay());
 

@@ -12,6 +12,8 @@ namespace Environment.Scripts
         public string RecycleType => "Smelter";
         [SerializeField] private float smeltingTime = 5f;
         [SerializeField] private MachineUIManipulator machineUI;
+        [SerializeField] private AudioClip smelSound;
+        [SerializeField] private AudioSource sound;
 
         public bool IsProcessing => _isSmelting;
         public bool IsHoldingOutputItem => _isHoldingResult;
@@ -42,6 +44,8 @@ namespace Environment.Scripts
             inputMaterialGameObject.SetActive(false);
 
             _isSmelting = true;
+
+            sound.PlayOneShot(smelSound);
             
             StartCoroutine(ProcessingDelay());
             
