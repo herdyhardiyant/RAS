@@ -58,9 +58,9 @@ namespace Environment.Scripts
             {
                 return null;
             }
-
+            
             _isHoldingResult = false;
-
+            
             var result = Instantiate(_inputTrash.SmeltedPrefab);
             
             machineUI.HideImages();
