@@ -16,7 +16,12 @@ namespace Characters.Player.Scripts
         private GameObject _triggeredObject;
         private Rigidbody _holdObjectRigidBody;
 
-
+        //TODO Detach held object when player is falling
+        
+        
+        //TODO Return pickup item to pool when it is dropped out of the map
+        
+        
         private void Awake()
         {
             _triggeredObject = null;
