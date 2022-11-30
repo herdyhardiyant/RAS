@@ -9,22 +9,20 @@ namespace Characters.Player.Scripts
     {
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
 
-        public void InteractMachine(GameObject interactedMachine)
+        public void InteractMachine(IMachine interactedMachine)
         {
-            interactedMachine.TryGetComponent<IMachine>(out var machine);
-
-            if (machine.IsProcessing)
+            if (interactedMachine.IsProcessing)
             {
                 return;
             }
 
-            if (machine.IsHoldingOutputItem && !heldObjectInteraction.IsHoldingObject)
+            if (interactedMachine.IsHoldingOutputItem && !heldObjectInteraction.IsHoldingObject)
             {
-                TakeOutObjectFromMachineAndHoldIt(machine);
+                TakeOutObjectFromMachineAndHoldIt(interactedMachine);
             }
-            else if (heldObjectInteraction.IsHoldingObject && !machine.IsHoldingOutputItem)
+            else if (heldObjectInteraction.IsHoldingObject && !interactedMachine.IsHoldingOutputItem)
             {
-                InsertHeldObjectToMachine(machine);
+                InsertHeldObjectToMachine(interactedMachine);
             }
         }
 
