@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Security.Cryptography;
 using Interfaces;
-using RAS.Environment.MachineUI;
 using UnityEngine;
 
 namespace Environment.Scripts

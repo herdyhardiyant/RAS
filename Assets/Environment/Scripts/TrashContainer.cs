@@ -16,6 +16,7 @@ namespace Environment.Scripts
         public GameObject GetInstantiatedTrash()
         {
             var randomTrashIndex = Random.Range(0, trashPrefab.Length);
+            //TODO Pooling
             var trash = Instantiate(trashPrefab[randomTrashIndex], transform.position, Quaternion.identity);
             return trash;
         }

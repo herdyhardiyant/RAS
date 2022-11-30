@@ -18,6 +18,7 @@ namespace Environment.Scripts
         
         private void ReplaceMaterialToCraftingResult()
         {
+            //TODO Pool
             Destroy(_craftingMaterialInput);
 
             var craftingResult = Instantiate(_craftingResultPrefab);
