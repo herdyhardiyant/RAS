@@ -8,6 +8,7 @@ namespace Characters.Player.Scripts
 {
     public class Interaction : MonoBehaviour
     {
+        //TODO Use required component instead and get the component from awake
         [SerializeField] private MachineInteraction machineInteraction;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private PlayerInputMap playerInputMap;
@@ -16,8 +17,6 @@ namespace Characters.Player.Scripts
 
         private GameObject _triggeredObject;
         private Rigidbody _holdObjectRigidBody;
-        
-        //TODO Return pickup item to pool when it is dropped out of the map
 
         private void Awake()
         {

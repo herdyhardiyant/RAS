@@ -13,15 +13,12 @@ namespace Characters.Player.Scripts
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
 
         public bool IsFalling => _isFalling;
-        
-        
+
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
         private const float GravityValue = -9.81f;
         private Vector3 _moveDirection;
         private bool _isFalling;
-
-        // TODO Character teleport back to the ground when fall out of the map
 
         void Awake()
         {
@@ -31,6 +28,7 @@ namespace Characters.Player.Scripts
 
         void Update()
         {
+
             if (craftingTableInteraction.IsCrafting)
             {
                 _characterController.Move(Vector3.zero);
