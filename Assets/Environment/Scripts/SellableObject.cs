@@ -8,5 +8,18 @@ namespace Environment.Scripts
         [SerializeField] private string objectName;
         [SerializeField] private int price;
         public string Name => objectName;
+        
+        private void Update()
+        {
+            ReturnToPoolWhenFallOutOfMap();
+        }
+
+        private void ReturnToPoolWhenFallOutOfMap()
+        {
+            if (transform.position.y < -10)
+            {
+                PickupObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+            }
+        }
     }
 }
