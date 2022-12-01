@@ -8,28 +8,42 @@ namespace RAS
 {
     public class Countdown : MonoBehaviour
     {
-        float currentTime = 0f;
-        float startTime = 20f;
-
-        [SerializeField] TMP_Text countdownText;
+        [SerializeField] TMP_Text TimerText;
+        [SerializeField] GameObject GameOverPanel;
         
-        void Start()
+        public float Waktu = 100;
+        public bool GameActive = true;
+
+        void SetText()
         {
-            currentTime = startTime;
+            int Menit = Mathf.FloorToInt(Waktu / 60);
+            int Detik = Mathf.FloorToInt(Waktu % 60);
+            TimerText.text = Menit.ToString("00") +":"+ Detik.ToString("00");
         }
-
         
-        void Update()
+        float sec;
+        private void Update()
         {
-            currentTime -= 1 * Time.deltaTime;
-            countdownText.text = currentTime.ToString("0");
-
-            if (currentTime <= 0)
+            // SetText();
+            if (GameActive)
             {
-                currentTime = 0;
-                countdownText.text = currentTime.ToString("TIMES UP!");
+                sec += Time.deltaTime;
+                if(sec >= 1)
+                {
+                Waktu--;
+                sec = 0;
+                }
             }
 
+            if (GameActive && Waktu <=0)
+            {
+                Debug.Log("Game Over");
+                GameOverPanel.SetActive(true);
+                GameActive = false;
+            }
+            SetText();
+            
         }
+
     }
 }
