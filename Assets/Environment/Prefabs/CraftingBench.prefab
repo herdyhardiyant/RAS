@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   putObjectLocation: {fileID: 3232352882242517804}
   craftingTime: 2
+  soundPalu: {fileID: 8300000, guid: fb9988af9928faa4d88f9521f03ae9c4, type: 3}
 --- !u!1 &7878891362124047338
 GameObject:
   m_ObjectHideFlags: 0

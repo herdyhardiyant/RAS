@@ -8,20 +8,21 @@ namespace Environment.Scripts
     public class CraftingTableBench : MonoBehaviour, ICraftingTable
     {
         public bool IsCrafting => _isCrafting;
+        
 
         [SerializeField] private Transform putObjectLocation;
         [SerializeField] private float craftingTime = 2f;
+        [SerializeField] private AudioClip soundPalu;
 
         private GameObject _craftingMaterialInput;
         private bool _isCrafting;
         private GameObject _craftingResultPrefab;
+        private AudioSource _audioSource;
         
         private void ReplaceMaterialToCraftingResult()
         {
-            Destroy(_craftingMaterialInput);
-
-            var craftingResult = Instantiate(_craftingResultPrefab);
-            
+            PickupObjectPool.SharedInstance.ReturnObjectToPool(_craftingMaterialInput);
+            var craftingResult = PickupObjectPool.SharedInstance.GetPooledObject(_craftingResultPrefab.name);
             PutObjectOnCraftingBench(craftingResult);
         }
 
@@ -37,10 +38,12 @@ namespace Environment.Scripts
             _craftingResultPrefab = craftingMaterial.CraftingResultPrefab;
 
             _craftingMaterialInput = materialInput;
-            
-            _craftingMaterialInput.tag= "Untagged";
+
+            _craftingMaterialInput.tag = "Untagged";
 
             PutObjectOnCraftingBench(_craftingMaterialInput);
+
+            _audioSource.PlayOneShot(soundPalu);
 
             StartCoroutine(CraftingDelay());
 
@@ -51,15 +54,15 @@ namespace Environment.Scripts
         {
             _isCrafting = false;
             _craftingResultPrefab = null;
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         private IEnumerator CraftingDelay()
         {
-         
             _isCrafting = true;
             yield return new WaitForSecondsRealtime(craftingTime);
             _isCrafting = false;
-          
+
             ReplaceMaterialToCraftingResult();
         }
 

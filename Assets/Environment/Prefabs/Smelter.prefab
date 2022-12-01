@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 2793398638534309665}
   - component: {fileID: 999477526862182088}
   - component: {fileID: 6660117078187361968}
-  - component: {fileID: -1529584523860895677}
   m_Layer: 0
   m_Name: Smelter
   m_TagString: Machine
@@ -180,24 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smeltingTime: 1
   machineUI: {fileID: 6930991027922133250}
-  smelterCraftingSelection: {fileID: -1529584523860895677}
---- !u!114 &-1529584523860895677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283113057661087131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52733ef3c34bfc44815697ef278bf94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smelterPrefab: {fileID: 3283113057661087131}
-  glassBottlePrefab: {fileID: 6324869654762242161, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
-  glassSlabPrefab: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
-  metalCansPrefab: {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
-  metalSlabPrefab: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
+  smeltingSound: {fileID: 8300000, guid: 48355d7d19cb3794d9c080ff33b697f9, type: 3}
+  smeltingCompleteSound: {fileID: 8300000, guid: 70c606e1ffb98e745a630a247593a7a9, type: 3}
 --- !u!1 &3378709117778453485
 GameObject:
   m_ObjectHideFlags: 0

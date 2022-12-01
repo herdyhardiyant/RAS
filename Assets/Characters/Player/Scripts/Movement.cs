@@ -12,19 +12,23 @@ namespace Characters.Player.Scripts
         [SerializeField] private float runSpeed = 4.0f;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
 
+        public bool IsFalling => _isFalling;
+
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
         private const float GravityValue = -9.81f;
         private Vector3 _moveDirection;
-
+        private bool _isFalling;
 
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            _isFalling = true;
         }
 
         void Update()
         {
+
             if (craftingTableInteraction.IsCrafting)
             {
                 _characterController.Move(Vector3.zero);
@@ -33,22 +37,30 @@ namespace Characters.Player.Scripts
 
             UpdatePlayerGravity();
             
+            _isFalling =  _characterController.velocity.y < 0 && !_characterController.isGrounded;
+            
             _moveDirection = GetInputMoveDirection();
 
             RotatePlayerToMoveDirection();
             
             MovePlayer();
         }
-        
+
         private void UpdatePlayerGravity()
         {
             var isGrounded = _characterController.isGrounded;
 
             if (isGrounded && _playerVerticalVelocity.y < 0)
+            {
                 _playerVerticalVelocity.y = 0;
-
-            _playerVerticalVelocity.y += GravityValue * Time.deltaTime;
-            _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
+                _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
+            }
+            else
+            {
+                _playerVerticalVelocity.y += GravityValue * Time.deltaTime;
+                _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
+            }
+            
         }
 
         private void RotatePlayerToMoveDirection()

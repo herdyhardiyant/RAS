@@ -76,7 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1dc00a6bfadf40b07de6b92bb2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smeltedPrefab: {fileID: 705876185075329643, guid: 1d58bdbeabd358745a2d2014fa8f50d5, type: 3}
+  getSmeltedPrefab: {fileID: 705876185075329643, guid: 1d58bdbeabd358745a2d2014fa8f50d5, type: 3}
+  trashName: PlasticBag
 --- !u!1 &5150040042426343944
 GameObject:
   m_ObjectHideFlags: 0

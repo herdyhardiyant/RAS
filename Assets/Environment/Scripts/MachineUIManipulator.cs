@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RAS.Environment.MachineUI
+namespace Environment.Scripts
 {
     public class MachineUIManipulator : MonoBehaviour
     {
         
         [SerializeField] private Image completeImage;
         [SerializeField] private Image blockImage;
-        
         
         public void ShowComplete()
         {

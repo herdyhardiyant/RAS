@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Security.Cryptography;
 using Interfaces;
-using RAS.Environment.MachineUI;
 using UnityEngine;
 
 namespace Environment.Scripts
@@ -12,25 +11,29 @@ namespace Environment.Scripts
         public string RecycleType => "Smelter";
         [SerializeField] private float smeltingTime = 5f;
         [SerializeField] private MachineUIManipulator machineUI;
+        [SerializeField] private AudioClip smeltingSound;
+        [SerializeField] private AudioClip smeltingCompleteSound;
+        // [SerializeField] private AudioSource sound;
 
         public bool IsProcessing => _isSmelting;
         public bool IsHoldingOutputItem => _isHoldingResult;
-
+        
+        private AudioSource _sound;
         private Light[] _lights;
         private bool _isSmelting;
         private bool _isHoldingResult;
 
         private Trash _inputTrash;
-      
+
         public bool InputMaterial(GameObject inputMaterialGameObject)
         {
             if (_isHoldingResult || _isSmelting)
             {
                 return false;
             }
-            
-            var isTrashCompAvailable = inputMaterialGameObject.TryGetComponent<Trash>(out var trash );
-            
+
+            var isTrashCompAvailable = inputMaterialGameObject.TryGetComponent<Trash>(out var trash);
+
             if (!isTrashCompAvailable)
             {
                 StartCoroutine(machineUI.ShowBlockDelay());
@@ -42,9 +45,9 @@ namespace Environment.Scripts
             inputMaterialGameObject.SetActive(false);
 
             _isSmelting = true;
-            
+            _sound.PlayOneShot(smeltingSound);
             StartCoroutine(ProcessingDelay());
-            
+
             return true;
         }
 
@@ -54,24 +57,23 @@ namespace Environment.Scripts
             {
                 return null;
             }
-
-            _isHoldingResult = false;
-
-            var result = Instantiate(_inputTrash.SmeltedPrefab);
             
+            _isHoldingResult = false;
+            var result = PickupObjectPool.SharedInstance.GetPooledObject(_inputTrash.GetSmeltedPrefab.name);
             machineUI.HideImages();
             
-            // TODO: Send the object to pool and hide it;
-            Destroy(_inputTrash.gameObject);
+            PickupObjectPool.SharedInstance.ReturnObjectToPool(_inputTrash.gameObject);
             
             _inputTrash = null;
-            
+
             return result;
         }
 
         private void Awake()
         {
             _lights = GetComponentsInChildren<Light>();
+            _sound = gameObject.AddComponent<AudioSource>();
+            
         }
 
         void Update()
@@ -81,12 +83,13 @@ namespace Environment.Scripts
 
         private IEnumerator ProcessingDelay()
         {
-            
             _isHoldingResult = false;
             yield return new WaitForSecondsRealtime(smeltingTime);
             _isHoldingResult = true;
             _isSmelting = false;
             machineUI.ShowComplete();
+            _sound.PlayOneShot(smeltingCompleteSound);
+
         }
 
         private void SmelterFireLightsUpdate()

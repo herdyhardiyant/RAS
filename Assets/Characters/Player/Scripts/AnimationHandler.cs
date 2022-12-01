@@ -9,19 +9,21 @@ namespace Characters.Player.Scripts
         [SerializeField] private GameObject hammerOnPlayerHand;
         [SerializeField] private HeldObjectInteraction heldObjectInteraction;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
+        [SerializeField] private Movement movement;
 
         private Animator _animator;
         private CharacterController _characterController;
 
         private const string IsWalkingStateName = "isWalking";
         private const string IsRunningStateName = "isRunning";
+        private const string IsFallingStateName = "isFalling";
 
         private const string HoldingLayerName = "Holding";
         private const string CraftingLayerName = "Crafting";
 
         private static readonly int IsWalking = Animator.StringToHash(IsWalkingStateName);
         private static readonly int IsRunning = Animator.StringToHash(IsRunningStateName);
-
+        private static readonly int IsFalling = Animator.StringToHash(IsFallingStateName);
 
         private int _craftingAnimationLayerIndex;
         void Awake()
@@ -35,6 +37,8 @@ namespace Characters.Player.Scripts
         void Update()
         {
             CraftingAnimationHandler();
+            
+            _animator.SetBool(IsFalling, movement.IsFalling);
             
             UpdateAnimatorStateFromVelocity();
 
