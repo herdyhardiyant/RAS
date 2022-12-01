@@ -7,9 +7,14 @@ namespace Characters.Player.Scripts
     public class HeldObjectInteraction : MonoBehaviour
     {
         [SerializeField] private Transform holdingPoint;
-
+        [SerializeField] private AudioClip pickSound;
+        [SerializeField] private AudioClip dropSound;
+       
+        
+        
         public bool IsHoldingObject => _holdObject != null;
 
+        private AudioSource _audioSource;
         
         public GameObject GetHeldObjectAndDropFromPlayer()
         {
@@ -47,6 +52,7 @@ namespace Characters.Player.Scripts
             _holdObject = null;
             _holdObjectRigidBody.isKinematic = false;
             _holdObjectRigidBody = null;
+            _audioSource.PlayOneShot(dropSound);
         }
 
         
@@ -71,8 +77,13 @@ namespace Characters.Player.Scripts
         {
             if (!objectToPickup)
                 return;
-
+            _audioSource.PlayOneShot(pickSound);
             HoldObjectOnHand(objectToPickup);
+        }
+
+        private void Awake()
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 }

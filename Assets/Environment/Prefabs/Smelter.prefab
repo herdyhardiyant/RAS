@@ -179,6 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smeltingTime: 1
   machineUI: {fileID: 6930991027922133250}
+  smeltingSound: {fileID: 8300000, guid: 48355d7d19cb3794d9c080ff33b697f9, type: 3}
+  smeltingCompleteSound: {fileID: 8300000, guid: 70c606e1ffb98e745a630a247593a7a9, type: 3}
 --- !u!1 &3378709117778453485
 GameObject:
   m_ObjectHideFlags: 0

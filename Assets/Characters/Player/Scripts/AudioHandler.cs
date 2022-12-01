@@ -11,7 +11,7 @@ namespace Characters.Player.Scripts
         
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
+            _audioSource =  gameObject.AddComponent<AudioSource>();
         }
 
         public void PlayFootstep()

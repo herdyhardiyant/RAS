@@ -10,7 +10,6 @@ namespace Environment.Scripts
         [SerializeField] private Image completeImage;
         [SerializeField] private Image blockImage;
         
-        
         public void ShowComplete()
         {
             completeImage.gameObject.SetActive(true);
