@@ -54,5 +54,4 @@ MonoBehaviour:
   - {fileID: 175532, guid: 52f59ae1df567b44cbe96041a4a5207e, type: 3}
   - {fileID: 131046, guid: 5a420868f5dc52c4db173da380309aea, type: 3}
   - {fileID: 158136, guid: ea8da9f1952b4d441a6672c54c0e617d, type: 3}
-  - {fileID: 158136, guid: ea8da9f1952b4d441a6672c54c0e617d, type: 3}
   amountToPoolForEachObject: 20
