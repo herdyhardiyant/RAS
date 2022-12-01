@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class PickupObjectPool : MonoBehaviour
+    public class ObjectPool : MonoBehaviour
     {
-        public static PickupObjectPool SharedInstance;
+        public static ObjectPool SharedInstance;
 
-        [SerializeField] GameObject[] pickupObjectPrefabs;
+        //TODO Add all barrels to this list
+        [SerializeField] GameObject[] objectPrefabs;
         [SerializeField] private int amountToPoolForEachObject = 10;
 
         private Dictionary<string, List<GameObject>> _pooledObjects;
@@ -57,7 +58,7 @@ namespace Environment.Scripts
         {
             _pooledObjects = new Dictionary<string, List<GameObject>>();
 
-            foreach (var pickupPrefab in pickupObjectPrefabs)
+            foreach (var pickupPrefab in objectPrefabs)
             {
                 var objectList = new List<GameObject>();
 
