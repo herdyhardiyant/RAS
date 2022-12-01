@@ -15,12 +15,12 @@ namespace RAS
 
         private int remainingDuration;
         private void Start() {
-            Being(timeRemaining);
+            Being(time);
         }
 
-        private void Being(int timeRemaining)
+        private void Being(int time)
         {
-            remainingDuration = timeRemaining; 
+            remainingDuration = time; 
             StartCoroutine(UpdateTimer());
         }
 
@@ -28,7 +28,7 @@ namespace RAS
         {
             while (remainingDuration >= 0){
                 timeText.text = $"{remainingDuration/ 60}:{remainingDuration % 60}";
-                timeBar.fillAmount = Mathf.InverseLerp(0,timeRemaining,remainingDuration);
+                timeBar.fillAmount = Mathf.InverseLerp(0,time,remainingDuration);
                 remainingDuration --;
                 yield return new WaitForSeconds(1f);
             }
