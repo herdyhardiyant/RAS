@@ -8,16 +8,16 @@ namespace Environment.Scripts
     public class CraftingTableBench : MonoBehaviour, ICraftingTable
     {
         public bool IsCrafting => _isCrafting;
-
+        
 
         [SerializeField] private Transform putObjectLocation;
         [SerializeField] private float craftingTime = 2f;
         [SerializeField] private AudioClip soundPalu;
-        [SerializeField] private AudioSource sound;
 
         private GameObject _craftingMaterialInput;
         private bool _isCrafting;
         private GameObject _craftingResultPrefab;
+        private AudioSource _audioSource;
         
         private void ReplaceMaterialToCraftingResult()
         {
@@ -43,7 +43,7 @@ namespace Environment.Scripts
 
             PutObjectOnCraftingBench(_craftingMaterialInput);
 
-            sound.PlayOneShot(soundPalu);
+            _audioSource.PlayOneShot(soundPalu);
 
             StartCoroutine(CraftingDelay());
 
@@ -54,6 +54,7 @@ namespace Environment.Scripts
         {
             _isCrafting = false;
             _craftingResultPrefab = null;
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         private IEnumerator CraftingDelay()

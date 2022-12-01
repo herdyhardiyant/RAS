@@ -11,12 +11,14 @@ namespace Environment.Scripts
         public string RecycleType => "Smelter";
         [SerializeField] private float smeltingTime = 5f;
         [SerializeField] private MachineUIManipulator machineUI;
-        [SerializeField] private AudioClip smelSound;
-        [SerializeField] private AudioSource sound;
+        [SerializeField] private AudioClip smeltingSound;
+        [SerializeField] private AudioClip smeltingCompleteSound;
+        // [SerializeField] private AudioSource sound;
 
         public bool IsProcessing => _isSmelting;
         public bool IsHoldingOutputItem => _isHoldingResult;
-
+        
+        private AudioSource _sound;
         private Light[] _lights;
         private bool _isSmelting;
         private bool _isHoldingResult;
@@ -43,7 +45,7 @@ namespace Environment.Scripts
             inputMaterialGameObject.SetActive(false);
 
             _isSmelting = true;
-            sound.PlayOneShot(smelSound);
+            _sound.PlayOneShot(smeltingSound);
             StartCoroutine(ProcessingDelay());
 
             return true;
@@ -61,8 +63,7 @@ namespace Environment.Scripts
             machineUI.HideImages();
             
             PickupObjectPool.SharedInstance.ReturnObjectToPool(_inputTrash.gameObject);
-
-
+            
             _inputTrash = null;
 
             return result;
@@ -71,6 +72,8 @@ namespace Environment.Scripts
         private void Awake()
         {
             _lights = GetComponentsInChildren<Light>();
+            _sound = gameObject.AddComponent<AudioSource>();
+            
         }
 
         void Update()
@@ -85,6 +88,8 @@ namespace Environment.Scripts
             _isHoldingResult = true;
             _isSmelting = false;
             machineUI.ShowComplete();
+            _sound.PlayOneShot(smeltingCompleteSound);
+
         }
 
         private void SmelterFireLightsUpdate()

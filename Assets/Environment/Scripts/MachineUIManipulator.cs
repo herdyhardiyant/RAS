@@ -9,15 +9,11 @@ namespace Environment.Scripts
         
         [SerializeField] private Image completeImage;
         [SerializeField] private Image blockImage;
-        [SerializeField] private AudioSource sound;
-        [SerializeField] private AudioClip completeSound;
-        
         
         public void ShowComplete()
         {
             completeImage.gameObject.SetActive(true);
             blockImage.gameObject.SetActive(false);
-            sound.PlayOneShot(completeSound);
         }
         
         public void ShowBlock()

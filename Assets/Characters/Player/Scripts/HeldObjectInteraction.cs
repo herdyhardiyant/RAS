@@ -9,10 +9,12 @@ namespace Characters.Player.Scripts
         [SerializeField] private Transform holdingPoint;
         [SerializeField] private AudioClip pickSound;
         [SerializeField] private AudioClip dropSound;
-        [SerializeField] private AudioSource sound;
-
+       
+        
+        
         public bool IsHoldingObject => _holdObject != null;
 
+        private AudioSource _audioSource;
         
         public GameObject GetHeldObjectAndDropFromPlayer()
         {
@@ -50,7 +52,7 @@ namespace Characters.Player.Scripts
             _holdObject = null;
             _holdObjectRigidBody.isKinematic = false;
             _holdObjectRigidBody = null;
-            sound.PlayOneShot(dropSound);
+            _audioSource.PlayOneShot(dropSound);
         }
 
         
@@ -75,8 +77,13 @@ namespace Characters.Player.Scripts
         {
             if (!objectToPickup)
                 return;
-            sound.PlayOneShot(pickSound);
+            _audioSource.PlayOneShot(pickSound);
             HoldObjectOnHand(objectToPickup);
+        }
+
+        private void Awake()
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 }

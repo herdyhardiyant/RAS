@@ -40,8 +40,8 @@ namespace Characters.Player.Scripts
         public void RespawnToSpawnPoint()
         {
             gameObject.transform.position = spawnPoint.position;
+            print("Respawned");
             _spawnEffect.Play();
-            //TODO add sound effect
             _spawnAudio.Play();
         }
     }
