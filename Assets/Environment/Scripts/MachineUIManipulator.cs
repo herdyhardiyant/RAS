@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RAS.Environment.MachineUI
+namespace Environment.Scripts
 {
     public class MachineUIManipulator : MonoBehaviour
     {

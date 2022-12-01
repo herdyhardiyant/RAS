@@ -4,12 +4,28 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class Trash : MonoBehaviour
+    public class Trash : MonoBehaviour, IPickupable
+
     {
-        public GameObject SmeltedPrefab => smeltedPrefab;
-        
-        [Tooltip("Prefab of the smelted trash")]
-        [SerializeField] private GameObject smeltedPrefab;
-        
+        public GameObject GetSmeltedPrefab => getSmeltedPrefab;
+
+        [Tooltip("Prefab of the smelted trash")] [SerializeField]
+        private GameObject getSmeltedPrefab;
+
+        [SerializeField] private string trashName;
+        public string Name => trashName;
+
+        private void Update()
+        {
+            ReturnToPoolWhenFallOutOfMap();
+        }
+
+        private void ReturnToPoolWhenFallOutOfMap()
+        {
+            if (transform.position.y < -10)
+            {
+                PickupObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+            }
+        }
     }
 }
