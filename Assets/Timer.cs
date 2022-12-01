@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,27 +10,32 @@ namespace RAS
     public class Timer : MonoBehaviour
     {
         [SerializeField] Image timeBar;
-        [SerializeField] private float timeRemaining = 100;
+        [SerializeField] private int time = 100;
         [SerializeField] private TMP_Text timeText;
-        void Update()
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-            }
+
+        private int remainingDuration;
+        private void Start() {
+            Being(timeRemaining);
         }
-        void DisplayTime(float timeToDisplay)
+
+        private void Being(int timeRemaining)
         {
-            timeToDisplay += 1;
-            float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
-            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-            timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            remainingDuration = timeRemaining; 
+            StartCoroutine(UpdateTimer());
+        }
+
+        private IEnumerator UpdateTimer()
+        {
+            while (remainingDuration >= 0){
+                timeText.text = $"{remainingDuration/ 60}:{remainingDuration % 60}";
+                timeBar.fillAmount = Mathf.InverseLerp(0,timeRemaining,remainingDuration);
+                remainingDuration --;
+                yield return new WaitForSeconds(1f);
+            }
+            onEnd();
+        }
+        private void onEnd(){
+            Debug.Log("Game Over");
         }
     }
 }
