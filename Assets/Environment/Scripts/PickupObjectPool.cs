@@ -16,7 +16,6 @@ namespace Environment.Scripts
         
         public void ReturnObjectToPool(GameObject objectToReturn)
         {
-           
             objectToReturn.transform.parent = transform;
             objectToReturn.SetActive(false);
         }

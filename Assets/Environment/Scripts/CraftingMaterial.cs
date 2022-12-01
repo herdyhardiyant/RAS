@@ -12,5 +12,18 @@ namespace Environment.Scripts
         [SerializeField] private GameObject craftingResultPrefab;
         [SerializeField] private string materialName;
         public string Name => materialName;
+        
+        private void Update()
+        {
+            ReturnToPoolWhenFallOutOfMap();
+        }
+        
+        private void ReturnToPoolWhenFallOutOfMap()
+        {
+            if (transform.position.y < -10)
+            {
+                PickupObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+            }
+        }
     }
 }
