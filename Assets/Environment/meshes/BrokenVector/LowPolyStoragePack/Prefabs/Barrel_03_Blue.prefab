@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6415410}
   - component: {fileID: -8287161986353430675}
   - component: {fileID: -4954669297081322704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel_03_Blue
   m_TagString: Barrel
   m_Icon: {fileID: 0}

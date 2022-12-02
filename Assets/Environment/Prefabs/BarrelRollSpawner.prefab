@@ -83,9 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79968eead955dce41802dbc677458b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrelPrefabs: {fileID: 0}
+  barrelPrefabs: {fileID: 112082, guid: 53dd11272dbdda346a1936ca914cdac9, type: 3}
   spawnPoint: {fileID: 5365842083644469683}
-  spawnDelay: 1
+  maxSpawnDelay: 3
+  minSpawnDelay: 1
 --- !u!1001 &906202433472939082
 PrefabInstance:
   m_ObjectHideFlags: 0

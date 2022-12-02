@@ -38,6 +38,6 @@ namespace Characters.Player.Scripts
             }
         }
 
-    
+        
     }
 }

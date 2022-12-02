@@ -7,8 +7,7 @@ namespace Environment.Scripts
     public class ObjectPool : MonoBehaviour
     {
         public static ObjectPool SharedInstance;
-
-        //TODO Add all barrels to this list
+        
         [SerializeField] GameObject[] objectPrefabs;
         [SerializeField] private int amountToPoolForEachObject = 10;
 
