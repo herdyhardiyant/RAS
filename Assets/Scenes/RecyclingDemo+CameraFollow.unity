@@ -816,6 +816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectPool
       objectReference: {fileID: 0}
+    - target: {fileID: 3725264690032490436, guid: 35325fd26ffa05543ac0a7fb6724fc32, type: 3}
+      propertyPath: amountToPoolForEachObject
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3783318092231648269, guid: 35325fd26ffa05543ac0a7fb6724fc32, type: 3}
       propertyPath: m_RootOrder
       value: 10
