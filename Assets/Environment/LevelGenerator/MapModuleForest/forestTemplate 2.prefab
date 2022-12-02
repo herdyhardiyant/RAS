@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3700918546156429122}
+  - component: {fileID: 2869476590113851866}
   m_Layer: 0
   m_Name: forestTemplate 2
   m_TagString: Untagged
@@ -32,6 +33,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2869476590113851866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667186090844915245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e83572f5a24f40488659a727f386fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipeSampah:
+  - {fileID: 3502522383435062252, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
+  - {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
+  - {fileID: 226930342340215177, guid: 7715e8b0de0427344bf5f69202c0b48e, type: 3}
+  posisiSpawn: 0.284
+  size: 3
 --- !u!1 &9116606615634555348
 GameObject:
   m_ObjectHideFlags: 0
