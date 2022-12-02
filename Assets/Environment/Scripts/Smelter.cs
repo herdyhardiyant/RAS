@@ -59,10 +59,10 @@ namespace Environment.Scripts
             }
             
             _isHoldingResult = false;
-            var result = ObjectPool.SharedInstance.GetPooledObject(_inputTrash.GetSmeltedPrefab.name);
+            var result = ObjectPool.Instance.GetPooledObject(_inputTrash.GetSmeltedPrefab.name);
             machineUI.HideImages();
             
-            ObjectPool.SharedInstance.ReturnObjectToPool(_inputTrash.gameObject);
+            ObjectPool.Instance.ReturnObjectToPool(_inputTrash.gameObject);
             
             _inputTrash = null;
 

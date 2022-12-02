@@ -11,7 +11,7 @@ namespace Environment.Scripts
         {
             var randomTrashIndex = Random.Range(0, trashPrefab.Length);
             var trashName = trashPrefab[randomTrashIndex].name;
-            var trashObject = ObjectPool.SharedInstance.GetPooledObject(trashName);
+            var trashObject = ObjectPool.Instance.GetPooledObject(trashName);
             return trashObject;
         }
     }

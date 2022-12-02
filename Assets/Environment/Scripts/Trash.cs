@@ -21,7 +21,7 @@ namespace Environment.Scripts
         {
             if (transform.position.y < -10)
             {
-                ObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+                ObjectPool.Instance.ReturnObjectToPool(gameObject);
             }
         }
     }
