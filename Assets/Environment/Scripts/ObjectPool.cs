@@ -6,11 +6,11 @@ namespace Environment.Scripts
 {
     public class ObjectPool : MonoBehaviour
     {
-        public static ObjectPool SharedInstance;
+        public static ObjectPool Instance;
         
         [SerializeField] GameObject[] objectPrefabs;
         [SerializeField] private int amountToPoolForEachObject = 10;
-
+        
         private Dictionary<string, List<GameObject>> _pooledObjects;
         
         public void ReturnObjectToPool(GameObject objectToReturn)
@@ -39,9 +39,9 @@ namespace Environment.Scripts
         
         private void Awake()
         {
-            if (SharedInstance == null)
+            if (Instance == null)
             {
-                SharedInstance = this;
+                Instance = this;
             }
             else
             {

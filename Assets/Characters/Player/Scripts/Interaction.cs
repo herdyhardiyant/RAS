@@ -66,7 +66,6 @@ namespace Characters.Player.Scripts
                     var isSellable = heldObject.TryGetComponent<ISellable>(out var sellable);
                     if (isSellable)
                     {
-                        print("Cashier");
                         cashier.Sell(sellable, heldObject);
                     }
                     else

@@ -21,8 +21,8 @@ namespace Environment.Scripts
         
         private void ReplaceMaterialToCraftingResult()
         {
-            ObjectPool.SharedInstance.ReturnObjectToPool(_craftingMaterialInput);
-            var craftingResult = ObjectPool.SharedInstance.GetPooledObject(_craftingResultPrefab.name);
+            ObjectPool.Instance.ReturnObjectToPool(_craftingMaterialInput);
+            var craftingResult = ObjectPool.Instance.GetPooledObject(_craftingResultPrefab.name);
             PutObjectOnCraftingBench(craftingResult);
         }
 
