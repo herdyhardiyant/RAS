@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class PickupObjectPool : MonoBehaviour
+    public class ObjectPool : MonoBehaviour
     {
-        public static PickupObjectPool SharedInstance;
-
-        [SerializeField] GameObject[] pickupObjectPrefabs;
+        public static ObjectPool SharedInstance;
+        
+        [SerializeField] GameObject[] objectPrefabs;
         [SerializeField] private int amountToPoolForEachObject = 10;
 
         private Dictionary<string, List<GameObject>> _pooledObjects;
@@ -22,6 +22,7 @@ namespace Environment.Scripts
         
         public GameObject GetPooledObject(string objectName)
         {
+                   
             if (_pooledObjects.ContainsKey(objectName))
             {
                 for (int i = 0; i < _pooledObjects[objectName].Count; i++)
@@ -51,25 +52,29 @@ namespace Environment.Scripts
             }
 
             DontDestroyOnLoad(gameObject);
+            
+            PreparePool();
         }
 
-        private void Start()
+        private void PreparePool()
         {
             _pooledObjects = new Dictionary<string, List<GameObject>>();
 
-            foreach (var pickupPrefab in pickupObjectPrefabs)
+            foreach (var prefab in objectPrefabs)
             {
                 var objectList = new List<GameObject>();
 
                 for (int i = 0; i < amountToPoolForEachObject; i++)
                 {
-                    var obj = Instantiate(pickupPrefab, transform);
+                    var obj = Instantiate(prefab, transform);
                     obj.SetActive(false);
                     objectList.Add(obj);
                 }
 
-                _pooledObjects.Add(pickupPrefab.name, objectList);
+                _pooledObjects.Add(prefab.name, objectList);
             }
         }
+
+     
     }
 }

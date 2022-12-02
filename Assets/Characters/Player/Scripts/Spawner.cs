@@ -23,26 +23,24 @@ namespace Characters.Player.Scripts
             _spawnAudio.clip = spawnSound;
             _spawnAudio.time = 0.15f;
         }
+        
+        
 
         private void Update()
         {
             if (transform.position.y < -10)
             {
-                _movement.enabled = false;
                 RespawnToSpawnPoint();
-            }
-            else
-            {
-                _movement.enabled = true;
             }
         }
 
-        public void RespawnToSpawnPoint()
+        private void RespawnToSpawnPoint()
         {
+            _movement.enabled = false;
             gameObject.transform.position = spawnPoint.position;
-            print("Respawned");
             _spawnEffect.Play();
             _spawnAudio.Play();
+            _movement.enabled = true;
         }
     }
 }
