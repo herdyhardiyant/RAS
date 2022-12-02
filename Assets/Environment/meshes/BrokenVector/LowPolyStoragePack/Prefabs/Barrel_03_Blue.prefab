@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4954669297081322704}
   m_Layer: 0
   m_Name: Barrel_03_Blue
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrelName: BlueBarrel
+  maxAngularVelocity: 20
+  barrelSpeed: 100
 --- !u!54 &-4954669297081322704
 Rigidbody:
   m_ObjectHideFlags: 0

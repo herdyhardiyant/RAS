@@ -11,6 +11,7 @@ TagManager:
   - SellObject
   - TrashContainer
   - Ground
+  - Barrel
   layers:
   - Default
   - TransparentFX
