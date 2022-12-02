@@ -11,6 +11,7 @@ TagManager:
   - SellObject
   - TrashContainer
   - Ground
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Pickup Item
-  - 
+  - Obstacle
   - 
   - 
   - 

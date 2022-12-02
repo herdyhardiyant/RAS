@@ -3,16 +3,14 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class CraftingMaterial : MonoBehaviour, IPickupable
+    public class CraftingMaterial : MonoBehaviour
     {
 
         public GameObject CraftingResultPrefab => craftingResultPrefab;
         
         [Tooltip("Crafting result after the material is used")]
         [SerializeField] private GameObject craftingResultPrefab;
-        [SerializeField] private string materialName;
-        public string Name => materialName;
-        
+
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();
@@ -22,7 +20,7 @@ namespace Environment.Scripts
         {
             if (transform.position.y < -10)
             {
-                PickupObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+                ObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
             }
         }
     }
