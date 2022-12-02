@@ -10,9 +10,15 @@ namespace RAS
     {
         [SerializeField] TMP_Text TimerText;
         [SerializeField] GameObject GameOverPanel;
+        [SerializeField] GameObject soundTriger1;
+        [SerializeField] GameObject soundTriger2;
+        [SerializeField] private AudioSource Sound;
+        [SerializeField] private AudioClip overSound;
+        [SerializeField] private GameObject movePico;
         
         public float Waktu = 100;
         public bool GameActive = true;
+        
 
         void SetText()
         {
@@ -40,6 +46,11 @@ namespace RAS
                 Debug.Log("Game Over");
                 GameOverPanel.SetActive(true);
                 GameActive = false;
+                soundTriger1.SetActive(false);
+                soundTriger2.SetActive(false);
+                movePico.SetActive(false);
+
+                Sound.PlayOneShot(overSound);
             }
             SetText();
             
