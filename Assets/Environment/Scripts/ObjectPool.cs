@@ -12,7 +12,6 @@ namespace Environment.Scripts
         [SerializeField] private int amountToPoolForEachObject = 10;
 
         private Dictionary<string, List<GameObject>> _pooledObjects;
-
         
         public void ReturnObjectToPool(GameObject objectToReturn)
         {
@@ -20,16 +19,15 @@ namespace Environment.Scripts
             objectToReturn.SetActive(false);
         }
         
-        public GameObject GetPooledObject(string objectName)
+        public GameObject GetPooledObject(string prefabName)
         {
-                   
-            if (_pooledObjects.ContainsKey(objectName))
+            if (_pooledObjects.ContainsKey(prefabName))
             {
-                for (int i = 0; i < _pooledObjects[objectName].Count; i++)
+                for (int i = 0; i < _pooledObjects[prefabName].Count; i++)
                 {
-                    if (!_pooledObjects[objectName][i].activeInHierarchy)
+                    if (!_pooledObjects[prefabName][i].activeInHierarchy)
                     {
-                        var pooledObject = _pooledObjects[objectName][i];
+                        var pooledObject = _pooledObjects[prefabName][i];
                         pooledObject.SetActive(true);
                         return pooledObject;
                     }
@@ -74,7 +72,6 @@ namespace Environment.Scripts
                 _pooledObjects.Add(prefab.name, objectList);
             }
         }
-
-     
+        
     }
 }
