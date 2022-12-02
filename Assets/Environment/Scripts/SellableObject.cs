@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class SellableObject : MonoBehaviour, IPickupable
+    public class SellableObject : MonoBehaviour
     {
         [SerializeField] private string objectName;
         [SerializeField] private int price;

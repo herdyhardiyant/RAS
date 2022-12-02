@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class Trash : MonoBehaviour, ISpawnable
+    public class Trash : MonoBehaviour
 
     {
         public GameObject GetSmeltedPrefab => getSmeltedPrefab;

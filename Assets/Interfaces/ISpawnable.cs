@@ -7,3 +7,4 @@ namespace Interfaces
         string Name { get; }
     }
 }
+        

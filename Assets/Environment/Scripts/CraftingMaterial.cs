@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class CraftingMaterial : MonoBehaviour, IPickupable
+    public class CraftingMaterial : MonoBehaviour
     {
 
         public GameObject CraftingResultPrefab => craftingResultPrefab;

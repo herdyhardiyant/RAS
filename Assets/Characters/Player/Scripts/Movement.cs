@@ -37,7 +37,7 @@ namespace Characters.Player.Scripts
 
             UpdatePlayerGravity();
             
-            _isFalling =  _characterController.velocity.y < 0 && !_characterController.isGrounded;
+            _isFalling =  _characterController.velocity.y < -1 && !_characterController.isGrounded;
             
             _moveDirection = GetInputMoveDirection();
 
