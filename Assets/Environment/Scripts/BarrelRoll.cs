@@ -6,10 +6,8 @@ namespace Environment.Scripts
 {
     public class BarrelRoll : MonoBehaviour
     {
-        [SerializeField] private string barrelName;
         [SerializeField] private float maxAngularVelocity = 20f;
         [SerializeField] private float barrelSpeed = 100f;
-        public string Name => barrelName;
 
         private Rigidbody _rigidbody;
 

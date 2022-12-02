@@ -11,10 +11,7 @@ namespace Environment.Scripts
 
         [Tooltip("Prefab of the smelted trash")] [SerializeField]
         private GameObject getSmeltedPrefab;
-
-        [SerializeField] private string trashName;
-        public string Name => trashName;
-
+        
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();

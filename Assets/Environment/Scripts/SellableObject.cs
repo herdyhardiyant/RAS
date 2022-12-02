@@ -5,10 +5,8 @@ namespace Environment.Scripts
 {
     public class SellableObject : MonoBehaviour
     {
-        [SerializeField] private string objectName;
         [SerializeField] private int price;
-        public string Name => objectName;
-        
+
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();

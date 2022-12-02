@@ -54,7 +54,6 @@ namespace Characters.Player.Scripts
                 if (isTrashContainer && !isHoldingObject)
                 {
                     var newTrash = trashContainer.GetInstantiatedTrash();
-                    print("new trash: " + newTrash);
                     heldObjectInteraction.InteractObject(newTrash);
                     return;
                 }
