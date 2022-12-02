@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0ffd232a49c454f8563964f8f6bba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupObjectPrefabs:
+  objectPrefabs:
   - {fileID: 3502522383435062252, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
   - {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
   - {fileID: 226930342340215177, guid: 7715e8b0de0427344bf5f69202c0b48e, type: 3}
@@ -54,4 +54,5 @@ MonoBehaviour:
   - {fileID: 175532, guid: 52f59ae1df567b44cbe96041a4a5207e, type: 3}
   - {fileID: 131046, guid: 5a420868f5dc52c4db173da380309aea, type: 3}
   - {fileID: 158136, guid: ea8da9f1952b4d441a6672c54c0e617d, type: 3}
-  amountToPoolForEachObject: 20
+  - {fileID: 112082, guid: 53dd11272dbdda346a1936ca914cdac9, type: 3}
+  amountToPoolForEachObject: 40

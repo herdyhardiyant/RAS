@@ -3,12 +3,10 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class SellableObject : MonoBehaviour, IPickupable
+    public class SellableObject : MonoBehaviour
     {
-        [SerializeField] private string objectName;
         [SerializeField] private int price;
-        public string Name => objectName;
-        
+
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();
@@ -18,7 +16,7 @@ namespace Environment.Scripts
         {
             if (transform.position.y < -10)
             {
-                PickupObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
+                ObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
             }
         }
     }
