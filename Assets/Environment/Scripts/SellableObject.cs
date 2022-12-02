@@ -3,9 +3,11 @@ using UnityEngine;
 
 namespace Environment.Scripts
 {
-    public class SellableObject : MonoBehaviour
+    public class SellableObject : MonoBehaviour, ISellable
     {
         [SerializeField] private int price;
+
+        public int Price => price;
 
         private void Update()
         {
@@ -19,5 +21,6 @@ namespace Environment.Scripts
                 ObjectPool.SharedInstance.ReturnObjectToPool(gameObject);
             }
         }
+
     }
 }
