@@ -29,11 +29,13 @@ namespace Environment.Scripts
 
         public bool StartCrafting(GameObject materialInput)
         {
-            if (!materialInput.CompareTag("Material")) return false;
-
             var isCraftingMaterialExist = materialInput.TryGetComponent<CraftingMaterial>(out var craftingMaterial);
 
-            if (!isCraftingMaterialExist) return false;
+            if (!isCraftingMaterialExist)
+            {
+                print("not crafting material");
+                return false;
+            }
 
             _craftingResultPrefab = craftingMaterial.CraftingResultPrefab;
 
