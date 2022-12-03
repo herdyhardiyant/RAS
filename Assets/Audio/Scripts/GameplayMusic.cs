@@ -41,5 +41,9 @@ namespace Audio.Scripts
         {
             RecycleEvents.OnTimerRunOut -= PlayDayComplete;
         }
+
+        public void OnExit(){
+            backgroundMusic.Stop();
+        }
     }
 }
