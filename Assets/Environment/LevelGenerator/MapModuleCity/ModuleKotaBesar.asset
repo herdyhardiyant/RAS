@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba27562a2dcf27346b47d769e240fd08, type: 3}
   m_Name: ModuleKotaBesar
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3667186090844915245, guid: 04c1daa77dd2d074fbf39e811677b917, type: 3}
+  prefab: {fileID: 3667186090844915245, guid: ac1054b8419d7b24f8adbcb7eff5fbfb, type: 3}
   down:
     name: 0
   left:

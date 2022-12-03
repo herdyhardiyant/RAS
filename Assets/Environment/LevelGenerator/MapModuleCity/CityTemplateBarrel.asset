@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba27562a2dcf27346b47d769e240fd08, type: 3}
   m_Name: CityTemplateBarrel
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3667186090844915245, guid: c41509c3a8d93f54cbaa37bcb1659896, type: 3}
+  prefab: {fileID: 3667186090844915245, guid: 2a480a2a0a4af4f43935f8cc6b675222, type: 3}
   down:
     name: 0
   left:

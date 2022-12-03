@@ -306,20 +306,20 @@ MonoBehaviour:
     modules:
     - {fileID: 11400000, guid: 390a1be5d545583408406a69754a111c, type: 2}
     - {fileID: 11400000, guid: 0a1a832a6665925498a07f07181622b0, type: 2}
-    width: 150
+    width: 152
     length: 1
     height: 1
     moduleSize: 2
-    offset: {x: 55, y: 0, z: -46}
+    offset: {x: 56, y: 0, z: -46}
   - name: tembok
     modules:
     - {fileID: 11400000, guid: ef8a53beb3e3eea49b0ff577ded4fbcd, type: 2}
     - {fileID: 11400000, guid: 8c81562cd5e7a8647883dab0e644282c, type: 2}
-    width: 150
+    width: 152
     length: 1
     height: 1
     moduleSize: 2
-    offset: {x: 55, y: 0, z: 46}
+    offset: {x: 56, y: 0, z: 46}
   - name: tembok pojok
     modules:
     - {fileID: 11400000, guid: c9d648cd8e0eee6428b16a9dc15e0bf4, type: 2}
@@ -343,7 +343,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ae2a0248a888ed343986655521cf322c, type: 2}
     - {fileID: 11400000, guid: aa4091f3dc64e3349a98cdae818d267f, type: 2}
     width: 1
-    length: 44
+    length: 46
     height: 1
     moduleSize: 2
     offset: {x: -96, y: 0, z: 0}
@@ -358,8 +358,9 @@ MonoBehaviour:
     offset: {x: 131, y: 0, z: 0}
   - name: TepiKota
     modules:
-    - {fileID: 11400000, guid: f18a3244467aa024c96985f7b51c9536, type: 2}
-    - {fileID: 11400000, guid: f18a3244467aa024c96985f7b51c9536, type: 2}
+    - {fileID: 11400000, guid: 6b3c14916586153459a25f03e852b51c, type: 2}
+    - {fileID: 11400000, guid: 6b3c14916586153459a25f03e852b51c, type: 2}
+    - {fileID: 11400000, guid: ee4f05ee352d76d4297c702340ecce0c, type: 2}
     width: 36
     length: 1
     height: 1
@@ -367,7 +368,8 @@ MonoBehaviour:
     offset: {x: 169, y: 0, z: 44}
   - name: TepiKoa
     modules:
-    - {fileID: 11400000, guid: ee4f05ee352d76d4297c702340ecce0c, type: 2}
+    - {fileID: 11400000, guid: f18a3244467aa024c96985f7b51c9536, type: 2}
+    - {fileID: 11400000, guid: f18a3244467aa024c96985f7b51c9536, type: 2}
     - {fileID: 11400000, guid: ee4f05ee352d76d4297c702340ecce0c, type: 2}
     width: 36
     length: 1
@@ -385,8 +387,16 @@ MonoBehaviour:
     offset: {x: 137, y: 0, z: 0}
   - name: WaveGrid
     modules:
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
     - {fileID: 11400000, guid: 902d4a1a5a1d1f640b10580636f865ee, type: 2}
-    - {fileID: 11400000, guid: 902d4a1a5a1d1f640b10580636f865ee, type: 2}
+    - {fileID: 11400000, guid: 25b26b5cb082681488f72f407c8ee867, type: 2}
+    - {fileID: 11400000, guid: 623ff212737f9ee439038b974e6fb655, type: 2}
+    - {fileID: 11400000, guid: ec3751fd65be5a64f86784639123e8df, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
     width: 3
     length: 11
     height: 1
@@ -404,12 +414,56 @@ MonoBehaviour:
   - name: WaveGrid
     modules:
     - {fileID: 11400000, guid: 902d4a1a5a1d1f640b10580636f865ee, type: 2}
-    - {fileID: 11400000, guid: 902d4a1a5a1d1f640b10580636f865ee, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 25b26b5cb082681488f72f407c8ee867, type: 2}
+    - {fileID: 11400000, guid: 623ff212737f9ee439038b974e6fb655, type: 2}
+    - {fileID: 11400000, guid: ec3751fd65be5a64f86784639123e8df, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
+    - {fileID: 11400000, guid: 4f1654395f2e4fd4e8dfb139873e9592, type: 2}
     width: 4
     length: 11
     height: 1
     moduleSize: 8
     offset: {x: 189, y: 0, z: 0}
+  - name: temboklagiyangujungdeketkotatapinya
+    modules:
+    - {fileID: 11400000, guid: c7e9c8ceee178974597395f28fa1fd39, type: 2}
+    - {fileID: 11400000, guid: 44ea3b7c492f84a4e9432131d416a5cd, type: 2}
+    width: 1
+    length: 46
+    height: 1
+    moduleSize: 2
+    offset: {x: 208, y: 0, z: 0}
+  - name: tembokpojokkotaatas
+    modules:
+    - {fileID: 11400000, guid: 71b69b640e7970145ad9357c7062d9fc, type: 2}
+    - {fileID: 11400000, guid: 71b69b640e7970145ad9357c7062d9fc, type: 2}
+    width: 1
+    length: 1
+    height: 1
+    moduleSize: 2
+    offset: {x: 208, y: 0, z: 46}
+  - name: tembokpojokkotabawah
+    modules:
+    - {fileID: 11400000, guid: aa9ccbeedc3b2ed41a0cc8a6152bc666, type: 2}
+    - {fileID: 11400000, guid: aa9ccbeedc3b2ed41a0cc8a6152bc666, type: 2}
+    width: 1
+    length: 1
+    height: 1
+    moduleSize: 2
+    offset: {x: 208, y: 0, z: -46}
+  - name: WaveGrid
+    modules:
+    - {fileID: 11400000, guid: ee4f05ee352d76d4297c702340ecce0c, type: 2}
+    - {fileID: 11400000, guid: ee4f05ee352d76d4297c702340ecce0c, type: 2}
+    - {fileID: 11400000, guid: 21e3c1ded6a5c83479cb3066c2bf958f, type: 2}
+    width: 1
+    length: 45
+    height: 1
+    moduleSize: 2
+    offset: {x: 206, y: 0, z: 0}
   loggingLevel: 0
   drawGizmos: 1
   idelay: 0
