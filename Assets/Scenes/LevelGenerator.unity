@@ -288,9 +288,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
     - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
     - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
-    - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
-    - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
-    - {fileID: 11400000, guid: de1d434a857345e4c9ef29cdc99ea3fa, type: 2}
     width: 40
     length: 45
     height: 1
@@ -308,6 +305,7 @@ MonoBehaviour:
   loggingLevel: 0
   drawGizmos: 1
   idelay: 0
+  starting: 0
 --- !u!4 &796892217
 Transform:
   m_ObjectHideFlags: 0
@@ -377,6 +375,7 @@ MonoBehaviour:
   loggingLevel: 0
   drawGizmos: 1
   idelay: 0
+  starting: 0
 --- !u!4 &2126868955
 Transform:
   m_ObjectHideFlags: 0
