@@ -36,10 +36,12 @@ namespace Audio.Scripts
         {
             backgroundMusic.Play();
         }
-
+        
         private void OnDestroy()
         {
             RecycleEvents.OnTimerRunOut -= PlayDayComplete;
+            RecycleEvents.OnTimerWarning -= WarningSound;
+            RecycleEvents.OnTimerDanger -= DangerSound;
         }
 
         public void OnExit(){
