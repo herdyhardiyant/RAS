@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
 using Controls;
+using Environment.Interfaces;
+using EventSystems;
 using UnityEngine;
 
 namespace Characters.Player.Scripts
@@ -8,62 +9,48 @@ namespace Characters.Player.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private float walkSpeed = 2.0f;
-        [SerializeField] private PlayerInputMap playerInputMap;
-        [SerializeField] private float runSpeed = 4.0f;
-        [SerializeField] private CraftingTableInteraction craftingTableInteraction;
-
-        public bool IsFalling => _isFalling;
-        public bool IsKnockedBack => _isKnockedBack;
-        
         private CharacterController _characterController;
         private Vector3 _playerVerticalVelocity;
-        private const float GravityValue = -9.81f;
+
+        [SerializeField] private float walkSpeed = 2.0f;
+
+        [SerializeField] private float runSpeed = 4.0f;
+        private const float _gravityValue = -9.81f;
+        private PlayerInputMap _playerInputMap;
         private Vector3 _moveDirection;
-        private bool _isFalling;
-        private bool _isKnockedBack;
+
+        public Vector3 GetPosition()
+        {
+            return transform.position;
+        }
 
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
-            _isFalling = true;
+            _playerInputMap = gameObject.AddComponent<PlayerInputMap>();
+            MouseClickEventHandler.OnMouseClickHoveredObject += RotatePlayerToClickedObject;
         }
 
         void Update()
         {
-
-            if (craftingTableInteraction.IsCrafting)
-            {
-                _characterController.Move(Vector3.zero);
-                return;
-            }
-
             UpdatePlayerGravity();
-            
-            _isFalling =  _characterController.velocity.y < -0.5 && !_characterController.isGrounded;
+            if (GameplayUIEventHandler.IsInventoryOpen)
+                return;
 
-            if (!_isKnockedBack)
-            {
-                _moveDirection = GetInputMoveDirection();   
-            }
+            _moveDirection = GetInputMoveDirection();
 
             RotatePlayerToMoveDirection();
-            
             MovePlayer();
         }
-        
-        public void KnockBack(Vector3 direction, float force, float duration = .3f)
+
+        private void RotatePlayerToClickedObject(IInteractable hoveredObject)
         {
-            _isKnockedBack = true;
-            _playerVerticalVelocity = direction * force;
-            StartCoroutine(KnockBackDelay(duration));
-        }
-        
-        private IEnumerator KnockBackDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            _playerVerticalVelocity = Vector3.zero;
-            _isKnockedBack = false;
+            if (hoveredObject == null) return;
+            var hoveredObjectPosition = hoveredObject.Position;
+            var playerTransform = transform;
+            var directionToLook = (hoveredObjectPosition - playerTransform.position).normalized;
+            var directionToLook2d = new Vector3(directionToLook.x, 0, directionToLook.z);
+            playerTransform.forward = directionToLook2d;
         }
 
         private void UpdatePlayerGravity()
@@ -71,16 +58,10 @@ namespace Characters.Player.Scripts
             var isGrounded = _characterController.isGrounded;
 
             if (isGrounded && _playerVerticalVelocity.y < 0)
-            {
                 _playerVerticalVelocity.y = 0;
-                _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
-            }
-            else
-            {
-                _playerVerticalVelocity.y += GravityValue * Time.deltaTime;
-                _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
-            }
-            
+
+            _playerVerticalVelocity.y += _gravityValue * Time.deltaTime;
+            _characterController.Move(_playerVerticalVelocity * Time.deltaTime);
         }
 
         private void RotatePlayerToMoveDirection()
@@ -92,26 +73,31 @@ namespace Characters.Player.Scripts
         private void MovePlayer()
         {
             var move = _moveDirection;
-            move *= playerInputMap.IsRunPressed ? runSpeed : walkSpeed;
+            move *= _playerInputMap.IsRunPressed ? runSpeed : walkSpeed;
             _characterController.Move(move * Time.deltaTime);
         }
 
         private Vector3 GetInputMoveDirection()
         {
             var moveDirection = Vector3.zero;
-            if (playerInputMap.IsUpPressed)
+            if (_playerInputMap.IsUpPressed)
                 moveDirection.z = 1;
 
-            if (playerInputMap.IsDownPressed)
+            if (_playerInputMap.IsDownPressed)
                 moveDirection.z = -1;
 
-            if (playerInputMap.IsRightPressed)
+            if (_playerInputMap.IsRightPressed)
                 moveDirection.x = 1;
 
-            if (playerInputMap.IsLeftPressed)
+            if (_playerInputMap.IsLeftPressed)
                 moveDirection.x = -1;
 
             return moveDirection.normalized;
+        }
+
+        private void OnDisable()
+        {
+            MouseClickEventHandler.OnMouseClickHoveredObject -= RotatePlayerToClickedObject;
         }
     }
 }

@@ -4,14 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Machine
-  - Crafting
-  - Material
-  - Trash
-  - SellObject
-  - TrashContainer
-  - Ground
-  - picola
+  - Interactable
+  - Pickupable
   layers:
   - Default
   - TransparentFX

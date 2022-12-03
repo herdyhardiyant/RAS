@@ -1,0 +1,16 @@
+{
+    "name": "DataStorage",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e5e575ee04e46164a9e6d558bb6f87b0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

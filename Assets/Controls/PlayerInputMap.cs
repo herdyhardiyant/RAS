@@ -8,16 +8,11 @@ namespace Controls
         private Keyboard _keyboard;
         private Mouse _mouse;
         
-        //TODO: Change to singleton
-        //TODO: Update every script that uses this to use the singleton instead
-        
         void Awake()
         {
             _keyboard = Keyboard.current;
             _mouse = Mouse.current;
         }
-
-        public bool IsDebugKeyPressed => _keyboard.spaceKey.isPressed;
 
         public bool IsLeftPressed => _keyboard.aKey.isPressed;
 
@@ -33,7 +28,7 @@ namespace Controls
         
         public bool IsBackPressed => _keyboard.escapeKey.wasPressedThisFrame;
 
-        public bool IsInteractClicked => _keyboard.fKey.wasPressedThisFrame;
+        public bool IsInteractClicked => _mouse.leftButton.wasPressedThisFrame;
         
     }
 }
