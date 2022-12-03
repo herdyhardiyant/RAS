@@ -10,6 +10,7 @@ namespace Environment.Scripts
         
         [Tooltip("Crafting result after the material is used")]
         [SerializeField] private GameObject craftingResultPrefab;
+        [SerializeField] private Sprite materialIcon;
 
         private void Update()
         {
