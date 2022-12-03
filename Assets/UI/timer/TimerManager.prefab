@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8102317161548208386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.351788, y: 2.351788, z: 2.351788}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,13 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerText: {fileID: 0}
   GameOverPanel: {fileID: 0}
-  soundTriger1: {fileID: 0}
-  soundTriger2: {fileID: 0}
-  Sound: {fileID: 8102317161548208398}
-  overSound: {fileID: 8300000, guid: 372ea2f86b8d3ee4f8604931436d283d, type: 3}
-  movePico: {fileID: 0}
-  Waktu: 10
-  GameActive: 1
+  beepSound: {fileID: 8102317161548208398}
+  sandClockImage: {fileID: 0}
+  Waktu: 30
 --- !u!82 &8102317161548208398
 AudioSource:
   m_ObjectHideFlags: 0
@@ -64,10 +60,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: d0b418e1f42bb6745808d01e660cdcc5, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0
