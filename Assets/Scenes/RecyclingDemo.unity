@@ -516,8 +516,8 @@ GameObject:
   m_Component:
   - component: {fileID: 568158531}
   - component: {fileID: 568158530}
-  - component: {fileID: 568158532}
   - component: {fileID: 568158533}
+  - component: {fileID: 568158532}
   m_Layer: 0
   m_Name: GameplayMusic
   m_TagString: Untagged
@@ -660,7 +660,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e070cf5d8221a7418a6956fe60604fd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 372ea2f86b8d3ee4f8604931436d283d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -869,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102317161548208385, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
       propertyPath: Waktu
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8102317161548208385, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
       propertyPath: movePico
@@ -879,6 +879,10 @@ PrefabInstance:
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 1424201072}
+    - target: {fileID: 8102317161548208385, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
+      propertyPath: beepSound
+      value: 
+      objectReference: {fileID: 1558118423}
     - target: {fileID: 8102317161548208385, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
       propertyPath: finishClip
       value: 
@@ -896,9 +900,13 @@ PrefabInstance:
       value: TimerManager
       objectReference: {fileID: 0}
     - target: {fileID: 8102317161548208398, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
+      propertyPath: m_Pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102317161548208398, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: d0b418e1f42bb6745808d01e660cdcc5, type: 3}
     - target: {fileID: 8102317161548208398, guid: 9bf8b7f13b4e5924c92b9fa97b13dcc2, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

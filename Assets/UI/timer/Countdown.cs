@@ -1,3 +1,4 @@
+using System;
 using Systems;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,13 @@ namespace UI.timer
     {
         [SerializeField] TMP_Text TimerText;
         [SerializeField] GameObject GameOverPanel;
+        [SerializeField] AudioSource beepSound;
 
         public float Waktu = 100;
+        
+        private bool _isTimerStopped;
+        private bool _isTimerWarning;
+        private bool _isTImerDanger;
         
         void SetText()
         {
@@ -20,9 +26,17 @@ namespace UI.timer
 
         float sec;
 
+        
+        
+        private void Awake()
+        {
+            _isTimerStopped = false;
+            _isTImerDanger = false;
+            _isTimerWarning = false;
+        }
+
         private void Update()
         {
-            // SetText();
             if (Waktu > 0)
             {
                 sec += Time.deltaTime;
@@ -30,11 +44,32 @@ namespace UI.timer
                 {
                     Waktu--;
                     sec = 0;
+
+                    if (_isTImerDanger)
+                    {
+                        beepSound.Play();
+                    }
+                    
                 }
             }
 
-            if (Waktu <= 0)
+            if (!_isTimerWarning && Waktu <= 20)
             {
+                _isTimerWarning = true;
+                RecycleEvents.TimerWarning();
+            }
+            
+            if (!_isTImerDanger && Waktu <= 10)
+            {
+                _isTImerDanger = true;
+                RecycleEvents.TimerDanger();
+            }
+
+            if (!_isTimerStopped && Waktu <= 0)
+            {
+                _isTImerDanger = false;
+                _isTimerWarning = false;
+                _isTimerStopped = true;
                 RecycleEvents.TimerRunOut();
                 GameOverPanel.SetActive(true);
             }

@@ -12,6 +12,18 @@ namespace Audio.Scripts
         private void Awake()
         {
             RecycleEvents.OnTimerRunOut += PlayDayComplete;
+            RecycleEvents.OnTimerWarning += WarningSound;
+            RecycleEvents.OnTimerDanger += DangerSound;
+        }
+
+        private void DangerSound()
+        {
+            backgroundMusic.pitch = 1.4f;
+        }
+
+        private void WarningSound()
+        {
+            backgroundMusic.pitch = 1.2f;
         }
 
         private void PlayDayComplete()
