@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 32455c6838ff3584ebd41bc484fa0c55
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 279713df369e9324c871fb9d9f2c1fcb, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Environment/meshes/Smelter/Smelter_Stone.sbsar
