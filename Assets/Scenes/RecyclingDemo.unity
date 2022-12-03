@@ -1229,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DayCompletePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4211688413300991740, guid: c23b1ea373034db4c9f516193db4be85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4211688413300991743, guid: c23b1ea373034db4c9f516193db4be85, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
