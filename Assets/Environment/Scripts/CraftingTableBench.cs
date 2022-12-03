@@ -21,19 +21,21 @@ namespace Environment.Scripts
         
         private void ReplaceMaterialToCraftingResult()
         {
-            ObjectPool.SharedInstance.ReturnObjectToPool(_craftingMaterialInput);
-            var craftingResult = ObjectPool.SharedInstance.GetPooledObject(_craftingResultPrefab.name);
+            ObjectPool.Instance.ReturnObjectToPool(_craftingMaterialInput);
+            var craftingResult = ObjectPool.Instance.GetPooledObject(_craftingResultPrefab.name);
             PutObjectOnCraftingBench(craftingResult);
         }
 
 
         public bool StartCrafting(GameObject materialInput)
         {
-            if (!materialInput.CompareTag("Material")) return false;
-
             var isCraftingMaterialExist = materialInput.TryGetComponent<CraftingMaterial>(out var craftingMaterial);
 
-            if (!isCraftingMaterialExist) return false;
+            if (!isCraftingMaterialExist)
+            {
+                print("not crafting material");
+                return false;
+            }
 
             _craftingResultPrefab = craftingMaterial.CraftingResultPrefab;
 

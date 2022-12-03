@@ -27,7 +27,7 @@ namespace Environment.Scripts
                 var delay = Random.Range(minSpawnDelay, maxSpawnDelay);
                 yield return new WaitForSeconds(delay);
                 
-                _barrel = ObjectPool.SharedInstance.GetPooledObject(barrelPrefabs.name);
+                _barrel = ObjectPool.Instance.GetPooledObject(barrelPrefabs.name);
                 _barrel.transform.position = spawnPoint.position;
                 _barrel.transform.forward = spawnPoint.forward;
                 _barrel.transform.parent = spawnPoint;
