@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GameplayData
 {
-    public class OrderData : MonoBehaviour
+    public class Orders : MonoBehaviour
     {
         // Create recipe in SellableObject component  
         // Get 2D sprite for the recipe ui, **
@@ -12,7 +12,7 @@ namespace GameplayData
         
         // Assign the sprite to each of the above **
      
-        // Create prefab template for the order UI
+        // Create prefab template for the order UI *done*
         
         // Create a linked list of recipes
         // Create order randomly,
@@ -21,17 +21,14 @@ namespace GameplayData
         // if the order is at max amount, do not create a new order
         // and add to the linked list
         
-        // Create a timer for the order
-        // If timer runs out, remove order from linked list and get add penalty
-        // If order is completed, remove order from linked list and get reward
-        // Add timer threshold to get tips when order is completed
-        
         // Create a UI from the order list
         // Create a UI for the order timer and line threshold for tips reward
 
-        
-        
-        
+        // When player sells an item, check if the item is in the order list
+        // if it is, remove the item from the order list, and 
+        // if it is not, don't remove the item from the order list, and return the item to pool
 
+        
+        
     }
 }

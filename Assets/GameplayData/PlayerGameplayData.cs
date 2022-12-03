@@ -1,4 +1,5 @@
 using System;
+using Systems;
 using UnityEngine;
 
 namespace GameplayData
@@ -24,23 +25,12 @@ namespace GameplayData
             }
 
             _totalMoney = 0;
+            RecycleEvents.OnSellItem += AddMoney;
         }
 
         public void AddMoney(int amount)
         {
             _totalMoney += amount;
-            OnMoneyChanged?.Invoke(_totalMoney);
-        }
-
-        public void SubtractMoney(int amount)
-        {
-            _totalMoney -= amount;
-
-            if (_totalMoney < 0)
-            {
-                _totalMoney = 0;
-            }
-
             OnMoneyChanged?.Invoke(_totalMoney);
         }
     }
