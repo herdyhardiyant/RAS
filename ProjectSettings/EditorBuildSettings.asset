@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Legacy/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/RecyclingDemo.unity
+    path: Assets/Scenes/DemoScene/RecyclingDemo.unity
     guid: 61b57ab693b6f6a43979f7c7d0d262e1
   - enabled: 1
-    path: Assets/Scenes/BarrelRoll.unity
+    path: Assets/Scenes/DemoScene/BarrelRoll.unity
     guid: 45d47a6dcad065443960e85de082059f
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
