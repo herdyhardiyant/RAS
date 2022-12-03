@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using Systems;
 using TMPro;
+using UnityEngine;
 
-
-namespace RAS
+namespace UI.timer
 {
     public class Countdown : MonoBehaviour
     {
         [SerializeField] TMP_Text TimerText;
         [SerializeField] GameObject GameOverPanel;
-        [SerializeField] private AudioSource Sound;
-        [SerializeField] private AudioClip overSound;
-        [SerializeField] private GameObject movePico;
+        [SerializeField] AudioSource beepSound;
 
         public float Waktu = 100;
-        public bool GameActive = true;
-
-
+        
+        private bool _isTimerStopped;
+        private bool _isTimerWarning;
+        private bool _isTImerDanger;
+        
         void SetText()
         {
             int Menit = Mathf.FloorToInt(Waktu / 60);
@@ -27,26 +26,52 @@ namespace RAS
 
         float sec;
 
+        
+        
+        private void Awake()
+        {
+            _isTimerStopped = false;
+            _isTImerDanger = false;
+            _isTimerWarning = false;
+        }
+
         private void Update()
         {
-            // SetText();
-            if (GameActive)
+            if (Waktu > 0)
             {
                 sec += Time.deltaTime;
                 if (sec >= 1)
                 {
                     Waktu--;
                     sec = 0;
+
+                    if (_isTimerWarning)
+                    {
+                        beepSound.Play();
+                    }
+                    
                 }
             }
 
-            if (GameActive && Waktu <= 0)
+            if (!_isTimerWarning && Waktu <= 20)
             {
-                GameOverPanel.SetActive(true);
-                GameActive = false;
-                movePico.SetActive(false);
+                _isTimerWarning = true;
+                RecycleEvents.TimerWarning();
+            }
+            
+            if (!_isTImerDanger && Waktu <= 10)
+            {
+                _isTImerDanger = true;
+                RecycleEvents.TimerDanger();
+            }
 
-                Sound.PlayOneShot(overSound);
+            if (!_isTimerStopped && Waktu <= 0)
+            {
+                _isTImerDanger = false;
+                _isTimerWarning = false;
+                _isTimerStopped = true;
+                RecycleEvents.TimerRunOut();
+                GameOverPanel.SetActive(true);
             }
 
             SetText();
