@@ -45,7 +45,7 @@ namespace UI.timer
                     Waktu--;
                     sec = 0;
 
-                    if (_isTImerDanger)
+                    if (_isTimerWarning)
                     {
                         beepSound.Play();
                     }
