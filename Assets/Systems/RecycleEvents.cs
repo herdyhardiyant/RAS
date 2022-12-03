@@ -8,7 +8,12 @@ namespace Systems
         public static event Action OnTimerRunOut;
         public static event Action OnTimerWarning;
         public static event Action OnTimerDanger;
+        public static event Action<int> OnSellItem;
         
+        public static void SellItem(int price)
+        {
+            OnSellItem?.Invoke(price);
+        }
         
         public static void TimerWarning()
         {

@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
+using RAS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace RAS
+namespace UI.Loading.Scripts
 {
     public class LoadingProgress : MonoBehaviour
     {

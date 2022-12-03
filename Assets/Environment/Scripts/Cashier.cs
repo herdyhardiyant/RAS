@@ -1,5 +1,6 @@
-using GameplayData;
+
 using Interfaces;
+using Systems;
 using UnityEngine;
 
 namespace Environment.Scripts
@@ -14,11 +15,13 @@ namespace Environment.Scripts
         
         [SerializeField] private AudioSource cashRegisterAudioSource;
 
+        
+        //TODO Use event system to invoke the event
         public void Sell(ISellable sellableObject, GameObject sellableGameObject)
         {
             var price = sellableObject.Price;
             ObjectPool.Instance.ReturnObjectToPool(sellableGameObject);
-            PlayerGameplayData.Instance.AddMoney(price);
+            RecycleEvents.SellItem(price);
             cashRegisterAudioSource.Play();
         }
     }
