@@ -1,30 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
+using RAS;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class LoadingProgress : MonoBehaviour
+namespace UI.Loading.Scripts
 {
-    [SerializeField] Image LoadingBarfill;
-        
+    public class LoadingProgress : MonoBehaviour
+    {
+        [SerializeField] Image image;
 
-        private void Start()
-        {
-            StartCoroutine(LoadSceneAsync());
+        private void Start() {
+            StartCoroutine(Progress());
         }
 
-        IEnumerator LoadSceneAsync()
-        {
-            LoadingBarfill.fillAmount = 0;
+        IEnumerator Progress(){
+            image.fillAmount = 0;
             yield return new WaitForSeconds(1);
 
-            var AsyncOperation = SceneManager.LoadSceneAsync(SceneLoad.SceneToLoad);
+            var asyncOp = SceneManager.LoadSceneAsync(SceneLoader.SceneToLoad);
 
-            while (AsyncOperation.isDone == false)
-            {
-                LoadingBarfill.fillAmount = AsyncOperation.progress;
+            while (asyncOp.isDone == false){
+                image.fillAmount = asyncOp.progress;
                 yield return null;
             }
-        } 
+        }
+    }
 }
