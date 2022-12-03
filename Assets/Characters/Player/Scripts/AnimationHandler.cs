@@ -38,7 +38,7 @@ namespace Characters.Player.Scripts
         {
             CraftingAnimationHandler();
             
-            _animator.SetBool(IsFalling, movement.IsFalling);
+            _animator.SetBool(IsFalling, movement.IsFalling || movement.IsKnockedBack);
             
             UpdateAnimatorStateFromVelocity();
 

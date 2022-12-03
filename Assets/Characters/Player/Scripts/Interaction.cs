@@ -50,15 +50,31 @@ namespace Characters.Player.Scripts
                 }
 
                 var isHoldingObject = heldObjectInteraction.IsHoldingObject;
+                
                 var isTrashContainer = _triggeredObject.TryGetComponent<ITrashContainer>(out var trashContainer);
                 if (isTrashContainer && !isHoldingObject)
                 {
                     var newTrash = trashContainer.GetInstantiatedTrash();
-                    print("new trash: " + newTrash);
                     heldObjectInteraction.InteractObject(newTrash);
                     return;
                 }
-                
+
+                var isCashier = _triggeredObject.TryGetComponent<ICashier>(out var cashier);
+                if (isCashier && isHoldingObject)
+                {
+                    var heldObject = heldObjectInteraction.GetHeldObjectAndDropFromPlayer();
+                    var isSellable = heldObject.TryGetComponent<ISellable>(out var sellable);
+                    if (isSellable)
+                    {
+                        cashier.Sell(sellable, heldObject);
+                    }
+                    else
+                    {
+                        heldObjectInteraction.InteractObject(heldObject);
+                    }
+
+                }
+
             }
 
             var isInteractingHeldObject = _triggeredObject && _triggeredObject.CompareTag("Trash") ||

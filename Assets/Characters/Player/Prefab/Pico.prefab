@@ -4763,8 +4763,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.397195, z: 0.9224994}
-  m_Center: {x: 0, y: 0.19859749, z: 0.22671412}
+  m_Size: {x: 1, y: 1.397195, z: 1.0641093}
+  m_Center: {x: 0, y: 0.19859749, z: -0.16920419}
 --- !u!1 &4300538338184622919
 GameObject:
   m_ObjectHideFlags: 0
@@ -7350,6 +7350,8 @@ GameObject:
   - component: {fileID: 7288402082965503163}
   - component: {fileID: 2180446306114782794}
   - component: {fileID: 4894979738877353730}
+  - component: {fileID: 1997899552}
+  - component: {fileID: 1997899551}
   m_Layer: 3
   m_Name: Pico
   m_TagString: Untagged
@@ -7430,7 +7432,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &343385276406115295
 MonoBehaviour:
@@ -7562,9 +7564,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcff503d049d248419d311783eed3d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 7593781614648918850}
+  spawnPoint: {fileID: 0}
   spawnEffectPrefab: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   spawnSound: {fileID: 8300000, guid: cf06389d9060bcf45aa9d71c43ac4021, type: 3}
+--- !u!136 &1997899552
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073282037372344824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.20688987
+  m_Height: 1.4313186
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6857769, z: 0}
+--- !u!114 &1997899551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073282037372344824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae291b9b2c5c7224bb0304e4613dab19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackForce: 10
 --- !u!1 &7077047089579836016
 GameObject:
   m_ObjectHideFlags: 0
