@@ -7,8 +7,15 @@ namespace Environment.Scripts
     {
         [SerializeField] private int price;
 
+        [Header("Recipe")]
+        [SerializeField] private Sprite objectSprite;
+        [SerializeField] private GameObject trash;
+        [SerializeField] private GameObject material;
+        
         public int Price => price;
-
+        
+        // TODO Get Recipe Function
+        
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();
