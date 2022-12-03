@@ -10,7 +10,7 @@ namespace GameplayData
         // material sprite * *
         // Sellable object sprite * *
         
-        // Assign the sprite to each of the above
+        // Assign the sprite to each of the above **
      
         // Create prefab template for the order UI
         
@@ -29,6 +29,9 @@ namespace GameplayData
         // Create a UI from the order list
         // Create a UI for the order timer and line threshold for tips reward
 
+        
+        
+        
 
     }
 }
