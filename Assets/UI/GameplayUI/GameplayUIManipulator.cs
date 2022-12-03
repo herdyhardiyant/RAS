@@ -19,5 +19,12 @@ namespace UI.GameplayUI
         {
             moneyText.text = PlayerGameplayData.Instance.TotalMoney.ToString();
         }
+
+
+        private void OnDestroy()
+        {
+            PlayerGameplayData.OnMoneyChanged -= UpdateMoneyText;
+        }
     }
+    
 }

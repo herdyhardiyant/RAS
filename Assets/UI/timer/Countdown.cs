@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Systems;
 using TMPro;
+using UnityEngine;
 
-
-namespace RAS
+namespace UI.timer
 {
     public class Countdown : MonoBehaviour
     {
         [SerializeField] TMP_Text TimerText;
         [SerializeField] GameObject GameOverPanel;
-        [SerializeField] private AudioSource Sound;
-        [SerializeField] private AudioClip overSound;
-        [SerializeField] private GameObject movePico;
 
         public float Waktu = 100;
-        public bool GameActive = true;
-
-
+        
         void SetText()
         {
             int Menit = Mathf.FloorToInt(Waktu / 60);
@@ -30,7 +23,7 @@ namespace RAS
         private void Update()
         {
             // SetText();
-            if (GameActive)
+            if (Waktu > 0)
             {
                 sec += Time.deltaTime;
                 if (sec >= 1)
@@ -40,13 +33,10 @@ namespace RAS
                 }
             }
 
-            if (GameActive && Waktu <= 0)
+            if (Waktu <= 0)
             {
+                RecycleEvents.TimerRunOut();
                 GameOverPanel.SetActive(true);
-                GameActive = false;
-                movePico.SetActive(false);
-
-                Sound.PlayOneShot(overSound);
             }
 
             SetText();

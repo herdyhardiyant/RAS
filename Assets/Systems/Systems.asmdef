@@ -1,10 +1,10 @@
 {
-    "name": "UserInterface",
+    "name": "Systems",
     "rootNamespace": "",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:153938c64a8d0554e84f92abd3be3be0",
-        "GUID:e5e575ee04e46164a9e6d558bb6f87b0"
+        "GUID:8b356635b7535c74295b26cbe0b2a9ec",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:3bbaf3c7b862e5b4eb76c70a3624915d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
