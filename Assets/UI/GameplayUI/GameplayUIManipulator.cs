@@ -12,12 +12,12 @@ namespace UI.GameplayUI
         private void Awake()
         {
             PlayerGameplayData.OnMoneyChanged += UpdateMoneyText;
-            moneyText.text = "Money: " + PlayerGameplayData.Instance.TotalMoney.ToString();
+            moneyText.text = PlayerGameplayData.Instance.TotalMoney.ToString();
         }
 
         private void UpdateMoneyText(int money)
         {
-            moneyText.text = "Money: " + money;
+            moneyText.text = PlayerGameplayData.Instance.TotalMoney.ToString();
         }
     }
 }
