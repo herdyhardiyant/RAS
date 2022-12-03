@@ -7,6 +7,11 @@ namespace Environment.Scripts
     {
         [SerializeField] private int price;
 
+        [Header("Recipe")]
+        [SerializeField] private GameObject trash;
+        [SerializeField] private GameObject material;
+        
+        
         public int Price => price;
 
         private void Update()
