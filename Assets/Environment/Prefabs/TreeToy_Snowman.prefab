@@ -244,8 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27221bb51f256d446865cfd40d9b09e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: SnowmanToy
   price: 10
+  objectSprite: {fileID: 21300000, guid: 707e7d19f95b71447b6e9980c583e9cb, type: 3}
+  trash: {fileID: 3502522383435062252, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
+  material: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
 --- !u!1 &166498
 GameObject:
   m_ObjectHideFlags: 0
