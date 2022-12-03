@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingResultPrefab: {fileID: 131046, guid: 5a420868f5dc52c4db173da380309aea, type: 3}
-  materialName: MetalSlab
+  materialIcon: {fileID: 21300000, guid: 6d2092329ef96ca4a8c2cb1d5f1ac42f, type: 3}
 --- !u!1001 &752946332424184015
 PrefabInstance:
   m_ObjectHideFlags: 0

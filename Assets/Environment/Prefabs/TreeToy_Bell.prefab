@@ -77,8 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27221bb51f256d446865cfd40d9b09e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: BellToy
   price: 30
+  objectSprite: {fileID: 21300000, guid: 6d0c6b621346bb040b1a7006dfcb19f9, type: 3}
+  trash: {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
+  material: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
 --- !u!1 &159280
 GameObject:
   m_ObjectHideFlags: 0
