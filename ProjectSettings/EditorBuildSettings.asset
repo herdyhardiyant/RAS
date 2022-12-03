@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BarrelRoll.unity
     guid: 45d47a6dcad065443960e85de082059f
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 38f45968beac820479249223d814ce55
   m_configObjects: {}
