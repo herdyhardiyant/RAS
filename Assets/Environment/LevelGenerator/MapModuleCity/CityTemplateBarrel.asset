@@ -22,6 +22,6 @@ MonoBehaviour:
   right:
     name: 0
   above:
-    name: b
+    name: 0
   below:
     name: 0
