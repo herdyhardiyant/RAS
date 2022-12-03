@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingResultPrefab: {fileID: 158136, guid: ea8da9f1952b4d441a6672c54c0e617d, type: 3}
+  materialName: GlassSlab
 --- !u!1001 &752946332424184015
 PrefabInstance:
   m_ObjectHideFlags: 0
