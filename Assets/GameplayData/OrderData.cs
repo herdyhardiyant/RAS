@@ -4,11 +4,11 @@ namespace GameplayData
 {
     public class OrderData : MonoBehaviour
     {
-        // Create recipe in SellableObject component
-        // Get 2D sprite for the recipe ui,
-        // Trash sprite *
-        // material sprite *
-        // Sellable object sprite *
+        // Create recipe in SellableObject component  
+        // Get 2D sprite for the recipe ui, **
+        // Trash sprite * *
+        // material sprite * *
+        // Sellable object sprite * *
         
         // Assign the sprite to each of the above
      
