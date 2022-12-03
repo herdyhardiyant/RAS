@@ -32,7 +32,10 @@ namespace Environment.Scripts
 
         private void FixedUpdate()
         {
-            _rigidbody.AddTorque(-Vector3.forward * barrelSpeed);
+            
+            Vector3 barrelAxis = transform.TransformDirection(Vector3.up);
+            
+            _rigidbody.AddTorque(-barrelAxis * barrelSpeed);
         }
     }
 }
