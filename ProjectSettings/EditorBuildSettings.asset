@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Environment/Scenes/ItemRenderTexture.unity
     guid: b0048b0a1e3b9a748a1e32888e8e7b4e
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 0237b31142611d146bec3b1277cbe5cd
+  - enabled: 1
+    path: Assets/Scenes/Option.unity
+    guid: 2d6e3265d1a3c6d4c972bb0536343216
   m_configObjects: {}

@@ -25,6 +25,11 @@ namespace RAS
                 return;
             if (bgmSlider == null)
                 return;
+            if (reso == null)
+                return;
+            if (screenDropdown == null)
+                return;
+            
 
             if (mixer.GetFloat("Master_Volume", out db))
                 sfxSlider.value = (db+80)/80;    
