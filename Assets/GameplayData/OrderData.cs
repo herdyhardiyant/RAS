@@ -5,7 +5,14 @@ namespace GameplayData
     public class OrderData : MonoBehaviour
     {
         // Create recipe in SellableObject component
-        // Get 2D sprite for the recipe material and machine
+        // Get 2D sprite for the recipe ui,
+        // Trash sprite *
+        // material sprite *
+        // Sellable object sprite *
+        
+        // Assign the sprite to each of the above
+     
+        // Create prefab template for the order UI
         
         // Create a linked list of recipes
         // Create order randomly,
@@ -21,6 +28,7 @@ namespace GameplayData
         
         // Create a UI from the order list
         // Create a UI for the order timer and line threshold for tips reward
-        
+
+
     }
 }
