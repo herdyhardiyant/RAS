@@ -10,6 +10,8 @@ TagManager:
   - Trash
   - SellObject
   - TrashContainer
+  - Ground
+  - picola
   layers:
   - Default
   - TransparentFX

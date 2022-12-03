@@ -244,9 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1dc00a6bfadf40b07de6b92bb2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recycleMachinePrefab: {fileID: 3283113057661087131, guid: 76fb1117938ef69409ef960ad5a94c19, type: 3}
+  getSmeltedPrefab: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
   trashName: MetalCans
-  smeltedPrefab: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
 --- !u!1 &7146159194151515841
 GameObject:
   m_ObjectHideFlags: 0

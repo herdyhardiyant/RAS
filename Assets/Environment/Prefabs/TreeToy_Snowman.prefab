@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 488522}
   - component: {fileID: 199853114}
   - component: {fileID: 199853113}
+  - component: {fileID: 2837752387499419853}
   m_Layer: 6
   m_Name: TreeToy_Snowman
   m_TagString: SellObject
@@ -231,6 +232,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15437002, y: 0.29966602, z: 0.15774398}
   m_Center: {x: -0.009109474, y: 0.14, z: 0.009931622}
+--- !u!114 &2837752387499419853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27221bb51f256d446865cfd40d9b09e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: SnowmanToy
+  price: 10
 --- !u!1 &166498
 GameObject:
   m_ObjectHideFlags: 0
