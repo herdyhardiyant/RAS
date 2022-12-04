@@ -12,6 +12,7 @@ TagManager:
   - TrashContainer
   - Ground
   - picola
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Water
   - UI
   - Pickup Item
-  - 
-  - 
+  - Camera1
+  - Camera2
   - 
   - 
   - 
