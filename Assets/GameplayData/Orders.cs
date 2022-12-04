@@ -8,9 +8,6 @@ namespace GameplayData
 {
     public class Orders : MonoBehaviour
     {
-        // When player sells an item, check if the item is in the order list
-        // if it is, remove the item from the order list, and 
-        // if it is not, don't remove the item from the order list, and return the item to pool
 
         public List<ISellable> OrdersList => _customerOrders;
 

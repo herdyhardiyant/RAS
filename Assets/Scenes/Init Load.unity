@@ -1895,6 +1895,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5701466922249857740, guid: 50068d316a7778c4c9dab2cc34120ba7, type: 3}
       propertyPath: m_ChildScaleWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701466922249857740, guid: 50068d316a7778c4c9dab2cc34120ba7, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5701466922249857742, guid: 50068d316a7778c4c9dab2cc34120ba7, type: 3}
