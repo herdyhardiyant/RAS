@@ -248,6 +248,8 @@ MonoBehaviour:
   objectSprite: {fileID: 21300000, guid: 707e7d19f95b71447b6e9980c583e9cb, type: 3}
   trash: {fileID: 3502522383435062252, guid: 3f29d1bc97678b248992801d9662bcf1, type: 3}
   material: {fileID: 7756373317050750346, guid: 3c03f2755b5586c42980cea2757b1e16, type: 3}
+  trashSprite: {fileID: 21300000, guid: 338bfe47d4b99614eafd04dd1f5d4c6e, type: 3}
+  materialSprite: {fileID: 21300000, guid: 4020df84a22e38a4cb81176dcfe9b7d2, type: 3}
 --- !u!1 &166498
 GameObject:
   m_ObjectHideFlags: 0

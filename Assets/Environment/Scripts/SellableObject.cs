@@ -10,23 +10,14 @@ namespace Environment.Scripts
 
         [Header("Recipe")]
         [SerializeField] private Sprite objectSprite;
-        [SerializeField] private GameObject trash;
-        [SerializeField] private GameObject material;
 
+        [SerializeField] private Sprite trashSprite;
+        [SerializeField] private Sprite materialSprite;
         public string Name => gameObject.name;
         public int Price => price;
         public Sprite Icon => objectSprite;
-        public Sprite TrashIcon => _trashSprite;
-        public Sprite MaterialIcon => _materialSprite;
-
-        private Sprite _trashSprite;
-        private Sprite _materialSprite;
-
-        private void Awake()
-        {
-            _trashSprite = trash.GetComponent<Trash>().GetSprite;
-            _materialSprite = material.GetComponent<CraftingMaterial>().Icon;
-        }
+        public Sprite TrashIcon => trashSprite;
+        public Sprite MaterialIcon => materialSprite;
 
         private void Update()
         {
