@@ -8030,7 +8030,7 @@ GameObject:
   - component: {fileID: 8829431038717199245}
   - component: {fileID: 4136000578731727791}
   - component: {fileID: 4136000578731727760}
-  - component: {fileID: 6750108232488115178}
+  - component: {fileID: 7506273913425403845}
   m_Layer: 3
   m_Name: Pico (1)
   m_TagString: Untagged
@@ -8142,7 +8142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  playerInputMap: {fileID: 6750108232488115178}
+  playerInputMap: {fileID: 7506273913425403845}
   runSpeed: 4
   craftingTableInteraction: {fileID: 6648330685564641332}
 --- !u!114 &8373186755444403509
@@ -8159,7 +8159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineInteraction: {fileID: 4543761181364595731}
   heldObjectInteraction: {fileID: 3135331861319839235}
-  playerInputMap: {fileID: 6750108232488115178}
+  playerInputMap: {fileID: 7506273913425403845}
   craftingTableInteraction: {fileID: 6648330685564641332}
   movement: {fileID: 924865822967595695}
 --- !u!114 &4543761181364595731
@@ -8262,7 +8262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackForce: 10
---- !u!114 &6750108232488115178
+--- !u!114 &7506273913425403845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8271,7 +8271,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6579581025179010423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00141b8a8823d6943b01a479d5be5052, type: 3}
+  m_Script: {fileID: 11500000, guid: e231d1677e4b2884db3c30f785a2469d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6579968278881804031
