@@ -7346,12 +7346,12 @@ GameObject:
   - component: {fileID: 5572516661829579194}
   - component: {fileID: 461803838244581532}
   - component: {fileID: 1361469361619350156}
-  - component: {fileID: 1615733722268019514}
   - component: {fileID: 7288402082965503163}
   - component: {fileID: 2180446306114782794}
   - component: {fileID: 4894979738877353730}
   - component: {fileID: 1997899552}
   - component: {fileID: 1997899551}
+  - component: {fileID: 4836364061234462051}
   m_Layer: 3
   m_Name: Pico
   m_TagString: Untagged
@@ -7463,7 +7463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  playerInputMap: {fileID: 1615733722268019514}
+  playerInputMap: {fileID: 4836364061234462051}
   runSpeed: 4
   craftingTableInteraction: {fileID: 7288402082965503163}
 --- !u!114 &5572516661829579194
@@ -7480,7 +7480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineInteraction: {fileID: 461803838244581532}
   heldObjectInteraction: {fileID: 1361469361619350156}
-  playerInputMap: {fileID: 1615733722268019514}
+  playerInputMap: {fileID: 4836364061234462051}
   craftingTableInteraction: {fileID: 7288402082965503163}
   movement: {fileID: 3869663057050000928}
 --- !u!114 &461803838244581532
@@ -7511,18 +7511,6 @@ MonoBehaviour:
   holdingPoint: {fileID: 753919520959798243}
   pickSound: {fileID: 8300000, guid: 95452d4d322f1e94f88bcad76cdbdf2e, type: 3}
   dropSound: {fileID: 8300000, guid: 3c43af9809b3e5e418ee9511c321c58c, type: 3}
---- !u!114 &1615733722268019514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073282037372344824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e231d1677e4b2884db3c30f785a2469d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7288402082965503163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7552,6 +7540,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eec53751c4e79a7469fc34e774360128, type: 3}
   - {fileID: 8300000, guid: c8657061120b2da4fb645654b16201f6, type: 3}
   - {fileID: 8300000, guid: b662731f964d624449b092d4198147de, type: 3}
+  walkSoundVolume: 0.3
 --- !u!114 &4894979738877353730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7594,6 +7583,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackForce: 10
+--- !u!114 &4836364061234462051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073282037372344824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e231d1677e4b2884db3c30f785a2469d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7077047089579836016
 GameObject:
   m_ObjectHideFlags: 0
