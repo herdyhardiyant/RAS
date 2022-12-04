@@ -5,7 +5,7 @@ namespace Systems
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject[] player;
         private void Awake()
         {
            RecycleEvents.OnTimerRunOut += OnTimerRunOut;
@@ -13,7 +13,8 @@ namespace Systems
 
         private void OnTimerRunOut()
         {
-            player.SetActive(false);
+            foreach(GameObject go in player)
+            go.SetActive(false);
         }
 
         private void OnDestroy()
