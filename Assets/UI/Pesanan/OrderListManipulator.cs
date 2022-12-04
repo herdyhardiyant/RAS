@@ -22,24 +22,29 @@ namespace UI.Pesanan
 
         private void OnOrderChanged()
         {
-            
-            //TODO Order list border animation
-            //TODO Add paper sound
+            DeleteAllItem();
+            FetchOrderItem();
 
-            foreach (Transform child in orderList.transform)
-            {
-                Destroy(child.gameObject);
-            }
-            
-            var orderLinkedList = orders.OrdersList;
+        }
 
-            foreach (var order in orderLinkedList)
+        private void FetchOrderItem()
+        {
+            foreach (var order in orders.OrdersList)
             {
                 var orderUI = Instantiate(orderUIPrefab, orderList.transform);
                 orderUI.GetComponent<OrderItemManipulator>()
                     .SetupOrderItem(order.Icon, order.TrashIcon, order.MaterialIcon);
             }
         }
+
+        private void DeleteAllItem()
+        {
+            foreach (Transform child in orderList.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
 
         private void OnDestroy()
         {

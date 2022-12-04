@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
+using Systems;
 using UnityEngine;
 
 namespace GameplayData
 {
     public class Orders : MonoBehaviour
     {
-
         public List<ISellable> OrdersList => _customerOrders;
 
         [SerializeField] private GameObject[] sellableObjectPrefabs;
@@ -19,8 +19,6 @@ namespace GameplayData
 
         public static Action OnOrderChanged;
 
-        private bool _delayOrderFinish;
-
         private void Awake()
         {
             _customerOrders = new List<ISellable>();
@@ -30,6 +28,17 @@ namespace GameplayData
             {
                 var sellableObject = sellableObjectPrefab.GetComponent<ISellable>();
                 _sellableObjects.Add(sellableObject);
+            }
+
+            RecycleEvents.OnSellItem += OnSellItem;
+        }
+
+        private void OnSellItem(ISellable objectSell)
+        {
+            var isInList = IsInOrderList(objectSell);
+            if (isInList)
+            {
+                RemoveOrder(objectSell);
             }
         }
 
@@ -42,18 +51,18 @@ namespace GameplayData
             OnOrderChanged?.Invoke();
         }
 
-        private void Update()
-        {
-            if (_delayOrderFinish)
-            {
-                AddOrder();
-            }
-        }
-
         public void RemoveOrder(ISellable sellableObject)
         {
-            var isRemoved =  _customerOrders.Remove(sellableObject);
-            print("isRemoved: " + isRemoved);
+            foreach (var order in _customerOrders)
+            {
+                if (order.SellableName == sellableObject.SellableName)
+                {
+                    _customerOrders.Remove(order);
+                }
+
+                break;
+            }
+
             OnOrderChanged?.Invoke();
             StartCoroutine(DelayOrder());
         }
@@ -64,7 +73,6 @@ namespace GameplayData
             {
                 if (order.SellableName == sellableObject.SellableName)
                 {
-                    RemoveOrder(order);
                     return true;
                 }
             }
@@ -76,13 +84,13 @@ namespace GameplayData
         {
             yield return new WaitForSeconds(1f);
             AddOrder();
+
         }
 
         private void AddOrder()
         {
             var randomOrder = _sellableObjects[UnityEngine.Random.Range(0, sellableObjectPrefabs.Length)];
             _customerOrders.Add(randomOrder);
-            _delayOrderFinish = false;
             OnOrderChanged?.Invoke();
         }
     }
