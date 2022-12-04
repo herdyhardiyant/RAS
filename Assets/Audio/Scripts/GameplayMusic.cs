@@ -13,21 +13,30 @@ namespace Audio.Scripts
         [SerializeField] private AudioClip cashRegistered;
         [SerializeField] private AudioClip orderWrong;
         [SerializeField] private Orders orders;
+        [SerializeField] private AudioClip paperFlip;
+        
+        private AudioSource _sellAudioSource;
+        private AudioSource _orderUpdateAudioSource;
         
         
-        [SerializeField] private AudioSource sellAudioSource;
-
         private void Awake()
         {
-            
+            _sellAudioSource = gameObject.AddComponent<AudioSource>();
             backgroundMusic.loop = true;
+            
+            _orderUpdateAudioSource = gameObject.AddComponent<AudioSource>();
             
             RecycleEvents.OnTimerRunOut += PlayDayComplete;
             RecycleEvents.OnTimerWarning += WarningSound;
             RecycleEvents.OnTimerDanger += DangerSound;
             
             RecycleEvents.OnSellItem += PlaySellSound;
-            
+            Orders.OnOrderChanged += PlayOrderUpdateSound;
+        }
+
+        private void PlayOrderUpdateSound()
+        {
+            _orderUpdateAudioSource.PlayOneShot(paperFlip);
         }
 
         private void PlaySellSound(ISellable sellableObject)
@@ -35,12 +44,12 @@ namespace Audio.Scripts
             var isInList = orders.IsInOrderList(sellableObject);
            if (isInList)
            {
-               sellAudioSource.PlayOneShot(cashRegistered);
+               _sellAudioSource.PlayOneShot(cashRegistered);
 
            }
            else
            {
-               sellAudioSource.PlayOneShot(orderWrong);
+               _sellAudioSource.PlayOneShot(orderWrong);
            }
         }
 

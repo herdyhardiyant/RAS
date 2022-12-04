@@ -47,6 +47,8 @@ namespace GameplayData
             AddOrder();
 
             AddOrder();
+            
+            OnOrderChanged?.Invoke();
 
             OnOrderChanged?.Invoke();
         }
@@ -84,14 +86,13 @@ namespace GameplayData
         {
             yield return new WaitForSeconds(1f);
             AddOrder();
-
+            OnOrderChanged?.Invoke();
         }
 
         private void AddOrder()
         {
             var randomOrder = _sellableObjects[UnityEngine.Random.Range(0, sellableObjectPrefabs.Length)];
             _customerOrders.Add(randomOrder);
-            OnOrderChanged?.Invoke();
         }
     }
 }
