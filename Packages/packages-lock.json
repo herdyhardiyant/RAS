@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.individualkex.wavetools": {
-      "version": "file:E:/Downloads/wavetoolkit-master",
+      "version": "file:../ExtenalPackage/wavetoolkit-master",
       "depth": 0,
       "source": "local",
       "dependencies": {}
