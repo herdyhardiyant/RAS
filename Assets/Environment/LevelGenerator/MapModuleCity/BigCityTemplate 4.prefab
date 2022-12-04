@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3700918546156429122}
   - component: {fileID: 8516586668071439884}
-  - component: {fileID: 6181093591633442752}
   m_Layer: 0
   m_Name: BigCityTemplate 4
   m_TagString: Untagged
@@ -56,20 +55,6 @@ MonoBehaviour:
   trashSpawnUpOffset: 0.14
   MinAmountOffTrash: 9
   MaxAmountOffTrash: 28
---- !u!64 &6181093591633442752
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3667186090844915245}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &9116606615634555348
 GameObject:
   m_ObjectHideFlags: 0
