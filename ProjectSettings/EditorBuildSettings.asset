@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Legacy/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/RecyclingDemo.unity
+    path: Assets/Scenes/DemoScene/RecyclingDemo.unity
     guid: 61b57ab693b6f6a43979f7c7d0d262e1
   - enabled: 1
-    path: Assets/Scenes/BarrelRoll.unity
+    path: Assets/Scenes/DemoScene/BarrelRoll.unity
     guid: 45d47a6dcad065443960e85de082059f
   - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/Scenes/UIScene/LoadingScene.unity
     guid: 38f45968beac820479249223d814ce55
+  - enabled: 1
+    path: Assets/Scenes/UIScene/StartMenu.unity
+    guid: 0237b31142611d146bec3b1277cbe5cd
+  - enabled: 1
+    path: Assets/Scenes/UIScene/InitLoad.unity
+    guid: be3f95b6b74c05b41863bfa23b98ff54
   m_configObjects: {}
