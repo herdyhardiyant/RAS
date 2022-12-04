@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9121810232470961670}
   - component: {fileID: 5429318367737931798}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: CraftingMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4974542843687264063}
   - component: {fileID: 4974542843687264062}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TargetSellObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 4974542844170289934}
   - component: {fileID: 4974542844170289933}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TopBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,10 +186,10 @@ RectTransform:
   m_Father: {fileID: 4974542844702349304}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.5}
-  m_SizeDelta: {x: 238.9, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 249.59998, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4974542844170289934
 CanvasRenderer:
@@ -239,7 +239,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4974542844702349304}
   - component: {fileID: 4974542844702349306}
-  - component: {fileID: 4974542844702349305}
+  - component: {fileID: 1774912884}
+  - component: {fileID: 2564123091272401960}
+  - component: {fileID: 4542876736385138758}
   m_Layer: 5
   m_Name: Order
   m_TagString: Untagged
@@ -267,7 +269,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.70555556}
   m_AnchorMax: {x: 0.13, y: 1}
   m_AnchoredPosition: {x: 0, y: -4.5}
-  m_SizeDelta: {x: 0, y: -9}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4974542844702349306
 CanvasRenderer:
@@ -277,7 +279,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974542844702349287}
   m_CullTransparentMesh: 1
---- !u!114 &4974542844702349305
+--- !u!114 &1774912884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,27 +288,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 4974542844702349287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &2564123091272401960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974542844702349287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 1
+--- !u!114 &4542876736385138758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974542844702349287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20acd73bd2c8b2c4c960f74202bf4a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSellableObject: {fileID: 4974542843687264062}
+  targetTrash: {fileID: 6325457378661566183}
+  targetCraftingMaterial: {fileID: 5429318367737931798}
 --- !u!1 &6079533923100212353
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +346,7 @@ GameObject:
   - component: {fileID: 4783145833944170034}
   - component: {fileID: 5787822077381697546}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: BottomBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,10 +369,10 @@ RectTransform:
   m_Father: {fileID: 4974542844702349304}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 238.9, y: 100}
+  m_SizeDelta: {x: 249.59998, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4783145833944170034
 CanvasRenderer:
@@ -397,7 +424,7 @@ GameObject:
   - component: {fileID: 8868878233909760708}
   - component: {fileID: 6325457378661566183}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -79,8 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 30
   objectSprite: {fileID: 21300000, guid: 6d0c6b621346bb040b1a7006dfcb19f9, type: 3}
-  trash: {fileID: 4248590160774736796, guid: 8b97495cfc7e8c54e9df2c35097c6bbc, type: 3}
-  material: {fileID: 7756373317050750346, guid: 51be5a0ca4965474d826a7423588409f, type: 3}
+  sellableName: Bell
+  trashSprite: {fileID: 21300000, guid: 3aa11dabac150d54e86fcfbadfd29831, type: 3}
+  materialSprite: {fileID: 21300000, guid: 878c716ad4b91be48a9f43bd91290a32, type: 3}
 --- !u!1 &159280
 GameObject:
   m_ObjectHideFlags: 0

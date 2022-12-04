@@ -11,18 +11,14 @@ namespace Environment.Scripts
         // TODO Customer orders
         // Customer order event system
         // After the customer order is completed, invoke the event
-        
-        
-        [SerializeField] private AudioSource cashRegisterAudioSource;
 
+        // [SerializeField] private AudioSource cashRegisterAudioSource;
         
         //TODO Use event system to invoke the event
         public void Sell(ISellable sellableObject, GameObject sellableGameObject)
         {
-            var price = sellableObject.Price;
             ObjectPool.Instance.ReturnObjectToPool(sellableGameObject);
-            RecycleEvents.SellItem(price);
-            cashRegisterAudioSource.Play();
+            RecycleEvents.SellItem(sellableObject);
         }
     }
 }
