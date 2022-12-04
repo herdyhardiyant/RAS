@@ -162,8 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 20
   objectSprite: {fileID: 21300000, guid: 4bbed98a884651743809858f349dc1e1, type: 3}
-  trash: {fileID: 226930342340215177, guid: 7715e8b0de0427344bf5f69202c0b48e, type: 3}
-  material: {fileID: 705876185075329643, guid: 1d58bdbeabd358745a2d2014fa8f50d5, type: 3}
+  sellableName: Ball
   trashSprite: {fileID: 21300000, guid: 44434dd425448414a8f6bc53a7cd43c2, type: 3}
   materialSprite: {fileID: 21300000, guid: 373b11cc77cf45849b05128c4d01fab9, type: 3}
 --- !u!1 &198886

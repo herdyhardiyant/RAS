@@ -9,6 +9,8 @@ namespace GameplayData
     {
         //TODO Add customer orders data 
 
+        [SerializeField] private Orders orders;
+
         public static PlayerGameplayData Instance;
         public static event Action<int> OnMoneyChanged;
         public int TotalMoney => _totalMoney;
@@ -26,13 +28,17 @@ namespace GameplayData
             }
 
             _totalMoney = 0;
-            RecycleEvents.OnSellItem += AddMoney;
+            RecycleEvents.OnSellItem += SellHandler;
         }
 
-        public void AddMoney(ISellable objectSell)
+        public void SellHandler(ISellable objectSell)
         {
-            _totalMoney += objectSell.Price;
-            OnMoneyChanged?.Invoke(_totalMoney);
+            var isInList = orders.IsInOrderList(objectSell);
+            if (isInList)
+            {
+                _totalMoney += objectSell.Price;
+                OnMoneyChanged?.Invoke(_totalMoney);
+            }
         }
     }
 }

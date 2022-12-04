@@ -10,10 +10,10 @@ namespace Environment.Scripts
 
         [Header("Recipe")]
         [SerializeField] private Sprite objectSprite;
-
+        [SerializeField] private string sellableName;
         [SerializeField] private Sprite trashSprite;
         [SerializeField] private Sprite materialSprite;
-        public string Name => gameObject.name;
+        public string SellableName => sellableName;
         public int Price => price;
         public Sprite Icon => objectSprite;
         public Sprite TrashIcon => trashSprite;

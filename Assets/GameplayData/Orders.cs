@@ -8,18 +8,17 @@ namespace GameplayData
 {
     public class Orders : MonoBehaviour
     {
-
         // When player sells an item, check if the item is in the order list
         // if it is, remove the item from the order list, and 
         // if it is not, don't remove the item from the order list, and return the item to pool
 
-        public LinkedList<ISellable> OrdersList => _customerOrders;
+        public List<ISellable> OrdersList => _customerOrders;
 
         [SerializeField] private GameObject[] sellableObjectPrefabs;
 
         private List<ISellable> _sellableObjects;
 
-        private LinkedList<ISellable> _customerOrders;
+        private List<ISellable> _customerOrders;
 
         public static Action OnOrderChanged;
 
@@ -27,7 +26,7 @@ namespace GameplayData
 
         private void Awake()
         {
-            _customerOrders = new LinkedList<ISellable>();
+            _customerOrders = new List<ISellable>();
             _sellableObjects = new List<ISellable>();
 
             foreach (var sellableObjectPrefab in sellableObjectPrefabs)
@@ -56,16 +55,38 @@ namespace GameplayData
 
         public void RemoveOrder(ISellable sellableObject)
         {
-            _customerOrders.Remove(sellableObject);
-            AddOrder();
+            var isRemoved =  _customerOrders.Remove(sellableObject);
+            print("isRemoved: " + isRemoved);
             OnOrderChanged?.Invoke();
+            StartCoroutine(DelayOrder());
+        }
+
+        public bool IsInOrderList(ISellable sellableObject)
+        {
+            foreach (var order in _customerOrders)
+            {
+                if (order.SellableName == sellableObject.SellableName)
+                {
+                    RemoveOrder(order);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private IEnumerator DelayOrder()
+        {
+            yield return new WaitForSeconds(1f);
+            AddOrder();
         }
 
         private void AddOrder()
         {
             var randomOrder = _sellableObjects[UnityEngine.Random.Range(0, sellableObjectPrefabs.Length)];
-            _customerOrders.AddLast(randomOrder);
+            _customerOrders.Add(randomOrder);
             _delayOrderFinish = false;
+            OnOrderChanged?.Invoke();
         }
     }
 }

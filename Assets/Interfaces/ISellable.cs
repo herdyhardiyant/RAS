@@ -4,7 +4,7 @@ namespace Interfaces
 {
     public interface ISellable
     {
-        string Name { get; }
+        string SellableName { get; }
         int Price { get; }
         Sprite Icon { get; }
         Sprite TrashIcon { get; }
