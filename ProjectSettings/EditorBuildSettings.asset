@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScene/StartMenu.unity
     guid: 0237b31142611d146bec3b1277cbe5cd
+  - enabled: 1
+    path: Assets/Scenes/UIScene/InitLoad.unity
+    guid: be3f95b6b74c05b41863bfa23b98ff54
   m_configObjects: {}
