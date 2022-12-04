@@ -1,4 +1,5 @@
 using System;
+using Interfaces;
 using Systems;
 using UnityEngine;
 
@@ -28,9 +29,9 @@ namespace GameplayData
             RecycleEvents.OnSellItem += AddMoney;
         }
 
-        public void AddMoney(int amount)
+        public void AddMoney(ISellable objectSell)
         {
-            _totalMoney += amount;
+            _totalMoney += objectSell.Price;
             OnMoneyChanged?.Invoke(_totalMoney);
         }
     }

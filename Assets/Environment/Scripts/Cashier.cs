@@ -19,9 +19,8 @@ namespace Environment.Scripts
         //TODO Use event system to invoke the event
         public void Sell(ISellable sellableObject, GameObject sellableGameObject)
         {
-            var price = sellableObject.Price;
             ObjectPool.Instance.ReturnObjectToPool(sellableGameObject);
-            RecycleEvents.SellItem(price);
+            RecycleEvents.SellItem(sellableObject);
             cashRegisterAudioSource.Play();
         }
     }

@@ -22,8 +22,15 @@ namespace UI.Pesanan
 
         private void OnOrderChanged()
         {
-            print("Order changed");
-            // Get order list from data storage
+            
+            //TODO Order list border animation
+            //TODO Add paper sound
+
+            foreach (Transform child in orderList.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            
             var orderLinkedList = orders.OrdersList;
 
             foreach (var order in orderLinkedList)
@@ -32,6 +39,11 @@ namespace UI.Pesanan
                 orderUI.GetComponent<OrderItemManipulator>()
                     .SetupOrderItem(order.Icon, order.TrashIcon, order.MaterialIcon);
             }
+        }
+
+        private void OnDestroy()
+        {
+            Orders.OnOrderChanged -= OnOrderChanged;
         }
     }
 }
