@@ -9,17 +9,20 @@ namespace Environment.Scripts
         
         [SerializeField] private Image completeImage;
         [SerializeField] private Image blockImage;
+        [SerializeField] private Image notifImage;
         
         public void ShowComplete()
         {
             completeImage.gameObject.SetActive(true);
             blockImage.gameObject.SetActive(false);
+            notifImage.gameObject.SetActive(false);
         }
         
         public void ShowBlock()
         {
             completeImage.gameObject.SetActive(false);
             blockImage.gameObject.SetActive(true);
+            notifImage.gameObject.SetActive(false);
         }
 
         public IEnumerator ShowBlockDelay()
@@ -33,6 +36,7 @@ namespace Environment.Scripts
         {
             completeImage.gameObject.SetActive(false);
             blockImage.gameObject.SetActive(false);
+            notifImage.gameObject.SetActive(true);
         }
 
         private void Awake()
