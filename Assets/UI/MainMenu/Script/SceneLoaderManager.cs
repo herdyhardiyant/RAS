@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +17,9 @@ namespace RAS
             SceneLoader.ReloadLevel();
         }
 
-        public static void LoadNextLevel(){
-            SceneLoader.LoadNextLevel();
-        }
+        // public static void LoadNextLevel(){
+        //     SceneLoader.LoadNextLevel();
+        // }
         public static void LoadAddictive(string sceneName){
             SceneLoader.LoadAddictive(sceneName);
         }

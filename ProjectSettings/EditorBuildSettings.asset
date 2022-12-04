@@ -17,25 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScene/LoadingScene.unity
     guid: 38f45968beac820479249223d814ce55
-  - enabled: 1
-    path: Assets/Scenes/UIScene/StartMenu.unity
-    guid: 0237b31142611d146bec3b1277cbe5cd
-  - enabled: 1
-    path: Assets/Scenes/Spawn+LevelGenerationScene/SpawnLevel1.unity
-    guid: 9d3d290cdc5fdb04cb8f5f6a944f069a
-  - enabled: 1
-    path: Assets/Scenes/Spawn+LevelGenerationScene/SpawnLevel2.unity
-    guid: ceeb1cb962c6f85478d2be12d64e977a
-  - enabled: 1
-    path: Assets/Scenes/Spawn+LevelGenerationScene/SpawnLevel3.unity
-    guid: 390091f2d6a4eeb499dcc58218f934ba
-  - enabled: 1
-    path: Assets/Scenes/Spawn+LevelGenerationScene/LevelGenerator.unity
-    guid: eed281f826ce32141b5699e101b67e21
-  - enabled: 1
-    path: Assets/Scenes/UIScene/PilihLevel.unity
-    guid: 8593239ee2a2fb74685c8f0b76b850c5
-  - enabled: 1
-    path: Assets/Scenes/UIScene/Option.unity
-    guid: 2d6e3265d1a3c6d4c972bb0536343216
   m_configObjects: {}
