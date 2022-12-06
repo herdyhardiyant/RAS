@@ -871,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 924865822967595695, guid: 53e3f7422e77eeb4e9afffb00a9f5e1f, type: 3}
       propertyPath: playerInputMap
       value: 
-      objectReference: {fileID: 8240141185629517479}
+      objectReference: {fileID: 0}
     - target: {fileID: 5765890350476582861, guid: 53e3f7422e77eeb4e9afffb00a9f5e1f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -941,15 +941,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6579581025179010423, guid: 53e3f7422e77eeb4e9afffb00a9f5e1f, type: 3}
   m_PrefabInstance: {fileID: 5047083802476921570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8240141185629517479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109243661676038037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e231d1677e4b2884db3c30f785a2469d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

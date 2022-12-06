@@ -1,10 +1,9 @@
-using System;
 using DG.Tweening;
 using GameplayData;
 using TMPro;
 using UnityEngine;
 
-namespace UI.GameplayUI
+namespace UI.Scripts
 {
     public class GameplayUIManipulator : MonoBehaviour
     {
@@ -12,7 +11,7 @@ namespace UI.GameplayUI
 
         private Color _defaultColor;
         
-        private void Awake()
+        private void Start()
         {
             PlayerGameplayData.OnMoneyChanged += UpdateMoneyText;
             moneyText.text = PlayerGameplayData.Instance.TotalMoney.ToString();
