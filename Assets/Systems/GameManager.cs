@@ -14,7 +14,7 @@ namespace Systems
         private void OnTimerRunOut()
         {
             foreach(GameObject go in player)
-            go.SetActive(false);
+                go.SetActive(false);
         }
 
         private void OnDestroy()
