@@ -1831,6 +1831,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2392156161221102409, guid: 43afa57e482422a4da2d4ac1ec78a6bb, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 895
+      objectReference: {fileID: 0}
     - target: {fileID: 2392156161261609798, guid: 43afa57e482422a4da2d4ac1ec78a6bb, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1878,6 +1882,10 @@ PrefabInstance:
     - target: {fileID: 2392156161261609801, guid: 43afa57e482422a4da2d4ac1ec78a6bb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392156161518665888, guid: 43afa57e482422a4da2d4ac1ec78a6bb, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 767
       objectReference: {fileID: 0}
     - target: {fileID: 3619028263433088983, guid: 43afa57e482422a4da2d4ac1ec78a6bb, type: 3}
       propertyPath: playerInputMap
