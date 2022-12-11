@@ -5,24 +5,52 @@ namespace Characters.Player.Scripts
 {
     public class OverlapTriggerInteraction : MonoBehaviour
     {
+        
+        [SerializeField] private HeldObjectInteraction heldObjectInteraction;
+        
         public GameObject TriggeredObject => _triggeredObject;
         private GameObject _triggeredObject;
-        
+
         private void FixedUpdate()
         {
             var objectTransform = transform;
+
+            var overlapCenter = objectTransform.position;
+            var overlapHalfExtents = objectTransform.localScale;
             
-            Collider[] collidedObjects = Physics.OverlapBox(
-                objectTransform.position,
-                objectTransform.localScale / 2,
+            Collider[] receiverObjects = Physics.OverlapBox(
+                overlapCenter,
+                overlapHalfExtents / 2,
                 Quaternion.identity,
-                LayerMask.GetMask("Interactable")
+                LayerMask.GetMask("Input Receiver")
             );
-            _triggeredObject = collidedObjects[0].gameObject;
-            foreach (var collidedObject in collidedObjects)
+            
+            Collider[] pickupObjects = Physics.OverlapBox(
+                overlapCenter,
+                overlapHalfExtents / 2,
+                Quaternion.identity,
+                LayerMask.GetMask("Pickup Item")
+            );
+
+            if (heldObjectInteraction.IsHoldingObject)
             {
-                print(collidedObject.name);
+                pickupObjects = null;   
             }
+            
+            if(pickupObjects?.Length > 0)
+            {
+                _triggeredObject = pickupObjects[0].gameObject;
+            }
+            else if(receiverObjects.Length > 0)
+            {
+                _triggeredObject = receiverObjects[0].gameObject;
+
+            }
+            else
+            {
+                _triggeredObject = null;
+            }
+
         }
 
         private void OnDrawGizmos()

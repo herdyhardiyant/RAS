@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace Characters.Player.Scripts
 {
+    
     public class Interaction : MonoBehaviour
     {
         //TODO Use required component instead and get the component from awake
@@ -14,6 +15,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private PlayerInputMap playerInputMap;
         [SerializeField] private CraftingTableInteraction craftingTableInteraction;
         [SerializeField] private Movement movement;
+        [SerializeField] private OverlapTriggerInteraction overlapTriggerInteraction;
 
         private GameObject _triggeredObject;
         private Rigidbody _holdObjectRigidBody;
@@ -30,10 +32,11 @@ namespace Characters.Player.Scripts
             DropHeldObjectWhenFall();
 
             if (!playerInputMap.IsInteractClicked) return;
-            
-            
-            if(movement.IsFalling) return;
 
+            if(movement.IsFalling) return;
+            _triggeredObject = overlapTriggerInteraction.TriggeredObject;
+            
+            
             if (_triggeredObject)
             {
                 
@@ -105,15 +108,16 @@ namespace Characters.Player.Scripts
                 }
             }
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            _triggeredObject = other.gameObject;
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            _triggeredObject = null;
-        }
+        
+        //
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     _triggeredObject = other.gameObject;
+        // }
+        //
+        // private void OnTriggerExit(Collider other)
+        // {
+        //     _triggeredObject = null;
+        // }
     }
 }

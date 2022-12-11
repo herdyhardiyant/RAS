@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10193412151339835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.613, z: 0.536}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.751, z: 0.373}
+  m_LocalScale: {x: 1, y: 1.1725336, z: 0.60016}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7593781614648918850}
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6d56f79de5d9543961e943bfb7f562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heldObjectInteraction: {fileID: 1361469361619350156}
 --- !u!1 &30276559076494898
 GameObject:
   m_ObjectHideFlags: 0
@@ -7580,6 +7581,7 @@ MonoBehaviour:
   playerInputMap: {fileID: 4836364061234462051}
   craftingTableInteraction: {fileID: 7288402082965503163}
   movement: {fileID: 3869663057050000928}
+  overlapTriggerInteraction: {fileID: 5632143405289110231}
 --- !u!114 &461803838244581532
 MonoBehaviour:
   m_ObjectHideFlags: 0

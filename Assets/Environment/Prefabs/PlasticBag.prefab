@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6782801264023954649}
   - component: {fileID: 1122473234149759149}
   - component: {fileID: 4548231374856109240}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: PlasticBag
   m_TagString: Trash
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8042687939501304361}
   - component: {fileID: 4431654335286730410}
   - component: {fileID: 8849165020331738023}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

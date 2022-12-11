@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7945346535609115744}
   - component: {fileID: 1810233204000757553}
   - component: {fileID: 8255500091928828427}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: PlasticBar
   m_TagString: Material
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 7093146087207049865}
   - component: {fileID: 7093146087207049867}
   - component: {fileID: 7093146087207049866}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Glass Ingot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 7093146088626647386}
   - component: {fileID: 7093146088626647204}
   - component: {fileID: 7093146088626647387}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Glass Ingot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 7093146088695145718}
   - component: {fileID: 7093146088695145712}
   - component: {fileID: 7093146088695145719}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Glass Ingot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

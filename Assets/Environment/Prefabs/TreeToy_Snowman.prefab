@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 452576}
   - component: {fileID: 3358136}
   - component: {fileID: 2317892}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Toy_Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 430472}
   - component: {fileID: 3323958}
   - component: {fileID: 2369196}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Toy_Snowman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 199853114}
   - component: {fileID: 199853113}
   - component: {fileID: 2837752387499419853}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: TreeToy_Snowman
   m_TagString: SellObject
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 468484}
   - component: {fileID: 3349322}
   - component: {fileID: 2390850}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Toy_Snowman_Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
