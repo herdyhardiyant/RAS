@@ -13,24 +13,9 @@ namespace Characters.Player.Scripts
 
         private void FixedUpdate()
         {
-            var objectTransform = transform;
+            Collider[] receiverObjects = GetOverlapObjects("Input Receiver");
 
-            var overlapCenter = objectTransform.position;
-            var overlapHalfExtents = objectTransform.localScale;
-            
-            Collider[] receiverObjects = Physics.OverlapBox(
-                overlapCenter,
-                overlapHalfExtents / 2,
-                Quaternion.identity,
-                LayerMask.GetMask("Input Receiver")
-            );
-            
-            Collider[] pickupObjects = Physics.OverlapBox(
-                overlapCenter,
-                overlapHalfExtents / 2,
-                Quaternion.identity,
-                LayerMask.GetMask("Pickup Item")
-            );
+            Collider[] pickupObjects = GetOverlapObjects("Pickup Item");
 
             if (heldObjectInteraction.IsHoldingObject)
             {
@@ -51,6 +36,20 @@ namespace Characters.Player.Scripts
                 _triggeredObject = null;
             }
 
+        }
+
+        private Collider[] GetOverlapObjects(string layerName)
+        {
+            var objectTransform = transform;
+            var overlapCenter = objectTransform.position;
+            var overlapHalfExtents = objectTransform.localScale;
+            
+            return Physics.OverlapBox(
+                overlapCenter,
+                overlapHalfExtents / 2,
+                Quaternion.identity,
+                LayerMask.GetMask(layerName)
+            );
         }
 
         private void OnDrawGizmos()

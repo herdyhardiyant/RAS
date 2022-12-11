@@ -39,8 +39,6 @@ namespace Characters.Player.Scripts
             
             if (_triggeredObject)
             {
-                
-                print("Triggered object is " + _triggeredObject.name);
 
                 var isMachine = _triggeredObject.TryGetComponent<IMachine>(out var machine);
                 if (isMachine)
