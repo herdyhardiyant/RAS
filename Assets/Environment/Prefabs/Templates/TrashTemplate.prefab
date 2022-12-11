@@ -75,4 +75,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1dc00a6bfadf40b07de6b92bb2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smeltedPrefab: {fileID: 0}
+  getSmeltedPrefab: {fileID: 0}
+  trashSprite: {fileID: 0}

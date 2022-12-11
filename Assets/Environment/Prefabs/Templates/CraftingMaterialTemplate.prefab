@@ -76,3 +76,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingResultPrefab: {fileID: 0}
+  materialIcon: {fileID: 0}

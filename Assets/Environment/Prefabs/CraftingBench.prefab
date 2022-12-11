@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 429058}
   - component: {fileID: 2615072258492745923}
   - component: {fileID: -8613593118961506185}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CraftingBench
   m_TagString: Crafting
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3232352882242517804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ItemPosition
   m_TagString: Crafting
   m_Icon: {fileID: 0}
@@ -101,9 +101,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 429058}
     m_Modifications:
+    - target: {fileID: 3079446142026576041, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480286239252800480, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324709146673614976, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595097908077028428, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6089525929014871313, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
       propertyPath: m_Name
       value: Stump Workbench
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089525929014871313, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758505236323171707, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6902196600048066475, guid: 93088c2d6362e2144b7036d9aba35602, type: 3}
       propertyPath: m_RootOrder

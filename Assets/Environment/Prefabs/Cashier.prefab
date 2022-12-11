@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1298672259343735049}
   - component: {fileID: 1757051235}
   - component: {fileID: 4166982625112821897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cashier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
