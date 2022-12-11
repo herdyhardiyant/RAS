@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8113334326081445560}
   - component: {fileID: 7094625713289970325}
   - component: {fileID: 8997371458540958083}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Can 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5585820070088432622}
   - component: {fileID: 1417156269112137306}
   - component: {fileID: 3116527683833230201}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Can 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1056968077916929872}
   - component: {fileID: 1699928231938140704}
   - component: {fileID: -2092900363830371540}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: MetalCans
   m_TagString: Trash
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 8101962520485168277}
   - component: {fileID: 1223074800954261114}
   - component: {fileID: 2741124423189710435}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Can 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

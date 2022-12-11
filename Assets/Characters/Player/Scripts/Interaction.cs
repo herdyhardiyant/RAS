@@ -31,10 +31,14 @@ namespace Characters.Player.Scripts
 
             if (!playerInputMap.IsInteractClicked) return;
             
+            
             if(movement.IsFalling) return;
 
             if (_triggeredObject)
             {
+                
+                print("Triggered object is " + _triggeredObject.name);
+
                 var isMachine = _triggeredObject.TryGetComponent<IMachine>(out var machine);
                 if (isMachine)
                 {
@@ -86,6 +90,9 @@ namespace Characters.Player.Scripts
             {
                 heldObjectInteraction.InteractObject(_triggeredObject);
             }
+            
+            
+            
         }
 
         private void DropHeldObjectWhenFall()
