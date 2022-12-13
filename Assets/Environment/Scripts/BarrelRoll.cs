@@ -8,10 +8,8 @@ namespace Environment.Scripts
     {
         [SerializeField] private float maxAngularVelocity = 20f;
         [SerializeField] private float barrelSpeed = 100f;
-        [SerializeField] private float barrelLifeTime = 10;
 
         private Rigidbody _rigidbody;
-        float timer = 0;
 
         private void Awake()
         {
@@ -27,15 +25,6 @@ namespace Environment.Scripts
         private void Update()
         {
             if (transform.position.y < -10)
-            {
-                ObjectPool.Instance.ReturnObjectToPool(gameObject);
-            }
-             if (timer < barrelLifeTime)
-            {
-                timer+= Time.deltaTime;
-                return;
-            }
-            else
             {
                 ObjectPool.Instance.ReturnObjectToPool(gameObject);
             }

@@ -26,12 +26,14 @@ namespace Environment.Scripts
             PutObjectOnCraftingBench(craftingResult);
         }
 
+
         public bool StartCrafting(GameObject materialInput)
         {
             var isCraftingMaterialExist = materialInput.TryGetComponent<CraftingMaterial>(out var craftingMaterial);
 
             if (!isCraftingMaterialExist)
             {
+                print("not crafting material");
                 return false;
             }
 

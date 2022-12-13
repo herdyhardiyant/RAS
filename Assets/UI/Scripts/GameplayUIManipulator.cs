@@ -1,5 +1,8 @@
+using System;
 using DG.Tweening;
 using GameplayData;
+using Interfaces;
+using Systems;
 using TMPro;
 using UnityEngine;
 
@@ -10,10 +13,14 @@ namespace UI.Scripts
         [SerializeField] private TMP_Text moneyText;
 
         private Color _defaultColor;
+
+        private void Awake()
+        {            
+            PlayerGameplayData.OnMoneyChanged += UpdateMoneyText;
+        }
         
         private void Start()
         {
-            PlayerGameplayData.OnMoneyChanged += UpdateMoneyText;
             moneyText.text = PlayerGameplayData.Instance.TotalMoney.ToString();
             _defaultColor = moneyText.color;
         }

@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
@@ -9,13 +10,15 @@ namespace Environment.Scripts
 
         [Header("Recipe")]
         [SerializeField] private Sprite objectSprite;
-        [SerializeField] private GameObject trash;
-        [SerializeField] private GameObject material;
-        
+        [SerializeField] private string sellableName;
+        [SerializeField] private Sprite trashSprite;
+        [SerializeField] private Sprite materialSprite;
+        public string SellableName => sellableName;
         public int Price => price;
-        
-        // TODO Get Recipe Function
-        
+        public Sprite Icon => objectSprite;
+        public Sprite TrashIcon => trashSprite;
+        public Sprite MaterialIcon => materialSprite;
+
         private void Update()
         {
             ReturnToPoolWhenFallOutOfMap();

@@ -106,16 +106,5 @@ namespace Characters.Player.Scripts
                 }
             }
         }
-        
-        //
-        // private void OnTriggerEnter(Collider other)
-        // {
-        //     _triggeredObject = other.gameObject;
-        // }
-        //
-        // private void OnTriggerExit(Collider other)
-        // {
-        //     _triggeredObject = null;
-        // }
     }
 }

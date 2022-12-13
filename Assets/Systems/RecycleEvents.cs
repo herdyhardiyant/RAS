@@ -1,4 +1,5 @@
 using System;
+using Interfaces;
 
 namespace Systems
 {
@@ -8,11 +9,11 @@ namespace Systems
         public static event Action OnTimerRunOut;
         public static event Action OnTimerWarning;
         public static event Action OnTimerDanger;
-        public static event Action<int> OnSellItem;
+        public static event Action<ISellable> OnSellItem;
         
-        public static void SellItem(int price)
+        public static void SellItem(ISellable sellObject)
         {
-            OnSellItem?.Invoke(price);
+            OnSellItem?.Invoke(sellObject);
         }
         
         public static void TimerWarning()
