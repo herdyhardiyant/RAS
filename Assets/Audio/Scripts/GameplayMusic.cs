@@ -30,6 +30,9 @@ namespace Audio.Scripts
 
         private void PlaySellSound(ISellable sellableObject)
         {
+            
+            //TODO Suara gagal jual tetap keluar walaupun jual berhasil
+            print("Sellable object: " + sellableObject.SellableName);
             var isInList = orders.IsInOrderList(sellableObject);
            if (isInList)
            {

@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Pesanan
+namespace UI.Orders
 {
     public class OrderItemManipulator : MonoBehaviour
     {

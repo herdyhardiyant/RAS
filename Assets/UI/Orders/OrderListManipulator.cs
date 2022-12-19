@@ -1,4 +1,3 @@
-using UI.Pesanan;
 using UnityEngine;
 
 namespace UI.Orders
@@ -22,6 +21,7 @@ namespace UI.Orders
         private void OnOrderChanged()
         {
             DeleteAllItem();
+            
             FetchOrderItem();
 
         }

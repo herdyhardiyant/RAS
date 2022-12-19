@@ -7,8 +7,6 @@ namespace GameplayData
 {
     public class PlayerGameplayData : MonoBehaviour
     {
-        //TODO Add customer orders data 
-
         [SerializeField] private Orders orders;
 
         public static PlayerGameplayData Instance;

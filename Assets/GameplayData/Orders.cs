@@ -35,6 +35,7 @@ namespace GameplayData
 
         private void OnSellItem(ISellable objectSell)
         {
+            
             var isInList = IsInOrderList(objectSell);
             if (isInList)
             {
@@ -64,6 +65,7 @@ namespace GameplayData
             }
 
             OnOrderChanged?.Invoke();
+            
             StartCoroutine(DelayOrder());
         }
 
@@ -92,6 +94,11 @@ namespace GameplayData
             var randomOrder = _sellableObjects[UnityEngine.Random.Range(0, sellableObjectPrefabs.Length)];
             _customerOrders.Add(randomOrder);
             OnOrderChanged?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            RecycleEvents.OnSellItem -= OnSellItem;
         }
     }
 }

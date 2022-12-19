@@ -1,10 +1,8 @@
-using System;
 using GameplayData;
-using Systems;
 using TMPro;
 using UnityEngine;
 
-namespace UI.timer
+namespace UI.Scripts
 {
     public class CompleteUI : MonoBehaviour
     {
